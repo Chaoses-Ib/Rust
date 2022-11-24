@@ -6,6 +6,7 @@
 - [Variables](Language/Variables.md)
 - [Expressions](Language/Expressions.md)
 - [Functions](Language/Functions.md)
+- [Error Handling](Language/Error%20Handling.md)
 - [Prelude](https://doc.rust-lang.org/std/prelude/index.html)
 
 ## Build
@@ -13,8 +14,6 @@
 - [Cargo](Build/Cargo.md)
 
 ## Libraries
-- Error Handling
-  - [std::result](https://doc.rust-lang.org/std/result/index.html)
 - Mathematics
   - [Random Number Generators](Libraries/Mathematics/Random%20Number%20Generators.md)
 
