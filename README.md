@@ -3,6 +3,7 @@
 
 ## Language
 - [Types](Language/Types.md)
+  - [Structs](Language/Structs.md)
 - [Variables](Language/Variables.md)
 - [Expressions](Language/Expressions.md)
 - [Functions](Language/Functions.md)
