@@ -14,6 +14,7 @@
 ## Build
 - [Installation](Build/Installation.md)
 - [Cargo](Build/Cargo.md)
+- [Benchmarking](Build/Benchmarking.md)
 
 ## Libraries
 - [Serialization](Libraries/Serialization.md)
@@ -23,6 +24,8 @@
 ## Information sources
 Books:
 - [The Rust Programming Language](https://doc.rust-lang.org/book/) ([GitHub](https://github.com/rust-lang/book))
+- [The Rust Unstable Book](https://doc.rust-lang.org/beta/unstable-book/the-unstable-book.html)
+- [The Rust Performance Book](https://nnethercote.github.io/perf-book/title-page.html) ([GitHub](https://github.com/nnethercote/perf-book))
 
 Blogs:
 - [Rust Blog](https://blog.rust-lang.org/)
