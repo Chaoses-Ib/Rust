@@ -9,7 +9,7 @@
 - [Expressions](Language/Expressions.md)
 - [Functions](Language/Functions.md)
 - [Error Handling](Language/Error%20Handling.md)
-- [Prelude](https://doc.rust-lang.org/std/prelude/index.html)
+- [Module System](Language/Module%20System.md)
 
 ## Build
 - [Installation](Build/Installation.md)
