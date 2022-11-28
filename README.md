@@ -16,6 +16,7 @@
 - [Cargo](Build/Cargo.md)
 
 ## Libraries
+- [Serialization](Libraries/Serialization.md)
 - Mathematics
   - [Random Number Generators](Libraries/Mathematics/Random%20Number%20Generators.md)
 
