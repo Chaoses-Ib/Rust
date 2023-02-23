@@ -5,6 +5,7 @@
 - [Types](Language/Types.md)
   - [Structs](Language/Structs.md)
   - [Generics](Language/Generics.md)
+  - [Smart Pointers](Language/Smart%20Pointers.md)
 - [Variables](Language/Variables.md)
 - [Expressions](Language/Expressions.md)
 - [Functions](Language/Functions.md)
