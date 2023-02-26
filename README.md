@@ -11,6 +11,7 @@
 - [Functions](Language/Functions.md)
 - [Error Handling](Language/Error%20Handling.md)
 - [Module System](Language/Module%20System.md)
+- [FFI](Language/FFI.md)
 
 ## Build
 - [Installation](Build/Installation.md)

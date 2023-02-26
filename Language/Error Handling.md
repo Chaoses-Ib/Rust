@@ -8,6 +8,8 @@ Most languages don’t distinguish between these two kinds of errors and handle 
 ## Unrecoverable errors: panic!
 By default, panics will print a failure message, unwind, clean up the stack, and quit. By setting the `RUST_BACKTRACE` environment variable to `1`, you can also have Rust display the call stack when a panic occurs to make it easier to track down the source of the panic.
 
+[std::panic::catch_unwind](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html)
+
 ## Recoverable errors: Result
 [std::result](https://doc.rust-lang.org/std/result/index.html)
 ```rust
@@ -64,3 +66,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 ```
+
+## Stack traces
+[backtrace-rs: Backtraces in Rust](https://github.com/rust-lang/backtrace-rs)
