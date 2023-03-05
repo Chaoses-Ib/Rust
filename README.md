@@ -22,6 +22,7 @@
 - [Serialization](Libraries/Serialization.md)
 - Mathematics
   - [Random Number Generators](Libraries/Mathematics/Random%20Number%20Generators.md)
+- [IPC](Libraries/IPC.md)
 
 ## Information sources
 Books:

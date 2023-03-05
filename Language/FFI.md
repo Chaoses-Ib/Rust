@@ -19,6 +19,7 @@ Libraries:
 - [bindgen: Automatically generates Rust FFI bindings to C (and some C++) libraries.](https://github.com/rust-lang/rust-bindgen)
 - [cbindgen: A project for generating C bindings from Rust code](https://github.com/eqrion/cbindgen)
 - [safer_ffi: Write safer FFI code in Rust without polluting it with unsafe code](https://github.com/getditto/safer_ffi)
+- [std::ffi](https://doc.rust-lang.org/std/ffi/)
 - [FFI Support: A crate to help expose Rust functions over the FFI.](https://github.com/mozilla/ffi-support)
 
 Problems:
