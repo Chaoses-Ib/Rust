@@ -3,12 +3,7 @@
   - [prost: A Protocol Buffers implementation for the Rust Language](https://github.com/tokio-rs/prost)
   - [rust-protobuf: Rust implementation of Google protocol buffers](https://github.com/stepancheg/rust-protobuf)
   - [quick-protobuf: A rust implementation of protobuf parser](https://github.com/tafia/quick-protobuf)
-- gRPC
-  - [tonic: A native gRPC client & server implementation with async/await support.](https://github.com/hyperium/tonic)
-  - [grpc-rs: The gRPC library for Rust built on C Core library and futures](https://github.com/tikv/grpc-rs)
-  - [grpc-rust: Rust implementation of gRPC](https://github.com/stepancheg/grpc-rust)
-
-  [Rust and gRPC: A complete guide - LogRocket Blog](https://blog.logrocket.com/rust-and-grpc-a-complete-guide/)
+- [→gRPC](https://github.com/Chaoses-Ib/Networks/blob/main/Application/HTTP/gRPC.md#rust)
 - ZeroMQ
   - [rust-zmq: Rust zeromq bindings.](https://github.com/erickt/rust-zmq)
   - [zmq.rs: A native implementation of ØMQ in Rust](https://github.com/zeromq/zmq.rs)
