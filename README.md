@@ -2,12 +2,15 @@
 [GitHub](https://github.com/rust-lang/rust)
 
 ## Language
-- [Types](Language/Types.md)
-  - [Structs](Language/Structs.md)
-  - [Generics](Language/Generics.md)
-  - [Smart Pointers](Language/Smart%20Pointers.md)
+- [Types](Language/Types/README.md)
+  - [Structs](Language/Types/Structs.md)
+  - [Enumerations](Language/Types/Enumerations.md)
+  - [Unions](Language/Types/Unions.md)
+  - [Generics](Language/Types/Generics.md)
+  - [Smart Pointers](Language/Types/Smart%20Pointers.md)
 - [Variables](Language/Variables.md)
 - [Expressions](Language/Expressions.md)
+  - [Pattern Matching](Language/Pattern%20Matching.md)
 - [Functions](Language/Functions.md)
 - [Error Handling](Language/Error%20Handling.md)
 - [Module System](Language/Module%20System.md)
@@ -25,10 +28,15 @@
 - [IPC](Libraries/IPC.md)
 
 ## Information sources
-Books:
+<details><summary>Books</summary>
+
 - [The Rust Programming Language](https://doc.rust-lang.org/book/) ([GitHub](https://github.com/rust-lang/book))
+- [The Rust Reference](https://doc.rust-lang.org/reference/) ([GitHub](https://github.com/rust-lang/reference/))
 - [The Rust Unstable Book](https://doc.rust-lang.org/beta/unstable-book/the-unstable-book.html)
 - [The Rust Performance Book](https://nnethercote.github.io/perf-book/title-page.html) ([GitHub](https://github.com/nnethercote/perf-book))
+</details>
 
-Blogs:
+<details><summary>Blogs</summary>
+
 - [Rust Blog](https://blog.rust-lang.org/)
+</details>
