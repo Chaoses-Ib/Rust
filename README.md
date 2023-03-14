@@ -2,12 +2,14 @@
 [GitHub](https://github.com/rust-lang/rust)
 
 ## Language
-- [Types](Language/Types/README.md)
-  - [Structs](Language/Types/Structs.md)
-  - [Enumerations](Language/Types/Enumerations.md)
-  - [Unions](Language/Types/Unions.md)
-  - [Generics](Language/Types/Generics.md)
-  - [Smart Pointers](Language/Types/Smart%20Pointers.md)
+- Type System
+  - [Types](Language/Type%20System/Types/README.md)
+    - [Structs](Language/Type%20System/Types/Structs.md)
+    - [Enumerations](Language/Type%20System/Types/Enumerations.md)
+    - [Unions](Language/Type%20System/Types/Unions.md)
+    - [Smart Pointers](Language/Type%20System/Types/Smart%20Pointers.md)
+  - [Generics](Language/Type%20System/Generics.md)
+  - [Type Layout](Language/Type%20System/Type%20Layout.md)
 - [Variables](Language/Variables.md)
 - [Expressions](Language/Expressions.md)
   - [Pattern Matching](Language/Pattern%20Matching.md)
