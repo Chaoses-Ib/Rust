@@ -26,6 +26,7 @@
 - [Benchmarking](Build/Benchmarking.md)
 
 ## Libraries
+- [Text](Libraries/Text.md)
 - [Serialization](Libraries/Serialization.md)
 - Mathematics
   - [Random Number Generators](Libraries/Mathematics/Random%20Number%20Generators.md)
