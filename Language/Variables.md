@@ -77,3 +77,31 @@ let world = &s[6..11];
 ```
 
 String literals are string slices.
+
+## Drop
+[Does Rust free up the memory of overwritten variables? - Stack Overflow](https://stackoverflow.com/questions/48227347/does-rust-free-up-the-memory-of-overwritten-variables)
+- Shadowed variables will be dropped when they go out of scope (not immediately after shadowing).
+
+  ```rust
+  struct Noisy;
+  impl Drop for Noisy {
+      fn drop(&mut self) {
+          eprintln!("Dropped")
+      }
+  }
+  
+  fn main() {
+      eprintln!("0");
+      let thing = Noisy;
+      eprintln!("1");
+      let thing = Noisy;
+      eprintln!("2");
+  }
+  ```
+  ```
+  0
+  1
+  2
+  Dropped
+  Dropped
+  ```

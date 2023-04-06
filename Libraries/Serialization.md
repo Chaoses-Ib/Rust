@@ -1,6 +1,10 @@
 # Serialization
 - Zero-copy deserialization
   - [rkyv: Zero-copy deserialization framework for Rust](https://github.com/rkyv/rkyv)
+
+    [Easier way to use archived and unarchived types together · Issue #167 · rkyv/rkyv](https://github.com/rkyv/rkyv/issues/167)
+
+    [Unaligned Buffer, only in Debug mode · Issue #218 · rkyv/rkyv](https://github.com/rkyv/rkyv/issues/218)
   - [zerocopy](https://github.com/google/zerocopy)
   - [Alkahest](https://github.com/zakarumych/alkahest)
 - [Serde](https://serde.rs/) ([GitHub](https://github.com/serde-rs/serde))

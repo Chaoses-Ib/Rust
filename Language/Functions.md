@@ -8,6 +8,8 @@ fn five() -> i32 {
 
 You can return early from a function by using the `return` keyword and specifying a value, but most functions return the last expression implicitly.
 
+For most implementations, the default stack size is 2MiB, but it's 4MiB for WebAssembly.[^stack-tiger]
+
 ## Closures
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch13-01-closures.html)
 
@@ -49,3 +51,6 @@ impl<T> Option<T> {
     }
 }
 ```
+
+
+[^stack-tiger]: [What is the size limit of thread's stack in rust? - The Rust Programming Language Forum](https://users.rust-lang.org/t/what-is-the-size-limit-of-threads-stack-in-rust/11867)
