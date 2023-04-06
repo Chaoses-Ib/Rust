@@ -15,6 +15,7 @@
 - [Expressions](Language/Expressions.md)
   - [Pattern Matching](Language/Pattern%20Matching.md)
 - [Functions](Language/Functions.md)
+- [Concurrency](Language/Concurrency/README.md)
 - [Error Handling](Language/Error%20Handling.md)
 - [Module System](Language/Module%20System.md)
 - [FFI](Language/FFI.md)

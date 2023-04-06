@@ -52,5 +52,8 @@ impl<T> Option<T> {
 }
 ```
 
+### Recursion
+[recursion - Is it possible to make a recursive closure in Rust? - Stack Overflow](https://stackoverflow.com/questions/16946888/is-it-possible-to-make-a-recursive-closure-in-rust)
+
 
 [^stack-tiger]: [What is the size limit of thread's stack in rust? - The Rust Programming Language Forum](https://users.rust-lang.org/t/what-is-the-size-limit-of-threads-stack-in-rust/11867)
