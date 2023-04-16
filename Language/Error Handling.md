@@ -19,6 +19,32 @@ enum Result<T, E> {
 }
 ```
 
+### Error
+[std::error::Error](https://doc.rust-lang.org/std/error/trait.Error.html)
+```rust
+pub trait Error: Debug + Display {
+    // The lower-level source of this error, if any.
+    fn source(&self) -> Option<&(dyn Error + 'static)> { ... }
+
+    // Deprecated since 1.42.0: use the Display impl or to_string().
+    // Error messages are typically concise lowercase sentences without trailing punctuation.
+    fn description(&self) -> &str { ... }
+
+    // Deprecated since 1.33.0: replaced by Error::source, which can support downcasting.
+    fn cause(&self) -> Option<&dyn Error> { ... }
+
+    // Provides type based access to context intended for error reports.
+    fn provide<'a>(&'a self, demand: &mut Demand<'a>) { ... }
+}
+```
+
+- [anyhow: Flexible concrete Error type built on std::error::Error](https://github.com/dtolnay/anyhow)
+  - [eyre: A trait object based error handling type for easy idiomatic error handling and reporting in Rust applications](https://github.com/yaahc/eyre)
+- [thiserror: derive(Error) for struct and enum error types](https://github.com/dtolnay/thiserror)
+- [Quick Error: A rust-macro which makes errors easy to write](https://github.com/tailhook/quick-error)
+- [rust-lang-deprecated/failure: Error management](https://github.com/rust-lang-deprecated/failure)
+- [rust-lang-deprecated/error-chain: Error boilerplate for Rust](https://github.com/rust-lang-deprecated/error-chain)
+
 ### Propagating errors
 ```rust
 use std::fs::File;
