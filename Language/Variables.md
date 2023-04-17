@@ -155,6 +155,25 @@ mod tests {
 
 Note that `RefCell<T>` does not work for multithreaded code. `Mutex<T>` is the thread-safe version of `RefCell<T>`.
 
+### Self-referential structs
+在 Rust 中，结构体的引用字段的生命期必须大于结构体本身，即必须在 drop 完成之前都可用，而对结构体字段的引用的生命期是与结构体本身相同的，因此一个结构无法包含对自己的字段的引用。
+
+这个问题有以下一些绕过方法：
+- `Option<T>`
+- `unsafe`
+- `Pin<T>`
+- [ouroboros: Easy self-referential struct generation for Rust.](https://github.com/joshua-maros/ouroboros)
+- `Rc` + `Weak`
+- 修改设计
+
+这些方法要么需要 `unsafe`，要么用起来很麻烦，或者限制很大，我们在设计时应该尽量避免 self-referential structs 的出现。
+
+[结构体中的自引用 - Rust语言圣经](https://course.rs/advance/circle-self-ref/self-referential.html)
+
+[Self-referential types for fun and profit | More Stina Blog!](https://morestina.net/blog/1868/self-referential-types-for-fun-and-profit)
+
+[Self Referential Structs in Rust (Part 1)](https://arunanshub.hashnode.dev/self-referential-structs-in-rust)
+
 ## Drop
 [Does Rust free up the memory of overwritten variables? - Stack Overflow](https://stackoverflow.com/questions/48227347/does-rust-free-up-the-memory-of-overwritten-variables)
 - Shadowed variables will be dropped when they go out of scope (not immediately after shadowing).
