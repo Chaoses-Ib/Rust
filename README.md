@@ -27,6 +27,7 @@
 - [Benchmarking](Build/Benchmarking.md)
 
 ## Libraries
+- [Memory Management](Libraries/Memory%20Management.md)
 - [Text](Libraries/Text.md)
 - [Serialization](Libraries/Serialization.md)
 - Mathematics

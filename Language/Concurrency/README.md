@@ -5,6 +5,8 @@ Libraries:
 - [Rayon: A data parallelism library for Rust](https://github.com/rayon-rs/rayon)
 - [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam)
 
+[Concurrency — list of Rust libraries/crates // Lib.rs](https://lib.rs/concurrency)
+
 ## Threads
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch16-01-threads.html)
 
@@ -40,6 +42,12 @@ We often use the `move` keyword with closures passed to `thread::spawn` beca
 Scoped threads 必须在 scope 返回前 join 所有线程，如何将 scope 作为一个变量保存？不过即使可以将 scope 保存为变量，依然很难让 struct 与 thread 拥有同样的生命周期，因为这会导致产生 self-referential struct。
 - [std::thread::JoinGuard (and scoped) are unsound because of reference cycles · Issue #24292 · rust-lang/rust](https://github.com/rust-lang/rust/issues/24292)
 - [Thread living as long as a struct ? : rust](https://www.reddit.com/r/rust/comments/7iuzy8/thread_living_as_long_as_a_struct/)
+
+### Thread pools
+- [threadpool: A very simple thread pool for parallel task execution](https://github.com/rust-threadpool/rust-threadpool)
+- [unblock: A thread pool for isolating blocking](https://github.com/botika/unblock)
+- [messaging-thread-pool: Rust message based thread pool crate](https://github.com/cainem/messaging-thread-pool)
+
 
 ## The Sync and Send traits
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html)
@@ -86,43 +94,27 @@ Wrappers:
 
   SendWrapper 只是将 `Send` 的编译期检查推迟成了运行时检查，比 `unsafe impl Send` 安全点。
 
-`Send` 理论上也可以通过包装实现，例如创建一个 dispatch 线程来创建不支持 `Send` 的对象，在其它线程调用对象的 proxy 时通知 dispatch 线程执行，再将支持 `Send` 或序列化的结果返回给调用线程，不过目前并没有类似实现。
+- [Fragile: Utility wrapper to send non send types to other threads safely](https://github.com/mitsuhiko/fragile)
 
-## Message passing
-[The Rust Programming Language](https://doc.rust-lang.org/book/ch16-02-message-passing.html)
+`Send` 理论上也可以通过包装实现，例如创建一个 dispatch 线程来创建不支持 `Send` 的对象，在其它线程调用对象的 proxy 时通知 dispatch 线程执行，再将支持 `Send` 或序列化的结果返回给调用线程，不过目前只有部分实现：
 
-A **channel** is a general programming concept by which data is sent from one thread to another.
+- [ThreadIsolated](https://github.com/jgallagher/thread_isolated/)
 
-```rust
-// multiple producer, single consumer
-use std::sync::mpsc;
-use std::thread;
+  通过 Send closure 来实现对 `!Send` 对象的跨线程使用。
 
-fn main() {
-    let (tx, rx) = mpsc::channel();
-
-    thread::spawn(move || {
-        let val = String::from("hello");
-        tx.send(val).unwrap();
-        let val = String::from("world");
-        tx.send(val).unwrap();
-    });
-
-    let received = rx.recv().unwrap();
-    println!("Got: {}", received);
-
-    for received in rx {
-        println!("Got: {}", received);
-    }
-}
-```
-
-A channel is said to be _closed_ if either the transmitter or receiver half is dropped. When the channel is closed, iteration with the receiver will end.
 
 ## Shared-state concurrency
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch16-03-shared-state.html)
 
-### Mutexes
+### Atomic types
+[std::sync::atomic](https://doc.rust-lang.org/std/sync/atomic/index.html)
+
+### Synchronization primitives
+- [parking_lot: Compact and efficient synchronization primitives for Rust. Also provides an API for creating custom synchronization primitives.](https://github.com/amanieu/parking_lot)
+- [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam)
+- [spin-rs: Spin-based synchronization primitives](https://github.com/mvdnes/spin-rs)
+
+#### Mutexes
 _Mutex_ is an abbreviation for _mutual exclusion_, as in, a mutex allows only one thread to access some data at any given time.
 
 [std::sync::Mutex\<T\>](https://doc.rust-lang.org/std/sync/struct.Mutex.html)
@@ -170,5 +162,51 @@ fn main() {
 }
 ```
 
-### Atomic types
-[std::sync::atomic](https://doc.rust-lang.org/std/sync/atomic/index.html)
+### Data structures
+- [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam)
+- [left-right: A lock-free, read-optimized, concurrency primitive.](https://github.com/jonhoo/left-right)
+- [Concread: Concurrently Readable Data Structures for Rust](https://github.com/kanidm/concread)
+
+  [What is Concrete? - Concrete](https://docs.zama.ai/concrete/)
+- [flashmap: A lock-free, partially wait-free, eventually consistent, concurrent hashmap.](https://github.com/Cassy343/flashmap)
+- [concurrent-map: lock-free B+ tree](https://github.com/komora-io/concurrent-map)
+- [Scalable Concurrent Containers: High performance containers and utilities for concurrent and asynchronous programming](https://github.com/wvwwvwwv/scalable-concurrent-containers)
+- [triple-buffer: Implementation of triple buffering in Rust](https://github.com/HadrienG2/triple-buffer)
+- [resman: Runtime managed resource borrowing.](https://github.com/azriel91/resman)
+
+
+## Message passing
+[The Rust Programming Language](https://doc.rust-lang.org/book/ch16-02-message-passing.html)
+
+A **channel** is a general programming concept by which data is sent from one thread to another.
+
+```rust
+// multiple producer, single consumer
+use std::sync::mpsc;
+use std::thread;
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+
+    thread::spawn(move || {
+        let val = String::from("hello");
+        tx.send(val).unwrap();
+        let val = String::from("world");
+        tx.send(val).unwrap();
+    });
+
+    let received = rx.recv().unwrap();
+    println!("Got: {}", received);
+
+    for received in rx {
+        println!("Got: {}", received);
+    }
+}
+```
+
+A channel is said to be _closed_ if either the transmitter or receiver half is dropped. When the channel is closed, iteration with the receiver will end.
+
+Libraries:
+- [Flume: A safe and fast multi-producer, multi-consumer channel.](https://github.com/zesterer/flume)
+- [Kanal: The fast sync and async channel that Rust deserves](https://github.com/fereidani/kanal)
+- [bus: Efficient, lock-free, bounded Rust broadcast channel](https://github.com/jonhoo/bus)
