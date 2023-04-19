@@ -102,6 +102,81 @@ Wrappers:
 
   通过 Send closure 来实现对 `!Send` 对象的跨线程使用。
 
+- async/await
+
+  通过 Tokio 的 current thread scheduler 和 SendWrapper 实现：
+
+  ```rust
+  struct UnsendableStruct {
+      // Rc<T> is !Send + !Sync
+      pub v: Rc<u32>,
+  }
+  
+  fn main() {
+      // !Send + !Sync
+      let unsendable_value = UnsendableStruct { v: 42.into() };
+      // Send + Sync, panic if not accessed from the same thread
+      let pesudo_sendable_value = send_wrapper::SendWrapper::new(unsendable_value);
+      // bypass lifetime check, another way is to use scoped thread
+      let pesudo_sendable_value_arc = Arc::new(pesudo_sendable_value);
+  
+      // runtime with current thread scheduler
+      let rt = tokio::runtime::Builder::new_current_thread()
+          .enable_time()
+          .build()
+          .unwrap();
+      let rt = Arc::new(rt);
+  
+      println!("1. read v {:?} in thread {:?}", pesudo_sendable_value_arc.v, thread::current().id());
+  
+      let mut t;
+      {
+          let rt = rt.clone();
+          let pesudo_sendable_value_arc = pesudo_sendable_value_arc.clone();
+          t = thread::spawn(move || {
+              println!("2/3. spawn future in thread {:?}", thread::current().id());
+              // don't use rt.block_on, it will run the future in the current thread
+              let handle = rt.spawn(async move {
+                  let v = &pesudo_sendable_value_arc.v;
+                  println!("4. future read v {:?} in thread {:?}", v, thread::current().id());
+                  v.as_ref().clone()
+              });
+  
+              // don't use rt.block_on
+              let senable_result = futures::executor::block_on(handle).unwrap();
+              println!("5. read future's sendable result {:?} in thread {:?}", senable_result, thread::current().id());
+          });
+      }
+  
+      rt.block_on(async move {
+          println!("2/3. read v {:?} in thread {:?}", pesudo_sendable_value_arc.v, thread::current().id());
+  
+          // yield
+          // using tokio::task::yield_now doesn't work
+          tokio::time::sleep(std::time::Duration::from_secs(1)).await;
+  
+          println!("6. read v {:?} in thread {:?}", pesudo_sendable_value_arc.v, thread::current().id());
+      });
+  
+      t.join().unwrap();
+  }
+  ```
+  ```
+  1. read v 42 in thread ThreadId(1)
+  2/3. read v 42 in thread ThreadId(1)
+  2/3. spawn future in thread ThreadId(2)
+  1. future read v 42 in thread ThreadId(1)
+  2. read future's sendable result 42 in thread ThreadId(2)
+  3. read v 42 in thread ThreadId(1)
+  ```
+  
+  Tokio 只有 current thread scheduler 和 multi thread scheduler，前者会在调用 `block_on` 时在当前线程执行 task。要实现 task 只在某一线程执行，就需要只在那个线程执行 `block_on`。这样的话，其它线程在提交 task 后就需要用另外的 runtime 或 futures::`block_on` 来等待 task 完成。只要小心一些，不是什么大问题。
+  
+  可以实现在 task 中引用 executor 线程的变量，不过需要用 SendWrapper 包装一下，将 Send 和 Sync 的检查推迟到运行时。  
+  
+  关于其它的 async 框架，async_std 似乎只能直接 block_on，没有更复杂的 executor；smol 虽然有个 LocalExecutor，但只能在创建的线程中使用，没法实现跨线程提交 task。
+  
+  总的来说，用 async/await 还是比用 channel 和 callback 的方案更简洁和灵活，不过 async/await 对 Rust 特性的使用更复杂，处理某些特殊场景可能会费些功夫。
 
 ## Shared-state concurrency
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch16-03-shared-state.html)
