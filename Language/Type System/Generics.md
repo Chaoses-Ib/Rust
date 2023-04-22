@@ -122,4 +122,12 @@ let s: &'static str = "I have a static lifetime.";
 ```
 
 ### Lifetime elision
+[The Rustonomicon](https://doc.rust-lang.org/nomicon/lifetime-elision.html)
+
 The patterns programmed into Rust’s analysis of references are called the **lifetime elision rules**. These aren’t rules for programmers to follow; they’re a set of particular cases that the compiler will consider, and if your code fits these cases, you don’t need to write the lifetimes explicitly.
+
+Elision rules are as follows:
+- Each elided lifetime in input position becomes a distinct lifetime parameter.
+- If there is exactly one input lifetime position (elided or not), that lifetime is assigned to _all_ elided output lifetimes.
+- If there are multiple input lifetime positions, but one of them is `&self` or `&mut self`, the lifetime of `self` is assigned to _all_ elided output lifetimes.
+- Otherwise, it is an error to elide an output lifetime.

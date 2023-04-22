@@ -17,14 +17,14 @@ func(y);
 
 If a type implements the `Copy` trait, variables that use it do not move, but rather are trivially copied, making them still valid after assignment to another variable.
 
+Rust will never automatically create “deep” copies of your data. Therefore, any _automatic_ copying can be assumed to be inexpensive in terms of runtime performance.
+
 ### Move
 ```rust
 let s1 = String::from("hello");
 let s2 = s1;
 func(s2);
 ```
-
-Rust will never automatically create “deep” copies of your data. Therefore, any _automatic_ copying can be assumed to be inexpensive in terms of runtime performance.
 
 ### Clone
 ```rust

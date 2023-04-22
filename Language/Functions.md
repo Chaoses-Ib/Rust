@@ -55,5 +55,8 @@ impl<T> Option<T> {
 ### Recursion
 [recursion - Is it possible to make a recursive closure in Rust? - Stack Overflow](https://stackoverflow.com/questions/16946888/is-it-possible-to-make-a-recursive-closure-in-rust)
 
+不要递归创建 closure：
+- [rust - Error: reached the recursion limit while instantiating `func::<[closure]>` - Stack Overflow](https://stackoverflow.com/questions/54613966/error-reached-the-recursion-limit-while-instantiating-funcclosure)
+
 
 [^stack-tiger]: [What is the size limit of thread's stack in rust? - The Rust Programming Language Forum](https://users.rust-lang.org/t/what-is-the-size-limit-of-threads-stack-in-rust/11867)
