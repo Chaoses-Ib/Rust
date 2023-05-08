@@ -20,7 +20,7 @@
 - [FFI](Language/FFI.md)
 
 ## Build
-- [Installation](Build/Installation.md)
+- [rustup](Build/rustup.md)
 - [Cargo](Build/Cargo.md)
 - [Testing](Build/Testing.md)
 - [Benchmarking](Build/Benchmarking.md)
