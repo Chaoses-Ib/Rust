@@ -26,9 +26,12 @@
 - [Benchmarking](Build/Benchmarking.md)
 
 ## Libraries
+- Mathematics
+  - [Random Number Generators](Libraries/Mathematics/Random%20Number%20Generators.md)
 - [Memory Management](Libraries/Memory%20Management.md)
 - [Text](Libraries/Text.md)
 - [Serialization](Libraries/Serialization.md)
-- Mathematics
-  - [Random Number Generators](Libraries/Mathematics/Random%20Number%20Generators.md)
-- [IPC](Libraries/IPC.md)
+- [Logging](Libraries/Logging.md)
+- [Inter-Process Communication](Libraries/IPC.md)
+- User Interfaces
+  - [Command Line Interface](Libraries/UI/Command%20Line.md)
