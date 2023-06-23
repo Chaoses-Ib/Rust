@@ -17,7 +17,7 @@
   - [Async/await](Language/Concurrency/Async-await.md)
 - [Error Handling](Language/Error%20Handling.md)
 - [Module System](Language/Module%20System.md)
-- [FFI](Language/FFI.md)
+- [Foreign Function Interface](Language/FFI.md)
 
 ## Build
 - [rustup](Build/rustup.md)

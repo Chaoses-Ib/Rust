@@ -67,3 +67,13 @@ fn main() {
     let first = a[0];
 }
 ```
+
+The length of an array is part of its type. For this reason, this length must be a compile-time constant. However, you can use a **boxed slice** instead:
+
+```rust
+let n = 5;
+let a: Box<[i32]> = vec![3; n].into_boxed_slice();
+
+// vec![e; n] will clone the element n times
+let a: Box<[Box<[i32]>]> = vec![vec![1, 2, 3].into_boxed_slice(); n].into_boxed_slice();
+```
