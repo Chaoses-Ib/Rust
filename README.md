@@ -32,6 +32,7 @@
 - [Text](Libraries/Text.md)
 - [Serialization](Libraries/Serialization.md)
 - [Logging](Libraries/Logging.md)
+- [Error Reporting](Libraries/Error%20Reporting.md)
 - [Inter-Process Communication](Libraries/IPC.md)
 - User Interfaces
   - [Command Line Interface](Libraries/UI/Command%20Line.md)

@@ -8,7 +8,12 @@ Most languages don’t distinguish between these two kinds of errors and handle 
 ## Unrecoverable errors: panic!
 By default, panics will print a failure message, unwind, clean up the stack, and quit. By setting the `RUST_BACKTRACE` environment variable to `1`, you can also have Rust display the call stack when a panic occurs to make it easier to track down the source of the panic.
 
-[std::panic::catch_unwind](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html)
+Panic 仅会结束当前 thread，而不是结束整个 process。
+- [rust - How can I cause a panic on a thread to immediately end the main thread? - Stack Overflow](https://stackoverflow.com/questions/35988775/how-can-i-cause-a-panic-on-a-thread-to-immediately-end-the-main-thread)
+
+Handling:
+- [std::panic::set_hook](https://doc.rust-lang.org/std/panic/fn.set_hook.html)
+- [std::panic::catch_unwind](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html)
 
 ## Recoverable errors: Result
 [std::result](https://doc.rust-lang.org/std/result/index.html)
