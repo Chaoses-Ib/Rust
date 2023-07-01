@@ -5,6 +5,7 @@
     - [Structs](Language/Type%20System/Types/Structs.md)
     - [Enumerations](Language/Type%20System/Types/Enumerations.md)
     - [Unions](Language/Type%20System/Types/Unions.md)
+    - [Iterators](Language/Type%20System/Types/Iterators.md)
     - [Smart Pointers](Language/Type%20System/Types/Smart%20Pointers.md)
     - [Textual Types](Language/Type%20System/Types/Textual.md)
   - [Generics](Language/Type%20System/Generics.md)
