@@ -34,6 +34,8 @@ fn main() {
 }
 ```
 
+- [likely](https://doc.rust-lang.org/std/intrinsics/fn.likely.html), [unlikely](https://doc.rust-lang.org/std/intrinsics/fn.unlikely.html)
+
 ## Loop expressions
 For example:
 ```rust

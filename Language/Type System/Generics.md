@@ -121,6 +121,10 @@ impl<'a> ImportantExcerpt<'a> {
 let s: &'static str = "I have a static lifetime.";
 ```
 
+Libraries:
+- [once_cell: Rust library for single assignment cells and lazy statics without macros](https://github.com/matklad/once_cell)
+- [lazy-static.rs: A small macro for defining lazy evaluated static variables in Rust.](https://github.com/rust-lang-nursery/lazy-static.rs)
+
 ### Lifetime elision
 [The Rustonomicon](https://doc.rust-lang.org/nomicon/lifetime-elision.html)
 

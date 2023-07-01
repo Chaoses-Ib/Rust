@@ -61,6 +61,8 @@ fn change(some_string: &mut String) {
 
 A reference’s scope starts from where it is introduced and continues through the last time that reference is used (which is called non-lexical lifetimes). Mutable references have one big restriction: if you have a mutable reference to a value, you can have no other references to that value.
 
+[`ref`](https://doc.rust-lang.org/std/keyword.ref.html) annotates pattern bindings to make them borrow rather than move.
+
 ### Slices
 **Slices** let you reference a contiguous sequence of elements in a collection rather than the whole collection.
 

@@ -6,10 +6,12 @@ Length | Signed | Unsigned
 --- | --- | ---
 8-bit | `i8` | `u8`
 16-bit | `i16` | `u16`
-32-bit | **`i32`** | `u32`
+32-bit | **`i32`** | [`u32`](https://doc.rust-lang.org/std/primitive.u32.html)
 64-bit | `i64` | `u64`
 128-bit | `i128` | `u128`
 arch | `isize` | `usize`
+
+- Constants: `MIN`, `MAX`, `BITS`
 
 Integer literals:
 

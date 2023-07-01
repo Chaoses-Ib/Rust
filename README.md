@@ -6,6 +6,7 @@
     - [Enumerations](Language/Type%20System/Types/Enumerations.md)
     - [Unions](Language/Type%20System/Types/Unions.md)
     - [Smart Pointers](Language/Type%20System/Types/Smart%20Pointers.md)
+    - [Textual Types](Language/Type%20System/Types/Textual.md)
   - [Generics](Language/Type%20System/Generics.md)
   - [Traits](Language/Type%20System/Traits.md)
   - [Type Layout](Language/Type%20System/Type%20Layout.md)
