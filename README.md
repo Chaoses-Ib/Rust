@@ -19,6 +19,7 @@
 - [Error Handling](Language/Error%20Handling.md)
 - [Module System](Language/Module%20System.md)
 - [Foreign Function Interface](Language/FFI.md)
+- [Coding Conventions](Language/Coding%20Conventions.md)
 
 ## Build
 - [rustup](Build/rustup.md)
