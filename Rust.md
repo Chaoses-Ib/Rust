@@ -10,6 +10,7 @@ Books:
 - [The Rust Reference](https://doc.rust-lang.org/reference/) ([GitHub](https://github.com/rust-lang/reference/))
 - [The Rust Unstable Book](https://doc.rust-lang.org/beta/unstable-book/the-unstable-book.html)
 - [The Rust Performance Book](https://nnethercote.github.io/perf-book/title-page.html) ([GitHub](https://github.com/nnethercote/perf-book))
+- [Rust for C#/.NET Developers](https://microsoft.github.io/rust-for-dotnet-devs/latest/introduction.html)
 
 Blogs:
 - [Rust Blog](https://blog.rust-lang.org/)

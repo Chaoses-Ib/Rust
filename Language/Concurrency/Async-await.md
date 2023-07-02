@@ -245,4 +245,10 @@ Libraries:
 - [async-std: Async version of the Rust standard library](https://github.com/async-rs/async-std) ([Docs.rs](https://docs.rs/async-std/latest/async_std/))
 - [smol: A small and fast async runtime for Rust](https://github.com/smol-rs/smol)
 
+## Stackful coroutines
+- [May: rust stackful coroutine library](https://github.com/Xudong-Huang/may)
+
+  [Stackful Coroutine Async Story in Rust](https://xudong-huang.github.io/stackful_coroutine_story.html)
+
+
 [^tokio]: [tokio::runtime - Rust](https://docs.rs/tokio/latest/tokio/runtime/index.html)
