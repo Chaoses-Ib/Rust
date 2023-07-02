@@ -33,6 +33,7 @@
 - Mathematics
   - [Random Number Generators](Libraries/Mathematics/Random%20Number%20Generators.md)
 - [Memory Management](Libraries/Memory%20Management.md)
+- [Arrays](Libraries/Arrays.md)
 - [Text](Libraries/Text.md)
 - [Serialization](Libraries/Serialization.md)
 - [Logging](Libraries/Logging.md)
