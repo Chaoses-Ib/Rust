@@ -35,6 +35,7 @@
 - [Memory Management](Libraries/Memory%20Management.md)
 - [Arrays](Libraries/Arrays.md)
 - [Text](Libraries/Text.md)
+- [Chrono](Libraries/Chrono.md)
 - [Serialization](Libraries/Serialization.md)
 - [Logging](Libraries/Logging.md)
 - [Error Reporting](Libraries/Error%20Reporting.md)

@@ -35,7 +35,8 @@ Since `str` is a [dynamically sized type](https://doc.rust-lang.org/reference
 
   To index a byte, call [as_bytes](https://doc.rust-lang.org/std/primitive.str.html#method.as_bytes) (v1.39.0) (`as_bytes()[i]`).
 
-  To index a char, call [chars](https://doc.rust-lang.org/std/primitive.str.html#method.chars) (`chars().nth()`).
+  To index a char, call [chars](https://doc.rust-lang.org/std/primitive.str.html#method.chars) (`chars().nth()`) or [char_indices](https://doc.rust-lang.org/std/primitive.str.html#method.char_indices) (`char_indices().nth()`).
+  - 在将 `char_indices` 用于 slices 时，要注意 indices 是以 slices 为起始的，而不是整个 str。
 
 - `str` can be indexed with slices.
 
