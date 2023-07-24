@@ -26,6 +26,7 @@
 ## Build
 - [rustup](Build/rustup.md)
 - [Cargo](Build/Cargo.md)
+- [Conditional Compilation](Build/Conditional%20Compilation.md)
 - [Testing](Build/Testing.md)
 - [Benchmarking](Build/Benchmarking.md)
 
