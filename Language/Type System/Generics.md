@@ -74,6 +74,22 @@ fn main() {
 }
 ```
 
+## Const generics
+[Const Generics - Rust By Practice](https://practice.rs/generics-traits/const-generics.html)
+
+```rust
+struct ArrayPair<T, const N: usize> {
+    left: [T; N],
+    right: [T; N],
+}
+
+impl<T: Debug, const N: usize> Debug for ArrayPair<T, N> {
+    // ...
+}
+```
+
+[Tracking Issue for more complex const parameter types: `feature(adt_const_params)` · Issue #95174 · rust-lang/rust](https://github.com/rust-lang/rust/issues/95174)
+
 ## Lifetimes
 Rather than ensuring that a type has the behavior we want, **lifetimes** ensure that references are valid as long as we need them to be. The main aim of lifetimes is to prevent _dangling references_, which cause a program to reference data other than the data it’s intended to reference.
 
