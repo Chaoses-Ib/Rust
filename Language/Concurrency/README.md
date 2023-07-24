@@ -1,12 +1,6 @@
 # Concurrency
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch16-00-concurrency.html)
 
-Libraries:
-- [Rayon: A data parallelism library for Rust](https://github.com/rayon-rs/rayon)
-- [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam)
-
-[Concurrency — list of Rust libraries/crates // Lib.rs](https://lib.rs/concurrency)
-
 ## Threads
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch16-01-threads.html)
 
