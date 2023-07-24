@@ -30,12 +30,11 @@
 - [Benchmarking](Build/Benchmarking.md)
 
 ## Libraries
-- Mathematics
-  - [Random Number Generators](Libraries/Mathematics/Random%20Number%20Generators.md)
 - [Memory Management](Libraries/Memory%20Management.md)
-- [Arrays](Libraries/Arrays.md)
+- [Data Structures](Libraries/Data%20Structures.md)
 - [Text](Libraries/Text.md)
 - [Chrono](Libraries/Chrono.md)
+- [Cryptology](Libraries/Cryptology.md)
 - [Serialization](Libraries/Serialization.md)
 - [Logging](Libraries/Logging.md)
 - [Error Reporting](Libraries/Error%20Reporting.md)
