@@ -11,6 +11,12 @@ struct User {
 }
 ```
 
+## Bit fields
+[rust - How to implement bitwise operations on a bitflags enum? - Stack Overflow](https://stackoverflow.com/questions/43509560/how-to-implement-bitwise-operations-on-a-bitflags-enum)
+
+Libraries:
+- [bitflags: A macro to generate structures which behave like bitflags](https://github.com/bitflags/bitflags)
+
 ## Tuple structs
 **Tuple structs** have the added meaning the struct name provides but don’t have names associated with their fields; rather, they just have the types of the fields. For example:
 ```rust
