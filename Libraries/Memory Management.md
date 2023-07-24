@@ -19,3 +19,6 @@
   [Announcing elfmalloc, a pure Rust allocator that's competitive on performance with jemalloc - announcements - The Rust Programming Language Forum](https://users.rust-lang.org/t/announcing-elfmalloc-a-pure-rust-allocator-thats-competitive-on-performance-with-jemalloc/12693)
 
 - [sharded-slab: a lock-free concurrent slab](https://github.com/hawkw/sharded-slab)
+
+Bump allocators:
+- [bumpalo: A fast bump allocation arena for Rust](https://github.com/fitzgen/bumpalo)
