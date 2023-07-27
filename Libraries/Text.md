@@ -1,5 +1,6 @@
 # Text
 - [compact_str: A memory efficient string type that can store up to 24* bytes on the stack](https://github.com/ParkMyCar/compact_str)
+- [smol_str](https://github.com/rust-analyzer/smol_str)
 - [flexstr: A flexible, simple to use, immutable, clone-efficient String replacement for Rust](https://github.com/nu11ptr/flexstr)
 - [ArrayString: Fixed capacity stack based generic string that works on stable](https://github.com/paulocsanz/arraystring)
 
