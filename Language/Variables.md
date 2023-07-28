@@ -157,6 +157,8 @@ mod tests {
 
 Note that `RefCell<T>` does not work for multithreaded code. `Mutex<T>` is the thread-safe version of `RefCell<T>`.
 
+See [Data Structures](../Libraries/Data%20Structures.md) for other data structures with interior mutability.
+
 ### Self-referential structs
 在 Rust 中，结构体的引用字段的生命期必须大于结构体本身，即必须在 drop 完成之前都可用，而对结构体字段的引用的生命期是与结构体本身相同的，因此一个结构无法包含对自己的字段的引用。
 
