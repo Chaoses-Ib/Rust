@@ -371,5 +371,11 @@ Methods that call next are called **consuming adaptors**, because calling them u
 ## Iterator adaptors
 **Iterator adaptors** are methods defined on the `Iterator` trait that don’t consume the iterator. Instead, they produce different iterators by changing some aspect of the original iterator.
 
+[Itertools: Extra iterator adaptors, iterator methods, free functions, and macros.](https://github.com/rust-itertools/itertools)
+
+Merging:
+- [itertools::kmerge](https://docs.rs/itertools/latest/itertools/trait.Itertools.html#method.kmerge)
+- [\[Solved\] Merge multiple sorted vectors using iterators - help - The Rust Programming Language Forum ](https://users.rust-lang.org/t/solved-merge-multiple-sorted-vectors-using-iterators/6543)
+
 
 [^performance]: [Comparing Performance: Loops vs. Iterators - The Rust Programming Language](https://doc.rust-lang.org/book/ch13-04-performance.html)
