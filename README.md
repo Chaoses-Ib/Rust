@@ -18,6 +18,9 @@
 - [Functions](Language/Functions.md)
 - [Concurrency](Language/Concurrency/README.md)
   - [Async/await](Language/Concurrency/Async-await.md)
+  - [Shared-state Concurrency](Language/Concurrency/Shared-state.md)
+  - [Parallelism](Language/Concurrency/Parallelism.md)
+  - [Message Passing](Language/Concurrency/Message%20Passing.md)
 - [Error Handling](Language/Error%20Handling.md)
 - [Module System](Language/Module%20System.md)
 - [Foreign Function Interface](Language/FFI.md)
@@ -40,7 +43,6 @@
 - [Serialization](Libraries/Serialization.md)
 - [Logging](Libraries/Logging.md)
 - [Error Reporting](Libraries/Error%20Reporting.md)
-- [Concurrency](Libraries/Concurrency.md)
 - [Inter-Process Communication](Libraries/IPC.md)
 - User Interfaces
   - [Command Line Interface](Libraries/UI/Command%20Line.md)

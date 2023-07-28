@@ -1,6 +1,8 @@
 # Concurrency
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch16-00-concurrency.html)
 
+[Concurrency — list of Rust libraries/crates // Lib.rs](https://lib.rs/concurrency)
+
 ## Threads
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch16-01-threads.html)
 
@@ -171,111 +173,3 @@ Wrappers:
   关于其它的 async 框架，async_std 似乎只能直接 block_on，没有更复杂的 executor；smol 虽然有个 LocalExecutor，但只能在创建的线程中使用，没法实现跨线程提交 task。
   
   总的来说，用 async/await 还是比用 channel 和 callback 的方案更简洁和灵活，不过 async/await 对 Rust 特性的使用更复杂，处理某些特殊场景可能会费些功夫。
-
-## Shared-state concurrency
-[The Rust Programming Language](https://doc.rust-lang.org/book/ch16-03-shared-state.html)
-
-### Atomic types
-[std::sync::atomic](https://doc.rust-lang.org/std/sync/atomic/index.html)
-
-### Synchronization primitives
-- [parking_lot: Compact and efficient synchronization primitives for Rust. Also provides an API for creating custom synchronization primitives.](https://github.com/amanieu/parking_lot)
-- [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam)
-- [spin-rs: Spin-based synchronization primitives](https://github.com/mvdnes/spin-rs)
-
-#### Mutexes
-_Mutex_ is an abbreviation for _mutual exclusion_, as in, a mutex allows only one thread to access some data at any given time.
-
-[std::sync::Mutex\<T\>](https://doc.rust-lang.org/std/sync/struct.Mutex.html)
-
-```rust
-use std::sync::Mutex;
-
-fn main() {
-    let m = Mutex::new(5);
-
-    {
-        let mut num = m.lock().unwrap();
-        *num = 6;
-    }
-
-    println!("m = {:?}", m);
-}
-```
-
-The call to `lock` _returns_ a smart pointer called `MutexGuard`, wrapped in a `LockResult` that we handled with the call to `unwrap`. The `MutexGuard` smart pointer implements `Deref` to point at our inner data; the smart pointer also has a `Drop` implementation that releases the lock automatically when a `MutexGuard` goes out of scope, which happens at the end of the inner scope.
-
-```rust
-use std::sync::{Arc, Mutex};
-use std::thread;
-
-fn main() {
-    let counter = Arc::new(Mutex::new(0));
-    let mut handles = vec![];
-
-    for _ in 0..10 {
-        let counter = Arc::clone(&counter);
-        let handle = thread::spawn(move || {
-            let mut num = counter.lock().unwrap();
-
-            *num += 1;
-        });
-        handles.push(handle);
-    }
-
-    for handle in handles {
-        handle.join().unwrap();
-    }
-
-    println!("Result: {}", *counter.lock().unwrap());
-}
-```
-
-### Data structures
-- [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam)
-- [left-right: A lock-free, read-optimized, concurrency primitive.](https://github.com/jonhoo/left-right)
-- [Concread: Concurrently Readable Data Structures for Rust](https://github.com/kanidm/concread)
-
-  [What is Concrete? - Concrete](https://docs.zama.ai/concrete/)
-- [flashmap: A lock-free, partially wait-free, eventually consistent, concurrent hashmap.](https://github.com/Cassy343/flashmap)
-- [concurrent-map: lock-free B+ tree](https://github.com/komora-io/concurrent-map)
-- [Scalable Concurrent Containers: High performance containers and utilities for concurrent and asynchronous programming](https://github.com/wvwwvwwv/scalable-concurrent-containers)
-- [triple-buffer: Implementation of triple buffering in Rust](https://github.com/HadrienG2/triple-buffer)
-- [resman: Runtime managed resource borrowing.](https://github.com/azriel91/resman)
-
-
-## Message passing
-[The Rust Programming Language](https://doc.rust-lang.org/book/ch16-02-message-passing.html)
-
-A **channel** is a general programming concept by which data is sent from one thread to another.
-
-```rust
-// multiple producer, single consumer
-use std::sync::mpsc;
-use std::thread;
-
-fn main() {
-    let (tx, rx) = mpsc::channel();
-
-    thread::spawn(move || {
-        let val = String::from("hello");
-        tx.send(val).unwrap();
-        let val = String::from("world");
-        tx.send(val).unwrap();
-    });
-
-    let received = rx.recv().unwrap();
-    println!("Got: {}", received);
-
-    for received in rx {
-        println!("Got: {}", received);
-    }
-}
-```
-
-A channel is said to be _closed_ if either the transmitter or receiver half is dropped. When the channel is closed, iteration with the receiver will end.
-
-Libraries:
-- [Flume: A safe and fast multi-producer, multi-consumer channel.](https://github.com/zesterer/flume)
-- [Kanal: The fast sync and async channel that Rust deserves](https://github.com/fereidani/kanal)
-- [bus: Efficient, lock-free, bounded Rust broadcast channel](https://github.com/jonhoo/bus)
