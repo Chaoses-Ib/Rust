@@ -1,5 +1,7 @@
 # Memory Management
 ## Memory allocators
+[Allocator traits and std::heap · Issue #32838 · rust-lang/rust](https://github.com/rust-lang/rust/issues/32838)
+
 - [Mimalloc Rust: A Rust wrapper over Microsoft's MiMalloc memory allocator](https://github.com/purpleprotocol/mimalloc_rust)
 
   [mimalloc: a compact general purpose allocator with excellent performance : rust](https://www.reddit.com/r/rust/comments/c3qc9z/mimalloc_a_compact_general_purpose_allocator_with/)
@@ -22,3 +24,22 @@
 
 Bump allocators:
 - [bumpalo: A fast bump allocation arena for Rust](https://github.com/fitzgen/bumpalo)
+
+## Profiling
+[Measuring Memory Usage in Rust](https://rust-analyzer.github.io/blog/2020/12/04/measuring-memory-usage-in-rust.html)
+
+Allocators:
+- [cap: An allocator that can track and limit memory usage.](https://github.com/alecmocatta/cap)
+
+- [dhat-rs: Heap profiling and ad hoc profiling for Rust programs.](https://github.com/nnethercote/dhat-rs)
+
+- [heaptrack: A heap memory profiler for Linux](https://github.com/KDE/heaptrack)
+
+  [Profiling heap allocation in rust | FlakM blog](https://flakm.github.io/posts/heap_allocation/)
+
+Traits:
+- [deepsize: A rust crate to find the total size of an object, on the stack and on the heap](https://github.com/Aeledfyr/deepsize/)
+
+- [memuse: Traits for inspecting memory usage of Rust types](https://github.com/str4d/memuse)
+
+- [/get-size: Determine the size in bytes an object occupies inside RAM.](https://github.com/DKerp/get-size)
