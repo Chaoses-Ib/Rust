@@ -16,6 +16,7 @@ Concurrent:
 - [thin-vec: A Vec That Has a Smaller size_of](https://github.com/Gankra/thin-vec)
 - [sorted-vec: Create and maintain collections of sorted elements.](https://gitlab.com/spearman/sorted-vec)
 - [Dup-Indexer: Create a non-duplicated index from Strings, static str, Vec, or Box values](https://github.com/nyurik/dup-indexer)
+- [RleVec: A rust crate providing a vector like struct that stores data as runs of identical values.](https://github.com/veldsla/rle_vec)
 - [rt_vec: Runtime managed mutable borrowing from a vec.](https://github.com/azriel91/rt_vec/tree/main)
   
   ```rust
@@ -118,6 +119,15 @@ Benchmarks:
 
 ### Ordered hash tables
 - [indexmap: A hash table with consistent order and fast iteration; access items by key or sequence index](https://github.com/bluss/indexmap)
+
+  ```rust
+  pub(crate) struct IndexMapCore<K, V> {
+      /// indices mapping from the entry hash to its index.
+      indices: RawTable<usize>,
+      /// entries is a dense vec of entries in their order.
+      entries: Vec<Bucket<K, V>>,
+  }
+  ```
 - [linked-hash-map: A HashMap wrapper that holds key-value pairs in insertion order](https://github.com/contain-rs/linked-hash-map)
 
 ## Trees
