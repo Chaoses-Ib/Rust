@@ -1,8 +1,20 @@
 # [Cargo](https://doc.rust-lang.org/cargo)
-[GitHub](https://github.com/rust-lang/cargo)
+[GitHub](https://github.com/rust-lang/cargo), [The Rust Programming Language](https://doc.rust-lang.org/book/ch14-00-more-about-cargo.html)
+
+[The Cargo Book](https://doc.rust-lang.org/cargo/index.html)
+
+## Dependencies
+[The Cargo Book](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html)
+
+## Workspaces
+[The Rust Programming Language](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html)
+
+A **workspace** is a set of packages that share the same `Cargo.lock` and output directory.
+
+## [→Features](Conditional%20Compilation.md#cargo-features)
 
 ## Profiles
-[The Cargo Book](https://doc.rust-lang.org/cargo/reference/profiles.html)
+[The Cargo Book](https://doc.rust-lang.org/cargo/reference/profiles.html), [The Rust Programming Language](https://doc.rust-lang.org/book/ch14-01-release-profiles.html)
 
 The default settings for the `dev` profile are:
 ```toml
@@ -37,3 +49,8 @@ rpath = false
 ```
 
 The `bench` profile inherits the settings from the `release` profile.
+
+## Registries
+[The Cargo Book](https://doc.rust-lang.org/cargo/reference/registries.html)
+
+- [crates.io](https://crates.io/)
