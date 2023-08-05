@@ -78,6 +78,8 @@ Rust doesn’t allow us to mark only certain fields in a struct as immutable, bu
 
 Each struct is allowed to have multiple `impl` blocks.
 
+[Characteristics of Object-Oriented Languages - The Rust Programming Language](https://doc.rust-lang.org/book/ch17-01-what-is-oo.html)
+
 ## Instances
 To use a struct after we’ve defined it, we create an **instance** of that struct by specifying concrete values for each of the fields:
 ```rust

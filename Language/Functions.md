@@ -10,6 +10,9 @@ You can return early from a function by using the `return` keyword and specify
 
 For most implementations, the default stack size is 2MiB, but it's 4MiB for WebAssembly.[^stack-tiger]
 
+## Function pointers
+[The Rust Programming Language](https://doc.rust-lang.org/book/ch19-05-advanced-functions-and-closures.html#function-pointers)
+
 ## Closures
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch13-01-closures.html)
 

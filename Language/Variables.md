@@ -233,6 +233,8 @@ See [Data Structures](../Libraries/Data%20Structures.md) for other data structur
 [Self Referential Structs in Rust (Part 1)](https://arunanshub.hashnode.dev/self-referential-structs-in-rust)
 
 ## Drop
+[The Rust Programming Language](https://doc.rust-lang.org/book/ch15-03-drop.html)
+
 [Does Rust free up the memory of overwritten variables? - Stack Overflow](https://stackoverflow.com/questions/48227347/does-rust-free-up-the-memory-of-overwritten-variables)
 - Shadowed variables will be dropped when they go out of scope (not immediately after shadowing).
 

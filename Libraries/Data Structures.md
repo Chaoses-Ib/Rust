@@ -12,6 +12,10 @@ Concurrent:
   Can `push` with `&self`, but cannot mutate items.
 
 ### Vectors
+- [std::vec](https://doc.rust-lang.org/std/vec/index.html)
+
+  [Storing Lists of Values with Vectors - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-01-vectors.html)
+  
 - [rust-smallvec: "Small vector" optimization for Rust: store up to a small number of items on the stack](https://github.com/servo/rust-smallvec)
 - [tinyvec: Just, really the littlest Vec you could need. So smol.](https://github.com/Lokathor/tinyvec)
 - [thin-vec: A Vec That Has a Smaller size_of](https://github.com/Gankra/thin-vec)
@@ -55,6 +59,10 @@ Benchmarks:
 - [linear-map: A map backed by a vector](https://github.com/contain-rs/linear-map)
 
 ## Hash tables
+- [std::collections::HashMap](https://doc.rust-lang.org/stable/std/collections/struct.HashMap.html)
+
+  [Storing Keys with Associated Values in Hash Maps - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-03-hash-maps.html)
+
 - [hashbrown: Rust port of Google's SwissTable hash map](https://github.com/rust-lang/hashbrown)
 
   [The Swiss Army Knife of Hashmaps | Arrow of Code](https://blog.waffles.space/2018/12/07/deep-dive-into-hashbrown/)
@@ -132,6 +140,9 @@ Benchmarks:
   }
   ```
 - [linked-hash-map: A HashMap wrapper that holds key-value pairs in insertion order](https://github.com/contain-rs/linked-hash-map)
+
+## Queues
+- [std::collections::VecDeque](https://doc.rust-lang.org/stable/std/collections/struct.VecDeque.html)
 
 ## Trees
 Concurrent:

@@ -1,4 +1,9 @@
 # Text
+## Strings
+- [std::string](https://doc.rust-lang.org/std/string/index.html)
+
+  [Storing UTF-8 Encoded Text with Strings - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-02-strings.html)
+  
 - [compact_str: A memory efficient string type that can store up to 24* bytes on the stack](https://github.com/ParkMyCar/compact_str)
 - [smol_str](https://github.com/rust-analyzer/smol_str)
 - [flexstr: A flexible, simple to use, immutable, clone-efficient String replacement for Rust](https://github.com/nu11ptr/flexstr)

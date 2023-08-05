@@ -7,7 +7,7 @@
     - [Unions](Language/Type%20System/Types/Unions.md)
     - [Iterators](Language/Type%20System/Types/Iterators/README.md)
       - [Generators](Language/Type%20System/Types/Iterators/Generators.md)
-    - [Smart Pointers](Language/Type%20System/Types/Smart%20Pointers.md)
+    - [Pointer Types](Language/Type%20System/Types/Pointers.md)
     - [Textual Types](Language/Type%20System/Types/Textual.md)
   - [Generics](Language/Type%20System/Generics.md)
   - [Traits](Language/Type%20System/Traits.md)
@@ -22,12 +22,16 @@
   - [Parallelism](Language/Concurrency/Parallelism.md)
   - [Message Passing](Language/Concurrency/Message%20Passing.md)
 - [Error Handling](Language/Error%20Handling.md)
+- [Attributes](Language/Attributes.md)
+- [Macros](Language/Macros.md)
 - [Module System](Language/Module%20System.md)
 - [Foreign Function Interface](Language/FFI.md)
 - [Coding Conventions](Language/Coding%20Conventions.md)
+- [Comments](Language/Comments.md)
 
 ## Build
 - [rustup](Build/rustup.md)
+- [rustc](Build/rustc.md)
 - [Cargo](Build/Cargo.md)
 - [Conditional Compilation](Build/Conditional%20Compilation.md)
 - [Testing](Build/Testing.md)
@@ -35,6 +39,7 @@
 
 ## Libraries
 - [Functions](Libraries/Functions.md)
+- [Smart Pointers](Libraries/Smart%20Pointers.md)
 - [Memory Management](Libraries/Memory%20Management.md)
 - [Data Structures](Libraries/Data%20Structures.md)
 - [Text](Libraries/Text.md)
