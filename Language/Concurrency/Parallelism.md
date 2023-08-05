@@ -6,3 +6,5 @@
   `par_iter()` 和 `iter().par_bridge()` 是不同的，前者的性能可能更高。
   - [impl par_iter for other std collections. · Issue #88 · rayon-rs/rayon](https://github.com/rayon-rs/rayon/issues/88)
   - [Is it necessary to collect non-linear collections into `Vec`? · Issue #358 · rayon-rs/rayon](https://github.com/rayon-rs/rayon/issues/358)
+
+  [Itertools Parity · rayon-rs/rayon Wiki](https://github.com/rayon-rs/rayon/wiki/Itertools-Parity)

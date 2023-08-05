@@ -1,5 +1,6 @@
 # Data Structures
 - [heapless: Heapless, `static` friendly data structures](https://github.com/japaric/heapless)
+- [thincollections: Alternate implementations of vector/map/set for Rust](https://github.com/mohrezaei/thincollections/tree/master)
 
 Concurrent:
 - [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam#data-structures)
@@ -64,6 +65,8 @@ Benchmarks:
   - `(capacity() * 8 / 7).next_power_of_two() * (sizeof(K) + sizeof(V) + sizeof(u8))`
 
   [Measuring the overhead of HashMaps in Rust | nicole@web](https://ntietz.com/blog/rust-hashmap-overhead/)
+
+  [Plans for `node_hash_map` · Issue #234 · rust-lang/hashbrown](https://github.com/rust-lang/hashbrown/issues/234)
 
 - [micromap: 📈 A much faster (for very small maps!) alternative of Rust HashMap, which doesn't use hashing and doesn't use heap](https://github.com/yegor256/micromap)
 
