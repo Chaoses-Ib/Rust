@@ -6,6 +6,24 @@
 ## Dependencies
 [The Cargo Book](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html)
 
+Renaming dependencies:
+```toml
+[package]
+name = "mypackage"
+version = "0.0.1"
+
+[dependencies]
+foo = "0.1"
+bar = { git = "https://github.com/example/project.git", package = "foo" }
+baz = { version = "0.1", registry = "custom", package = "foo" }
+```
+
+```rust
+extern crate foo; // crates.io
+extern crate bar; // git repository
+extern crate baz; // registry `custom`
+```
+
 ## Workspaces
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html)
 
