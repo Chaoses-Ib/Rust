@@ -36,7 +36,10 @@ let loopback = IpAddr::V6(String::from("::1"));
 
 Just as we’re able to define methods on structs using `impl`, we’re also able to define methods on enums.
 
-Any `enum` value consumes as much memory as the largest variant for its corresponding `enum` type, as well as the size needed to store a discriminant. 一个 enum 是否需要 discriminant 由编译器判断，无法手动指定互斥值域来避免：
+## Enum optimization
+Any `enum` value consumes as much memory as the largest variant for its corresponding `enum` type, as well as the size needed to store a discriminant. 一个 enum 是否需要 discriminant 由编译器判断，无法手动指定互斥值域来避免。
+
+[Enum Optimization in Rust | Waterlens' Blog](https://yangrq.org/posts/rust-enum/)
 - [performance - What is the overhead of Rust's Option type? - Stack Overflow](https://stackoverflow.com/questions/16504643/what-is-the-overhead-of-rusts-option-type)
 
   ```rust
@@ -48,3 +51,19 @@ Any `enum` value consumes as much memory as the largest variant for its corres
   Vec<i32>                 24   24
   Result<(), Box<i32>>      8   16
   ```
+
+## Pointer enums
+```rust
+enum Cow<'a>
+{
+    Borrowed(&'a String),
+    Owned(Box<String>),
+}
+```
+
+The size of an enum with two pointers is two pointers long, not one pointer plus a bool.
+
+In fact, one can store the discriminant in the pointer itself, known as **[tagged pointers](https://en.wikipedia.org/wiki/Tagged_pointer)**:
+- [ptr-union: Pointer unions the size of a pointer](https://github.com/CAD97/pointer-utils) ([Docs.rs](https://resume.cad97.com/pointer-utils/ptr_union/index.html))
+- [enum-ptr: Ergonomic tagged pointer](https://github.com/QuarticCat/enum-ptr)
+- [tagged-pointer-as-enum](https://github.com/iliabylich/tagged-pointer-as-enum)

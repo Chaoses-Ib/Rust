@@ -23,3 +23,7 @@ A **pointer** is a general concept for a variable that contains an address in 
 [ownership - Is it possible to return either a borrowed or owned type in Rust? - Stack Overflow](https://stackoverflow.com/questions/36706429/is-it-possible-to-return-either-a-borrowed-or-owned-type-in-rust)
 
 [ToOwned in std::borrow - Rust](https://doc.rust-lang.org/std/borrow/trait.ToOwned.html)
+
+[beef: Faster, more compact implementation of std::borrow::Cow](https://github.com/maciejhirsz/beef)
+- `beef::Cow` is 3 words wide: pointer, length, and capacity. It stores the ownership tag in capacity.
+- `beef::lean::Cow` is 2 words wide, storing length, capacity, and the ownership tag all in one word.
