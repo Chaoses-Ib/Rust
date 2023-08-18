@@ -2,6 +2,8 @@
 - [std::time](https://doc.rust-lang.org/std/time/index.html)
 - [chrono: Date and time library for Rust](https://github.com/chronotope/chrono) ([Docs.rs](https://docs.rs/chrono/latest/chrono/))
 
+[What timestamp format is 48 bits / 6 bytes long? - Stack Overflow](https://stackoverflow.com/questions/56621877/what-timestamp-format-is-48-bits-6-bytes-long)
+
 ## Windows
 - [filetime: Accessing file timestamps in a platform-agnostic fashion in Rust](https://github.com/alexcrichton/filetime)
 - [win32_filetime_utils: Conversion utils from, and to Windows's FILETIME, SYSTEMTIME, etc ...](https://docs.rs/crate/win32_filetime_utils/0.2.1/source/src/lib.rs)

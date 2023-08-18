@@ -1,4 +1,7 @@
 # Memory Management
+[Stack overflow with Boxed array - Issue #53827 - rust-lang/rust](https://github.com/rust-lang/rust/issues/53827)
+- [How to allocate structs on the heap without taking up space on the stack in stable Rust? - Stack Overflow](https://stackoverflow.com/questions/59232877/how-to-allocate-structs-on-the-heap-without-taking-up-space-on-the-stack-in-stab)
+
 ## Memory allocators
 [Allocator traits and std::heap · Issue #32838 · rust-lang/rust](https://github.com/rust-lang/rust/issues/32838)
 
@@ -24,6 +27,18 @@
 
 Bump allocators:
 - [bumpalo: A fast bump allocation arena for Rust](https://github.com/fitzgen/bumpalo)
+  - 核心是一个 chunk 链表，alloc 时会直接从最后一个 chunk 分配，不会出现 realloc，不能 free 单个内存块，可以整体 free。
+  
+  - grow policy 是每次分配的 chunk 大小是上个 chunk 的两倍（包括使用 `with_capacity` 创建的上个 chunk），可能造成较大的内存浪费。
+    - [Too large allocation because of doubling last allocation - Issue #152 - fitzgen/bumpalo](https://github.com/fitzgen/bumpalo/issues/152)
+
+  - 只支持在 new 时指定 capacity，不支持在使用中 reserve。
+
+    一种绕过方法是在 `allocate` 后 `deallocate`，但这样实际 reserve 的 capacity 会受 grow policy 影响。可以利用 `set_allocation_limit` 和 grow policy 的指数回退来加强对 capacity 的控制，但是比较麻烦。
+
+  - 不支持 `shrink` 或 `shrink_to_fit`。
+
+- [Bumpalo-herd: Trying to create Sync bump allocator](https://github.com/vorner/bumpalo-herd)
 
 ## Profiling
 [Measuring Memory Usage in Rust](https://rust-analyzer.github.io/blog/2020/12/04/measuring-memory-usage-in-rust.html)
