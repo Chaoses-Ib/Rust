@@ -71,6 +71,8 @@ let a = [1, 2, 3, 4, 5];
 let slice : &[i32] = &a[1..3];
 ```
 
+Slice 包含 pointer 和 length，如果对同一序列存在多个引用（例如 string pool），就会导致 length 被重复储存，造成内存浪费。解决方法是将储存的 slice 换为对结构的引用，例如将 `&str` 换为 `&String`。See [Dynamically Sized Types](Type%20System/Dynamically%20Sized.md) for details.
+
 #### String slices
 ```rust
 let s = String::from("hello world");

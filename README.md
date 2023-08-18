@@ -12,6 +12,7 @@
   - [Generics](Language/Type%20System/Generics.md)
   - [Traits](Language/Type%20System/Traits.md)
   - [Type Layout](Language/Type%20System/Type%20Layout.md)
+  - [Dynamically Sized Types](Language/Type%20System/Dynamically%20Sized.md)
 - [Variables](Language/Variables.md)
 - [Expressions](Language/Expressions.md)
   - [Pattern Matching](Language/Pattern%20Matching.md)

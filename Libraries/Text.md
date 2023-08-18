@@ -3,13 +3,16 @@
 - [std::string](https://doc.rust-lang.org/std/string/index.html)
 
   [Storing UTF-8 Encoded Text with Strings - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-02-strings.html)
-  
+- [varlen::Str](https://github.com/reinerp/varlen-rs)
+
+  See [Dynamically Sized Types](../Language/Type%20System/Dynamically%20Sized.md) for details.
 - [compact_str: A memory efficient string type that can store up to 24* bytes on the stack](https://github.com/ParkMyCar/compact_str)
 - [smol_str](https://github.com/rust-analyzer/smol_str)
 - [flexstr: A flexible, simple to use, immutable, clone-efficient String replacement for Rust](https://github.com/nu11ptr/flexstr)
 - [ArrayString: Fixed capacity stack based generic string that works on stable](https://github.com/paulocsanz/arraystring)
 
 ## String pools
+- [String Interner: A data structure to efficiently intern, cache and restore strings.](https://github.com/robbepop/string-interner)
 - [miniintern: A minimalistic Rust string interning / pooling library.](https://github.com/alex05447/miniintern)
 
 ## [→Unicode](https://github.com/Chaoses-Ib/ArtificialIntelligence/blob/main/NLP/Encoding/Unicode/README.md)
