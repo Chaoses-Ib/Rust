@@ -14,13 +14,17 @@ Books:
 Blogs:
 - [Rust Blog](https://blog.rust-lang.org/)
 
-> Worse is better，语言的流行需要的是简单，不是”好“。
-
 > 如果对 C++ 很熟的话，一天上手问题不大，所有权那部分 C++ 有移动语义对应，泛型就是个退化的模板，唯一可能头疼点的就是 concurrency 那块了，Send 和 Sync 要理解一下，async/await 在 C++20 里才有，没用过的话也要适应下。
+
+## The curse of complexity
+> Worse is better，语言的流行需要的是简单，不是“好”。
+
+[Why Not Rust?](https://matklad.github.io/2020/09/20/why-not-rust.html)
 
 ## Performance
 Books:
 - [The Rust Performance Book](https://nnethercote.github.io/perf-book/title-page.html) ([GitHub](https://github.com/nnethercote/perf-book))
 
 Articles:
+- [Why Not Rust?](https://matklad.github.io/2020/09/20/why-not-rust.html#:~:text=bigger%20build%20system.-,Performance,-%E2%80%9CUsing%20LLVM)
 - [Optimization - Making Rust Code Go Brrrr](https://aspenuwu.me/posts/rust-optimization.html)
