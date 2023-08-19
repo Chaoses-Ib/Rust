@@ -1,6 +1,7 @@
 # Data Structures
 - [heapless: Heapless, `static` friendly data structures](https://github.com/japaric/heapless)
 - [thincollections: Alternate implementations of vector/map/set for Rust](https://github.com/mohrezaei/thincollections/tree/master)
+- [ecow: Compact, clone-on-write vector and string.](https://github.com/typst/ecow)
 
 Concurrent:
 - [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam#data-structures)

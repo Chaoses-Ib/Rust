@@ -10,6 +10,7 @@
 - [smol_str](https://github.com/rust-analyzer/smol_str)
 - [flexstr: A flexible, simple to use, immutable, clone-efficient String replacement for Rust](https://github.com/nu11ptr/flexstr)
 - [ArrayString: Fixed capacity stack based generic string that works on stable](https://github.com/paulocsanz/arraystring)
+- [ecow: Compact, clone-on-write vector and string.](https://github.com/typst/ecow)
 
 ## String pools
 - [String Interner: A data structure to efficiently intern, cache and restore strings.](https://github.com/robbepop/string-interner)
