@@ -2,6 +2,10 @@
 ## Generics
 **Generics** are abstract stand-ins for concrete types or other properties.
 
+[C++ & Rust: Generics and Specialization](https://www.tangramvision.com/blog/c-rust-generics-and-specialization)
+
+[Generics partial specialization in Rust - Stack Overflow](https://stackoverflow.com/questions/66832882/generics-partial-specialization-in-rust)
+
 ### In function definitions
 For example:
 ```rust

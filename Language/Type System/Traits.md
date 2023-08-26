@@ -36,6 +36,11 @@ Default implementations can call other methods in the same trait, even if those 
 
 Note that we can implement a trait on a type only if at least one of the trait or the type is local to our crate. For example, we can’t implement the `Display` trait on `Vec<T>` within our `aggregator` crate, because `Display` and `Vec<T>` are both defined in the standard library. This restriction is part of a property called _coherence_, and more specifically the _orphan rule_, so named because the parent type is not present. This rule ensures that other people’s code can’t break your code and vice versa. Without the rule, two crates could implement the same trait for the same type, and Rust wouldn’t know which implementation to use.
 
+由于 Rust 的 generics 不够强大，使用 static dispatch 可能会产生许多 boilerplate code，使用 macros 可以在一定程度上缓解这个问题，但 macros 本身也会引入新的问题。
+
+[A failed experiment with Rust static dispatch - Julio Merino](https://jmmv.dev/2023/08/rust-static-dispatch-failed-experiment.html)
+- [A failed experiment with Rust static dispatch : rust](https://www.reddit.com/r/rust/comments/15kdj78/a_failed_experiment_with_rust_static_dispatch/)
+
 ### Trait bound syntax
 We can use **trait bounds** to specify that a generic type can be any type that has certain behavior.
 

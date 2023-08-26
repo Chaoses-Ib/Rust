@@ -25,70 +25,6 @@ Handling:
 Unwinding:
 - [How does Rust know whether to run the destructor during stack unwind? - Stack Overflow](https://stackoverflow.com/questions/39750841/how-does-rust-know-whether-to-run-the-destructor-during-stack-unwind)
 
-`exit` 会在做一些清理后正常退出，但 `abort` 会直接用异常指令让程序崩溃：
-```rust
-pub fn exit(code: i32) -> ! {
-    crate::rt::cleanup() {
-        static CLEANUP: Once = Once::new();
-        CLEANUP.call_once(|| unsafe {
-            // Flush stdout and disable buffering.
-            crate::io::cleanup() {
-                let mut initialized = false;
-                let stdout = STDOUT.get_or_init(|| {
-                    initialized = true;
-                    ReentrantMutex::new(RefCell::new(LineWriter::with_capacity(0, stdout_raw())))
-                });
-
-                if !initialized {
-                    // The buffer was previously initialized, overwrite it here.
-                    // We use try_lock() instead of lock(), because someone
-                    // might have leaked a StdoutLock, which would
-                    // otherwise cause a deadlock here.
-                    if let Some(lock) = stdout.try_lock() {
-                        *lock.borrow_mut() = LineWriter::with_capacity(0, stdout_raw());
-                    }
-                }
-            }
-            // SAFETY: Only called once during runtime cleanup.
-            sys::cleanup() {
-                net::cleanup() {
-                    // only perform cleanup if network functionality was actually initialized
-                    if let Some(cleanup) = WSA_CLEANUP.get() {
-                        unsafe {
-                            cleanup();
-                        }
-                    }
-                }
-            }
-        });
-    }
-    crate::sys::os::exit(code)
-}
-
-pub fn abort() -> ! {
-    crate::sys::abort_internal() {
-        #[allow(unused)]
-        const FAST_FAIL_FATAL_APP_EXIT: usize = 7;
-        #[cfg(not(miri))] // inline assembly does not work in Miri
-        unsafe {
-            cfg_if::cfg_if! {
-                if #[cfg(any(target_arch = "x86", target_arch = "x86_64"))] {
-                    core::arch::asm!("int $$0x29", in("ecx") FAST_FAIL_FATAL_APP_EXIT);
-                    crate::intrinsics::unreachable();
-                } else if #[cfg(all(target_arch = "arm", target_feature = "thumb-mode"))] {
-                    core::arch::asm!(".inst 0xDEFB", in("r0") FAST_FAIL_FATAL_APP_EXIT);
-                    crate::intrinsics::unreachable();
-                } else if #[cfg(target_arch = "aarch64")] {
-                    core::arch::asm!("brk 0xF003", in("x0") FAST_FAIL_FATAL_APP_EXIT);
-                    crate::intrinsics::unreachable();
-                }
-            }
-        }
-        crate::intrinsics::abort();
-    }
-}
-```
-
 ## Recoverable errors: Result
 [std::result](https://doc.rust-lang.org/std/result/index.html)
 ```rust
@@ -174,3 +110,70 @@ fn main() -> Result<(), Box<dyn Error>> {
 
 ## Stack traces
 [backtrace-rs: Backtraces in Rust](https://github.com/rust-lang/backtrace-rs)
+
+## Process termination
+`exit` 会在做一些清理后正常退出，但 `abort` 会直接用异常指令让程序崩溃：
+```rust
+pub fn exit(code: i32) -> ! {
+    crate::rt::cleanup() {
+        static CLEANUP: Once = Once::new();
+        CLEANUP.call_once(|| unsafe {
+            // Flush stdout and disable buffering.
+            crate::io::cleanup() {
+                let mut initialized = false;
+                let stdout = STDOUT.get_or_init(|| {
+                    initialized = true;
+                    ReentrantMutex::new(RefCell::new(LineWriter::with_capacity(0, stdout_raw())))
+                });
+
+                if !initialized {
+                    // The buffer was previously initialized, overwrite it here.
+                    // We use try_lock() instead of lock(), because someone
+                    // might have leaked a StdoutLock, which would
+                    // otherwise cause a deadlock here.
+                    if let Some(lock) = stdout.try_lock() {
+                        *lock.borrow_mut() = LineWriter::with_capacity(0, stdout_raw());
+                    }
+                }
+            }
+            // SAFETY: Only called once during runtime cleanup.
+            sys::cleanup() {
+                net::cleanup() {
+                    // only perform cleanup if network functionality was actually initialized
+                    if let Some(cleanup) = WSA_CLEANUP.get() {
+                        unsafe {
+                            cleanup();
+                        }
+                    }
+                }
+            }
+        });
+    }
+    crate::sys::os::exit(code)
+}
+
+pub fn abort() -> ! {
+    crate::sys::abort_internal() {
+        #[allow(unused)]
+        const FAST_FAIL_FATAL_APP_EXIT: usize = 7;
+        #[cfg(not(miri))] // inline assembly does not work in Miri
+        unsafe {
+            cfg_if::cfg_if! {
+                if #[cfg(any(target_arch = "x86", target_arch = "x86_64"))] {
+                    core::arch::asm!("int $$0x29", in("ecx") FAST_FAIL_FATAL_APP_EXIT);
+                    crate::intrinsics::unreachable();
+                } else if #[cfg(all(target_arch = "arm", target_feature = "thumb-mode"))] {
+                    core::arch::asm!(".inst 0xDEFB", in("r0") FAST_FAIL_FATAL_APP_EXIT);
+                    crate::intrinsics::unreachable();
+                } else if #[cfg(target_arch = "aarch64")] {
+                    core::arch::asm!("brk 0xF003", in("x0") FAST_FAIL_FATAL_APP_EXIT);
+                    crate::intrinsics::unreachable();
+                }
+            }
+        }
+        crate::intrinsics::abort();
+    }
+}
+```
+
+[rust - When is \`std::process::exit\` O.K. to use? - Stack Overflow](https://stackoverflow.com/questions/39228685/when-is-stdprocessexit-o-k-to-use)
