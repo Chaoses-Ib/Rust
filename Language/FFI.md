@@ -2,7 +2,8 @@
 - [UniFFI: a multi-language bindings generator for rust](https://github.com/mozilla/uniffi-rs)
 
   Supported languages: Kotlin, Swift, Python, Ruby.
-  - [Support for C# · Issue #1056 · mozilla/uniffi-rs](https://github.com/mozilla/uniffi-rs/issues/1056)
+  - C#: [uniffi-bindgen-cs](https://github.com/NordSecurity/uniffi-bindgen-cs)
+  - Go: [uniffi-bindgen-go](https://github.com/NordSecurity/uniffi-bindgen-go)
 
 - [Interoptopus: The polyglot bindings generator for your library (C#, C, Python, …) 🐙](https://github.com/ralfbiedert/interoptopus)
 
@@ -34,6 +35,7 @@ Problems:
 
 ## .NET
 - P/Invoke
+  - [uniffi-bindgen-cs](https://github.com/NordSecurity/uniffi-bindgen-cs)
   - [Interoptopus](https://github.com/ralfbiedert/interoptopus)
     - 只支持 ASCII 编码，会将 String 编码为 ANSI 后作为 [AsciiPointer](https://docs.rs/interoptopus/latest/interoptopus/patterns/string/struct.AsciiPointer.html "interoptopus::patterns::string::AsciiPointer struct") 传入。
     - 可以传入数组作为 [FFISlice](https://docs.rs/interoptopus/latest/interoptopus/patterns/slice/struct.FFISlice.html)。
@@ -53,8 +55,6 @@ Problems:
 - CLR host
   - [netcorehost: A .NET Core hosting library written in Rust with included bindings for nethost and hostfxr.](https://github.com/OpenByteDev/netcorehost)
 
-- Managed Rust
-
-  [My exploration of Rust and .NET](https://ericsink.com/entries/dotnet_rust.html)
+- [Managed Rust](https://github.com/Chaoses-Ib/.NET/blob/main/Languages/Rust/README.md)
 
 - IPC/RPC
