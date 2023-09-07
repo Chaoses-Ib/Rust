@@ -46,6 +46,7 @@ Concurrent:
 
 ### Bit arrays
 - [bit-vec: A Vec of Bits](https://github.com/contain-rs/bit-vec)
+  - [Unchecked get and set by florin-saftoiu - Pull Request #69 - contain-rs/bit-vec](https://github.com/contain-rs/bit-vec/pull/69)
 - [bitvec_simd](https://github.com/gccfeli/bitvec_simd)
 - [bitvec: A crate for managing memory bit by bit](https://github.com/ferrilab/bitvec)
 - [bitmaps: Bitmap types for Rust](https://github.com/bodil/bitmaps)

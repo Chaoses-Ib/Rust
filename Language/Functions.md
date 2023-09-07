@@ -61,5 +61,8 @@ impl<T> Option<T> {
 不要递归创建 closure：
 - [rust - Error: reached the recursion limit while instantiating `func::<[closure]>` - Stack Overflow](https://stackoverflow.com/questions/54613966/error-reached-the-recursion-limit-while-instantiating-funcclosure)
 
+[explicit_tail_calls](https://github.com/phi-go/rfcs/blob/guaranteed-tco/text/0000-explicit-tail-calls.md)
+- [Tracking Issue for Explicit Tail Calls - Issue #112788 - rust-lang/rust](https://github.com/rust-lang/rust/issues/112788)
+
 
 [^stack-tiger]: [What is the size limit of thread's stack in rust? - The Rust Programming Language Forum](https://users.rust-lang.org/t/what-is-the-size-limit-of-threads-stack-in-rust/11867)
