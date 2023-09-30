@@ -176,4 +176,6 @@ pub fn abort() -> ! {
 }
 ```
 
+Both `exit()` and `abort()` cannot guarantee the process to be immediately killed on Windows, only `TerminateProcess()` works.
+
 [rust - When is \`std::process::exit\` O.K. to use? - Stack Overflow](https://stackoverflow.com/questions/39228685/when-is-stdprocessexit-o-k-to-use)

@@ -83,81 +83,105 @@ let world = &s[6..11];
 String literals are string slices.
 
 ### Interior mutability
-[RefCell\<T\> and the Interior Mutability Pattern - The Rust Programming Language](https://doc.rust-lang.org/book/ch15-05-interior-mutability.html)
+- Cell
 
-```rust
-pub trait Messenger {
-    fn send(&self, msg: &str);
-}
+  Use `Cell` instead of `RefCell` when you can.
 
-pub struct LimitTracker<'a, T: Messenger> {
-    messenger: &'a T,
-    value: usize,
-    max: usize,
-}
+  [rust - When I can use either Cell or RefCell, which should I choose? - Stack Overflow](https://stackoverflow.com/questions/30275982/when-i-can-use-either-cell-or-refcell-which-should-i-choose)
 
-impl<'a, T> LimitTracker<'a, T>
-where
-    T: Messenger,
-{
-    pub fn new(messenger: &'a T, max: usize) -> LimitTracker<'a, T> {
-        LimitTracker {
-            messenger,
-            value: 0,
-            max,
-        }
-    }
+  Clone:
 
-    pub fn set_value(&mut self, value: usize) {
-        self.value = value;
+  - `Copy`
 
-        let percentage_of_max = self.value as f64 / self.max as f64;
+  - Take-clone-set
+  
+    ```rust
+    let val = cell.take();
+    cell.set(val.clone());
+    ```
 
-        if percentage_of_max >= 1.0 {
-            self.messenger.send("Error: You are over your quota!");
-        } else if percentage_of_max >= 0.9 {
-            self.messenger
-                .send("Urgent warning: You've used up over 90% of your quota!");
-        } else if percentage_of_max >= 0.75 {
-            self.messenger
-                .send("Warning: You've used up over 75% of your quota!");
-        }
-    }
-}
+    [traits - Why can Cell in Rust only be used for Copy and not Clone types? - Stack Overflow](https://stackoverflow.com/questions/39667868/why-can-cell-in-rust-only-be-used-for-copy-and-not-clone-types)
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use std::cell::RefCell;
+- RefCell
 
-    struct MockMessenger {
-        sent_messages: RefCell<Vec<String>>,
-    }
+  [RefCell\<T\> and the Interior Mutability Pattern - The Rust Programming Language](https://doc.rust-lang.org/book/ch15-05-interior-mutability.html)
 
-    impl MockMessenger {
-        fn new() -> MockMessenger {
-            MockMessenger {
-                sent_messages: RefCell::new(vec![]),
-            }
-        }
-    }
+  <details>
 
-    impl Messenger for MockMessenger {
-        fn send(&self, message: &str) {
-            self.sent_messages.borrow_mut().push(String::from(message));
-        }
-    }
+  ```rust
+  pub trait Messenger {
+      fn send(&self, msg: &str);
+  }
 
-    #[test]
-    fn it_sends_an_over_75_percent_warning_message() {
-        // --snip--
+  pub struct LimitTracker<'a, T: Messenger> {
+      messenger: &'a T,
+      value: usize,
+      max: usize,
+  }
 
-        assert_eq!(mock_messenger.sent_messages.borrow().len(), 1);
-    }
-}
-```
+  impl<'a, T> LimitTracker<'a, T>
+  where
+      T: Messenger,
+  {
+      pub fn new(messenger: &'a T, max: usize) -> LimitTracker<'a, T> {
+          LimitTracker {
+              messenger,
+              value: 0,
+              max,
+          }
+      }
 
-Note that `RefCell<T>` does not work for multithreaded code. `Mutex<T>` is the thread-safe version of `RefCell<T>`.
+      pub fn set_value(&mut self, value: usize) {
+          self.value = value;
+
+          let percentage_of_max = self.value as f64 / self.max as f64;
+
+          if percentage_of_max >= 1.0 {
+              self.messenger.send("Error: You are over your quota!");
+          } else if percentage_of_max >= 0.9 {
+              self.messenger
+                  .send("Urgent warning: You've used up over 90% of your quota!");
+          } else if percentage_of_max >= 0.75 {
+              self.messenger
+                  .send("Warning: You've used up over 75% of your quota!");
+          }
+      }
+  }
+
+  #[cfg(test)]
+  mod tests {
+      use super::*;
+      use std::cell::RefCell;
+
+      struct MockMessenger {
+          sent_messages: RefCell<Vec<String>>,
+      }
+
+      impl MockMessenger {
+          fn new() -> MockMessenger {
+              MockMessenger {
+                  sent_messages: RefCell::new(vec![]),
+              }
+          }
+      }
+
+      impl Messenger for MockMessenger {
+          fn send(&self, message: &str) {
+              self.sent_messages.borrow_mut().push(String::from(message));
+          }
+      }
+
+      #[test]
+      fn it_sends_an_over_75_percent_warning_message() {
+          // --snip--
+
+          assert_eq!(mock_messenger.sent_messages.borrow().len(), 1);
+      }
+  }
+  ```
+  </details>
+
+  Note that `RefCell<T>` does not work for multithreaded code. `Mutex<T>` is the thread-safe version of `RefCell<T>`.
 
 See [Data Structures](../Libraries/Data%20Structures.md) for other data structures with interior mutability.
 

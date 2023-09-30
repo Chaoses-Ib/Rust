@@ -29,6 +29,8 @@
 
     At present, it is not permitted to have a yield that occurs while a borrow is still in scope. To resolve this error, the borrow must either be "contained" to a smaller scope that does not overlap the yield or else eliminated in another way.
 
+    - `xxx` → `into_xxx`
+
   - Error E0391: cycle detected when computing type of `...`.
 
     ```rust
@@ -39,6 +41,8 @@
     }
     ```
     [asynchronous - Recursive async functions calling each other: cycle detected - Stack Overflow](https://stackoverflow.com/questions/74737595/recursive-async-functions-calling-each-other-cycle-detected)
+
+  - Generators cannot be parallelized. Though one can wrap a generator to an iterator and use Rayon's [`ParallelBridge`](https://docs.rs/rayon/latest/rayon/iter/trait.ParallelBridge.html) to parallelize the consuming part.
 
 - [genawaiter: Stackless generators on stable Rust.](https://github.com/whatisaphone/genawaiter)
 

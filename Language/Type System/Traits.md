@@ -166,3 +166,5 @@ impl fmt::Display for Point {
 ```
 
 虽然 supertrait 的语法看起来很像继承，但它实际上是组合而非继承。
+
+类型不会自动实现自定义 trait，即使它是空的。这意味着 closures 可以满足 `Fn()`，但如果定义 `trait MyFn: Fn() {}`，closures 并不能满足 `MyFn`。

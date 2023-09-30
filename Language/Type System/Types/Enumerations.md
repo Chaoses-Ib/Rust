@@ -36,6 +36,8 @@ let loopback = IpAddr::V6(String::from("::1"));
 
 Just as we’re able to define methods on structs using `impl`, we’re also able to define methods on enums.
 
+[`std::mem::discriminant`](https://doc.rust-lang.org/std/mem/fn.discriminant.html) (v1.21.0)
+
 ## Enum optimization
 Any `enum` value consumes as much memory as the largest variant for its corresponding `enum` type, as well as the size needed to store a discriminant. 一个 enum 是否需要 discriminant 由编译器判断，无法手动指定互斥值域来避免。
 
