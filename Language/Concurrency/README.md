@@ -32,6 +32,48 @@ fn main() {
 
 We often use the `move` keyword with closures passed to `thread::spawn` because the closure will then take ownership of the values it uses from the environment, thus transferring ownership of those values from one thread to another.
 
+### Thread locals
+- [std::thread::LocalKey](https://doc.rust-lang.org/std/thread/struct.LocalKey.html)
+  - [std::thread\_local](https://doc.rust-lang.org/std/macro.thread_local.html)
+- [thread\_local: Per-object thread-local storage for Rust](https://github.com/Amanieu/thread_local-rs)
+  - `get()` has an innegligible cost:
+  
+    ```rust
+    pub fn get(&self) -> Option<&T> {
+        let thread = thread_id::get() {
+            THREAD.with(|thread| {
+                if let Some(thread) = thread.get() {
+                    thread
+                } else {
+                    get_slow(thread)
+                }
+            })
+        };
+            
+        let bucket_ptr =
+            unsafe { self.buckets.get_unchecked(thread.bucket) }.load(Ordering::Acquire);
+        if bucket_ptr.is_null() {
+            return None;
+        }
+        unsafe {
+            let entry = &*bucket_ptr.add(thread.index);
+            // Read without atomic operations as only this thread can set the value.
+            if (&entry.present as *const _ as *const bool).read() {
+                Some(&*(&*entry.value.get()).as_ptr())
+            } else {
+                None
+            }
+        }
+    }
+    ```
+
+- [os-thread-local: OS-backed thread-local storage for rust](https://github.com/glandium/os-thread-local)
+  - `iter()` is not supported.
+
+- [threadstack: ergonomic library for thread local stacks](https://github.com/jgarvin/threadstack)
+
+Thread locals cannot be mutated. One must use the interior mutability pattern or `unsafe` to mutate the inner value.
+
 ### Scoped threads
 [std::thread::scope](https://doc.rust-lang.org/stable/std/thread/fn.scope.html)
 

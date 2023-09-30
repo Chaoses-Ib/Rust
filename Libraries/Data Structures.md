@@ -31,18 +31,41 @@ Concurrent:
 
 ### Segment vectors
 - [segvec: SegVec data structure for rust. Similar to Vec, but allocates memory in chunks of increasing size.](https://github.com/mccolljr/segvec/)
+  - `Send + Sync`
+
+  ```rust
+  pub struct SegVec<T, C: MemConfig = Exponential<1>> {
+      len: usize,
+      segments: detail::Segments<T>,
+      config: C,
+  }
+  ```
 
 - [typed-arena: The arena, a fast but limited type of allocator](https://github.com/thomcc/rust-typed-arena)
-
-  Can `alloc` with `&self`, and returns `&mut T`.
+  - Can `alloc` with `&self`, and returns `&mut T`.
+  - `Send + !Sync`
 
 - [boxcar: A concurrent, append-only vector.](https://github.com/ibraheemdev/boxcar)
+  - Can `push` with `&self`.
+  - `Send + Sync`
+  - Faster than `Mutex<Vec>`, but slower than `thread_local::ThreadLocal<RefCell<Vec>>`.
 
-  Can `push` with `&self`.
+  ```rust
+  pub struct Vec<T> {
+      // a counter used to retrieve a unique index to push to.
+      //
+      // this value may be more than the true length as it will
+      // be incremented before values are actually stored.
+      inflight: AtomicU64,
+      // buckets of length 32, 64 .. 2^63
+      buckets: [Bucket<T>; BUCKETS],
+      // the number of initialized elements in this vector
+      count: AtomicUsize,
+  }
+  ```
 
 - [aovec: Append-only concurrent vector](https://docs.rs/aovec/latest/aovec/)
-
-  Can `push` with `&self`, but cannot mutate items.
+  - Can `push` with `&self`, but cannot mutate items.
 
 ### Bit arrays
 - [bit-vec: A Vec of Bits](https://github.com/contain-rs/bit-vec)
