@@ -32,7 +32,7 @@
 
 ## Build
 - [rustup](Build/rustup.md)
-- [rustc](Build/rustc.md)
+- [rustc](Build/rustc/README.md)
 - [Cargo](Build/Cargo.md)
 - [Conditional Compilation](Build/Conditional%20Compilation.md)
 - [Testing](Build/Testing.md)
