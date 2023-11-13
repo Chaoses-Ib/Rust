@@ -57,6 +57,18 @@ enum Result<T, E> {
 }
 ```
 
+[How to design an enum where one variant can store a closure - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/how-to-design-an-enum-where-one-variant-can-store-a-closure/59322)
+```rust
+pub enum ServiceFilter<F: Fn(&Value) -> bool> {
+  Name(String),
+  Object(Map<String, Value>),
+  Function(F),
+}
+
+let services = filter_services::<fn(&Value) -> bool>(ServiceFilter::Name("myName".to_string()));
+```
+Default types do not work.
+
 ### In method definitions
 For example:
 ```rust
@@ -78,6 +90,10 @@ fn main() {
 }
 ```
 
+## Defaults
+[Tracking issue for `invalid_type_param_default` compatibility lint - Issue #36887 - rust-lang/rust](https://github.com/rust-lang/rust/issues/36887)
+- Defaults for type parameters are only allowed in `struct`, `enum`, `type`, or `trait` definitions.
+
 ## Const generics
 [Const Generics - Rust By Practice](https://practice.rs/generics-traits/const-generics.html)
 
@@ -93,6 +109,7 @@ impl<T: Debug, const N: usize> Debug for ArrayPair<T, N> {
 ```
 
 [Tracking Issue for more complex const parameter types: `feature(adt_const_params)` · Issue #95174 · rust-lang/rust](https://github.com/rust-lang/rust/issues/95174)
+- [std::marker::ConstParamTy](https://doc.rust-lang.org/nightly/std/marker/trait.ConstParamTy.html)
 
 ## Lifetimes
 Rather than ensuring that a type has the behavior we want, **lifetimes** ensure that references are valid as long as we need them to be. The main aim of lifetimes is to prevent _dangling references_, which cause a program to reference data other than the data it’s intended to reference.

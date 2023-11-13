@@ -83,6 +83,10 @@ let world = &s[6..11];
 String literals are string slices.
 
 ### Interior mutability
+- [UnsafeCell](https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html)
+
+  All other types that allow internal mutability, such as `Cell<T>` and `RefCell<T>`, internally use UnsafeCell to wrap their data.
+
 - Cell
 
   Use `Cell` instead of `RefCell` when you can.

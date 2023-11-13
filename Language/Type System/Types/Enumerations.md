@@ -54,6 +54,8 @@ Any `enum` value consumes as much memory as the largest variant for its corres
   Result<(), Box<i32>>      8   16
   ```
 
+[Fun fact: size of Option<String> : rust](https://www.reddit.com/r/rust/comments/174ndzi/fun_fact_size_of_optionstring/)
+
 ## Pointer enums
 ```rust
 enum Cow<'a>

@@ -72,6 +72,10 @@ Concurrent:
   - [Unchecked get and set by florin-saftoiu - Pull Request #69 - contain-rs/bit-vec](https://github.com/contain-rs/bit-vec/pull/69)
 - [bitvec_simd](https://github.com/gccfeli/bitvec_simd)
 - [bitvec: A crate for managing memory bit by bit](https://github.com/ferrilab/bitvec)
+- [bit_field](https://github.com/phil-opp/rust-bit-field)
+
+  A simple crate which provides the BitField trait, which provides methods for operating on individual bits and ranges of bits on Rust's integral types.
+
 - [bitmaps: Bitmap types for Rust](https://github.com/bodil/bitmaps)
 - [bsuccinct-rs: Succinct data structures and other libraries for Rust](https://github.com/beling/bsuccinct-rs)
 - [RoaringBitmap: A better compressed bitset in Rust](https://github.com/RoaringBitmap/roaring-rs)

@@ -1,6 +1,9 @@
 # Pointer Types
 [The Rust Reference](https://doc.rust-lang.org/reference/types/pointer.html)
 
+[Warn that `*const T as *mut T` is Undefined Behavior - Issue #66136 - rust-lang/rust](https://github.com/rust-lang/rust/issues/66136)
+- Use `UnsafeCell` instead. See [interior mutability](../../Variables.md#interior-mutability) for details.
+
 ## Deref coercion
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch15-02-deref.html)
 

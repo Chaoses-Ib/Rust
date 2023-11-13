@@ -14,6 +14,8 @@
 - [speedy](https://github.com/koute/speedy)
 - [Abomonation: A mortifying serialization library for Rust](https://github.com/TimelyDataflow/abomonation)
 
+[value-bag: Dynamic structured values for Rust](https://github.com/sval-rs/value-bag)
+
 ## Benchmarks
 - [Rust serialization benchmark](https://github.com/djkoloski/rust_serialization_benchmark)
 - [Rust serialization: What's ready for production today? - LogRocket Blog](https://blog.logrocket.com/rust-serialization-whats-ready-for-production-today/)
