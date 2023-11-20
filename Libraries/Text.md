@@ -19,6 +19,54 @@
 ## [→Unicode](https://github.com/Chaoses-Ib/ArtificialIntelligence/blob/main/NLP/Encoding/Unicode/README.md)
 - [widestring: A wide string Rust library for converting to and from wide-character strings, including UTF-16 and UTF-32 encoding.](https://github.com/starkat99/widestring-rs)
 
+### Case-insensitive
+For hash maps:
+```rust
+#[derive(Debug, Clone)]
+pub struct AsciiCaseInsensitiveString(String);
+
+impl PartialEq for AsciiCaseInsensitiveString {
+    fn eq(&self, other: &Self) -> bool {
+        self.0.eq_ignore_ascii_case(&other.0)
+    }
+}
+
+impl Eq for AsciiCaseInsensitiveString {}
+
+impl Hash for AsciiCaseInsensitiveString {
+    fn hash<H: Hasher>(&self, hasher: &mut H) {
+        for byte in self.0.as_str().bytes().map(|b| b.to_ascii_lowercase()) {
+            hasher.write_u8(byte);
+        }
+    }
+}
+
+impl AsciiCaseInsensitiveString {
+    /// Note that `&str` is case sensitive.
+    pub fn as_str(&self) -> &str {
+        &self.0
+    }
+}
+
+impl From<String> for AsciiCaseInsensitiveString {
+    fn from(value: String) -> Self {
+        Self(value)
+    }
+}
+
+impl From<&str> for AsciiCaseInsensitiveString {
+    fn from(value: &str) -> Self {
+        Self(String::from(value))
+    }
+}
+
+impl Into<String> for AsciiCaseInsensitiveString {
+    fn into(self) -> String {
+        self.0
+    }
+}
+```
+
 ## Algorithms
 - [bluss/twoway: Twoway / Fast substring search for strings and byte strings (Rust) / Also assorted benchmarks and string search snippets](https://github.com/bluss/twoway)
 - [case-insensitive-hashmap: A Rust HashMap that uses Case-Insensitive strings.](https://github.com/PhilipDaniels/case-insensitive-hashmap)

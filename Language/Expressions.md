@@ -103,3 +103,7 @@ fn main() {
     println!("LIFTOFF!!!");
 }
 ```
+
+[\[Language\] for-else and while-else - Issue #3361 - rust-lang/rfcs](https://github.com/rust-lang/rfcs/issues/3361)
+
+[for else loop, in Rust](https://programming-idioms.org/idiom/223/for-else-loop/3852/rust)
