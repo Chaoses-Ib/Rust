@@ -1,4 +1,6 @@
 # Types
+[The Usability of Advanced Type Systems: Rust as a Case Study](https://arxiv.org/abs/2301.02308)
+
 ## Scalar types
 ### Integer types
 
@@ -79,3 +81,7 @@ let a: Box<[i32]> = vec![3; n].into_boxed_slice();
 // vec![e; n] will clone the element n times
 let a: Box<[Box<[i32]>]> = vec![vec![1, 2, 3].into_boxed_slice(); n].into_boxed_slice();
 ```
+
+## Dynamic
+- [value-bag: Dynamic structured values for Rust](https://github.com/sval-rs/value-bag)
+- [rust\_dynamic: Dynamic datatype for Rust](https://github.com/vulogov/rust_dynamic)

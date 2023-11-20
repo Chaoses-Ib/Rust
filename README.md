@@ -29,6 +29,7 @@
 - [Foreign Function Interface](Language/FFI.md)
 - [Coding Conventions](Language/Coding%20Conventions.md)
 - [Comments](Language/Comments.md)
+- [Scripts](Language/Scripts.md)
 
 ## Build
 - [rustup](Build/rustup.md)
