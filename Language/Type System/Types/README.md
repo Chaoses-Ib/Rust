@@ -82,6 +82,9 @@ let a: Box<[i32]> = vec![3; n].into_boxed_slice();
 let a: Box<[Box<[i32]>]> = vec![vec![1, 2, 3].into_boxed_slice(); n].into_boxed_slice();
 ```
 
+Partial initialization:
+- [Explicit partial array initialisation in Rust - Stack Overflow](https://stackoverflow.com/questions/32452708/explicit-partial-array-initialisation-in-rust)
+
 ## Dynamic
 - [value-bag: Dynamic structured values for Rust](https://github.com/sval-rs/value-bag)
 - [rust\_dynamic: Dynamic datatype for Rust](https://github.com/vulogov/rust_dynamic)

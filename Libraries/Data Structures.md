@@ -20,6 +20,7 @@ Concurrent:
 - [rust-smallvec: "Small vector" optimization for Rust: store up to a small number of items on the stack](https://github.com/servo/rust-smallvec)
 - [tinyvec: Just, really the littlest Vec you could need. So smol.](https://github.com/Lokathor/tinyvec)
 - [thin-vec: A Vec That Has a Smaller size_of](https://github.com/Gankra/thin-vec)
+- [staticvec: Implements a fixed-capacity stack-allocated Vec alternative backed by an array, using const generics.](https://github.com/slightlyoutofphase/staticvec/)
 - [sorted-vec: Create and maintain collections of sorted elements.](https://gitlab.com/spearman/sorted-vec)
 - [Dup-Indexer: Create a non-duplicated index from Strings, static str, Vec, or Box values](https://github.com/nyurik/dup-indexer)
 - [RleVec: A rust crate providing a vector like struct that stores data as runs of identical values.](https://github.com/veldsla/rle_vec)
