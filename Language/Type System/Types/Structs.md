@@ -17,6 +17,8 @@ struct User {
 Libraries:
 - [bitflags: A macro to generate structures which behave like bitflags](https://github.com/bitflags/bitflags)
 
+- [Enumflags: Rust library for typesystem-assisted bitflags.](https://github.com/meithecatte/enumflags2)
+
 - [Bitfield Struct: Procedural macro for bitfields.](https://github.com/wrenger/bitfield-struct-rs)
 
   ```rust
