@@ -63,6 +63,8 @@ A reference’s scope starts from where it is introduced and continues through t
 
 [`ref`](https://doc.rust-lang.org/std/keyword.ref.html) annotates pattern bindings to make them borrow rather than move.
 
+[A safe way to reuse the same code for immutable and mutable variants of a function? : rust](https://www.reddit.com/r/rust/comments/2a721y/a_safe_way_to_reuse_the_same_code_for_immutable/)
+
 ### Slices
 **Slices** let you reference a contiguous sequence of elements in a collection rather than the whole collection.
 
