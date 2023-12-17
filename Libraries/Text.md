@@ -46,6 +46,12 @@
 - [miniintern: A minimalistic Rust string interning / pooling library.](https://github.com/alex05447/miniintern)
 
 ## [→Unicode](https://github.com/Chaoses-Ib/ArtificialIntelligence/blob/main/NLP/Encoding/Unicode/README.md)
+- [bstr: A string type for Rust that is not required to be valid UTF-8.](https://github.com/BurntSushi/bstr)
+
+  [Not everything is UTF-8](https://octobus.net/blog/2020-06-05-not-everything-is-utf8.html)
+
+  [r/rust](https://www.reddit.com/r/rust/comments/gz33u6/not_everything_is_utf8/)
+
 - [widestring: A wide string Rust library for converting to and from wide-character strings, including UTF-16 and UTF-32 encoding.](https://github.com/starkat99/widestring-rs)
 
 ## ASCII
@@ -108,5 +114,4 @@ impl Into<String> for AsciiCaseInsensitiveString {
 ```
 
 ## Algorithms
-- [bluss/twoway: Twoway / Fast substring search for strings and byte strings (Rust) / Also assorted benchmarks and string search snippets](https://github.com/bluss/twoway)
 - [case-insensitive-hashmap: A Rust HashMap that uses Case-Insensitive strings.](https://github.com/PhilipDaniels/case-insensitive-hashmap)
