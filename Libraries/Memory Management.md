@@ -43,6 +43,8 @@ Bump allocators:
 ## Profiling
 [Measuring Memory Usage in Rust](https://rust-analyzer.github.io/blog/2020/12/04/measuring-memory-usage-in-rust.html)
 
+Estimating memory usage without considering the memory allocator may lead to incorrect results, especially if there are plenty of small allocations. In this case, diffing the total memory usage of the current process would be more suitable, just like what rust-analyzer does: [memory_usage.rs](https://github.com/rust-lang/rust-analyzer/blob/56abc0a29c3fa541f6f4294d0908bb2b86e8071b/crates/profile/src/memory_usage.rs#L26-L88), [apply_change.rs](https://github.com/rust-lang/rust-analyzer/blob/b988c6f84e06bdc5562c70f28586b9eeaae3a39c/crates/ide_db/src/apply_change.rs#L104-L238).
+
 Allocators:
 - [cap: An allocator that can track and limit memory usage.](https://github.com/alecmocatta/cap)
 
@@ -53,8 +55,16 @@ Allocators:
   [Profiling heap allocation in rust | FlakM blog](https://flakm.github.io/posts/heap_allocation/)
 
 Traits:
+- [mem\_dbg: A trait + derive to recursively compute / print the memory usage of a data structure.](https://github.com/zommiommy/mem_dbg-rs)
+
+  [mem\_dbg is a crate to recursively compute the memory usage of a data structure or print its layout : rust](https://www.reddit.com/r/rust/comments/187ggb9/mem_dbg_is_a_crate_to_recursively_compute_the/)
+
+- [size-of: A crate for measuring the total memory usage of an object](https://github.com/Kixiron/size-of)
+  - `size-of` estimates the size of a `HashMap` precisely, while `deepsize`, `memuse` and `get-size` all just use `size_of((K, V)) * capacity()`, plus the heap memory used by items.
+
 - [deepsize: A rust crate to find the total size of an object, on the stack and on the heap](https://github.com/Aeledfyr/deepsize/)
+  - [The code deepsize used to estimate a `HashMap`'s memory usage is far from correct.](https://www.reddit.com/r/rust/comments/187ggb9/comment/kbe8hxm/)
 
 - [memuse: Traits for inspecting memory usage of Rust types](https://github.com/str4d/memuse)
 
-- [/get-size: Determine the size in bytes an object occupies inside RAM.](https://github.com/DKerp/get-size)
+- [get-size: Determine the size in bytes an object occupies inside RAM.](https://github.com/DKerp/get-size)
