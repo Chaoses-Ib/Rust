@@ -365,8 +365,19 @@ pub trait DoubleEndedIterator: Iterator {
 
 Iterators, although a high-level abstraction, get compiled down to roughly the same code as if you’d written the lower-level code yourself. Iterators are one of Rust’s zero-cost abstractions, by which we mean using the abstraction imposes no additional runtime overhead.[^performance]
 
+- Backward iterators
+
+  [list - Iterating forward and backward - Stack Overflow](https://stackoverflow.com/questions/38227722/iterating-forward-and-backward)
+
+  - `clone()`
+  - [prev-iter: Iterator which allows you to view the previous element](https://github.com/AgostonSzepessy/prev-iter)
+
 ## Consuming adaptors
 Methods that call next are called **consuming adaptors**, because calling them uses up the iterator.
+
+- `Extend`
+  - [Tracking Issue for `Extend::{extend_one,extend_reserve}` - Issue #72631 - rust-lang/rust](https://github.com/rust-lang/rust/issues/72631)
+    - `extend([v])`
 
 ## Iterator adaptors
 **Iterator adaptors** are methods defined on the `Iterator` trait that don’t consume the iterator. Instead, they produce different iterators by changing some aspect of the original iterator.
