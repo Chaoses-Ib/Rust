@@ -40,7 +40,8 @@
 - [Benchmarking](Build/Benchmarking.md)
 
 ## Libraries
-- [Functions](Libraries/Functions.md)
+- Paradigms
+  - [Object-oriented](Libraries/Paradigms/Object-oriented.md)
 - [Smart Pointers](Libraries/Smart%20Pointers.md)
 - [Memory Management](Libraries/Memory%20Management.md)
 - [Data Structures](Libraries/Data%20Structures.md)

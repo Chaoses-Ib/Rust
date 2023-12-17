@@ -1,6 +1,8 @@
 # Conditional Compilation
 [The Rust Reference](https://doc.rust-lang.org/reference/conditional-compilation.html)
 
+[cfg-if: A if/elif-like macro for Rust `#[cfg]` statements](https://github.com/rust-lang/cfg-if)
+
 ## Cargo features
 [The Cargo Book](https://doc.rust-lang.org/cargo/reference/features.html)
 
