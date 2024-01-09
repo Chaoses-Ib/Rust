@@ -1,5 +1,5 @@
 # [Rust](Rust.md)
-## Language
+## [Language](Language/README.md)
 - Type System
   - [Types](Language/Type%20System/Types/README.md)
     - [Structs](Language/Type%20System/Types/Structs.md)

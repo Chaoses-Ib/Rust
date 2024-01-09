@@ -10,6 +10,9 @@
 ## Naming conventions
 [Naming conventions](https://doc.rust-lang.org/1.0.0/style/style/naming/README.html)
 
+[Naming convention for crates - rust-lang/api-guidelines - Discussion #29](https://github.com/rust-lang/api-guidelines/discussions/29)
+- `kebab-case` or `snake_case`
+
 [What's the convention on variables that share reserved (keyword) names? : learnrust](https://www.reddit.com/r/learnrust/comments/scmviz/whats_the_convention_on_variables_that_share/)
 - Using a shorter or longer version, e.g. `ref` => `reference` / `order_reference`, `type` => `ty` / `order_type`
     
@@ -20,7 +23,11 @@
 ## [rustfmt](https://github.com/rust-lang/rustfmt)
 [Configuration Options](https://rust-lang.github.io/rustfmt/?version=v1.6.0&search=)
 
-`#[rustfmt::skip]`
+Skip:
+- `#[rustfmt::skip]`
+- `#![cfg_attr(rustfmt, rustfmt_skip)]`
+
+  [rust - Is there a stable way to tell Rustfmt to skip an entire file - Stack Overflow](https://stackoverflow.com/questions/59247458/is-there-a-stable-way-to-tell-rustfmt-to-skip-an-entire-file)
 
 [Could rustfmt format Cargo.toml ? - Issue #4091 - rust-lang/rustfmt](https://github.com/rust-lang/rustfmt/issues/4091)
 - [Even Better TOML - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml)

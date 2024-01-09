@@ -72,3 +72,5 @@ The `bench` profile inherits the settings from the `release` profile.
 [The Cargo Book](https://doc.rust-lang.org/cargo/reference/registries.html)
 
 - [crates.io](https://crates.io/)
+
+  [Publishing on crates.io - The Cargo Book](https://doc.rust-lang.org/cargo/reference/publishing.html)
