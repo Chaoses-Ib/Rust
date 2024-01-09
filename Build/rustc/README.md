@@ -2,6 +2,18 @@
 [The rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html)
 
 ## Target platforms
+### Cross-compilation
+- `rustup target list`
+- `rustup show`, `rustup target list --installed`
+- `rustup target add i686-pc-windows-msvc`
+- `cargo build --target=i686-pc-windows-msvc`
+
+[Cross-compilation - The rustup book](https://rust-lang.github.io/rustup/cross-compilation.html)
+
+- [cross: "Zero setup" cross compilation and "cross testing" of Rust crates](https://github.com/cross-rs/cross)
+
+  [PSA: For cross-compiling please use the "Cross" tool. : rust](https://www.reddit.com/r/rust/comments/18z5g3g/psa_for_crosscompiling_please_use_the_cross_tool/)
+
 ### Windows
 Resources:
 - [winres: Create and set windows icons and metadata for executables with a rust build script](https://github.com/mxre/winres)
