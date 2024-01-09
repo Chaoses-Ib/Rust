@@ -5,6 +5,8 @@
 ## Atomic types
 [std::sync::atomic](https://doc.rust-lang.org/std/sync/atomic/index.html)
 
+[`atomic_bitfield`: Bitfield abstraction for Rust's core atomic types](https://github.com/amiraeva/atomic_bitfield)
+
 ## Synchronization primitives
 - [parking_lot: Compact and efficient synchronization primitives for Rust. Also provides an API for creating custom synchronization primitives.](https://github.com/amanieu/parking_lot)
 - [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam)

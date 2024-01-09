@@ -52,6 +52,7 @@
 
   [r/rust](https://www.reddit.com/r/rust/comments/gz33u6/not_everything_is_utf8/)
 
+- [`encode_unicode`: A rust library for converting between UTF-8, UTF-16 and UTF-32 characters.](https://github.com/tormol/encode_unicode)
 - [widestring: A wide string Rust library for converting to and from wide-character strings, including UTF-16 and UTF-32 encoding.](https://github.com/starkat99/widestring-rs)
 
 ## ASCII

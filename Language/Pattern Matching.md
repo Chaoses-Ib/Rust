@@ -205,6 +205,10 @@ Patterns that can fail to match for some possible value are **refutable**.
 ## match expressions
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch06-02-match.html)
 
+[Suggestion: make string/slice more efficient with match - Issue #39525 - rust-lang/rust](https://github.com/rust-lang/rust/issues/39525)
+
+- [std::matches](https://doc.rust-lang.org/std/macro.matches.html)
+
 ## if let expressions
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch06-03-if-let.html)
 

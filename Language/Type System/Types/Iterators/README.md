@@ -5,6 +5,8 @@
 
 [Rust Iterator Cheat Sheet](https://danielkeep.github.io/itercheat_baked.html)
 
+<details>
+
 ```rust
 pub trait Iterator {
     type Item;
@@ -363,7 +365,21 @@ pub trait DoubleEndedIterator: Iterator {
 }
 ```
 
+</details>
+
 Iterators, although a high-level abstraction, get compiled down to roughly the same code as if you’d written the lower-level code yourself. Iterators are one of Rust’s zero-cost abstractions, by which we mean using the abstraction imposes no additional runtime overhead.[^performance]
+
+- `fold` vs `reduce`
+
+   ```rust
+   fn fold<B, F>(self, init: B, f: F) -> B
+      where Self: Sized,
+            F: FnMut(B, Self::Item) -> B { ... }
+
+   fn reduce<F>(self, f: F) -> Option<Self::Item>
+      where Self: Sized,
+            F: FnMut(Self::Item, Self::Item) -> Self::Item { ... }
+   ```
 
 - Backward iterators
 

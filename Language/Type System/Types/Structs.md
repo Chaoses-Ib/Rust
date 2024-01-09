@@ -72,6 +72,8 @@ Libraries:
   }
   ```
 
+- [`atomic_bitfield`: Bitfield abstraction for Rust's core atomic types](https://github.com/amiraeva/atomic_bitfield)
+
 ## Tuple structs
 **Tuple structs** have the added meaning the struct name provides but don’t have names associated with their fields; rather, they just have the types of the fields. For example:
 ```rust
