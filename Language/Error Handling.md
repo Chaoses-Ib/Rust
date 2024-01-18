@@ -109,7 +109,9 @@ fn main() -> Result<(), Box<dyn Error>> {
 ```
 
 ## Stack traces
-[backtrace-rs: Backtraces in Rust](https://github.com/rust-lang/backtrace-rs)
+- [std::backtrace](https://doc.rust-lang.org/std/backtrace/index.html) (v1.65)
+- [backtrace-rs: Backtraces in Rust](https://github.com/rust-lang/backtrace-rs) (v1.40)
+  - [Please report MSRV in README and add a CI job to check compatibility - Issue #336](https://github.com/rust-lang/backtrace-rs/issues/336)
 
 ## Process termination
 `exit` 会在做一些清理后正常退出，但 `abort` 会直接用异常指令让程序崩溃：

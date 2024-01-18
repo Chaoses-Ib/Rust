@@ -15,6 +15,7 @@
   - [`fern`: Simple, efficient logging for Rust](https://github.com/daboross/fern)
   - [`win_dbg_logger`](https://docs.rs/win_dbg_logger/*/win_dbg_logger/)
   - [`log-once`: Helper macros for logging events only once.](https://github.com/Luthaf/log-once)
+  - [rust-log-panics: A panic hook which logs panics rather than printing them.](https://github.com/sfackler/rust-log-panics)
 
 - [tracing](#tracing-application-level-tracing-for-rust)
 
@@ -59,6 +60,47 @@
     ```
     initializing rolling file appender failed: InitError { context: "failed to create initial log file", source: Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" } }
     ```
+
+- [tracing-panic: A custom panic hook to capture panic info in your telemetry pipeline](https://github.com/LukeMathWalker/tracing-panic)
+  - No `backtrace` support.
+
+  Alternative:
+  ```rust
+  fn panic_log_hook(panic_info: &std::panic::PanicInfo) {
+      let backtrace = std::backtrace::Backtrace::force_capture();
+
+      let thread = std::thread::current();
+      let thread = thread.name().unwrap_or("<unnamed>");
+
+      let msg = match panic_info.payload().downcast_ref::<&'static str>() {
+          Some(s) => *s,
+          None => match panic_info.payload().downcast_ref::<String>() {
+              Some(s) => &**s,
+              None => "Box<Any>",
+          },
+      };
+
+      // If you are using Sentry, since Sentry will capture panics itself, use warn instead of error to avoid reporting the panic twice
+      match panic_info.location() {
+          Some(location) => {
+              error!(
+                  thread,
+                  msg,
+                  %location,
+                  %backtrace,
+                  "A panic occurred"
+              );
+          }
+          None => error!(thread, msg, %backtrace, "A panic occurred"),
+      }
+  }
+
+  let prev_hook = std::panic::take_hook();
+  std::panic::set_hook(Box::new(move |panic_info| {
+      panic_log_hook(panic_info);
+      prev_hook(panic_info);
+  }));
+  ```
 
 ## Testing
 [^log-test]
