@@ -25,6 +25,8 @@ Here is a quick reference on how modules, paths, the `use` keyword, and the `
     - In the file `src/garden.rs`
     - In the file `src/garden/mod.rs`
 
+   [Anonymous modules - compiler - Rust Internals](https://internals.rust-lang.org/t/anonymous-modules/15441/8)
+
 3. Declaring submodules
  
    In any file other than the crate root, you can declare submodules. For example, you might declare `mod vegetables;` in `src/garden.rs`. The compiler will look for the submodule’s code within the directory named for the parent module in these places:

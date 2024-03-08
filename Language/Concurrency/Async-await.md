@@ -1,6 +1,8 @@
 # Async/await
 [Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/)
 
+[The bane of my existence: Supporting both async and sync code in Rust | NullDeref](https://nullderef.com/blog/rust-async-sync/) ([r/rust](https://www.reddit.com/r/rust/comments/197811x/the_bane_of_my_existence_supporting_both_async/))
+
 ## Future
 ```rust
 pub trait Future {

@@ -33,6 +33,7 @@ pub trait Summary {
 impl Summary for NewsArticle {}
 ```
 Default implementations can call other methods in the same trait, even if those other methods don’t have a default implementation.
+- [RFC: calling default trait methods from overriding impls by adamcrume - Pull Request #3329 - rust-lang/rfcs](https://github.com/rust-lang/rfcs/pull/3329)
 
 Note that we can implement a trait on a type only if at least one of the trait or the type is local to our crate. For example, we can’t implement the `Display` trait on `Vec<T>` within our `aggregator` crate, because `Display` and `Vec<T>` are both defined in the standard library. This restriction is part of a property called _coherence_, and more specifically the _orphan rule_, so named because the parent type is not present. This rule ensures that other people’s code can’t break your code and vice versa. Without the rule, two crates could implement the same trait for the same type, and Rust wouldn’t know which implementation to use.
 
@@ -93,6 +94,12 @@ pub struct Screen {
 ```
 
 [Implementing an Object-Oriented Design Pattern - The Rust Programming Language](https://doc.rust-lang.org/book/ch17-03-oo-design-patterns.html)
+
+[rust - Why can impl trait not be used to return multiple / conditional types? - Stack Overflow](https://stackoverflow.com/questions/52001592/why-can-impl-trait-not-be-used-to-return-multiple-conditional-types)
+
+### [Object safety](https://doc.rust-lang.org/reference/items/traits.html#object-safety)
+[How to clone a struct storing a boxed trait object? - Stack Overflow](https://stackoverflow.com/questions/30353462/how-to-clone-a-struct-storing-a-boxed-trait-object)
+- `fn clone_box(&self) -> Box<dyn MyTrait>;`
 
 ## Associated types
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch19-03-advanced-traits.html#specifying-placeholder-types-in-trait-definitions-with-associated-types)
