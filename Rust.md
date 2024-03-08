@@ -5,10 +5,7 @@ Books:
 - [The Rust Programming Language](https://doc.rust-lang.org/book/) ([GitHub](https://github.com/rust-lang/book))
 
   [update the book for async/await · Issue #1275 · rust-lang/book](https://github.com/rust-lang/book/issues/1275)
-- [Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/)
-- [The Rustonomicon](https://doc.rust-lang.org/stable/nomicon/)
 - [The Rust Reference](https://doc.rust-lang.org/reference/) ([GitHub](https://github.com/rust-lang/reference/))
-- [The Rust Unstable Book](https://doc.rust-lang.org/beta/unstable-book/the-unstable-book.html)
 - [Rust for C#/.NET Developers](https://microsoft.github.io/rust-for-dotnet-devs/latest/introduction.html)
 
 Blogs:

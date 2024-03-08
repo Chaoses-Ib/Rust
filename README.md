@@ -26,6 +26,7 @@
 - [Attributes](Language/Attributes.md)
 - [Macros](Language/Macros.md)
 - [Module System](Language/Module%20System.md)
+- [Unsafety](Language/Unsafety.md)
 - [Foreign Function Interface](Language/FFI.md)
 - [Coding Conventions](Language/Coding%20Conventions.md)
 - [Comments](Language/Comments.md)
