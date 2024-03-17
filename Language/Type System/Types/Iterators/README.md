@@ -388,6 +388,19 @@ Iterators, although a high-level abstraction, get compiled down to roughly the s
   - `clone()`
   - [prev-iter: Iterator which allows you to view the previous element](https://github.com/AgostonSzepessy/prev-iter)
 
+## Lending iterators (streaming iterators)
+- [lending-iterator: Lending iterators on stable Rust](https://github.com/danielhenrymantilla/lending-iterator.rs) ([r/rust](https://www.reddit.com/r/rust/comments/w3joqj/lendingiterator_lendingstreaming_iterators_on/))
+- [streaming-iterator](https://github.com/sfackler/streaming-iterator) ([Docs.rs](https://docs.rs/streaming-iterator/latest/streaming_iterator/index.html))
+- [Gat Lending Iterator](https://github.com/Crazytieguy/gat-lending-iterator)
+
+Can be used to convert an iterator that yields owned values into an iterator that yields references.
+- `streaming_iterator::convert()`
+- [Iterator with Item living for one iteration? : r/rust](https://www.reddit.com/r/rust/comments/467j1p/iterator_with_item_living_for_one_iteration/)
+
+[lending/streaming iterator that uses GATs? : r/rust](https://www.reddit.com/r/rust/comments/10juwdp/lendingstreaming_iterator_that_uses_gats/)
+
+[Current state of the art regarding streaming/lending iterators - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/current-state-of-the-art-regarding-streaming-lending-iterators/70900)
+
 ## Consuming adaptors
 Methods that call next are called **consuming adaptors**, because calling them uses up the iterator.
 
