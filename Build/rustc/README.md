@@ -1,6 +1,18 @@
 # rustc
 [The rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html)
 
+## Nightly
+[Downside to using rust nightly as a default toolchain? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/downside-to-using-rust-nightly-as-a-default-toolchain/62428)
+> For some projects we have been using nightly for over a year now. In production. Because the Rocket web framework required features from nightly. Nothing bad has happened.
+> 
+> The trick is that "nightly", which implies not stable, not totally tested and liable to change at anytime, requires that if you have a working system you have to be able to get back to that exact night that it worked if some new nightly breaks things. So that you can keep operating running. You have to be prepared dive in and "fix" your code if a new nightly does break anything.
+
+Install a specific nightly version:
+```sh
+rustup install nightly-2024-02-28
+rustup default nightly-2024-02-28
+```
+
 ## Target platforms
 ### Cross-compilation
 - `rustup target list`
