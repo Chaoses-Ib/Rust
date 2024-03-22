@@ -25,6 +25,25 @@ Handling:
 Unwinding:
 - [How does Rust know whether to run the destructor during stack unwind? - Stack Overflow](https://stackoverflow.com/questions/39750841/how-does-rust-know-whether-to-run-the-destructor-during-stack-unwind)
 
+[no-panic as a language feature - Issue #49 - rust-lang/project-error-handling](https://github.com/rust-lang/project-error-handling/issues/49)
+
+[Should we add an panic interface that reports the error via the panic handler but unconditionally aborts? - Issue #34 - rust-lang/project-error-handling](https://github.com/rust-lang/project-error-handling/issues/34)
+
+### Aborting panics
+A panic in Rust is not always implemented via unwinding, but can be implemented by aborting the process as well. This function only catches unwinding panics, not those that abort the process.
+
+- Stack overflow
+
+  [Great stack overflow error messages - Issue #51405 - rust-lang/rust](https://github.com/rust-lang/rust/issues/51405)
+
+  [How to diagnose a `stack overflow` issue's cause? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/how-to-diagnose-a-stack-overflow-issues-cause/17320)
+
+  [How can I catch a stack overflow in a Rust child thread? - Stack Overflow](https://stackoverflow.com/questions/68029361/how-can-i-catch-a-stack-overflow-in-a-rust-child-thread)
+
+- [`std::alloc::handle_alloc_error`](https://doc.rust-lang.org/std/alloc/fn.handle_alloc_error.html)
+  
+  > If the binary links against `std` (typically the case), then print a message to standard error and abort the process. This behavior can be replaced with [`set_alloc_error_hook`](https://doc.rust-lang.org/std/alloc/fn.set_alloc_error_hook.html) and [`take_alloc_error_hook`](https://doc.rust-lang.org/std/alloc/fn.take_alloc_error_hook.html). Future versions of Rust may panic by default instead.
+
 ## Recoverable errors: Result
 [std::result](https://doc.rust-lang.org/std/result/index.html)
 ```rust
@@ -178,6 +197,8 @@ pub fn abort() -> ! {
 }
 ```
 
-Both `exit()` and `abort()` cannot guarantee the process to be immediately killed on Windows, only `TerminateProcess()` works.
+Windows:
+- Both `exit()` and `abort()` cannot guarantee the process to be immediately killed on Windows, only `TerminateProcess()` works.
+- `abort()` will exit the process with code 0xC000001D (-1073741795).
 
-[rust - When is \`std::process::exit\` O.K. to use? - Stack Overflow](https://stackoverflow.com/questions/39228685/when-is-stdprocessexit-o-k-to-use)
+[rust - When is `std::process::exit` O.K. to use? - Stack Overflow](https://stackoverflow.com/questions/39228685/when-is-stdprocessexit-o-k-to-use)

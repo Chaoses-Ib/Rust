@@ -7,6 +7,8 @@
 > 
 > The trick is that "nightly", which implies not stable, not totally tested and liable to change at anytime, requires that if you have a working system you have to be able to get back to that exact night that it worked if some new nightly breaks things. So that you can keep operating running. You have to be prepared dive in and "fix" your code if a new nightly does break anything.
 
+Make sure all your tests passed after updating the nightly version.
+
 Install a specific nightly version:
 ```sh
 rustup install nightly-2024-02-28

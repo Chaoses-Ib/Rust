@@ -30,6 +30,9 @@
 ## [tracing: Application level tracing for Rust.](https://github.com/tokio-rs/tracing)
 [Docs.rs](https://docs.rs/tracing/latest/tracing/)
 
+- `log!()` → `event!()`, `log_enabled!()` → `event_enabled!()`
+  - [Non-const event level - Issue #2730 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/2730)
+
 - [`tracing_subscriber`](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/)
   - Dynamic layers
     - A `Layer` wrapped in an `Option` also implements the `Layer` trait. This allows individual layers to be enabled or disabled at runtime while always producing a `Subscriber` of the same type.

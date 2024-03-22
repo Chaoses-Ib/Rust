@@ -7,6 +7,8 @@
 
 [`atomic_bitfield`: Bitfield abstraction for Rust's core atomic types](https://github.com/amiraeva/atomic_bitfield)
 
+[aarc: Atomically updatable variants of Arc and Weak for lock-free concurrency.](https://github.com/aarc-rs/aarc)
+
 ## Synchronization primitives
 - [parking_lot: Compact and efficient synchronization primitives for Rust. Also provides an API for creating custom synchronization primitives.](https://github.com/amanieu/parking_lot)
 - [Crossbeam: Tools for concurrent programming in Rust](https://github.com/crossbeam-rs/crossbeam)
