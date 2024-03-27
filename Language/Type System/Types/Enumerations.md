@@ -38,6 +38,18 @@ Just as we’re able to define methods on structs using `impl`, we’re also ab
 
 [`std::mem::discriminant`](https://doc.rust-lang.org/std/mem/fn.discriminant.html) (v1.21.0)
 
+## Data types
+- [Strum: A small rust library for adding custom derives to enums](https://github.com/Peternator7/strum)
+- [enum-map: A map with C-like enum keys represented internally as an array](https://codeberg.org/xfix/enum-map)
+
+## Iteration
+[RFC: Enum trait - Issue #5417 - rust-lang/rust](https://github.com/rust-lang/rust/issues/5417)
+- [RFC: Enum trait - Issue #284 - rust-lang/rfcs](https://github.com/rust-lang/rfcs/issues/284)
+
+Libraries:
+- [enum-iterator: Tools to iterate over all values of a type](https://github.com/stephaneyfx/enum-iterator)
+- [rust-enum-derive: rust-enum-derive is a simple program for generating rust enums and associated traits from text files. To simplify converting C code these text files are allowed to look like C enums or C #defines.](https://github.com/TaborKelly/rust-enum-derive)
+
 ## Enum optimization
 Any `enum` value consumes as much memory as the largest variant for its corresponding `enum` type, as well as the size needed to store a discriminant. 一个 enum 是否需要 discriminant 由编译器判断，无法手动指定互斥值域来避免。
 
