@@ -33,3 +33,24 @@ Libraries:
 - [Flume: A safe and fast multi-producer, multi-consumer channel.](https://github.com/zesterer/flume)
 - [Kanal: The fast sync and async channel that Rust deserves](https://github.com/fereidani/kanal)
 - [bus: Efficient, lock-free, bounded Rust broadcast channel](https://github.com/jonhoo/bus)
+
+## Interruptible blocking
+[`std::sync::mpsc::Receiver::recv_timeout()`](https://doc.rust-lang.org/stable/std/sync/mpsc/struct.Receiver.html#method.recv_timeout)
+
+Async/await:
+- `tokio::select!`
+
+- `tokio::sync::oneshot`
+
+  ```rust
+  tokio::time::timeout(std::time::Duration::from_secs(1), oneshot_rx).await;
+  ```
+  Can only recv once.
+
+- Cancellation tokens
+
+  [`tokio_util::sync::CancellationToken`](https://docs.rs/tokio-util/latest/tokio_util/sync/struct.CancellationToken.html)
+
+[Graceful Shutdown | Tokio - An asynchronous Rust runtime](https://tokio.rs/tokio/topics/shutdown)
+
+[Is there a rust feature for async analogous to the `recv_timeout` function? - Stack Overflow](https://stackoverflow.com/questions/68279793/is-there-a-rust-feature-for-async-analogous-to-the-recv-timeout-function)

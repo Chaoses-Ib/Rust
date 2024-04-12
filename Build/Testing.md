@@ -3,6 +3,8 @@
 
 [multitest](https://github.com/dzamlo/multitest/)
 
+[insta: A snapshot testing library for rust](https://github.com/mitsuhiko/insta)
+
 ## Unit tests
 `src/lib.rs`:
 ```rust
