@@ -53,6 +53,6 @@
 - [I/O](Libraries/IO.md)
 - [Logging](Libraries/Logging.md)
 - [Error Reporting](Libraries/Error%20Reporting.md)
-- [Inter-Process Communication](Libraries/IPC.md)
+- [→Inter-Process Communication](https://github.com/Chaoses-Ib/ConcurrentComputing/blob/main/Distributed/IPC/README.md#rust)
 - User Interfaces
   - [Command Line Interface](Libraries/UI/Command%20Line.md)
