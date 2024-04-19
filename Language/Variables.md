@@ -99,14 +99,16 @@ String literals are string slices.
 
   - `Copy`
 
-  - Take-clone-set
+  - `T: Default`: Take-clone-set
   
     ```rust
     let val = cell.take();
     cell.set(val.clone());
     ```
 
-    [traits - Why can Cell in Rust only be used for Copy and not Clone types? - Stack Overflow](https://stackoverflow.com/questions/39667868/why-can-cell-in-rust-only-be-used-for-copy-and-not-clone-types)
+  - Take-clone-set + `Option<T>`
+
+  [traits - Why can Cell in Rust only be used for Copy and not Clone types? - Stack Overflow](https://stackoverflow.com/questions/39667868/why-can-cell-in-rust-only-be-used-for-copy-and-not-clone-types)
 
 - RefCell
 

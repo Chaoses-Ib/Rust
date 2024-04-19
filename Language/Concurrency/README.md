@@ -35,6 +35,7 @@ We often use the `move` keyword with closures passed to `thread::spawn` beca
 ### Thread locals
 - [std::thread::LocalKey](https://doc.rust-lang.org/std/thread/struct.LocalKey.html)
   - [std::thread\_local](https://doc.rust-lang.org/std/macro.thread_local.html)
+
 - [thread\_local: Per-object thread-local storage for Rust](https://github.com/Amanieu/thread_local-rs)
   - `get()` has an innegligible cost:
   

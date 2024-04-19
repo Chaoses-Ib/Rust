@@ -88,6 +88,15 @@ Benchmarks:
 - [LinearMap in heapless](https://docs.rs/heapless/latest/heapless/struct.LinearMap.html)
 - [linear-map: A map backed by a vector](https://github.com/contain-rs/linear-map)
 
+### Type maps
+- [→Enum maps](/Language/Type%20System/Types/Enumerations.md#data-types)
+
+- [AnyMap: A safe and convenient store for one value of each type](https://github.com/chris-morgan/anymap)
+
+  A type-safe wrapper around `HashMap<TypeId, Box<dyn Any>>` (where `TypeId` is in fact `u128`).
+
+- [TypeMap: A typesafe store keyed by types and containing different types of values.](https://github.com/reem/rust-typemap)
+
 ## Queues
 - [std::collections::VecDeque](https://doc.rust-lang.org/stable/std/collections/struct.VecDeque.html)
 
@@ -104,4 +113,7 @@ Concurrent:
 
 ## Cache
 - [cached: Rust cache structures and easy function memoization](https://github.com/jaemk/cached)
+  - [Is it completely impossible to cache generic functions? - Issue #139](https://github.com/jaemk/cached/issues/139)
+  - [How to aproach generics ? - Issue #80](https://github.com/jaemk/cached/issues/80)
+- [cache-macro: A procedural attribute macro to automatically cache the results of a function call with given args.](https://github.com/tylerreisinger/cache-macro)
 - [EVLRU: An eventually consistent LRU designed for lock-free concurrent reads](https://github.com/Bajix/evlru)
