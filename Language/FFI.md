@@ -71,6 +71,13 @@ Rust to C:
 Problems:
 - Lifetimes
 - Error handling
+- `bool`
+
+  [What is the correct type for returning a C99 `bool` to Rust via the FFI? - Stack Overflow](https://stackoverflow.com/questions/47705093/what-is-the-correct-type-for-returning-a-c99-bool-to-rust-via-the-ffi)
+
+  [Is `bool` FFI-safe? - Issue #95184 - rust-lang/rust](https://github.com/rust-lang/rust/issues/95184)
+
+  If the return type is `bool`, the high (24) bits of the return value are not guaranteed to be zeros. If the return value is treated as an integer, use `r & 0xFF != 0` to check for `true`.
 
 ## C++
 - [CXX: Safe interop between Rust and C++](https://github.com/dtolnay/cxx)
