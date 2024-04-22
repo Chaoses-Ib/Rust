@@ -10,4 +10,15 @@
 
 - [tracing-fmt-smart-writer: Better writer for tracing-subscriber's fmt module](https://github.com/DoumanAsh/tracing-fmt-smart-writer)
 
-[rust - How to capture the content of stdout/stderr when I cannot change the code that prints? - Stack Overflow](https://stackoverflow.com/questions/72185130/how-to-capture-the-content-of-stdout-stderr-when-i-cannot-change-the-code-that-p)
+## Stdio
+[Stdio in std::process - Rust](https://doc.rust-lang.org/std/process/struct.Stdio.html)
+
+[How do I print output without a trailing newline in Rust? - Stack Overflow](https://stackoverflow.com/questions/37531903/how-do-i-print-output-without-a-trailing-newline-in-rust)
+
+[Reading from a processes stdout without placing it all in memory at once - Stack Overflow](https://stackoverflow.com/questions/32012986/reading-from-a-processes-stdout-without-placing-it-all-in-memory-at-once)
+
+[How to capture the content of stdout/stderr when I cannot change the code that prints? - Stack Overflow](https://stackoverflow.com/questions/72185130/how-to-capture-the-content-of-stdout-stderr-when-i-cannot-change-the-code-that-p)
+
+[How do I read the output of a child process without blocking in Rust? - Stack Overflow](https://stackoverflow.com/questions/34611742/how-do-i-read-the-output-of-a-child-process-without-blocking-in-rust)
+
+[Display *and* capture STDOUT and STDERR from a Command - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/display-and-capture-stdout-and-stderr-from-a-command/81296)
