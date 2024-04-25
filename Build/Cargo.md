@@ -6,7 +6,14 @@
 ## Dependencies
 [The Cargo Book](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html)
 
-Renaming dependencies:
+### Upgrading
+[cargo-edit: A utility for managing cargo dependencies from the command line.](https://github.com/killercup/cargo-edit)
+
+[\[SOLVED\] Update Cargo.toml after "cargo update" - The Rust Programming Language Forum](https://users.rust-lang.org/t/solved-update-cargo-toml-after-cargo-update/19442/2)
+- cargo-edit: `cargo upgrade`
+- [cargo-upgrades](https://gitlab.com/kornelski/cargo-upgrades)
+
+### Renaming dependencies
 ```toml
 [package]
 name = "mypackage"
