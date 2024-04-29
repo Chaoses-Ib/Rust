@@ -16,6 +16,10 @@ rustup default nightly-2024-02-28
 ```
 
 ## Target platforms
+[Targets - The rustc book](https://doc.rust-lang.org/rustc/targets/index.html)
+
+[Platform Support - The rustc book](https://doc.rust-lang.org/rustc/platform-support.html)
+
 ### Cross-compilation
 - `rustup target list`
 - `rustup show`, `rustup target list --installed`
@@ -28,10 +32,13 @@ rustup default nightly-2024-02-28
 
   [PSA: For cross-compiling please use the "Cross" tool. : rust](https://www.reddit.com/r/rust/comments/18z5g3g/psa_for_crosscompiling_please_use_the_cross_tool/)
 
+- [How to build for tier 3 target not included in `rustup target list`? - Stack Overflow](https://stackoverflow.com/questions/67352828/how-to-build-for-tier-3-target-not-included-in-rustup-target-list)
+
 ### Windows
 - v1.78 (2024-02): [Updated baseline standards for Windows targets | Rust Blog](https://blog.rust-lang.org/2024/02/26/Windows-7.html)
 
   `x86_64-win7-windows-msvc` and `i686-win7-windows-msvc`
+  - [\*-win7-windows-msvc - The rustc book](https://doc.rust-lang.org/rustc/platform-support/win7-windows-msvc.html)
 
   [Windows support schedule 2024 - Issue #651 - rust-lang/compiler-team](https://github.com/rust-lang/compiler-team/issues/651)
 
