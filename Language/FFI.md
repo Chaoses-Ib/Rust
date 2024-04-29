@@ -80,19 +80,118 @@ Problems:
   If the return type is `bool`, the high (24) bits of the return value are not guaranteed to be zeros. If the return value is treated as an integer, use `r & 0xFF != 0` to check for `true`.
 
 ## C++
-- [CXX: Safe interop between Rust and C++](https://github.com/dtolnay/cxx)
-  - [Functions with explicit lifetimes](https://cxx.rs/extern-rust.html#functions-with-explicit-lifetimes)
-  - [Error handling](https://cxx.rs/binding/result.html)
-  
-  Bit flags:
-  - [Derive bitwise BitAnd and BitOr for shared enums - Issue #736 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/736)
+- CXX
 
 C++ to Rust:
-- [Autocxx: Tool for safe ergonomic Rust/C++ interop driven from existing C++ headers](https://github.com/google/autocxx)
+- Autocxx
 
 Rust to C++:
 - Diplomat
 - cbindgen
+
+### [CXX](https://github.com/dtolnay/cxx)
+> Safe interop between Rust and C++.
+
+```rust
+#[cxx::bridge]
+mod ffi {
+    // Any shared structs, whose fields will be visible to both languages.
+    struct BlobMetadata {
+        size: usize,
+        tags: Vec<String>,
+    }
+
+    extern "Rust" {
+        // Zero or more opaque types which both languages can pass around
+        // but only Rust can see the fields.
+        type MultiBuf;
+
+        // Functions implemented in Rust.
+        fn next_chunk(buf: &mut MultiBuf) -> &[u8];
+    }
+
+    unsafe extern "C++" {
+        // One or more headers with the matching C++ declarations for the
+        // enclosing extern "C++" block. Our code generators don't read it
+        // but it gets #include'd and used in static assertions to ensure
+        // our picture of the FFI boundary is accurate.
+        include!("demo/include/blobstore.h");
+
+        // Zero or more opaque types which both languages can pass around
+        // but only C++ can see the fields.
+        type BlobstoreClient;
+
+        // Functions implemented in C++.
+        fn new_blobstore_client() -> UniquePtr<BlobstoreClient>;
+        fn put(&self, parts: &mut MultiBuf) -> u64;
+        fn tag(&self, blobid: u64, tag: &str);
+        fn metadata(&self, blobid: u64) -> BlobMetadata;
+    }
+}
+```
+- Usable, but far from mature.
+
+- `#include` relative to `.` or `..` is not supported in Cargo builds. Use a path starting with the crate name.
+  
+  This means the used header files must be in a subdirectory of the crate root.
+    
+  A workaround is to make stub headers in the crate that include the actual headers by relative paths.
+
+- [Functions with explicit lifetimes](https://cxx.rs/extern-rust.html#functions-with-explicit-lifetimes)
+
+- [Error handling](https://cxx.rs/binding/result.html)
+
+Types:
+- Use `rust::` types if you want to be friendlier to Rust users, and `std::` types if you want to be friendlier to C++ users.
+
+- [How to use opaque types in threads? - Issue #1175 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/1175)
+
+  `unsafe impl Sync for ffi::MyClass {}`
+
+- `std::optional`
+
+  [Support rust `Option` and C++ `std::optional` - Issue #87](https://github.com/dtolnay/cxx/issues/87)
+
+- `std::expected`
+
+  [Non-exception based Result return value in C++ - Issue #1052 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/1052)
+
+- Bit flags
+  
+  [Derive bitwise BitAnd and BitOr for shared enums - Issue #736 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/736)
+
+- `std::string_view`
+
+  [Support for std::string\_view (C++17) - Issue #734 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/734)
+
+[CMake](https://cxx.rs/build/cmake.html):
+- [paandahl/cpp-with-rust: Minimal application mixing C++ and Rust](https://github.com/paandahl/cpp-with-rust)
+
+Windows:
+```cpp
+// -I"rs/include"
+// -I"rs/target/cxxbridge/rs/src"
+// /MD
+
+#ifdef _DEBUG
+#pragma comment(lib, "../target/debug/rs.lib")
+#else
+#pragma comment(lib, "../target/release/rs.lib")
+#endif
+#pragma comment(lib, "Synchronization.lib")
+#pragma comment(lib, "Userenv.lib")
+#pragma comment(lib, "Ntdll.lib")
+
+#include "../target/cxxbridge/rs/src/lib.rs.h"
+
+// #include "../target/cxxbridge/rs/src/lib.rs.cc"
+```
+See also [CRT](../Build/rustc/Linkage.md#crt).
+
+### [Autocxx](https://github.com/google/autocxx)
+> Tool for safe ergonomic Rust/C++ interop driven from existing C++ headers
+
+[Make templated C++ types useful - Issue #349](https://github.com/google/autocxx/issues/349)
 
 ## .NET
 - P/Invoke

@@ -15,6 +15,9 @@ rustup install nightly-2024-02-28
 rustup default nightly-2024-02-28
 ```
 
+## CLI
+[Command-line Arguments - The rustc book](https://doc.rust-lang.org/rustc/command-line-arguments.html)
+
 ## Target platforms
 [Targets - The rustc book](https://doc.rust-lang.org/rustc/targets/index.html)
 
