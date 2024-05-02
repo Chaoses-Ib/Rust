@@ -13,6 +13,9 @@ Blogs:
 
 > 如果对 C++ 很熟的话，一天上手问题不大，所有权那部分 C++ 有移动语义对应，泛型就是个退化的模板，唯一可能头疼点的就是 concurrency 那块了，Send 和 Sync 要理解一下，async/await 在 C++20 里才有，没用过的话也要适应下。
 
+[Rust Search Extension: 🦀 The ultimate search extension for Rust](https://github.com/huhu/rust-search-extension)
+- `rs`
+
 ## Pros
 [Is the Rust the Future? | Why? (What about the competitors?) : rust](https://www.reddit.com/r/rust/comments/12aecme/is_the_rust_the_future_why_what_about_the/)
 
