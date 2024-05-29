@@ -3,6 +3,9 @@
 
 [multitest](https://github.com/dzamlo/multitest/)
 
+Mocking:
+- [faux: Struct mocking library for Rust](https://github.com/nrxus/faux)
+
 [insta: A snapshot testing library for rust](https://github.com/mitsuhiko/insta)
 
 ## Unit tests
