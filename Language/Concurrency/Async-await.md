@@ -244,8 +244,33 @@ Unlike other Rust programs, asynchronous applications require runtime support. I
 - A **scheduler** to execute [tasks](https://docs.rs/tokio/latest/tokio/task/index.html "mod tokio::task") that use these I/O resources.
 - A **timer** for scheduling work to run after a set period of time.
 
+[Bridging with sync code | Tokio - An asynchronous Rust runtime](https://tokio.rs/tokio/topics/bridging)
+- However, runtime cannot be nested. The sync interface cannot be used in async code.
+
+[Run Async Fn in a Sync Fn in an Async Context - Stack Overflow](https://stackoverflow.com/questions/75678458/run-async-fn-in-a-sync-fn-in-an-async-context)
+- Async drop
+  
+  [async Drop or cleanup mechanism - Issue #297 - rust-lang/wg-async](https://github.com/rust-lang/wg-async/issues/297)
+
+  [Rust Async Drop - Stack Overflow](https://stackoverflow.com/questions/71541765/rust-async-drop)
+
+  - 2022-06 [Async Drop? : r/rust](https://www.reddit.com/r/rust/comments/vckd9h/async_drop/)
+  - 2023-04 [Async Drop : r/learnrust](https://www.reddit.com/r/learnrust/comments/12wtj60/async_drop/)
+  - 2023-07 [tokio-async-drop: macro to enable async drop in a tokio multithreaded runtime](https://github.com/nappa85/tokio-async-drop)
+
+[How can I create a Tokio runtime inside another Tokio runtime without getting the error "Cannot start a runtime from within a runtime"? - Stack Overflow](https://stackoverflow.com/questions/62536566/how-can-i-create-a-tokio-runtime-inside-another-tokio-runtime-without-getting-th)
+- `thread::spawn()`
+- `futures::executor::block_on()`
+
 Libraries:
 - [Tokio: A runtime for writing reliable asynchronous applications with Rust. Provides I/O, networking, scheduling, timers, ...](https://github.com/tokio-rs/tokio) ([Docs.rs](https://docs.rs/tokio/latest/tokio/))
+
+  - `spawn_blocking()` is for sync functions, what about functions mixed with sync and async?
+    - `spawn_blocking()` + `block_on()`
+  - [Is it okay to start multiple tokio runtimes for different parts of the app? - The Rust Programming Language Forum](https://users.rust-lang.org/t/is-it-okay-to-start-multiple-tokio-runtimes-for-different-parts-of-the-app/39974)
+    - Pro: Avoid starvation
+    - Con: More overhead
+
 - [async-std: Async version of the Rust standard library](https://github.com/async-rs/async-std) ([Docs.rs](https://docs.rs/async-std/latest/async_std/))
 - [smol: A small and fast async runtime for Rust](https://github.com/smol-rs/smol)
 
