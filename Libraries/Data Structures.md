@@ -16,6 +16,9 @@ Concurrent:
 - [std::vec](https://doc.rust-lang.org/std/vec/index.html)
 
   [Storing Lists of Values with Vectors - The Rust Programming Language](https://doc.rust-lang.org/book/ch08-01-vectors.html)
+
+  [When does `vec.into_iter().map(...).collect()` reallocate and when doesn't it? : r/rust](https://www.reddit.com/r/rust/comments/16hx79e/when_does_vecinto_itermapcollect_reallocate_and/)
+  - [`map_in_place`: A rust library for reusing heap allocations](https://github.com/tormol/map_in_place)
   
 - [rust-smallvec: "Small vector" optimization for Rust: store up to a small number of items on the stack](https://github.com/servo/rust-smallvec)
 - [tinyvec: Just, really the littlest Vec you could need. So smol.](https://github.com/Lokathor/tinyvec)
