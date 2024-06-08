@@ -83,3 +83,5 @@ In fact, one can store the discriminant in the pointer itself, known as **[tagge
 - [ptr-union: Pointer unions the size of a pointer](https://github.com/CAD97/pointer-utils) ([Docs.rs](https://resume.cad97.com/pointer-utils/ptr_union/index.html))
 - [enum-ptr: Ergonomic tagged pointer](https://github.com/QuarticCat/enum-ptr)
 - [tagged-pointer-as-enum](https://github.com/iliabylich/tagged-pointer-as-enum)
+
+See also [tagged pointers](Pointers.md#tagged-pointers).

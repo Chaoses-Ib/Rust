@@ -22,3 +22,11 @@
 > `AsRef` is a trait for explicit conversions with the semantics of a by-reference conversion at a negligible runtime cost.
 
 ## [→Smart pointers](../../../Libraries/Smart%20Pointers.md)
+
+## Metadata
+[Rust Pointer Metadata](https://bd103.github.io/blog/2023-08-06-ptr-metadata)
+
+## Tagged pointers
+- [ointers: What do you call a pointer we stole the high bits off? An ointer.](https://github.com/irrustible/ointers)
+
+See also [pointer enums](Enumerations.md#pointer-enums).
