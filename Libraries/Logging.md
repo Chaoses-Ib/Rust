@@ -10,6 +10,8 @@
 
   [Structured Logging - Issue #149 - rust-lang/log](https://github.com/rust-lang/log/issues/149)
 
+  [how to disable logging for certain crates : r/rust](https://www.reddit.com/r/rust/comments/85qp50/how_to_disable_logging_for_certain_crates/)
+
   Implementations:
   - [`env_logger`: A logging implementation for `log` which is configured via an environment variable.](https://github.com/rust-cli/env_logger)
   - [`fern`: Simple, efficient logging for Rust](https://github.com/daboross/fern)
@@ -30,10 +32,20 @@
 ## [tracing: Application level tracing for Rust.](https://github.com/tokio-rs/tracing)
 [Docs.rs](https://docs.rs/tracing/latest/tracing/)
 
-- `log!()` → `event!()`, `log_enabled!()` → `event_enabled!()`
-  - [Non-const event level - Issue #2730 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/2730)
+- `macro_use`
+  ```rust
+  #[macro_use(trace, info, debug, warn, error)]
+  extern crate tracing;
+  ```
+
+- `log`
+  - `log!()` → `event!()`
+  - `log_enabled!()` → `event_enabled!()`
+  - [→Non-const event level](#levels)
 
 - [`tracing_subscriber`](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/)
+  - `DEFAULT_MAX_LEVEL` is `INFO`.
+
   - Dynamic layers
     - A `Layer` wrapped in an `Option` also implements the `Layer` trait. This allows individual layers to be enabled or disabled at runtime while always producing a `Subscriber` of the same type.
     - If a `Layer` may be one of several different types, note that` Box<dyn Layer<S> + Send + Sync>` implements `Layer`. This may be used to erase the type of a `Layer`. The `Layer::boxed` method is provided to make boxing a `Layer` more convenient, but `Box::new` may be used as well.
@@ -56,6 +68,7 @@
 
 - [`tracing_appender`](https://docs.rs/tracing-appender/latest/tracing_appender/)
   - [`non_blocking`](https://docs.rs/tracing-appender/latest/tracing_appender/non_blocking/index.html)
+    - If `WorkerGuard` is dropped, events will be *silently ignored*.
   - To write to files, use [`RollingFileAppender`](https://docs.rs/tracing-appender/latest/tracing_appender/rolling/index.html).
   - `RollingFileAppender` will *panic* if it failed to open the log file.
 
@@ -104,6 +117,39 @@
       prev_hook(panic_info);
   }));
   ```
+
+### Levels
+```rust
+#[repr(usize)]
+enum LevelInner {
+    /// Designates very low priority, often extremely verbose, information.
+    Trace = 0,
+    /// Designates lower priority information.
+    Debug = 1,
+    /// Designates useful information.
+    Info = 2,
+    /// Designates hazardous situations.
+    Warn = 3,
+    /// Designates very serious errors.
+    Error = 4,
+}
+```
+- The comparisons is inverted.
+  
+  > The discriminants for the `LevelInner` enum are assigned in "backwards" order, with `TRACE` having the *lowest* value. However, we want `TRACE` to compare greater-than all other levels.
+
+- `level_enabled!()`
+  ```rust
+  macro_rules! level_enabled {
+      ($lvl:expr) => {
+          $lvl <= $crate::level_filters::STATIC_MAX_LEVEL
+              && $lvl <= $crate::level_filters::LevelFilter::current()
+      };
+  }
+  ```
+  Is `STATIC_MAX_LEVEL` always larger than `LevelFilter::current()`?
+
+- [Non-const event level - Issue #2730 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/2730)
 
 ## Testing
 [^log-test]

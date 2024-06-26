@@ -142,6 +142,8 @@ mod ffi {
 - [Error handling](https://cxx.rs/binding/result.html)
 
 Types:
+- [Shared types](https://cxx.rs/shared.html)
+
 - Use `rust::` types if you want to be friendlier to Rust users, and `std::` types if you want to be friendlier to C++ users.
 
 - [How to use opaque types in threads? - Issue #1175 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/1175)
