@@ -87,6 +87,12 @@ enum LevelInner {
 
   [Unable to dynamically configure with builder - Issue #575 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/575)
 
+- ANSI: [→nu-ansi-term](TUI/README.md#styling)
+  
+  [ANSI broken on Windows 10 - Issue #445 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/445)
+
+  [`tracing-subscriber` should not use `nu-ansi-term` and prefer another crate like `owo_colors` or `colored` - Issue #2759 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/2759)
+
 - `with_writer` replaces the writer, rather than combining them.
 
   [Multiple Writers or Subscribers - Issue #971 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/971)

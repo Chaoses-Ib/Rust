@@ -58,5 +58,6 @@
 - [→Inter-Process Communication](https://github.com/Chaoses-Ib/ConcurrentComputing/blob/main/Distributed/IPC/README.md#rust)
 - User Interfaces
   - [Command Line Interface](Libraries/UI/Command%20Line.md)
+- [TUI](Libraries/TUI/README.md)
 - GUI
   - [Tauri](Libraries/GUI/Tauri/README.md)
