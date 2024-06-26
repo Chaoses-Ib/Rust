@@ -157,6 +157,18 @@ std::panic::set_hook(Box::new(move |panic_info| {
 }));
 ```
 
+### Tools
+- [tracing-tree](https://github.com/davidbarsky/tracing-tree)
+- [tokio-console: a debugger for async rust!](https://github.com/tokio-rs/console)
+- OpenTelemetry
+  - [Jaeger: open source, distributed tracing platform](https://www.jaegertracing.io/)
+- [Log Analyzer Pro (lap)](https://github.com/MrCasCode/log-analyzer-pro)
+- [rust-logviewer: A simple log viewer UI for typical Rust logs](https://github.com/cfsamson/rust-logviewer)
+
+[tracing: Provide a GUI/Console-Based Visualization of Spans and Events - Issue #884 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/884)
+
+[\[Ask r/rust\] What is your best way to consume `tracing` logs? : r/rust](https://www.reddit.com/r/rust/comments/153yags/ask_rrust_what_is_your_best_way_to_consume/)
+
 ## Testing
 [^log-test]
 
