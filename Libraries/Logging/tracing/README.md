@@ -1,35 +1,4 @@
-# Logging
-- [log: Logging implementation for Rust](https://github.com/rust-lang/log)
-
-  ```rust
-  #[macro_use(trace, info, debug, warn, error)]
-  extern crate log;
-  ```
-
-  The evaluation of arguments is lazy.
-
-  [Structured Logging - Issue #149 - rust-lang/log](https://github.com/rust-lang/log/issues/149)
-
-  [how to disable logging for certain crates : r/rust](https://www.reddit.com/r/rust/comments/85qp50/how_to_disable_logging_for_certain_crates/)
-
-  Implementations:
-  - [`env_logger`: A logging implementation for `log` which is configured via an environment variable.](https://github.com/rust-cli/env_logger)
-  - [`fern`: Simple, efficient logging for Rust](https://github.com/daboross/fern)
-  - [`win_dbg_logger`](https://docs.rs/win_dbg_logger/*/win_dbg_logger/)
-  - [`log-once`: Helper macros for logging events only once.](https://github.com/Luthaf/log-once)
-  - [rust-log-panics: A panic hook which logs panics rather than printing them.](https://github.com/sfackler/rust-log-panics)
-
-- [tracing](#tracing-application-level-tracing-for-rust)
-
-- [slog: Structured, contextual, extensible, composable logging for Rust](https://github.com/slog-rs/slog)
-
-  [Slog vs tracing: Which one do you prefer : rust](https://www.reddit.com/r/rust/comments/kdo29n/slog_vs_tracing_which_one_do_you_prefer/)
-
-[What's your approach to logging and tracing in production Rust code? : rust](https://www.reddit.com/r/rust/comments/182vkod/whats_your_approach_to_logging_and_tracing_in/)
-
-[Blocking prints in async code : rust](https://www.reddit.com/r/rust/comments/qhoevk/blocking_prints_in_async_code/)
-
-## [tracing: Application level tracing for Rust.](https://github.com/tokio-rs/tracing)
+# [tracing: Application level tracing for Rust.](https://github.com/tokio-rs/tracing)
 [Docs.rs](https://docs.rs/tracing/latest/tracing/)
 
 From `log`:
@@ -39,18 +8,18 @@ From `log`:
 
 [Custom Logging in Rust Using tracing and tracing-subscriber | Bryan Burgers](https://burgers.io/custom-logging-in-rust-using-tracing)
 
-### [Metadata](https://docs.rs/tracing/latest/tracing/struct.Metadata.html)
+## [Metadata](https://docs.rs/tracing/latest/tracing/struct.Metadata.html)
 - All data has to be `'static` except `fields`.
 
 - [tracing-dynamic: A small library to allow you to create dynamic attributes on spans and events.](https://github.com/BrynCooke/tracing-dynamic)
 
-#### Targets
+### Targets
 - Can only be `&'static str`.
 - Can be empty, but not `None`. It may still be formatted as `:`.
 
-#### Levels
+### Levels
 ```rust
-#[repr(usize)]
+[repr(usize)]
 enum LevelInner {
     /// Designates very low priority, often extremely verbose, information.
     Trace = 0,
@@ -87,7 +56,7 @@ enum LevelInner {
 
 - [Non-const event level - Issue #2730 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/2730)
 
-### [`tracing_subscriber`](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/)
+## [`tracing_subscriber`](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/)
 - `DEFAULT_MAX_LEVEL` is `INFO`.
 
 - The APIs of subscribers and layers are similar but different.
@@ -100,7 +69,7 @@ enum LevelInner {
 
   [Unable to dynamically configure with builder - Issue #575 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/575)
 
-- ANSI: [→nu-ansi-term](TUI/README.md#styling)
+- ANSI: [→nu-ansi-term](../../TUI/README.md#styling)
   
   [ANSI broken on Windows 10 - Issue #445 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/445)
 
@@ -122,7 +91,7 @@ enum LevelInner {
 
 What will happen if writer's `write` returns `Err`?
 
-### [`tracing_appender`](https://docs.rs/tracing-appender/latest/tracing_appender/)
+## [`tracing_appender`](https://docs.rs/tracing-appender/latest/tracing_appender/)
 - [`non_blocking`](https://docs.rs/tracing-appender/latest/tracing_appender/non_blocking/index.html)
   - If `WorkerGuard` is dropped, events will be *silently ignored*.
 - To write to files, use [`RollingFileAppender`](https://docs.rs/tracing-appender/latest/tracing_appender/rolling/index.html).
@@ -133,7 +102,7 @@ What will happen if writer's `write` returns `Err`?
   initializing rolling file appender failed: InitError { context: "failed to create initial log file", source: Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" } }
   ```
 
-### [tracing-panic: A custom panic hook to capture panic info in your telemetry pipeline](https://github.com/LukeMathWalker/tracing-panic)
+## [tracing-panic: A custom panic hook to capture panic info in your telemetry pipeline](https://github.com/LukeMathWalker/tracing-panic)
 - No `backtrace` support.
 
 Alternative:
@@ -174,7 +143,7 @@ std::panic::set_hook(Box::new(move |panic_info| {
 }));
 ```
 
-### Tools
+## Tools
 - [tracing-tree](https://github.com/davidbarsky/tracing-tree)
 - [tokio-console: a debugger for async rust!](https://github.com/tokio-rs/console)
 - OpenTelemetry
@@ -185,31 +154,3 @@ std::panic::set_hook(Box::new(move |panic_info| {
 [tracing: Provide a GUI/Console-Based Visualization of Spans and Events - Issue #884 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/884)
 
 [\[Ask r/rust\] What is your best way to consume `tracing` logs? : r/rust](https://www.reddit.com/r/rust/comments/153yags/ask_rrust_what_is_your_best_way_to_consume/)
-
-## Testing
-[^log-test]
-
-- Macro aliasing
-  ```rust
-  #[cfg(not(test))] 
-  use log::{error, warn, info, debug, trace};
-
-  #[cfg(test)]
-  use std::{eprintln as error, eprintln as warn, eprintln as info, eprintln as debug, eprintln as trace};
-  ```
-  Not compatible with `tracing`.
-
-- [test-log: A replacement of the `#[test]` attribute that initializes logging and/or tracing infrastructure before running tests.](https://github.com/d-e-s-o/test-log)
-
-  ```rust
-  #[cfg(test)]
-  #[macro_use(test)]
-  extern crate test_log;
-  ```
-
-  When used with `tracing`, requries `tracing-subscriber` with `env-filter` feature enabled.
-
-- [tracing-test: Access and evaluate tracing logs in async and sync tests.](https://github.com/dbrgn/tracing-test)
-
-
-[^log-test]: [Is it possible to use Rust's log info for tests? - Stack Overflow](https://stackoverflow.com/questions/67087597/is-it-possible-to-use-rusts-log-info-for-tests)

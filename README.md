@@ -53,7 +53,8 @@
 - [Cryptology](Libraries/Cryptology.md)
 - [Serialization](Libraries/Serialization.md)
 - [I/O](Libraries/IO.md)
-- [Logging](Libraries/Logging.md)
+- [Logging](Libraries/Logging/README.md)
+  - [tracing](Libraries/Logging/tracing/README.md)
 - [Error Reporting](Libraries/Error%20Reporting.md)
 - [→Inter-Process Communication](https://github.com/Chaoses-Ib/ConcurrentComputing/blob/main/Distributed/IPC/README.md#rust)
 - User Interfaces
