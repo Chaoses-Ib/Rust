@@ -1,6 +1,7 @@
 # Chrono
 - [std::time](https://doc.rust-lang.org/std/time/index.html)
 - [chrono: Date and time library for Rust](https://github.com/chronotope/chrono) ([Docs.rs](https://docs.rs/chrono/latest/chrono/))
+  - [chrono::format::strftime](https://docs.rs/chrono/latest/chrono/format/strftime/index.html#specifiers)
 
 [What timestamp format is 48 bits / 6 bytes long? - Stack Overflow](https://stackoverflow.com/questions/56621877/what-timestamp-format-is-48-bits-6-bytes-long)
 

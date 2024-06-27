@@ -37,7 +37,18 @@ From `log`:
 - `log_enabled!()` → `event_enabled!()`
 - [→Non-const event level](#levels)
 
-### Levels
+[Custom Logging in Rust Using tracing and tracing-subscriber | Bryan Burgers](https://burgers.io/custom-logging-in-rust-using-tracing)
+
+### [Metadata](https://docs.rs/tracing/latest/tracing/struct.Metadata.html)
+- All data has to be `'static` except `fields`.
+
+- [tracing-dynamic: A small library to allow you to create dynamic attributes on spans and events.](https://github.com/BrynCooke/tracing-dynamic)
+
+#### Targets
+- Can only be `&'static str`.
+- Can be empty, but not `None`. It may still be formatted as `:`.
+
+#### Levels
 ```rust
 #[repr(usize)]
 enum LevelInner {
@@ -79,6 +90,8 @@ enum LevelInner {
 ### [`tracing_subscriber`](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/)
 - `DEFAULT_MAX_LEVEL` is `INFO`.
 
+- The APIs of subscribers and layers are similar but different.
+
 - Dynamic layers
   - A `Layer` wrapped in an `Option` also implements the `Layer` trait. This allows individual layers to be enabled or disabled at runtime while always producing a `Subscriber` of the same type.
   - If a `Layer` may be one of several different types, note that` Box<dyn Layer<S> + Send + Sync>` implements `Layer`. This may be used to erase the type of a `Layer`. The `Layer::boxed` method is provided to make boxing a `Layer` more convenient, but `Box::new` may be used as well.
@@ -102,6 +115,10 @@ enum LevelInner {
   [rust - How to set custom timestamp format using tracing-subscriber? - Stack Overflow](https://stackoverflow.com/questions/76678749/how-to-set-custom-timestamp-format-using-tracing-subscriber)
 
   At least one feature of `chrono` and `time` has to be enabled to use time format.
+
+  ```rust
+  let timer = tracing_subscriber::fmt::time::ChronoLocal::new("%m-%d %H:%M:%S".to_string());
+  ```
 
 What will happen if writer's `write` returns `Err`?
 
