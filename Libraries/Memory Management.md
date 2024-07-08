@@ -2,6 +2,16 @@
 [Stack overflow with Boxed array - Issue #53827 - rust-lang/rust](https://github.com/rust-lang/rust/issues/53827)
 - [How to allocate structs on the heap without taking up space on the stack in stable Rust? - Stack Overflow](https://stackoverflow.com/questions/59232877/how-to-allocate-structs-on-the-heap-without-taking-up-space-on-the-stack-in-stab)
 
+## Layout
+[std::alloc::Layout](https://doc.rust-lang.org/std/alloc/struct.Layout.html)
+- Size
+- Alignment
+
+[Why does "Heap.dealloc" need "Layout"? - The Rust Programming Language Forum](https://users.rust-lang.org/t/why-does-heap-dealloc-need-layout/17231)
+> Layout is used for alloc/dealloc because Rust uses sized deallocation - the allocator receives the size info explicitly.
+
+[Layouts and dealloc: An unfortunate aspect of Rust's allocation API - shift.click](https://shift.click/blog/on-dealloc/)
+
 ## Memory allocators
 [Allocator traits and std::heap · Issue #32838 · rust-lang/rust](https://github.com/rust-lang/rust/issues/32838)
 
