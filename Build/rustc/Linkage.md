@@ -8,6 +8,44 @@
 
 [→CXX](/Language/FFI.md#cxx)
 
+## `dylib`
+[Rust Plugins - Rust Tutorials](https://zicklag.github.io/rust-tutorials/rust-plugins.html)
+- [Appendix A: Rust Library Types - Rust Tutorials](https://zicklag.github.io/rust-tutorials/appendix-a.html)
+
+  [What is the Difference Between `dylib` and `cdylib` - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/what-is-the-difference-between-dylib-and-cdylib/28847)
+
+[ABI stability guarantee of dylib vs cdylib - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/abi-stability-guarantee-of-dylib-vs-cdylib/50879)
+
+## `cdylib`
+Libraries:
+- [libloading: Bindings around the platform's dynamic library loading primitives with greatly improved memory safety.](https://github.com/nagisa/rust_libloading/)
+  - [sharedlib: A cross-platform shared library loader.](https://github.com/Tyleo/sharedlib)
+
+- [szymonwieloch/dlopen: Rust library for opening and working with dynamic link libraries.](https://github.com/szymonwieloch/rust-dlopen)
+  - [ahmed-masud/dlopen](https://github.com/ahmed-masud/rust-dlopen)
+    - [dlopen2](https://github.com/OpenByteDev/dlopen2)
+      - [Comparison with other libraries](https://github.com/OpenByteDev/dlopen2#comparison-with-other-libraries)
+      - Warning: structure field / method `MyFunc` should have a snake case name
+        ```rust
+        #[derive(WrapperApi)]
+        struct Api {
+            #[allow(non_snake_case)]
+            MyFunc: ...
+        }
+        ```
+        `#[allow(non_snake_case)] struct Api` is not enough.
+
+- [abi\_stable\_crates: Rust-to-Rust ffi,ffi-safe equivalents of std types,and creating libraries loaded at startup.](https://github.com/rodrimati1992/abi_stable_crates)
+
+- [dl\_api: The easiest, simplest and safest way to load dynamic (shared object) libraries from Rust!](https://github.com/AldaronLau/dl_api) (discontinued)
+
+Windows-only:
+- [windows-dll: Macro for dynamically loading windows dll functions](https://github.com/thisKai/rust-windows-dll)
+- [rusty-memory-loadlibrary: Load DLLs from memory with rust](https://github.com/malware-unicorn/rusty-memory-loadlibrary)
+- [reflective\_pe\_dll\_loader: A reflective PECOFF DLL loader](https://github.com/JohnScience/reflective_pe_dll_loader)
+- [valarauca/dynlib: Use DLL's in Rust](https://github.com/valarauca/dynlib) (discontinued)
+- [DLL loader in Rust. Going down the rabbit hole with Rust... | by Dan Groner | Medium](https://medium.com/@dangroner/dlls-in-rust-e1322da511da)
+
 ## CRT
 [How to link CRT statically when building with MSVC? : r/rust](https://www.reddit.com/r/rust/comments/ekts0d/how_to_link_crt_statically_when_building_with_msvc/)
 
