@@ -1,4 +1,10 @@
 # TUI
+## Libraries
+- [inquire: A Rust library for building interactive prompts](https://github.com/mikaelmello/inquire)
+
+Discussions:
+- 2021-09 [CLI UI library for Rust : r/rust](https://www.reddit.com/r/rust/comments/pxhl4d/cli_ui_library_for_rust/)
+
 ## Styling
 Streams:
 - [anstyle: ANSI text styling](https://github.com/rust-cli/anstyle)
