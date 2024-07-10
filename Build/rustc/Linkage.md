@@ -27,6 +27,7 @@ Libraries:
       - [Comparison with other libraries](https://github.com/OpenByteDev/dlopen2#comparison-with-other-libraries)
       - Warning: structure field / method `MyFunc` should have a snake case name
         ```rust
+        #[allow(non_snake_case)]
         #[derive(WrapperApi)]
         struct Api {
             #[allow(non_snake_case)]

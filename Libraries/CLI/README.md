@@ -5,6 +5,14 @@ Libraries:
 - [std::env::args](https://doc.rust-lang.org/1.39.0/std/env/fn.args.html)
 
 - [clap: A full featured, fast Command Line Argument Parser for Rust](https://github.com/clap-rs/clap)
+  - [clap::\_derive::\_tutorial](https://docs.rs/clap/latest/clap/_derive/_tutorial/index.html)
+  - Args
+    - Conflicted short option names are checked at runtime rather than compile time.
+    - `Path`
+  
+      [Accepting file paths as arguments in Clap](https://www.rustadventure.dev/introducing-clap/clap-v4/accepting-file-paths-as-arguments-in-clap)
+
+      [Parse Path with clap and throw error on invalid path - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/parse-path-with-clap-and-throw-error-on-invalid-path/94443)
 
   Used by Cargo.
 
