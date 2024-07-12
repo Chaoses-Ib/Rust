@@ -35,6 +35,33 @@ rustup default nightly-2024-02-28
 
   [PSA: For cross-compiling please use the "Cross" tool. : rust](https://www.reddit.com/r/rust/comments/18z5g3g/psa_for_crosscompiling_please_use_the_cross_tool/)
 
+- Multi-target build
+
+  Changing target will break incremental build (`.rustc_info.json`):
+  ```sh
+  cargo build
+  cargo build --target i686-pc-windows-msvc
+  ```
+
+  The solution is to build multiple targets at once:
+  ```sh
+  cargo build --target x86_64-pc-windows-msvc --target i686-pc-windows-msvc
+  ```
+  However, this will make the output directory of host target be `target/x86_64-pc-windows-msvc`, and break other the incremental build of other members in the workspace, if any.
+
+  Another solution is to use different target directories:
+  ```sh
+  cargo build
+  cargo build --target i686-pc-windows-msvc --target-dir ./target/32
+  ```
+
+  [Tracking issues for the `-Zmultitarget` feature - Issue #8176 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/8176)
+
+  [Per crate build target in workspace - Issue #7004 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/7004)
+  - No multi-target support.
+
+  [Running cross and cargo builds for different targets breaks incremental compilation - Issue #551 - cross-rs/cross](https://github.com/cross-rs/cross/issues/551)
+
 - [How to build for tier 3 target not included in `rustup target list`? - Stack Overflow](https://stackoverflow.com/questions/67352828/how-to-build-for-tier-3-target-not-included-in-rustup-target-list)
 
 ### Windows
