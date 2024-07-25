@@ -1,6 +1,8 @@
 # rustc
 [The rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html)
 
+[Rust Compiler Development Guide](https://rustc-dev-guide.rust-lang.org/)
+
 ## Nightly
 [Downside to using rust nightly as a default toolchain? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/downside-to-using-rust-nightly-as-a-default-toolchain/62428)
 > For some projects we have been using nightly for over a year now. In production. Because the Rocket web framework required features from nightly. Nothing bad has happened.
@@ -65,6 +67,8 @@ rustup default nightly-2024-02-28
 - [How to build for tier 3 target not included in `rustup target list`? - Stack Overflow](https://stackoverflow.com/questions/67352828/how-to-build-for-tier-3-target-not-included-in-rustup-target-list)
 
 ### Windows
+- `#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]`
+
 - v1.78 (2024-02): [Updated baseline standards for Windows targets | Rust Blog](https://blog.rust-lang.org/2024/02/26/Windows-7.html)
 
   `x86_64-win7-windows-msvc` and `i686-win7-windows-msvc`
