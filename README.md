@@ -62,6 +62,7 @@
 - [Serialization](Libraries/Serialization.md)
 - [I/O](Libraries/IO.md)
 - [Files](Libraries/Files/README.md)
+- [Configuration](Libraries/Config.md)
 - [Logging](Libraries/Logging/README.md)
   - [tracing](Libraries/Logging/tracing/README.md)
 - [Error Reporting](Libraries/Error%20Reporting.md)

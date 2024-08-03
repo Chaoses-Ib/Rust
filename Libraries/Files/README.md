@@ -18,3 +18,4 @@
 ## Paths
 - [std::path](https://doc.rust-lang.org/std/path/index.html)
 - [camino: Like Rust's `std::path::Path`, but UTF-8.](https://github.com/camino-rs/camino)
+- [directories-rs: a mid-level library that provides config/cache/data paths, following the respective conventions on Linux, macOS and Windows](https://github.com/dirs-dev/directories-rs#basedirs)
