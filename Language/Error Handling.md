@@ -127,6 +127,34 @@ fn main() -> Result<(), Box<dyn Error>> {
 }
 ```
 
+### Check and wrap `unwrap()`
+`Vec<Option<_>>`:
+```rust
+let options: Vec<Option<_>>;
+if options
+    .iter()
+    .any(|option| option.is_none())
+{
+    return false;
+}
+// fn options<'a>(
+//     self: &'a mut Self,
+// ) -> impl Iterator<Item = &'a mut Vec<InternalSearchResult>> {
+//     self
+//         .options
+//         .iter_mut()
+//         .map(|option| option.as_mut().unwrap())
+// }
+macro_rules! options {
+    ($session:expr) => {
+        $self
+            .options
+            .iter_mut()
+            .map(|option| option.as_mut().unwrap())
+    };
+}
+```
+
 ## Stack traces
 - [std::backtrace](https://doc.rust-lang.org/std/backtrace/index.html) (v1.65)
 - [backtrace-rs: Backtraces in Rust](https://github.com/rust-lang/backtrace-rs) (v1.40)
