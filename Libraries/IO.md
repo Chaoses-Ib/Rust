@@ -22,3 +22,7 @@
 [How do I read the output of a child process without blocking in Rust? - Stack Overflow](https://stackoverflow.com/questions/34611742/how-do-i-read-the-output-of-a-child-process-without-blocking-in-rust)
 
 [Display *and* capture STDOUT and STDERR from a Command - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/display-and-capture-stdout-and-stderr-from-a-command/81296)
+
+Capturing:
+- [Capture process output as it comes in - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/capture-process-output-as-it-comes-in/83787)
+- [capture-stdio: Rust crate to capture stdin/stdout/stderr of the current process.](https://github.com/jiegec/capture-stdio)

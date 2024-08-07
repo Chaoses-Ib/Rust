@@ -47,3 +47,7 @@ Strings:
     Without this, the ANSI will only work in Windows Terminal, but not in Windows Console Host (conhost).
 
 - [inline\_colorization: format!(Lets the user {color\_red}colorize{color\_reset} the and {style\_underline}style the output{style\_reset} text using inline variables);](https://github.com/eliasjonsson023/inline_colorization)
+
+## Progress bars
+- [indicatif: A command line progress reporting library for Rust](https://github.com/console-rs/indicatif)
+- [kdam: A console progress bar library for Rust. (inspired by tqdm & rich.progress)](https://github.com/clitic/kdam)
