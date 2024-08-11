@@ -98,6 +98,13 @@ pub struct Screen {
 [rust - Why can impl trait not be used to return multiple / conditional types? - Stack Overflow](https://stackoverflow.com/questions/52001592/why-can-impl-trait-not-be-used-to-return-multiple-conditional-types)
 
 ### [Object safety](https://doc.rust-lang.org/reference/items/traits.html#object-safety)
+A trait is *object safe* if it has the following qualities (defined in [RFC 255](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md)):
+- It must not have any associated constants.
+- All associated functions must either be dispatchable from a trait object or be explicitly non-dispatchable.
+- Have a receiver with one of the following types: ...
+  - The receiver cannot be `Self`, but can be `Box<Self>` and `&mut Self`.
+- ...
+
 [How to clone a struct storing a boxed trait object? - Stack Overflow](https://stackoverflow.com/questions/30353462/how-to-clone-a-struct-storing-a-boxed-trait-object)
 - `fn clone_box(&self) -> Box<dyn MyTrait>;`
 
