@@ -6,6 +6,7 @@
 - [rustc\_builtin\_macros](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_builtin_macros/index.html)
 - [paste: Macros for all your token pasting needs](https://github.com/dtolnay/paste)
 - [duplicate: Easy code duplicate with substitution for Rust](https://github.com/Emoun/duplicate)
+- [trait\_gen: Trait implementation generator macro](https://github.com/blueglyph/trait_gen)
 
 ## Declarative macros
 ```rust

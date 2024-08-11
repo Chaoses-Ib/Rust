@@ -11,6 +11,16 @@ struct User {
 }
 ```
 
+## Offsets
+- [`core::mem::offset_of!()`](https://doc.rust-lang.org/std/mem/macro.offset_of.html) (v1.77)
+- [memoffset: offsetof for Rust](https://github.com/Gilnaa/memoffset)
+  - [offset\_of! for unsized structs - Issue #25 - Gilnaa/memoffset](https://github.com/Gilnaa/memoffset/issues/25)
+- [field-offset: Safe pointer-to-member functionality for rust](https://github.com/Diggsey/rust-field-offset)
+  - 通过 uninit_ptr 和 closure 间接算出偏移。
+- [repr\_offset\_crates: Offsets of fields for types with a stable layout](https://github.com/rodrimati1992/repr_offset_crates/)
+
+[Idea: "Access" trait and member offset - language design - Rust Internals](https://internals.rust-lang.org/t/idea-access-trait-and-member-offset/8355)
+
 ## Bit fields
 [rust - How to implement bitwise operations on a bitflags enum? - Stack Overflow](https://stackoverflow.com/questions/43509560/how-to-implement-bitwise-operations-on-a-bitflags-enum)
 

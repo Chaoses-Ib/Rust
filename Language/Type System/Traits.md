@@ -97,6 +97,26 @@ pub struct Screen {
 
 [rust - Why can impl trait not be used to return multiple / conditional types? - Stack Overflow](https://stackoverflow.com/questions/52001592/why-can-impl-trait-not-be-used-to-return-multiple-conditional-types)
 
+[`std::ptr::DynMetadata`](https://doc.rust-lang.org/nightly/std/ptr/struct.DynMetadata.html)
+- The vtable notably contains:
+  - Type size
+  - Type alignment
+  - A pointer to the type's `drop_in_place` impl (may be a no-op for plain-old-data)
+  - Pointers to all the methods for the type's implementation of the trait
+
+  Note that the first three are special because they’re necessary to allocate, drop, and deallocate any trait object.
+
+- [`pointer::to_raw_parts()`](https://doc.rust-lang.org/nightly/std/primitive.pointer.html#method.to_raw_parts)
+
+- [How to obtain address of trait object? - Stack Overflow](https://stackoverflow.com/questions/61378906/how-to-obtain-address-of-trait-object)
+
+  [Extracting raw pointer to a trait function - Stack Overflow](https://stackoverflow.com/questions/76889300/extracting-raw-pointer-to-a-trait-function)
+
+  [Is there a way to determine the offsets of each of the trait methods in the VTable? - Stack Overflow](https://stackoverflow.com/questions/39714105/is-there-a-way-to-determine-the-offsets-of-each-of-the-trait-methods-in-the-vtab)
+  - Comparing
+
+[No need for pointer to member functions in Rust : r/rust](https://www.reddit.com/r/rust/comments/l99lft/no_need_for_pointer_to_member_functions_in_rust/)
+
 ### [Object safety](https://doc.rust-lang.org/reference/items/traits.html#object-safety)
 A trait is *object safe* if it has the following qualities (defined in [RFC 255](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md)):
 - It must not have any associated constants.
