@@ -1,7 +1,7 @@
 # Foreign Function Interface
 - [Diplomat: Experimental Rust tool for generating FFI definitions allowing many other languages to call Rust code](https://github.com/rust-diplomat/diplomat/)
 
-  [Supported languages](https://github.com/rust-diplomat/diplomat/tree/main/tool/src): C, C++, JS, C#, Dart.
+  [Supported languages](https://github.com/rust-diplomat/diplomat/tree/main/tool/src): C, C++, JS, C#, Kotlin, Dart.
   - [Support for free functions - Issue #392 - rust-diplomat/diplomat](https://github.com/rust-diplomat/diplomat/issues/392)
   - No support for bit flags.
   
@@ -81,11 +81,19 @@ Problems:
 
 ## C++
 - CXX
+- [Zngur: A C++/Rust interop tool](https://github.com/HKalbasi/zngur)
+
+  [How it compares to other tools - Zngur](https://hkalbasi.github.io/zngur/how_it_compares.html)
+
+  [r/rust](https://www.reddit.com/r/rust/comments/174y6dw/announcing_zngur_a_crust_interop_tool/)
+  
+  [Hacker News](https://news.ycombinator.com/item?id=41271273)
 
 C++ to Rust:
 - Autocxx
 
 Rust to C++:
+- Zngur
 - Diplomat
 - cbindgen
 
@@ -137,14 +145,36 @@ mod ffi {
     
   A workaround is to make stub headers in the crate that include the actual headers by relative paths.
 
+- Since everything is generated to a single header file, it is very easy to cause circular dependencies if the C++ and Rust sides use types from each other.
+
+- Only documents in the `ffi` module will be included in the generated header file.
+
 - [Functions with explicit lifetimes](https://cxx.rs/extern-rust.html#functions-with-explicit-lifetimes)
 
 - [Error handling](https://cxx.rs/binding/result.html)
+
+- Tests
+
+  [Writing tests with CXX code causes linker issues - Issue #1318 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/1318)
+
+  [LNK2019 unresolved symbol for Vec<SharedStruct> using MSVC - Issue #1362 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/1362)
+
+  [Adding C++ Code in Rust cxx bridge unit tests - Issue #898 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/898)
+
+  [cxx::bridge behind a feature - Issue #1325 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/1325)
+
+  [Rust and C++ Unit testing with cxx : r/rust](https://www.reddit.com/r/rust/comments/nt4qkm/rust_and_c_unit_testing_with_cxx/)
 
 Types:
 - [Shared types](https://cxx.rs/shared.html)
 
 - Use `rust::` types if you want to be friendlier to Rust users, and `std::` types if you want to be friendlier to C++ users.
+
+- [`rust::Str`](https://cxx.rs/binding/str.html)/[`rust::String`](https://cxx.rs/binding/string.html)
+  - Constructors throws `std::invalid_argument` if not utf-8.
+  - `rust::String` can also be constructed by `lossy()`.
+  - `data()` has no null terminator.
+  - Not documented in header files, but only in the book.
 
 - [How to use opaque types in threads? - Issue #1175 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/1175)
 
