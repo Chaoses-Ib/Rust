@@ -8,6 +8,19 @@
 
 [→CXX](/Language/FFI.md#cxx)
 
+What if the library links other C libraries?
+- At leasy it's possible to bundle them yourself.
+  
+  [linux - How to merge two "ar" static libraries into one? - Stack Overflow](https://stackoverflow.com/questions/3821916/how-to-merge-two-ar-static-libraries-into-one)
+
+- They are bundled. The filenames in the final `.lib` are absolute paths to the `.obj` files, instead of `{crate}-{hash1}.{crate}.{hash2}-cgu-{n}-rcgu.o`.
+
+  The header files may be found at `%USERPROFILE%\.cargo\registry\src\index.crates.io-6f17d22bba15001f\foo-sys-0.1.0\include`.
+
+  Cargo is nearly a C++ package manager.
+
+  [How much work would be involved to use Cargo for C++? : r/rust](https://www.reddit.com/r/rust/comments/1d2d5ub/how_much_work_would_be_involved_to_use_cargo_for_c/)
+
 ## `dylib`
 [Rust Plugins - Rust Tutorials](https://zicklag.github.io/rust-tutorials/rust-plugins.html)
 - [Appendix A: Rust Library Types - Rust Tutorials](https://zicklag.github.io/rust-tutorials/appendix-a.html)

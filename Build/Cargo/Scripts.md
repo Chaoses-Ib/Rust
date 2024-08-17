@@ -1,6 +1,8 @@
 # Build Scripts
 [The Cargo Book](https://doc.rust-lang.org/cargo/reference/build-scripts.html)
 
+[rust-lang/cc-rs: Rust library for build scripts to compile C/C++ code into a Rust library](https://github.com/rust-lang/cc-rs)
+
 [Need a reliable way to get the target dir from the build script - Issue #9661 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/9661)
 
 [Copy files to target directory after build, before run - Issue #1759 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/1759)
