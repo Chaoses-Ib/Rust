@@ -26,3 +26,5 @@
 Capturing:
 - [Capture process output as it comes in - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/capture-process-output-as-it-comes-in/83787)
 - [capture-stdio: Rust crate to capture stdin/stdout/stderr of the current process.](https://github.com/jiegec/capture-stdio)
+
+[rust-subprocess: Execution of and interaction with external processes and pipelines](https://github.com/hniksic/rust-subprocess)
