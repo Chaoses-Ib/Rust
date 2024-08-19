@@ -1,14 +1,15 @@
 # Dependencies
 [The Cargo Book](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html)
 
-### Upgrading
+## Upgrading
 [cargo-edit: A utility for managing cargo dependencies from the command line.](https://github.com/killercup/cargo-edit)
 
 [\[SOLVED\] Update Cargo.toml after "cargo update" - The Rust Programming Language Forum](https://users.rust-lang.org/t/solved-update-cargo-toml-after-cargo-update/19442/2)
 - cargo-edit: `cargo upgrade`
+  - `cargo upgrade --incompatible`
 - [cargo-upgrades](https://gitlab.com/kornelski/cargo-upgrades)
 
-### Renaming dependencies
+## Renaming dependencies
 ```toml
 [package]
 name = "mypackage"
@@ -25,3 +26,17 @@ extern crate foo; // crates.io
 extern crate bar; // git repository
 extern crate baz; // registry `custom`
 ```
+
+## [Git dependencies](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#specifying-dependencies-from-git-repositories)
+- > Cargo assumes that we intend to use the latest commit on the default branch to build our package if we only specify the repo URL.
+
+  > You can combine the `git` key with the `rev`, `tag`, or `branch` keys to be more specific about which commit to use. Anything that is not a branch or a tag falls under `rev` key. This can be a commit hash like `rev = "4c59b707"`, or a named reference exposed by the remote repository such as `rev = "refs/pull/493/head"`.
+
+[Authentication](https://doc.rust-lang.org/cargo/appendix/git-authentication.html):
+- `failed to authenticate when downloading repository`
+
+  > attempted to find username/password via git's `credential.helper` support, but failed
+  > 
+  > if the git CLI succeeds then [`net.git-fetch-with-cli`](https://doc.rust-lang.org/cargo/reference/config.html#netgit-fetch-with-cli) may help
+
+- > Windows users will need to make sure that the `sh` shell is available in your `PATH`. This typically is available with the Git for Windows installation.
