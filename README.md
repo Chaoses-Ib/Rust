@@ -58,7 +58,6 @@
 - [Memory Management](Libraries/Memory%20Management.md)
 - [Data Structures](Libraries/Data%20Structures.md)
 - [Text](Libraries/Text.md)
-- [Chrono](Libraries/Chrono.md)
 - [Cryptology](Libraries/Cryptology.md)
 - [Serialization](Libraries/Serialization.md)
 - [I/O](Libraries/IO.md)
