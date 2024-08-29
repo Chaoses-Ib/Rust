@@ -1,7 +1,15 @@
 # rustc
-[The rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html)
+[The rustc book](https://doc.rust-lang.org/rustc/what-is-rustc.html), [GitHub](https://github.com/rust-lang/rust/tree/master/compiler)
 
 [Rust Compiler Development Guide](https://rustc-dev-guide.rust-lang.org/)
+
+## API
+[rustc\_driver and rustc\_interface - Rust Compiler Development Guide](https://rustc-dev-guide.rust-lang.org/rustc-driver.html)
+
+- [rustc\_driver - Rust](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_driver/)
+- [rustc\_interface - Rust](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_interface/)
+
+[Peeking at compiler-internal data (for fun and profit) - YouTube](https://www.youtube.com/watch?v=SKmd5A-1cSE)
 
 ## Nightly
 [Downside to using rust nightly as a default toolchain? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/downside-to-using-rust-nightly-as-a-default-toolchain/62428)
