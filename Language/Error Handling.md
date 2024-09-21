@@ -5,6 +5,21 @@ Rust groups errors into two major categories:
 
 Most languages don’t distinguish between these two kinds of errors and handle both in the same way, using mechanisms such as exceptions. Rust doesn’t have exceptions. Instead, it has the type `Result<T, E>` for recoverable errors and the `panic!` macro that stops execution when the program encounters an unrecoverable error.
 
+- Recoverable by the program: `Result<T, E>` + thiserror
+
+- Recoverable by the user: `Result<T, E>` + anyhow
+  - Or not worth writing the program to recover
+
+  如果程序无法处理，结构化和类型就没有意义。
+
+- Unrecoverable: `panic!`
+
+  但 panic 实际上仍可以通过重启线程、进程来 recover。它的真正意义是提供了一种不侵入函数签名的错误处理方式。适用于“这个错误太过于罕见，不值得因它而让 API 变得更加复杂”的场景。
+
+  显而易见，这种划分不会适合所有场景，比如需要处理内存分配失败的程序。常见的解决方案是增加另一套基于 `Result` 的 API，但这也显而易见地会带来新的问题：混乱、重复、复杂。
+
+  panic 是对到处 `Result` 认知成本太高的妥协，不是一个自然的设计。基于块的异常虽然可以解决到处 `Result` 认知成本太高的问题，但是又有隐式的隐患，频繁处理异常也很啰嗦。
+
 ## Unrecoverable errors: panic!
 By default, panics will print a failure message, unwind, clean up the stack, and quit. By setting the `RUST_BACKTRACE` environment variable to `1`, you can also have Rust display the call stack when a panic occurs to make it easier to track down the source of the panic.
 
@@ -15,6 +30,9 @@ Panic 仅会结束当前 thread，而不是结束整个 process。
 
 Handling:
 - [std::panic::set_hook](https://doc.rust-lang.org/std/panic/fn.set_hook.html)
+
+  > The panic hook is invoked when a thread panics, but before the panic runtime is invoked. As such, the hook will run with both the aborting and unwinding runtimes.
+
 - [std::panic::catch_unwind](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html)
 - [std::thread::panicking](https://doc.rust-lang.org/std/thread/fn.panicking.html)
 
@@ -73,9 +91,20 @@ pub trait Error: Debug + Display {
 ```
 
 - [anyhow: Flexible concrete Error type built on std::error::Error](https://github.com/dtolnay/anyhow)
+
+  > A trait object based error type for easy idiomatic error handling in Rust applications.
+
+  - [Recommendation on mixing exit codes with anyhow - Issue #247 - dtolnay/anyhow](https://github.com/dtolnay/anyhow/issues/247)
+
+  [Why I use `anyhow::Error` even in libraries - The Rust Programming Language Forum](https://users.rust-lang.org/t/why-i-use-anyhow-error-even-in-libraries/68592)
+
+  Libraries:
   - [eyre: A trait object based error handling type for easy idiomatic error handling and reporting in Rust applications](https://github.com/yaahc/eyre)
 - [thiserror: derive(Error) for struct and enum error types](https://github.com/dtolnay/thiserror)
 - [Quick Error: A rust-macro which makes errors easy to write](https://github.com/tailhook/quick-error)
+- [errgo: Generate enum variants inline](https://github.com/aatifsyed/errgo)
+
+  [err-as-you-go crate - anyhow meets thiserror : r/rust](https://www.reddit.com/r/rust/comments/11udxy8/errasyougo_crate_anyhow_meets_thiserror/)
 - [rust-lang-deprecated/failure: Error management](https://github.com/rust-lang-deprecated/failure)
 - [rust-lang-deprecated/error-chain: Error boilerplate for Rust](https://github.com/rust-lang-deprecated/error-chain)
 
@@ -126,6 +155,55 @@ fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 ```
+
+[Operator expressions - The Rust Reference](https://doc.rust-lang.org/reference/expressions/operator-expr.html#the-question-mark-operator)
+> The question mark operator (`?`) unwraps valid values or returns erroneous values, propagating them to the calling function. It is a unary postfix operator that can only be applied to the types `Result<T, E>` and `Option<T>`.
+> 
+> When applied to values of the `Result<T, E>` type, it propagates errors. If the value is `Err(e)`, then it will return `Err(From::from(e))` from the enclosing function or closure. If applied to `Ok(x)`, then it will unwrap the value to evaluate to `x`.
+
+[How to create an Error impl that can be converted to without `map_err` boilerplate - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/how-to-create-an-error-impl-that-can-be-converted-to-without-map-err-boilerplate/64391?u=detly)
+- [Can thiserror be converted into from arbitrary errors? - Issue #154 - dtolnay/thiserror](https://github.com/dtolnay/thiserror/issues/154)
+- [Conversion to anyhow - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/conversion-to-anyhow/54696)
+> Using `?` is not like, say, deref coercion where the compiler just adds as many as it needs to make a thing compile. In all of my examples, I need a chain of **two** conversions to get from the function's error to my custom error, that is:
+> ```
+> (function's error) -> Box<dyn Error ...> -> (custom error)
+> ```
+> The `?` operator will only automate one level of this.
+>
+> The way I ended up doing this was (a) make a new associated type for event sources with the trait bound `Into<Box<dynError+Sync+Send>>` (note the `Into`!) and adjusting internal event loop code to accomodate this. It has turned out to be quite a useful interface and does not prevent implementors from using fully structured errors *or* eg. anyhow.
+
+> Note that `anyhow::Error` doesn't actually implement `Error` precisely for this reason. You could possibly try opting for a similar solution. Alternatively, might it be possible to arrange things so that the user-defined callbacks always return a `Result<T, Box<dyn std::error::Error + Sync + Send>>`, which is then converted to your error type in your code where I assume the callback is actually called?
+
+`r?` →：
+- `r.context("")?`
+- `r.map_err(anyhow::Error::from)?`
+- `r.map_err(anyhow::Error::new)?`
+- `r.map_err(|e| anyhow!(e))?`
+- `r.map_err(|e| e.into())?`
+- [Explicit constructor from Box<dyn Error + Send + Sync> - Issue #83 - dtolnay/anyhow](https://github.com/dtolnay/anyhow/issues/83)
+- How about `r.anyhow()?`
+
+  Typing `.any` + <kbd>Tab</kbd> is much easier than `.map_` + <kbd>Tab</kbd> + `anyh` + <kbd>Tab</kbd> + `::E` + <kbd>Tab</kbd> + `::f` (+ <kbd>Backspace</kbd> + <kbd>→</kbd> + <kbd>Backspace</kbd>*2 to delete `(value)`).
+
+  ```rust
+  pub trait Anyhow<T> {
+      fn anyhow(self) -> anyhow::Result<T>;
+  }
+
+  impl<T, E> Anyhow<T> for std::result::Result<T, E>
+  where
+      E: std::error::Error + Send + Sync + 'static,
+  {
+      fn anyhow(self) -> anyhow::Result<T> {
+          match self {
+              Ok(value) => Ok(value),
+              Err(e) => Err(e.into()),
+          }
+      }
+  }
+  ```
+  - [Add `to_anyhow()` Result method. - Issue #312 - dtolnay/anyhow](https://github.com/dtolnay/anyhow/issues/312)
+  - [ToAnyhow in zellij\_utils::errors - Rust](https://docs.rs/zellij-utils/latest/zellij_utils/errors/trait.ToAnyhow.html) ([GitHub](https://github.com/zellij-org/zellij/blame/main/zellij-utils/src/errors.rs#L779))
 
 ### Check and wrap `unwrap()`
 `Vec<Option<_>>`:
