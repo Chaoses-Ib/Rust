@@ -16,7 +16,7 @@
 [rustdoc support for per-parameter documentation - Issue #57525 - rust-lang/rust](https://github.com/rust-lang/rust/issues/57525)
 
 ### [Reflection](Type%20System/Reflection.md)
-- bevy-reflect
+- bevy_reflect
   ```rust
   #[derive(bevy_reflect::Reflect)]
   pub enum MyEnum {
