@@ -117,6 +117,10 @@ pub struct Screen {
 
 [No need for pointer to member functions in Rust : r/rust](https://www.reddit.com/r/rust/comments/l99lft/no_need_for_pointer_to_member_functions_in_rust/)
 
+Static dispatch:
+- [enum\_dispatch](https://docs.rs/enum_dispatch/latest/enum_dispatch/)
+- [typetag: Serde serializable and deserializable trait objects](https://github.com/dtolnay/typetag)
+
 ### [Object safety](https://doc.rust-lang.org/reference/items/traits.html#object-safety)
 A trait is *object safe* if it has the following qualities (defined in [RFC 255](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md)):
 - It must not have any associated constants.
