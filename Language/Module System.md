@@ -49,6 +49,8 @@ Here is a quick reference on how modules, paths, the `use` keyword, and the `
    Within a scope, the `use` keyword creates shortcuts to items to reduce repetition of long paths. In any scope that can refer to `crate::garden::vegetables::Asparagus`, you can create a shortcut with `use crate::garden::vegetables::Asparagus;` and from then on you only need to write `Asparagus` to make use of that type in the scope.
 
 ## Paths
+[The Rust Reference](https://doc.rust-lang.org/reference/paths.html)
+
 A path can take two forms:
 - An _absolute path_ is the full path starting from a crate root; for code from an external crate, the absolute path begins with the crate name, and for code from the current crate, it starts with the literal `crate`.
 - A _relative path_ starts from the current module and uses `self`, `super`, or an identifier in the current module.
@@ -91,12 +93,3 @@ pub fn eat_at_restaurant() {
 ```
 
 See also [Prelude](https://doc.rust-lang.org/std/prelude/index.html).
-
-
-## Packages
-A **package** is a bundle of one or more crates that provides a set of functionality. A package can contain as many binary crates as you like, but at most only one library crate. A package contains a _Cargo.toml_ file that describes how to build those crates.
-
-Cargo follows the following conventions on finding crate roots:
-- `src/main.rs` is the crate root of a binary crate with the same name as the package.
-- `src/lib.rs` is the crate root of a library crate with the same name as the package.
-- Each file in `src/bin` is a separate binary create.

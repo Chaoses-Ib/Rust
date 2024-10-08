@@ -41,6 +41,7 @@
   - [Linkage](Build/rustc/Linkage.md)
 - [Conditional Compilation](Build/Conditional%20Compilation.md)
 - [Cargo](Build/Cargo/README.md)
+  - [Packages](Build/Cargo/Packages.md)
   - [Dependencies](Build/Cargo/Dependencies.md)
   - [Workspaces](Build/Cargo/Workspaces.md)
   - [→Features](<Build/Conditional Compilation.md#cargo-features>)
