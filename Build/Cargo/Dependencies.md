@@ -1,6 +1,8 @@
 # Dependencies
 [The Cargo Book](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html)
 
+- When `add`, if dependencies under `[dependencies]` are in alphabetical order, the added dependency will follow suit.
+
 ## Upgrading
 [cargo-edit: A utility for managing cargo dependencies from the command line.](https://github.com/killercup/cargo-edit)
 

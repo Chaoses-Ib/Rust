@@ -20,3 +20,16 @@ Cargo follows the following conventions on finding crate roots:
 - `src/main.rs` is the crate root of a binary crate with the same name as the package.
 - `src/lib.rs` is the crate root of a library crate with the same name as the package.
 - Each file in `src/bin` is a separate binary create.
+
+[Allow dependencies that only apply to specific cargo targets (bin, example, etc.) - Issue #1982 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/1982)
+- Workspaces
+- Features
+- [Cargo target features by ehuss - Pull Request #3374 - rust-lang/rfcs](https://github.com/rust-lang/rfcs/pull/3374#issuecomment-1714289532)
+ 
+  > I'm going to close this RFC for a few reasons. I think some of the behaviors around feature unification are going to result in some hazards that will make it difficult to use and cause problems that people would then need to figure out how to work around. The `cargotest` workflow in particular would be unable to test without the features enabled. I also agree that the indirect nature of using this mechanism to specify per-target dependencies is not obvious, so I worry about making things too confusing, along with being unable to isolate those dependencies between targets. It also doesn't help to have two similarly named fields, which can be confusing. I've also been hesitant to move forward with this since I started writing it due to the level of complexity in the implementation that appeared (I only started it because I thought it would have been relatively easy).
+
+- [How can I specify binary-only dependencies? - Stack Overflow](https://stackoverflow.com/questions/35711044/how-can-i-specify-binary-only-dependencies)
+- [Why doesn't rust have bin-dependencies? : r/rust](https://www.reddit.com/r/rust/comments/1fi32rm/why_doesnt_rust_have_bindependencies/)
+
+如果不能隔离依赖，支持 lib + bin target 还有什么意义？
+- [axo blog - It's a library AND a binary](https://blog.axo.dev/2024/03/its-a-lib-and-a-bin)
