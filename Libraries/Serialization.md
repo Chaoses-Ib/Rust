@@ -9,7 +9,14 @@
   - [Alkahest](https://github.com/zakarumych/alkahest)
 
 - [Serde](https://serde.rs/) ([GitHub](https://github.com/serde-rs/serde))
+  - [Enum representations](https://serde.rs/enum-representations.html)
+    - Externally tagged
+    - Internally tagged
+    - Adjacently tagged
+    - Untagged
+  - [Serialize enum as number - Serde](https://serde.rs/enum-number.html)
 
+  Formats:
   - [serde\_json: Strongly typed JSON library for Rust](https://github.com/serde-rs/json)
 
 - [Bincode](https://github.com/bincode-org/bincode)
