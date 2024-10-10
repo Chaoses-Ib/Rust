@@ -12,10 +12,10 @@
   - `cargo add figment --features toml`, `cargo add serde --features derive`
   - [Conflict Resolution](https://docs.rs/figment/latest/figment/struct.Figment.html#conflict-resolution)
 
-- [Confique: Type-safe, layered, light-weight, `serde`-based configuration library](https://github.com/LukasKalbertodt/confique)
+- [Confique: Type-safe, layered, light-weight, `serde`-based configuration library](https://github.com/LukasKalbertodt/confique) (inactive)
   - Easily generate configuration "templates"
   - `cargo add confique --no-default-features --features toml`
-  - [error\[E0463\]: can't find crate for `serde` - Issue #38](https://github.com/LukasKalbertodt/confique/issues/38)
+  - ~~[error\[E0463\]: can't find crate for `serde` - Issue #38](https://github.com/LukasKalbertodt/confique/issues/38)~~
   
   [Comparison with other libraries/solutions](https://github.com/LukasKalbertodt/confique#comparison-with-other-librariessolutions)
 
