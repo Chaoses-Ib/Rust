@@ -86,6 +86,9 @@ rustup default nightly-2024-02-28
 
   [Windows: Use ProcessPrng for random keys by ChrisDenton - Pull Request #121337 - rust-lang/rust](https://github.com/rust-lang/rust/pull/121337)
 
+  Minimum Windows Server version? Windows Server 2012 or 2016?
+  - [Setting `#![windows_subsystem = "windows"]`, processes will not be spawned under Windows server 2008 SYSTEM privileges. - Issue #113851 - rust-lang/rust](https://github.com/rust-lang/rust/issues/113851)
+
 Resources:
 - [winres: Create and set windows icons and metadata for executables with a rust build script](https://github.com/mxre/winres)
   - Metainformation (like program version and description) is taken from `Cargo.toml`'s `[package]` section.
