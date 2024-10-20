@@ -233,6 +233,38 @@ macro_rules! options {
 }
 ```
 
+## Retry
+- [backon: Retry with backoff without effort.](https://github.com/Xuanwo/backon)
+  - [ConstantBuilder](https://docs.rs/backon/0.5.0/backon/struct.ConstantBuilder.html): delay, max times, jitter
+  - Wasm
+
+  [backon: Maybe the most elegant retry library ever : r/rust](https://www.reddit.com/r/rust/comments/10wodyu/backon_maybe_the_most_elegant_retry_library_ever/)
+
+- [backoff: Exponential backoff and retry for Rust.](https://github.com/ihrwein/backoff) (discontinued)
+  - Wasm
+
+- [retrying: Retry macros for rust functions](https://github.com/dintegrity/retrying)
+
+- Async-only
+  - [tryhard: 💫 Easily retry futures 🦀](https://github.com/EmbarkStudios/tryhard)
+  - [rust-tokio-retry: Extensible, asynchronous retry behaviours for futures/tokio](https://github.com/srijs/rust-tokio-retry) (discontinued)
+    - [tokio-retry2](https://github.com/naomijub/tokio-retry) ([r/rust](https://www.reddit.com/r/rust/comments/1fk52o4/tokioretry2/?))
+  - [futures-retry - GitLab](https://gitlab.com/mexus/futures-retry)
+  - [again: ♻️ Retry faillible Rustlang std library futures](https://github.com/softprops/again)
+  - [fure: Retrying futures using different policies](https://github.com/Leonqn/fure)
+
+- Sync-only
+  - [retry: A Rust library to retry some code until its return value satisfies a condition.](https://github.com/jimmycuadra/retry) (inactive)
+    - [Fixed](https://docs.rs/retry/latest/retry/delay/struct.Fixed.html): delay, max times by `take()`, jitter by `map()`
+    - [async support - Issue #41 - jimmycuadra/retry](https://github.com/jimmycuadra/retry/issues/41)
+  - [waitfor: Retry a function until it succeeds, errors out, or a timeout/deadline is reached.](https://github.com/d-e-s-o/waitfor)
+
+- [retry-policies: A collection of plug-and-play retry policies for Rust projects.](https://github.com/TrueLayer/retry-policies)
+- [exponential-backoff: Exponential backoff generator with jitter.](https://github.com/yoshuawuyts/exponential-backoff)
+
+Discussions:
+- 2022-01 [Is there a retry / exponential backoff crate with these features? : r/rust](https://www.reddit.com/r/rust/comments/s8kry6/is_there_a_retry_exponential_backoff_crate_with/)
+
 ## Stack traces
 - [std::backtrace](https://doc.rust-lang.org/std/backtrace/index.html) (v1.65)
 - [backtrace-rs: Backtraces in Rust](https://github.com/rust-lang/backtrace-rs) (v1.40)
