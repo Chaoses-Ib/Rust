@@ -189,3 +189,35 @@ fn main() {
 }
 ```
 
+## Builders
+[Rethinking Builders... with Lazy Generics -- Geo's Notepad -- Mostly Programming and Math](https://geo-ant.github.io/blog/2024/rust-rethinking-builders-lazy-generics/) ([r/rust](https://www.reddit.com/r/rust/comments/1g1gueh/rethinking_builders_with_lazy_generics/))
+
+Libraries:
+- [bon: Next-gen compile-time-checked builder generator, named function's arguments, and more!](https://github.com/elastio/bon)
+  - Structs and functions
+  - [Positional Members | Bon](https://elastio.github.io/bon/guide/positional-members)
+    - Doesn't support functions?
+    - [ ] All non-optional as positional
+
+  Discussions:
+  - 2024-08 [Why would you use Bon : r/rust](https://www.reddit.com/r/rust/comments/1exko4h/why_would_you_use_bon/)
+  - 2024-08 [Bon builder generator 2.0 release 🎉 : r/rust](https://www.reddit.com/r/rust/comments/1f1uzkw/bon_builder_generator_20_release/)
+  - 2024-09 [\[Media\] Next-gen builder macro Bon 2.1 release 🎉. Compilation is faster by 36% 🚀 : r/rust](https://www.reddit.com/r/rust/comments/1f6d7vr/media_nextgen_builder_macro_bon_21_release/)
+  - 2024-09 [\[Media\] Next-gen builder macro Bon 2.3 release 🎉. Positional arguments in starting and finishing functions 🚀 : r/rust](https://www.reddit.com/r/rust/comments/1fgmbo7/media_nextgen_builder_macro_bon_23_release/)
+
+- [rust-typed-builder: Compile-time type-checked builder derive](https://github.com/idanarye/rust-typed-builder)
+  - > 没办法让某个 field 的 setter 返回 `Result<Builder, Error>`？
+  - > 似乎没办法给 enum 类型提供像 option 那样的 strip_option 方式。我有一个field 是c, c 的类型不是 option, 是一个 enum ，如果能给enum 中的每一种情况都加一个构造函数就好了
+
+- [buildstructor: Derive a builder for your constructors in Rust](https://github.com/BrynCooke/buildstructor)
+  - Structs and functions
+
+- [named\_params: Fast, simple named parameters for Rust functions](https://github.com/michaeleisel/named_params)
+
+  [named\_params: A Rust crate for fast, simple named function parameters : r/rust](https://www.reddit.com/r/rust/comments/1fqoyuv/named_params_a_rust_crate_for_fast_simple_named/)
+
+- [typestate-builder](https://github.com/aalowlevel/typestate-builder)
+
+  [I published a crate that combines typestate and builder patterns. : r/rust](https://www.reddit.com/r/rust/comments/1fpf49x/i_published_a_crate_that_combines_typestate_and/)
+
+- [structbuilder\_derive: Rust macro for deriving a builder for simple structs](https://github.com/reidswan/structbuilder_derive)
