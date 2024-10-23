@@ -91,6 +91,18 @@ enum LevelInner {
 
 What will happen if writer's `write` returns `Err`?
 
+### Filters
+[filter](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/filter/index.html):
+- [LevelFilter](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/filter/struct.LevelFilter.html)
+- [Targets](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/filter/targets/struct.Targets.html)
+  - All modules start with the prefix will be filtered (`test` -> `test`, `test_server`, ...), and `test::` doesn't work
+  - Default level can be set by string like `=debug`
+- [EnvFilter](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/filter/struct.EnvFilter.html)
+- [FilterExt](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/filter/trait.FilterExt.html)
+  - `and`, `or`, `not`
+  - `boxed`
+    - Conflicting with `Layer`
+
 ## [`tracing_appender`](https://docs.rs/tracing-appender/latest/tracing_appender/)
 - [`non_blocking`](https://docs.rs/tracing-appender/latest/tracing_appender/non_blocking/index.html)
   - If `WorkerGuard` is dropped, events will be *silently ignored*.
