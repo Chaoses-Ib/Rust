@@ -28,6 +28,8 @@ rustup default nightly-2024-02-28
 ## CLI
 [Command-line Arguments - The rustc book](https://doc.rust-lang.org/rustc/command-line-arguments.html)
 
+[rust-lang/rust-log-analyzer: Analyzing Travis and Azure Pipelines logs to find encountered errors](https://github.com/rust-lang/rust-log-analyzer)
+
 ## Target platforms
 [Targets - The rustc book](https://doc.rust-lang.org/rustc/targets/index.html)
 

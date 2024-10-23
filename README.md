@@ -72,5 +72,5 @@
 - UI
   - [CLI](Libraries/CLI/README.md)
   - [TUI](Libraries/TUI/README.md)
-  - GUI
+  - [GUI](Libraries/GUI/README.md)
     - [Tauri](Libraries/GUI/Tauri/README.md)

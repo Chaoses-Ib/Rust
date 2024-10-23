@@ -65,3 +65,12 @@
   ```
 
 [^log-test]: [Is it possible to use Rust's log info for tests? - Stack Overflow](https://stackoverflow.com/questions/67087597/is-it-possible-to-use-rusts-log-info-for-tests)
+
+## Tools
+- [Log Analyzer Pro (lap)](https://github.com/MrCasCode/log-analyzer-pro)
+- [rust-logviewer: A simple log viewer UI for typical Rust logs](https://github.com/cfsamson/rust-logviewer)
+- [mlv: Mini Log Viewer](https://github.com/ewpratten/mlv)
+  - egui
+  - Cannot filter
+  - Highlight doesn't work?
+  - Cannot drag and drop

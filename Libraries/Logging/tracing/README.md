@@ -162,8 +162,6 @@ std::panic::set_hook(Box::new(move |panic_info| {
 - [tokio-console: a debugger for async rust!](https://github.com/tokio-rs/console)
 - OpenTelemetry
   - [Jaeger: open source, distributed tracing platform](https://www.jaegertracing.io/)
-- [Log Analyzer Pro (lap)](https://github.com/MrCasCode/log-analyzer-pro)
-- [rust-logviewer: A simple log viewer UI for typical Rust logs](https://github.com/cfsamson/rust-logviewer)
 
 [tracing: Provide a GUI/Console-Based Visualization of Spans and Events - Issue #884 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/884)
 
