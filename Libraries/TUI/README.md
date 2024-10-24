@@ -13,6 +13,9 @@ Streams:
     - Respecting env variables like [`NO_COLOR`](https://no-color.org/) or [`CLICOLOR`](https://bixense.com/clicolors/)
     - Windows: Falling back to the wincon API where [`ENABLE_VIRTUAL_TERMINAL_PROCESSING`](https://learn.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences#output-sequences) is unsupported
     - Used by Cargo
+    - ~~[Using anstream with tracing\_appender's `RollingFileAppender` - Issue #220](https://github.com/rust-cli/anstyle/issues/220)~~
+
+    [anstream: simplifying terminal styling](https://epage.github.io/blog/2023/03/anstream-simplifying-terminal-styling/)
 
 - [termcolor: Cross platform terminal colors for Rust.](https://github.com/BurntSushi/termcolor)
   - Works on Windows 7+

@@ -95,7 +95,18 @@ pub struct Screen {
 
 [Implementing an Object-Oriented Design Pattern - The Rust Programming Language](https://doc.rust-lang.org/book/ch17-03-oo-design-patterns.html)
 
-[rust - Why can impl trait not be used to return multiple / conditional types? - Stack Overflow](https://stackoverflow.com/questions/52001592/why-can-impl-trait-not-be-used-to-return-multiple-conditional-types)
+- [Why can impl trait not be used to return multiple / conditional types? - Stack Overflow](https://stackoverflow.com/questions/52001592/why-can-impl-trait-not-be-used-to-return-multiple-conditional-types)
+
+- `dyn A` and `dyn A + B` are different types, `impl for dyn A` doesn't automatically make `impl for dyn A + B`
+
+  [Using anstream with tracing\_appender's `RollingFileAppender` - Issue #220 - rust-cli/anstyle](https://github.com/rust-cli/anstyle/issues/220)
+
+- `impl Trait1 for dyn Trait2`
+  - Generic dyn container pattern
+
+    `impl AsLockedWrite for dyn std::io::Write + Send` + `impl<T: AsLockedWrite + ?Sized> AsLockedWrite for Box<T>`
+
+  [Is `impl Trait1 for dyn Trait2` ever useful? - Mozilla](https://users.rust-lang.org/t/is-impl-trait1-for-dyn-trait2-ever-useful/60406)
 
 [`std::ptr::DynMetadata`](https://doc.rust-lang.org/nightly/std/ptr/struct.DynMetadata.html)
 - The vtable notably contains:
