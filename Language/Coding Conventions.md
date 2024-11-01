@@ -10,6 +10,9 @@
 ## Naming conventions
 [Naming conventions](https://doc.rust-lang.org/1.0.0/style/style/naming/README.html)
 
+类型是 `AbcDef`，静态和常量是 `ABC_DEF`，包名是 `abc-def`/`abc_def`，其它所有都是 `abc_def`。
+- 基础类型除外
+
 [Naming convention for crates - rust-lang/api-guidelines - Discussion #29](https://github.com/rust-lang/api-guidelines/discussions/29)
 - `kebab-case` or `snake_case`
 
@@ -22,6 +25,8 @@
 
 ## [rustfmt](https://github.com/rust-lang/rustfmt)
 [Configuration Options](https://rust-lang.github.io/rustfmt/?version=v1.6.0&search=)
+
+默认格式相比 C++ 统一很多。
 
 Skip:
 - `#[rustfmt::skip]`
@@ -46,3 +51,19 @@ Formatting on save:
 
 
 [^save-vsc]: [visual studio code - How to run cargo fmt on save in vscode? - Stack Overflow](https://stackoverflow.com/questions/67859926/how-to-run-cargo-fmt-on-save-in-vscode)
+
+## [Clippy](https://github.com/rust-lang/rust-clippy)
+> A bunch of lints to catch common mistakes and improve your Rust code.
+
+A bit too opinionated.
+
+[Introduction - Clippy Documentation](https://doc.rust-lang.org/clippy/)
+
+> If you're using `rustup` to install and manage your Rust toolchains, Clippy is usually **already installed**.
+
+Is Clippy a superset of Cargo check?
+- [`clippy` itself runs `cargo check`](https://github.com/rust-lang/rust-clippy/blob/c154754b74577906c5d55d57f7daeff02d6a33e7/src/main.rs#L59).
+
+  [rust - Is `cargo clippy` a superset of `cargo check`? - Stack Overflow](https://stackoverflow.com/questions/57449356/is-cargo-clippy-a-superset-of-cargo-check)
+
+VS Code: [How to use Clippy in VS Code with rust-analyzer? - help - Rust](https://users.rust-lang.org/t/how-to-use-clippy-in-vs-code-with-rust-analyzer/41881)
