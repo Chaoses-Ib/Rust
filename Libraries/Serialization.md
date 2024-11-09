@@ -26,10 +26,14 @@
   - [Serialize enum as number - Serde](https://serde.rs/enum-number.html)
 
   Types:
+  - [`#[serde(with = "module")]`](https://serde.rs/field-attrs.html#with)
+    - `$module::{serialize, deserialize}`
   - [Serialize `[u8]` as a base64 or hex? - Issue #661](https://github.com/serde-rs/serde/issues/661)
   - [serde\_with: Custom de/serialization helpers to use in combination with serde's `with`-annotation and with the improved `serde_as\`-annotation.](https://github.com/jonasbb/serde_with/)
     - [`#[serde_as]`](https://docs.rs/serde_with/3.11.0/serde_with/guide/serde_as/index.html)
-    - `#[skip_serializing_none]`
+      - `LocalType as {SerializeAs<RemoteType>, DeserializeAs<'de, RemoteType>}`
+      - 😈`serde_as`, provided by `serde_with`, different from `serde(with)`
+    - `#[skip_serializing_none]` (must be placed *before* the `#[derive]` attribute)
     - [base64](https://docs.rs/serde_with/latest/serde_with/base64/index.html)
   - [base64-serde: Integration between rust-base64 and serde](https://github.com/marshallpierce/base64-serde)
 
