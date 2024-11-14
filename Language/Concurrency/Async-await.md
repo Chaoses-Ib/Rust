@@ -260,13 +260,26 @@ Unlike other Rust programs, asynchronous applications require runtime support. I
 
 [How can I create a Tokio runtime inside another Tokio runtime without getting the error "Cannot start a runtime from within a runtime"? - Stack Overflow](https://stackoverflow.com/questions/62536566/how-can-i-create-a-tokio-runtime-inside-another-tokio-runtime-without-getting-th)
 - `thread::spawn()`
-- `futures::executor::block_on()`
+
+  ```rust
+  let fut = async move { async_f().await };
+  if let Ok(handle) = tokio::runtime::Handle::try_current() {
+      thread::spawn(move || handle.block_on(fut)).join().unwrap()
+  } else {
+      runtime().block_on(fut)
+  }
+  ```
+
+- `spawn_blocking(|| futures::executor::block_on())`
+
+  [tokio@0.2.14 + futures::executor::block\_on causes hang - Issue #2376 - tokio-rs/tokio](https://github.com/tokio-rs/tokio/issues/2376)
 
 Libraries:
 - [Tokio: A runtime for writing reliable asynchronous applications with Rust. Provides I/O, networking, scheduling, timers, ...](https://github.com/tokio-rs/tokio) ([Docs.rs](https://docs.rs/tokio/latest/tokio/))
 
   - `spawn_blocking()` is for sync functions, what about functions mixed with sync and async?
     - `spawn_blocking()` + `block_on()`
+    - [rust - When should you use Tokio's `spawn_blocking`? - Stack Overflow](https://stackoverflow.com/questions/74547541/when-should-you-use-tokios-spawn-blocking)
   - [Is it okay to start multiple tokio runtimes for different parts of the app? - The Rust Programming Language Forum](https://users.rust-lang.org/t/is-it-okay-to-start-multiple-tokio-runtimes-for-different-parts-of-the-app/39974)
     - Pro: Avoid starvation
     - Con: More overhead
