@@ -2,6 +2,7 @@
 - [log: Logging implementation for Rust](https://github.com/rust-lang/log)
 
   ```rust
+  #[allow(unused_imports)]
   #[macro_use(trace, info, debug, warn, error)]
   extern crate log;
   ```
@@ -34,9 +35,11 @@
 
 - Macro aliasing
   ```rust
+  #[allow(unused_imports)]
   #[cfg(not(test))] 
   use log::{error, warn, info, debug, trace};
 
+  #[allow(unused_imports)]
   #[cfg(test)]
   use std::{eprintln as error, eprintln as warn, eprintln as info, eprintln as debug, eprintln as trace};
   ```
@@ -49,10 +52,16 @@
   #[macro_use(test)]
   extern crate test_log;
   ```
-
-  When used with `tracing`, requries `tracing-subscriber` with `env-filter` feature enabled.
+  - By default, only `ERROR` logs are printed.
+    - `$env:RUST_LOG='debug'`
+    - [Allow to set default log level - Issue #25 - d-e-s-o/test-log](https://github.com/d-e-s-o/test-log/issues/25)
+  - When used with `tracing`, requries `tracing-subscriber` with `env-filter` feature enabled.
 
 - [tracing-test: Access and evaluate tracing logs in async and sync tests.](https://github.com/dbrgn/tracing-test)
 
+  ```rust
+  #[traced_test]
+  #[test]
+  ```
 
 [^log-test]: [Is it possible to use Rust's log info for tests? - Stack Overflow](https://stackoverflow.com/questions/67087597/is-it-possible-to-use-rusts-log-info-for-tests)

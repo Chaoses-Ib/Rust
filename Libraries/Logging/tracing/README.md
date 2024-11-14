@@ -15,6 +15,7 @@ From `log`:
 
 ### Targets
 - Can only be `&'static str`.
+  - And there is no direct API to pass non-const `&'static str`
 - Can be empty, but not `None`. It may still be formatted as `:`.
 
 ### Levels
@@ -50,6 +51,7 @@ enum LevelInner {
 
 - `macro_use`
   ```rust
+  #[allow(unused_imports)]
   #[macro_use(trace, info, debug, warn, error)]
   extern crate tracing;
   ```
