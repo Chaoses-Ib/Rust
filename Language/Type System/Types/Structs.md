@@ -110,6 +110,10 @@ Unit-like structs can be useful when you need to implement a trait on some type 
 **Associated functions** are functions defined within the context of a struct (or an enum or a trait object). **Methods** are associated functions whose first parameter is `self`, which represents the instance of the struct the method is being called on.
 
 Associated functions that aren’t methods are often used for constructors that will return a new instance of the struct. These are often called `new`, but `new` isn’t a special name and isn’t built into the language.
+- `new` 没有被内置和不能重载也有关系
+- 不能像 C++ 一样自动调用 ctor，例如 `std::string s;`，只能 `let s = String::new();`，稍微啰嗦一些
+  - 不过可以 `Default::default()`，换类型了也能自动推导，C++ 里就没法 `auto x;` 这样写
+- 可以只声明不初始化，例如 `let s;`
 
 For example:
 ```rust

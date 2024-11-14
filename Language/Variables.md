@@ -1,6 +1,6 @@
 # Variables
 - Variables are immutable by default.
-- You can shadow a variable by a new variable with the same name.
+- You can shadow a variable by a new variable with the same name. (Different from C++)
 - Constants are always immutable. You aren't allowed to use `mut` with constants.
 
 ## Ownership

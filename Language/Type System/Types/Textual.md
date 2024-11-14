@@ -44,8 +44,8 @@ Since `str` is a [dynamically sized type](https://doc.rust-lang.org/reference
   - [slice_unchecked](https://doc.rust-lang.org/std/primitive.str.html#method.slice_unchecked) (~v1.29.0)
 
 Literals:
-- [rust - What is the syntax for a multiline string literal? - Stack Overflow](https://stackoverflow.com/questions/29483365/what-is-the-syntax-for-a-multiline-string-literal)
-
+- 和大部分语言不同，Rust 中的双引号字符串字面量可以直接跨越多行
+  
   ```rust
   assert_eq!("line one
   line two",
@@ -62,3 +62,4 @@ Literals:
               indentation",
   "multiple\nlines\nwith\nindentation");
   ```
+  [rust - What is the syntax for a multiline string literal? - Stack Overflow](https://stackoverflow.com/questions/29483365/what-is-the-syntax-for-a-multiline-string-literal)

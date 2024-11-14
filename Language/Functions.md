@@ -7,6 +7,12 @@ fn five() -> i32 {
 ```
 
 You can return early from a function by using the `return` keyword and specifying a value, but most functions return the last expression implicitly.
+- Implicitly return
+- `return`
+- `?`
+- `!` (not actually function level but process level)
+
+> 除了隐式返回和 `return`，还有两种情况不用自己返回，一种是 `?`，返回错误的专用语法，另一种是 `!`，调用了终止程序的函数就不用写返回了
 
 For most implementations, the default stack size is 2MiB, but it's 4MiB for WebAssembly.[^stack-tiger]
 

@@ -34,11 +34,18 @@
 
 Libraries:
 - [std::ffi](https://doc.rust-lang.org/std/ffi/)
+  - `c_char` (`u8`/`i8`)
+  - `CStr`, `CString`
+  - `OsStr`, `OsString`
+
+  [ffi: how to free memory of pointer created in rust? - Issue #19564 - denoland/deno](https://github.com/denoland/deno/issues/19564)
+
 - [FFI Support: A crate to help expose Rust functions over the FFI.](https://github.com/mozilla/ffi-support)
 - [libc: Raw bindings to platform APIs for Rust](https://github.com/rust-lang/libc)
 
 C to Rust:
 - [bindgen: Automatically generates Rust FFI bindings to C (and some C++) libraries.](https://github.com/rust-lang/rust-bindgen)
+- [C2Rust: Migrate C code to Rust](https://github.com/immunant/c2rust)
 
 Rust to C:
 - cbindgen
@@ -81,6 +88,8 @@ Problems:
 
 ## C++
 - CXX
+  - [cxx-async: Simple interoperability between C++ coroutines and asynchronous Rust](https://github.com/pcwalton/cxx-async)
+
 - [Zngur: A C++/Rust interop tool](https://github.com/HKalbasi/zngur)
 
   [How it compares to other tools - Zngur](https://hkalbasi.github.io/zngur/how_it_compares.html)
@@ -88,6 +97,15 @@ Problems:
   [r/rust](https://www.reddit.com/r/rust/comments/174y6dw/announcing_zngur_a_crust_interop_tool/)
   
   [Hacker News](https://news.ycombinator.com/item?id=41271273)
+
+- [rust-cpp: Embed C++ directly inside your rust code!](https://github.com/mystor/rust-cpp)
+
+- [BuFFI: A tool to generate ergonomic, buffer-based C++ APIs.](https://github.com/GiGainfosystems/BuFFI)
+
+  [BuFFI: Generate ergonomic C++ APIs for your Rust code : r/rust](https://www.reddit.com/r/rust/comments/1gouxoc/buffi_generate_ergonomic_c_apis_for_your_rust_code/)
+
+- [vtable-rs: Set of traits and macros to help dealing with C++ virtual method FFI](https://github.com/tremwil/vtable-rs)
+  - COM?
 
 C++ to Rust:
 - Autocxx

@@ -14,6 +14,7 @@ Length | Signed | Unsigned
 arch | `isize` | `usize`
 
 - Constants: `MIN`, `MAX`, `BITS`
+- 不支持 `i++` 和 `++i`，只能 `i += 1`
 
 Integer literals:
 
@@ -26,6 +27,8 @@ Binary | `0b1111_0000`
 Byte (`u8` only) | `b'A'`
 
 Number literals that can be multiple numeric types allow a type suffix, such as `57u8`, to designate the type.
+
+- VS Code 会提示 integer literal 各个进制（10、16、2）的值
 
 ### Floating-point types
 Rust’s floating-point types are `f32` and **`f64`**.

@@ -3,10 +3,15 @@
 
 Books:
 - [The Rust Programming Language](https://doc.rust-lang.org/book/) ([GitHub](https://github.com/rust-lang/book))
+  - [Rust 程序设计语言 中文版](https://rustwiki.org/zh-CN/book/)
+
+  缺了些新东西，不过还好。
 
   [update the book for async/await · Issue #1275 · rust-lang/book](https://github.com/rust-lang/book/issues/1275)
 - [The Rust Reference](https://doc.rust-lang.org/reference/) ([GitHub](https://github.com/rust-lang/reference/))
 - [Rust for C#/.NET Developers](https://microsoft.github.io/rust-for-dotnet-devs/latest/introduction.html)
+
+  但是却没有 C++ 到 Rust 的教程。
 
 Blogs:
 - [Rust Blog](https://blog.rust-lang.org/)
