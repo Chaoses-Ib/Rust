@@ -4,6 +4,8 @@
 
 Libraries:
 - Serde
+  - [serde-reflection: Rust libraries and tools to help with interoperability and testing of serialization formats based on Serde.](https://github.com/zefchain/serde-reflection)
+    - [\[Feature Request\] Support #\[serde\] attributes - Issue #51](https://github.com/zefchain/serde-reflection/issues/51)
 - [reflect: Compile-time reflection API for developing robust procedural macros (proof of concept)](https://github.com/dtolnay/reflect)
 - [bevy_reflect](https://github.com/bevyengine/bevy/tree/main/crates/bevy_reflect) ([Docs.rs](https://docs.rs/bevy_reflect/0.14.2/bevy_reflect/))
   - `#[doc]` with `documentation` feature

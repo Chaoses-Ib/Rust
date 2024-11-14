@@ -57,3 +57,7 @@
       _ => todo!(),
   };
   ```
+
+- [documented: Macros for accessing your type's documentation at runtime.](https://github.com/cyqsimon/documented)
+
+  [documented: doc comments at runtime - preparing for 1.0.0 release : r/rust](https://www.reddit.com/r/rust/comments/1g8gpil/documented_doc_comments_at_runtime_preparing_for/)
