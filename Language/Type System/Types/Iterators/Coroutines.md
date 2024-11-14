@@ -1,14 +1,16 @@
-# Generators
-- [generators - The Rust Unstable Book](https://doc.rust-lang.org/beta/unstable-book/language-features/generators.html)
+# Coroutines
+Coroutines (formerly generators)
+
+- [coroutines - The Rust Unstable Book](https://doc.rust-lang.org/beta/unstable-book/language-features/coroutines.html)
 
   [RFC 2033](https://github.com/rust-lang/rfcs/blob/master/text/2033-experimental-coroutines.md)
   - [Tracking issue for RFC 2033: Experimentally add coroutines to Rust · Issue #43122 · rust-lang/rust](https://github.com/rust-lang/rust/issues/43122)
 
   ```rust
-  use std::{ops::{Generator, GeneratorState}, pin::Pin};
+  use std::{ops::{Coroutine, CoroutineState}, pin::Pin};
 
-  fn generator(s: &str) -> impl Generator<Yield = &str, Return = i32> {
-      move || {
+  fn generator(s: &str) -> impl Coroutine<Yield = &str, Return = i32> {
+      #[coroutine] move || {
           yield s;
           0
       }
@@ -16,16 +18,16 @@
 
   fn test() {
       let mut gen = generator("hello");
-      assert_eq!(Pin::new(&mut gen).resume(()), GeneratorState::Yielded("hello"));
-      assert_eq!(Pin::new(&mut gen).resume(()), GeneratorState::Complete(0));
+      assert_eq!(Pin::new(&mut gen).resume(()), CoroutineState::Yielded("hello"));
+      assert_eq!(Pin::new(&mut gen).resume(()), CoroutineState::Complete(0));
   }
   ```
 
   - [propane: generators](https://github.com/withoutboats/propane)
 
-    相比直接使用 `Generator` 有更加严格的限制，在存在复杂 borrowing 时不推荐使用。
+    相比直接使用 `Coroutine` 有更加严格的限制，在存在复杂 borrowing 时不推荐使用。
 
-  - [Error E0626](https://doc.rust-lang.org/error_codes/E0626.html): borrow may still be in use when generator yields.
+  - [Error E0626](https://doc.rust-lang.org/error_codes/E0626.html): borrow may still be in use when coroutine yields.
 
     At present, it is not permitted to have a yield that occurs while a borrow is still in scope. To resolve this error, the borrow must either be "contained" to a smaller scope that does not overlap the yield or else eliminated in another way.
 
@@ -34,7 +36,7 @@
   - Error E0391: cycle detected when computing type of `...`.
 
     ```rust
-    fn generator(s: &str) -> Pin<Box<dyn Generator<Yield = &str, Return = i32> + 'a>> {
+    fn generator(s: &str) -> Pin<Box<dyn Coroutine<Yield = &str, Return = i32> + 'a>> {
       Box::pin(move || {
         // ...
       })
@@ -42,7 +44,7 @@
     ```
     [asynchronous - Recursive async functions calling each other: cycle detected - Stack Overflow](https://stackoverflow.com/questions/74737595/recursive-async-functions-calling-each-other-cycle-detected)
 
-  - Generators cannot be parallelized. Though one can wrap a generator to an iterator and use Rayon's [`ParallelBridge`](https://docs.rs/rayon/latest/rayon/iter/trait.ParallelBridge.html) to parallelize the consuming part.
+  - Coroutines cannot be parallelized. Though one can wrap a coroutine to an iterator and use Rayon's [`ParallelBridge`](https://docs.rs/rayon/latest/rayon/iter/trait.ParallelBridge.html) to parallelize the consuming part.
 
 - [genawaiter: Stackless generators on stable Rust.](https://github.com/whatisaphone/genawaiter)
 

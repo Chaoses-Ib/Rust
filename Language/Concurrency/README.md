@@ -127,6 +127,8 @@ Wrappers:
   ```
   利用 borrow checker 实现的零开销 Mutex，不过使用限制比 Mutex 更大。
 
+  Used by axum, reqwest.
+
 - [SendWrapper](https://github.com/thk1/send_wrapper)
   
   > This Rust crate implements a wrapper type called `SendWrapper` which allows you to move around non-`Send` types between threads, as long as you access the contained value only from within the original thread. You also have to make sure that the wrapper is dropped from within the original thread. If any of these constraints is violated, a panic occurs.

@@ -7,7 +7,7 @@
     - [Unions](Language/Type%20System/Types/Unions.md)
     - [Ranges](Language/Type%20System/Types/Ranges.md)
     - [Iterators](Language/Type%20System/Types/Iterators/README.md)
-      - [Generators](Language/Type%20System/Types/Iterators/Generators.md)
+      - [Coroutines](<Language/Type System/Types/Iterators/Coroutines.md>)
     - [Pointer Types](Language/Type%20System/Types/Pointers.md)
     - [Textual Types](Language/Type%20System/Types/Textual.md)
   - [Generics](Language/Type%20System/Generics.md)

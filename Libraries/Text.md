@@ -47,6 +47,7 @@
 
 ## [→Unicode](https://github.com/Chaoses-Ib/ArtificialIntelligence/blob/main/NLP/Encoding/Unicode/README.md)
 - [bstr: A string type for Rust that is not required to be valid UTF-8.](https://github.com/BurntSushi/bstr)
+  - `cargo add bstr --no-default-features --features std,alloc`
 
   [Not everything is UTF-8](https://octobus.net/blog/2020-06-05-not-everything-is-utf8.html)
 

@@ -88,7 +88,7 @@ rustup default nightly-2024-02-28
 
   [Windows: Use ProcessPrng for random keys by ChrisDenton - Pull Request #121337 - rust-lang/rust](https://github.com/rust-lang/rust/pull/121337)
 
-  Minimum Windows Server version? Windows Server 2012 or 2016?
+  Minimum Windows Server version? At least Windows Server 2012 R2 (rustc v1.83).
   - [Setting `#![windows_subsystem = "windows"]`, processes will not be spawned under Windows server 2008 SYSTEM privileges. - Issue #113851 - rust-lang/rust](https://github.com/rust-lang/rust/issues/113851)
 
 Resources:

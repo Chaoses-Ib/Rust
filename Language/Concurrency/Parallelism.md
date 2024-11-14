@@ -8,3 +8,5 @@
   - [Is it necessary to collect non-linear collections into `Vec`? · Issue #358 · rayon-rs/rayon](https://github.com/rayon-rs/rayon/issues/358)
 
   [Itertools Parity · rayon-rs/rayon Wiki](https://github.com/rayon-rs/rayon/wiki/Itertools-Parity)
+
+- [pariter: Parallel iterator processing library for Rust](https://github.com/dpc/pariter)

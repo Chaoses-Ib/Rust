@@ -3,6 +3,8 @@
 
 - When `add`, if dependencies under `[dependencies]` are in alphabetical order, the added dependency will follow suit.
 
+[cargo-udeps: Find unused dependencies in Cargo.toml](https://github.com/est31/cargo-udeps)
+
 ## Upgrading
 [cargo-edit: A utility for managing cargo dependencies from the command line.](https://github.com/killercup/cargo-edit)
 

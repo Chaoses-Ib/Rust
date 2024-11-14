@@ -55,6 +55,8 @@
 
   [After years of work and discussion, `once_cell` has been merged into `std` and stabilized : rust](https://www.reddit.com/r/rust/comments/126qaai/after_years_of_work_and_discussion_once_cell_has/)
 
+  [Tracking Issue for `once_cell_try` - Issue #109737 - rust-lang/rust](https://github.com/rust-lang/rust/issues/109737)
+
 - [once_cell: Rust library for single assignment cells and lazy statics without macros](https://github.com/matklad/once_cell)
 
 ## Lazy evaluation 
@@ -84,7 +86,7 @@
   }
   ```
 
-- [std::cell::LazyCell](https://doc.rust-lang.org/std/cell/struct.LazyCell.html), [std::sync::LazyLock](https://doc.rust-lang.org/std/sync/struct.LazyLock.html) (unstable)
+- [std::cell::LazyCell](https://doc.rust-lang.org/std/cell/struct.LazyCell.html), [std::sync::LazyLock](https://doc.rust-lang.org/std/sync/struct.LazyLock.html) (v1.80)
 
   A value which is initialized on the first access.
 
