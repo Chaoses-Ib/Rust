@@ -71,6 +71,8 @@ enum Result<T, E> {
 }
 ```
 
+[rayon-rs/either: The enum Either with variants Left and Right is a general purpose sum type with two cases.](https://github.com/rayon-rs/either)
+
 ### Error
 [std::error::Error](https://doc.rust-lang.org/std/error/trait.Error.html)
 ```rust

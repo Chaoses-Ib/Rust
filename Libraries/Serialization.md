@@ -25,20 +25,85 @@
 ## [Serde](https://serde.rs/)
 [GitHub](https://github.com/serde-rs/serde)
 - [Internal buffering disrupts format-specific deserialization features - Issue #1183](https://github.com/serde-rs/serde/issues/1183)
-- [Enum representations](https://serde.rs/enum-representations.html)
-  - Externally tagged
-  - Internally tagged
-    - [Optional tag for internally tagged enum - Issue #2231](https://github.com/serde-rs/serde/issues/2231)
-      - Untagged + Internally tagged
-        
-        [rust - How can I deserialize an enum with an optional internal tag? - Stack Overflow](https://stackoverflow.com/questions/61216723/how-can-i-deserialize-an-enum-with-an-optional-internal-tag)
-      - ~~Internally tagged + untagged~~
-  - Adjacently tagged
-  - Untagged
-    - [serde-untagged: Serde Visitor for deserializing untagged enums](https://github.com/dtolnay/serde-untagged)
-    - [Better message when failing to match any variant of an untagged enum - Issue #2157](https://github.com/serde-rs/serde/issues/2157)
-    - [Untagged enums with empty variants (de)serialize in unintuitive ways - Issue #1560](https://github.com/serde-rs/serde/issues/1560)
+
+[Enum representations](https://serde.rs/enum-representations.html):
+- Externally tagged
+- Internally tagged
+  - [Optional tag for internally tagged enum - Issue #2231](https://github.com/serde-rs/serde/issues/2231)
+    - Untagged + Internally tagged
+      
+      [rust - How can I deserialize an enum with an optional internal tag? - Stack Overflow](https://stackoverflow.com/questions/61216723/how-can-i-deserialize-an-enum-with-an-optional-internal-tag)
+    - ~~Internally tagged + untagged~~
+- Adjacently tagged
+- Untagged
+  - [serde-untagged: Serde Visitor for deserializing untagged enums](https://github.com/dtolnay/serde-untagged)
+  - [serde\_sated: serde-sated (sane adjacently tagged enum deserialization \[with untagged variant\])](https://github.com/muttleyxd/serde_sated)
+  - [Better message when failing to match any variant of an untagged enum - Issue #2157](https://github.com/serde-rs/serde/issues/2157)
+  - [Untagged enums with empty variants (de)serialize in unintuitive ways - Issue #1560](https://github.com/serde-rs/serde/issues/1560)
 - [Serialize enum as number - Serde](https://serde.rs/enum-number.html)
+- [serde\_literals: Add support for serialising and deserialising literals directly into enum unit variants.](https://github.com/andrewlowndes/serde_literals)
+- [serde-versioning: A drop-in replacement for serde Deserialize with built-in versioning](https://github.com/vic1707/serde-versioning)
+- `Result` is externally tagged
+
+  Untagged: `#[serde(untagged)]` must be added to the type to work, and attrs can only be added to own types.
+  - New types
+    - [either::serde\_untagged](https://docs.rs/either/latest/either/serde_untagged/index.html)
+  - Don't use `#[serde(untagged)]`
+    ```rust
+    fn result_from_untagged<T, E>(s: &str) -> Result<Result<T, E>, serde_json::Error>
+    where
+        T: serde::de::DeserializeOwned,
+        E: serde::de::DeserializeOwned,
+    {
+        match serde_json::from_str::<E>(s) {
+            Ok(v) => Ok(v),
+            Err(_) => return serde_json::from_str(s).map(Ok),
+        }
+        .map(Err)
+    }
+    ```
+    
+    <details>
+
+    ```rust
+    pub fn res_from_str<T>(s: &str) -> Result<Result<T, ResponseError>, serde_json::Error>
+    where
+        T: serde::de::DeserializeOwned,
+    {
+        match serde_json::from_str::<ResponseError>(s) {
+            Ok(e) => Ok(e),
+            Err(_) => return serde_json::from_str(s).map(Ok),
+        }
+        .map(Err)
+    }
+    ```
+    ```rust
+    pub fn res_from_str<T>(s: &str) -> Result<Result<T, Error>, serde_json::Error>
+    where
+        T: serde::de::DeserializeOwned,
+    {
+        match serde_json::from_str::<ResponseError>(s) {
+            Ok(e) => Ok(e),
+            Err(_) => return serde_json::from_str(s).map(Ok),
+        }
+        .map(Error::from)
+        .map(Err)
+    }
+    ```
+    ```rust
+    pub fn res_from_str<T>(s: &str) -> Result<T, Error>
+    where
+        T: serde::de::DeserializeOwned,
+    {
+        match serde_json::from_str::<ResponseError>(s) {
+            Ok(e) => Err(e.into()),
+            Err(_) => Ok(serde_json::from_str(s)?),
+        }
+    }
+    ```
+    </details>
+
+  [rust - How customize serialization of a result-type using serde? - Stack Overflow](https://stackoverflow.com/questions/76604700/how-customize-serialization-of-a-result-type-using-serde)
 
 Types:
 - [`#[serde(with = "module")]`](https://serde.rs/field-attrs.html#with)

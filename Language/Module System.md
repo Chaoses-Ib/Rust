@@ -44,6 +44,9 @@ Here is a quick reference on how modules, paths, the `use` keyword, and the `
    
    To make a module public, declare it with `pub mod` instead of `mod`. To make items within a public module public as well, use `pub` before their declarations.
 
+   Private = `pub(self|child)`
+   - 可能导致库作者无意间忘记公开 items，比如只公开了 struct，但没有公开它的字段
+
 6. The `use` keyword
  
    Within a scope, the `use` keyword creates shortcuts to items to reduce repetition of long paths. In any scope that can refer to `crate::garden::vegetables::Asparagus`, you can create a shortcut with `use crate::garden::vegetables::Asparagus;` and from then on you only need to write `Asparagus` to make use of that type in the scope.
