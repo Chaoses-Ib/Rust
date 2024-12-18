@@ -12,6 +12,7 @@
     - [Textual Types](Language/Type%20System/Types/Textual.md)
   - [Generics](Language/Type%20System/Generics.md)
   - [Traits](Language/Type%20System/Traits.md)
+  - [Validation](Language/Type%20System/Types/Validation.md)
   - [Type Layout](Language/Type%20System/Type%20Layout.md)
   - [Dynamically Sized Types](Language/Type%20System/Dynamically%20Sized.md)
   - [Reflection](Language/Type%20System/Reflection.md)
