@@ -64,7 +64,7 @@
 - [Cryptology](Libraries/Cryptology.md)
 - [Serialization](Libraries/Serialization.md)
 - [I/O](Libraries/IO.md)
-- [Files](Libraries/Files/README.md)
+- [→Files](https://github.com/Chaoses-Ib/InformationSystems/blob/main/Files/README.md#rust)
 - [Configuration](Libraries/Config.md)
 - [Logging](Libraries/Logging/README.md)
   - [tracing](Libraries/Logging/tracing/README.md)
