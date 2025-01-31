@@ -75,3 +75,4 @@
   - [TUI](Libraries/TUI/README.md)
   - [GUI](Libraries/GUI/README.md)
     - [Tauri](Libraries/GUI/Tauri/README.md)
+    - [Slint](Libraries/GUI/Slint/README.md)
