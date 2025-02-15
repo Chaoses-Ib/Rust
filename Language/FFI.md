@@ -29,6 +29,16 @@
 
 [Comparing UniFFI with Diplomat - mozilla/uniffi-rs](https://github.com/mozilla/uniffi-rs/blob/main/docs/diplomat-and-macros.md)
 
+## *-sys packages
+[The Cargo Book](https://doc.rust-lang.org/cargo/reference/build-scripts.html#-sys-packages)
+> There are a number of benefits earned from having this convention of native-library-related packages:
+> - Common dependencies on `foo-sys` alleviates the rule about one package per value of `links`.
+> - Other `-sys` packages can take advantage of the `DEP_NAME_KEY=value` environment variables to better integrate with other packages. See the ["Using another `sys` crate"](https://doc.rust-lang.org/cargo/reference/build-script-examples.html#using-another-sys-crate) example.
+> - A common dependency allows centralizing logic on discovering `libfoo` itself (or building it from source).
+> - These dependencies are easily [overridable](https://doc.rust-lang.org/cargo/reference/build-scripts.html#overriding-build-scripts).
+
+[What's the benefit of releasing a -sys crate in Rust? : r/rust](https://www.reddit.com/r/rust/comments/14ztogb/whats_the_benefit_of_releasing_a_sys_crate_in_rust/)
+
 ## C
 [FFI - The Rustonomicon](https://doc.rust-lang.org/nomicon/ffi.html)
 
@@ -45,6 +55,19 @@ Libraries:
 
 C to Rust:
 - [bindgen: Automatically generates Rust FFI bindings to C (and some C++) libraries.](https://github.com/rust-lang/rust-bindgen)
+  - `--use-core`
+  - Enums
+    - `--rustified-enum`
+  - Dynamic
+    - `#[link]`: `--allowlist-item .* --merge-extern-blocks`
+      - PowerShell
+        ```pwsh
+        (Get-Content src/sys.rs) -replace 'unsafe extern', ('#[link(name = "example", kind = "raw-dylib")]' + "`n" + 'unsafe extern') | Set-Content src/sys.rs
+        ```
+      - [Support for raw-dylib for Windows - Issue #2833 - rust-lang/rust-bindgen](https://github.com/rust-lang/rust-bindgen/issues/2833)
+      - [Dynamic Linking Support (windows-msvc) - Issue #2548 - rust-lang/rust-bindgen](https://github.com/rust-lang/rust-bindgen/issues/2548)
+    - libloading: `--allowlist-item .* --dynamic-loading example --dynamic-link-require-all`
+  - [CLI](https://rust-lang.github.io/rust-bindgen/command-line-usage.html)
 - [C2Rust: Migrate C code to Rust](https://github.com/immunant/c2rust)
 
 Rust to C:

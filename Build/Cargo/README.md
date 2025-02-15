@@ -12,7 +12,7 @@
 - cargo check
   - Build passes but check fails
     - Also very slow, blocking user actions for a long time if the editor runs it on every file save
-    - `cargo clearn` + `cargo cache -a`
+    - `cargo clean` + `cargo cache -a`
     - ["cargo check" (incorrectly) shows compiler errors that are not present when running "cargo build" - Issue #9971 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/9971)
     - [cargo check shows errors when there are none and code compiles and runs cleanly otherwise - Issue #12145 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/12145)
 - [bacon: background rust code check](https://github.com/Canop/bacon)

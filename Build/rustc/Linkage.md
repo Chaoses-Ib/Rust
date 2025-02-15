@@ -55,6 +55,7 @@ What if the library links other C libraries?
 ## `cdylib`
 Libraries:
 - [libloading: Bindings around the platform's dynamic library loading primitives with greatly improved memory safety.](https://github.com/nagisa/rust_libloading/)
+  - Used by bindgen
   - [sharedlib: A cross-platform shared library loader.](https://github.com/Tyleo/sharedlib)
 
 - [szymonwieloch/dlopen: Rust library for opening and working with dynamic link libraries.](https://github.com/szymonwieloch/rust-dlopen)

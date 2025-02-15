@@ -38,3 +38,21 @@
       fs::copy("../libs/simple/libsimple.dylib", target.join("libsimple.dylib"),).unwrap();
   }
   ```
+  ```rust
+  fn main() {
+      let target = get_cargo_target_dir().unwrap();
+
+      const DLL: &str = if cfg!(target_arch = "x86_64") {
+          "SDK64.dll"
+      } else if cfg!(target_arch = "x86") {
+          "SDK32.dll"
+      } else {
+          unimplemented!()
+      };
+      let target_dll = target.join(DLL);
+      fs::copy(format!("lib/{DLL}"), &target_dll).unwrap();
+
+      println!("cargo:rerun-if-changed=lib/");
+      println!("cargo:rerun-if-changed={}", target_dll.to_string_lossy());
+  }
+  ```
