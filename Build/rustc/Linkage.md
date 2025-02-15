@@ -3,6 +3,29 @@
 
 [Cargo Targets - The Cargo Book](https://doc.rust-lang.org/cargo/reference/cargo-targets.html)
 
+## `link` attribute
+[The Rust Reference](https://doc.rust-lang.org/reference/items/external-blocks.html#the-link-attribute)
+
+- `name`
+- `kind`
+  - `static`
+  - `dylib`
+    - Windows: [`raw-dylib`](https://doc.rust-lang.org/reference/items/external-blocks.html#dylib-versus-raw-dylib)
+
+      `#[cfg_attr(windows, link(name = "libwsutil.dll", kind = "raw-dylib"))]`
+  - macOS: `framework`
+- `modifiers`
+  - `static`
+    - `bundle`
+    - `whole-archive`
+  - [`verbatim`](https://doc.rust-lang.org/rustc/command-line-arguments.html#linking-modifiers-verbatim)
+  
+    > rustc itself won’t add any target-specified library prefixes or suffixes (like lib or .a) to the library name, and will try its best to ask for the same thing from the linker.
+
+  [2951-native-link-modifiers - The Rust RFC Book](https://rust-lang.github.io/rfcs/2951-native-link-modifiers.html)
+
+[`link_name` attribute](https://doc.rust-lang.org/reference/items/external-blocks.html#the-link_name-attribute)
+
 ## `staticlib`
 [micahsnyder/cmake-rust-demo: A project that demonstrates building a C application with CMake that has Rust static library components](https://github.com/micahsnyder/cmake-rust-demo)
 
