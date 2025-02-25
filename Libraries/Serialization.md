@@ -27,6 +27,7 @@
 - [Internal buffering disrupts format-specific deserialization features - Issue #1183](https://github.com/serde-rs/serde/issues/1183)
 
 [Enum representations](https://serde.rs/enum-representations.html):
+- Unit variants → string enums
 - Externally tagged
 - Internally tagged
   - [Optional tag for internally tagged enum - Issue #2231](https://github.com/serde-rs/serde/issues/2231)
@@ -44,6 +45,13 @@
 - [serde\_literals: Add support for serialising and deserialising literals directly into enum unit variants.](https://github.com/andrewlowndes/serde_literals)
 - [serde-versioning: A drop-in replacement for serde Deserialize with built-in versioning](https://github.com/vic1707/serde-versioning)
 - `Result` is externally tagged
+  ```rust
+  let r: Result<(), Error> = Err(Error::Code(ErrorCode::Unknown));
+  assert_eq!(serde_json::to_string(&r).unwrap(), r#"{"Err":{"Code":1}}"#);
+
+  let r: Result<(), Error> = Ok(());
+  assert_eq!(serde_json::to_string(&r).unwrap(), r#"{"Ok":null}"#);
+  ```
 
   Untagged: `#[serde(untagged)]` must be added to the type to work, and attrs can only be added to own types.
   - New types

@@ -40,6 +40,7 @@ Just as we’re able to define methods on structs using `impl`, we’re also ab
 
 ## Data types
 - [Strum: A small rust library for adding custom derives to enums](https://github.com/Peternator7/strum)
+  - Or Serde
 - [enum-map: A map with C-like enum keys represented internally as an array](https://codeberg.org/xfix/enum-map)
 
 ## Iteration
