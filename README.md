@@ -53,6 +53,7 @@
   - [Registries](Build/Cargo/Registries.md)
 - [Testing](Build/Testing.md)
 - [Benchmarking](Build/Benchmarking.md)
+- [Binary Size](Build/Size.md)
 
 ## Libraries
 - Paradigms
