@@ -38,9 +38,30 @@ Just as we’re able to define methods on structs using `impl`, we’re also ab
 
 [`std::mem::discriminant`](https://doc.rust-lang.org/std/mem/fn.discriminant.html) (v1.21.0)
 
+## The `non_exhaustive` attribute
+[The Rust Reference](https://doc.rust-lang.org/reference/attributes/type_system.html)
+
+[`#[non_exhaustive]` and ffi : r/rust](https://www.reddit.com/r/rust/comments/cfp6lt/non_exhaustive_and_ffi/)
+> All non_exhaustive does is requiring `_` pattern match in matches. It doesn't change this being undefined behavior.
+
+Or an `Other` variant. But `serde_repr` doesn't support that.
+
+[Should Error enums be `non_exhaustive`? : r/rust](https://www.reddit.com/r/rust/comments/13p5ipy/should_error_enums_be_non_exhaustive/)
+
 ## Data types
+- Integer enums
+  - enum -> int: `as`
+  - int -> enum
+    - serde_repr: `serde_json::from_value(serde_json::json!(v)).unwrap()`
+    - [int-enum-rs: A procedural macro for conversion between integer and enum types.](https://github.com/Juici/int-enum-rs)
+    
+    `#[non_exhaustive]`?
+
+    [rust - How do I match enum values with an integer? - Stack Overflow](https://stackoverflow.com/questions/28028854/how-do-i-match-enum-values-with-an-integer)
+
 - [Strum: A small rust library for adding custom derives to enums](https://github.com/Peternator7/strum)
   - Or Serde
+
 - [enum-map: A map with C-like enum keys represented internally as an array](https://codeberg.org/xfix/enum-map)
 
 ## Iteration
