@@ -115,6 +115,8 @@ Associated functions that aren’t methods are often used for constructors that 
   - 不过可以 `Default::default()`，换类型了也能自动推导，C++ 里就没法 `auto x;` 这样写
 - 可以只声明不初始化，例如 `let s;`
 
+[derive-new: derive simple constructor functions for Rust structs](https://github.com/nrc/derive-new)
+
 For example:
 ```rust
 #[derive(Debug)]

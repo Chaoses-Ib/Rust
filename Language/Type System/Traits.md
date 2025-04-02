@@ -35,12 +35,34 @@ impl Summary for NewsArticle {}
 Default implementations can call other methods in the same trait, even if those other methods don’t have a default implementation.
 - [RFC: calling default trait methods from overriding impls by adamcrume - Pull Request #3329 - rust-lang/rfcs](https://github.com/rust-lang/rfcs/pull/3329)
 
-Note that we can implement a trait on a type only if at least one of the trait or the type is local to our crate. For example, we can’t implement the `Display` trait on `Vec<T>` within our `aggregator` crate, because `Display` and `Vec<T>` are both defined in the standard library. This restriction is part of a property called _coherence_, and more specifically the _orphan rule_, so named because the parent type is not present. This rule ensures that other people’s code can’t break your code and vice versa. Without the rule, two crates could implement the same trait for the same type, and Rust wouldn’t know which implementation to use.
-
 由于 Rust 的 generics 不够强大，使用 static dispatch 可能会产生许多 boilerplate code，使用 macros 可以在一定程度上缓解这个问题，但 macros 本身也会引入新的问题。
 
 [A failed experiment with Rust static dispatch - Julio Merino](https://jmmv.dev/2023/08/rust-static-dispatch-failed-experiment.html)
 - [A failed experiment with Rust static dispatch : rust](https://www.reddit.com/r/rust/comments/15kdj78/a_failed_experiment_with_rust_static_dispatch/)
+
+### Orphan rule
+> Note that we can implement a trait on a type only if at least one of the trait or the type is local to our crate. For example, we can’t implement the `Display` trait on `Vec<T>` within our `aggregator` crate, because `Display` and `Vec<T>` are both defined in the standard library. This restriction is part of a property called _coherence_, and more specifically the _orphan rule_, so named because the parent type is not present. This rule ensures that other people’s code can’t break your code and vice versa. Without the rule, two crates could implement the same trait for the same type, and Rust wouldn’t know which implementation to use.
+
+[Ixrec/rust-orphan-rules: An unofficial, experimental place for documenting and gathering feedback on the design problems around Rust's orphan rules](https://github.com/Ixrec/rust-orphan-rules)
+
+New type pattern:
+- [derive_more: Some more derive(Trait) options](https://github.com/JelteF/derive_more)
+  - [`#[derive(Deref)]`](https://docs.rs/derive_more/latest/derive_more/derive.Deref.html)
+  - [Support for deriveing `Borrow` - Issue #260](https://github.com/JelteF/derive_more/issues/260)
+- [shrinkwraprs](https://crates.io/crates/shrinkwraprs) (discontinued)
+  - `AsRef<InnerType>, Borrow<InnerType>, Deref<Target=InnerType>`
+  - `fn transform<F>(&mut self, mut f: F) -> &mut Self where F: FnMut(&mut InnerType)`
+  - `fn siphon<F, T>(self, mut f: F) -> T where F: FnMut(InnerType) -> T`
+- [DanielKeep/rust-custom-derive: Custom derivation macro for Rust](https://github.com/DanielKeep/rust-custom-derive) (discontinued)
+  - [newtype_derive](https://docs.rs/newtype_derive/latest/newtype_derive/)
+- [derive_everything - Rust](https://docs.rs/derive_everything/0.1.2/derive_everything/)
+  - `#[derive(Clone, Debug, Default, Eq, Hash, Ord, PartialEq, PartialOrd)]`
+
+[The newtype idiom and trait boilerplate : r/rust](https://www.reddit.com/r/rust/comments/km5np7/the_newtype_idiom_and_trait_boilerplate/)
+
+[`#[repr(transparent)]` + newtype auto-derive? : r/rust](https://www.reddit.com/r/rust/comments/11zcsch/reprtransparent_newtype_autoderive/)
+
+[`#[derive(All)]` - language design - Rust Internals](https://internals.rust-lang.org/t/derive-all/21937)
 
 ### Trait bound syntax
 We can use **trait bounds** to specify that a generic type can be any type that has certain behavior.

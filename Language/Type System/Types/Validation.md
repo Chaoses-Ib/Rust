@@ -18,6 +18,10 @@
   > 
   > [Lots of remaining work to do](https://github.com/jprochazk/garde/milestone/1), but as far as I can tell, the only features which are missing for feature parity with `validator` are the `nested` and `required` rules. I'm really interested in seeing what people think!
 
+- [Nutype: Rust newtype with guarantees 🇺🇦 🦀](https://github.com/greyblake/nutype)
+
+  [NNN: a new take on nutype : r/rust](https://www.reddit.com/r/rust/comments/1hovz1p/nnn_a_new_take_on_nutype/)
+
 - [prae: prae is a crate that aims to provide a better way to define types that require validation.](https://github.com/teenjuna/prae) (inactive)
 
   > I like the concept, but did they *have* to go with that COBOL/Ruby BDD-ish "our DSL's syntax is scared of punctuation" aesthetic?

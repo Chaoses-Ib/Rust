@@ -21,6 +21,18 @@
 > 
 > `AsRef` is a trait for explicit conversions with the semantics of a by-reference conversion at a negligible runtime cost.
 
+> An important difference between `Deref` and the others is that `Deref` can only be implemented once for a given type, while `Borrow` and `AsRef` can have multiple impls.
+
+> `AsRef` has the same signature as `Borrow`, but `Borrow` is different in few aspects:
+> - Unlike `AsRef`, `Borrow` has a blanket impl for any `T`, and can be used to accept either a reference or a value.
+> - `Borrow` also requires that `Hash`, `Eq` and `Ord` for borrowed value are equivalent to those of the owned value. For this reason, if you want to borrow only a single field of a struct you can implement `AsRef`, but not `Borrow`.
+
+> `Deref` is different from the other two: one type can only be derefed to one target type, and `*d` always has the same type.
+> 
+> `Borrow` and `AsRef` both give a reference to the underlying data, but `Borrow` requires that the original type and the borrowed type have the same behavior, while `AsRef` does not have the same requirement.
+>
+> For example `String` and `str` behave the same; `String` only has some extra features but otherwise is not different, and has the same order when sorted for example. Therefore `impl Borrow<str> for String` makes sense. However, if you have a wrapper type to reverse the sorting order (see `ReversedOrderString` below), you must *not* implement `Borrow<str> for ReversedOrderString`.
+
 ## [→Smart pointers](../../../Libraries/Smart%20Pointers.md)
 
 ## Metadata
