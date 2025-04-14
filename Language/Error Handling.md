@@ -237,8 +237,19 @@ macro_rules! options {
 
 ## Retry
 - [backon: Retry with backoff without effort.](https://github.com/Xuanwo/backon)
-  - [ConstantBuilder](https://docs.rs/backon/0.5.0/backon/struct.ConstantBuilder.html): delay, max times, jitter
+  - [Retry](https://docs.rs/backon/latest/backon/struct.Retry.html)
+    - `notify()` doesn't provide retry count
+  - [BackoffBuilder](https://docs.rs/backon/latest/backon/trait.BackoffBuilder.html)
+    - [ConstantBuilder](https://docs.rs/backon/latest/backon/struct.ConstantBuilder.html): delay, max times, jitter
   - Wasm
+
+  ```rust
+  (|| async { test.fetch("https://www.rust-lang.org").await })
+      .retry(ExponentialBuilder::default())
+      .when(|e| e.to_string() == "retryable")
+      .notify(|e, dur| warn!(e, dur))
+      .await?
+  ```
 
   [backon: Maybe the most elegant retry library ever : r/rust](https://www.reddit.com/r/rust/comments/10wodyu/backon_maybe_the_most_elegant_retry_library_ever/)
 
@@ -262,6 +273,9 @@ macro_rules! options {
   - [waitfor: Retry a function until it succeeds, errors out, or a timeout/deadline is reached.](https://github.com/d-e-s-o/waitfor)
 
 - [retry-policies: A collection of plug-and-play retry policies for Rust projects.](https://github.com/TrueLayer/retry-policies)
+  - [reqwest-middleware](https://github.com/TrueLayer/reqwest-middleware): [reqwest-retry](https://docs.rs/reqwest-retry/0.7.0/reqwest_retry/)
+    - [reqwest_retry::RetryableStrategy](https://docs.rs/reqwest-retry/latest/reqwest_retry/trait.RetryableStrategy.html)
+
 - [exponential-backoff: Exponential backoff generator with jitter.](https://github.com/yoshuawuyts/exponential-backoff)
 
 Discussions:
