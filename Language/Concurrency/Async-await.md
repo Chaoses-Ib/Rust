@@ -127,6 +127,8 @@ Libraries:
 
 - [async-stream: Asynchronous streams for Rust using async & await notation](https://github.com/tokio-rs/async-stream)
 
+[poll_next](https://without.boats/blog/poll-next/)
+
 ## Future executors
 `Future` executors take a set of top-level `Future`s and run them to completion by calling `poll` whenever the `Future` can make progress. Typically, an executor will `poll` a future once to start off. When `Future`s indicate that they are ready to make progress by calling `wake()`, they are placed back onto a queue and `poll` is called again, repeating until the `Future` has completed.
 

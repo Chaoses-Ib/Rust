@@ -1,6 +1,8 @@
 # Concurrency
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch16-00-concurrency.html)
 
+[Coroutines, asynchronous and iterative](https://without.boats/blog/coroutines-async-and-iter/) ([r/rust](https://www.reddit.com/r/rust/comments/186tr4z/coroutines_asynchronous_and_iterative/))
+
 [Concurrency — list of Rust libraries/crates // Lib.rs](https://lib.rs/concurrency)
 
 ## Threads

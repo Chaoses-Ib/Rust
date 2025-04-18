@@ -46,6 +46,12 @@ Coroutines (formerly generators)
 
   - Coroutines cannot be parallelized. Though one can wrap a coroutine to an iterator and use Rayon's [`ParallelBridge`](https://docs.rs/rayon/latest/rayon/iter/trait.ParallelBridge.html) to parallelize the consuming part.
 
+- [3513-gen-blocks - The Rust RFC Book](https://rust-lang.github.io/rfcs/3513-gen-blocks.html)
+  
+  > We could support using `await` in `gen async` blocks in a similar way to how we support `?` being used within `gen` blocks. Without a solution for self-referential generators, we'd have the limitation that these blocks could not hold references across `await` points.
+
+  [Tracking Issue for `gen` blocks and functions - Issue #117078 - rust-lang/rust](https://github.com/rust-lang/rust/issues/117078)
+
 - [genawaiter: Stackless generators on stable Rust.](https://github.com/whatisaphone/genawaiter)
 
   [Do not wait for Rust generators | Medium](https://david-delassus.medium.com/do-not-wait-for-rust-generators-9e7753465f59)
@@ -55,3 +61,32 @@ Stackful:
 - [Generator-rs: rust stackful generator library](https://github.com/Xudong-Huang/generator-rs)
 
 [Rust generator benchmark: Benchmarking different Rust generator libraries in a real world use case.](https://github.com/Tuupertunut/rust-generator-benchmark)
+
+## Async
+- [`std::async_iter`](https://doc.rust-lang.org/nightly/std/async_iter/index.html)
+
+  [Tracking Issue for `#![feature(async_iterator)]` - Issue #79024 - rust-lang/rust](https://github.com/rust-lang/rust/issues/79024)
+
+- `async gen`
+
+  [Introduce support for `async gen` blocks by compiler-errors - Pull Request #118420 - rust-lang/rust](https://github.com/rust-lang/rust/pull/118420#event-11197765508)
+  - [async generators on nightly Rust : r/rust](https://www.reddit.com/r/rust/comments/18e0grb/async_generators_on_nightly_rust/)
+
+  Bridge to [`futures_core::stream::Stream`](https://docs.rs/futures-core/latest/futures_core/stream/trait.Stream.html)?
+
+- [futures-async-stream: Async stream for Rust and the futures crate.](https://github.com/taiki-e/futures-async-stream)
+  - [Procedural macros provided by futures-async-stream cannot handle expressions in macros - Issue #4](https://github.com/taiki-e/futures-async-stream/issues/4)
+
+  [coroutines-stream/simple.rs](coroutines-stream/src/bin/simple.rs)
+
+- [tokio-rs/async-stream: Asynchronous streams for Rust using async & await notation](https://github.com/tokio-rs/async-stream)
+
+  [coroutines-stream/progress.rs](coroutines-stream/src/bin/progress.rs)
+
+- [async-gen: Async generator in stable rust using async/await](https://github.com/nurmohammed840/async-gen)
+
+  > It is similar to [async-stream](https://docs.rs/async-stream/latest/async_stream/), But closely mimics the [Coroutine API](https://doc.rust-lang.org/std/ops/trait.Coroutine.html), Allowing the generator also return a value upon completion, in addition to yielding intermediate values.
+- [stream\_generator: Allows to easily generate streams with async/await.](https://github.com/Riateche/stream_generator)
+
+  [Announcing stream\_generator (creates a stream from an async generator function) - announcements - The Rust Programming Language Forum](https://users.rust-lang.org/t/announcing-stream-generator-creates-a-stream-from-an-async-generator-function/50655)
+- [gen-stream: impl Stream for (your own) Generator](https://github.com/vorot93/gen-stream)

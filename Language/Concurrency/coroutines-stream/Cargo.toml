@@ -1,0 +1,10 @@
+[package]
+name = "coroutines-stream"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+async-stream = "0.3.6"
+futures = "0.3.31"
+futures-async-stream = "0.2.12"
+tokio = { version = "1.44.2", features = ["rt-multi-thread", "macros", "time"] }
