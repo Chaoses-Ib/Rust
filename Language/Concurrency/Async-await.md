@@ -129,6 +129,17 @@ Libraries:
 
 [poll_next](https://without.boats/blog/poll-next/)
 
+### Recursion
+[Recursion - Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/07_workarounds/04_recursion.html)
+```rust
+async fn recursive_pinned() {
+    Box::pin(recursive_pinned()).await;
+    Box::pin(recursive_pinned()).await;
+}
+```
+
+[Async fn recursion (Rust 1.77) - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/async-fn-recursion-rust-1-77/108779)
+
 ## Future executors
 `Future` executors take a set of top-level `Future`s and run them to completion by calling `poll` whenever the `Future` can make progress. Typically, an executor will `poll` a future once to start off. When `Future`s indicate that they are ready to make progress by calling `wake()`, they are placed back onto a queue and `poll` is called again, repeating until the `Future` has completed.
 
@@ -238,6 +249,42 @@ fn main() {
 }
 ```
 
+### Join
+[How to tokio::join on a vector of futures - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/how-to-tokio-join-on-a-vector-of-futures/73233)
+```rust
+let mut handles = Vec::with_capacity(futures.len());
+for fut in futures {
+    handles.push(tokio::spawn(fut));
+}
+
+let mut results = Vec::with_capacity(handles.len());
+for handle in handles {
+    results.push(handle.await.unwrap());
+}
+```
+[Why doesn't Tokio have a `join_all` macro? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/why-doesnt-tokio-have-a-join-all-macro/115181)
+
+[rust - How to tokio::join multiple tasks? - Stack Overflow](https://stackoverflow.com/questions/63589668/how-to-tokiojoin-multiple-tasks)
+
+[asynchronous - How to run multiple Tokio async tasks in a loop without using tokio::spawn? - Stack Overflow](https://stackoverflow.com/questions/71764138/how-to-run-multiple-tokio-async-tasks-in-a-loop-without-using-tokiospawn)
+
+### Scoped tasks
+[The Scoped Task trilemma](https://without.boats/blog/the-scoped-task-trilemma/)
+> Any sound API can only provide at most two of the following three desirable properties:
+> 1. **Concurrency:** Child tasks proceed concurrently with the parent.
+> 2. **Parallelizability:** Child tasks can be made to proceed in parallel with the parent.
+> 3. **Borrowing:** Child tasks can borrow data from the parent without synchronization.
+
+forget, self-referential coroutine types, non-lexical lifetimes.
+
+[Scoped tasks - Issue #3162 - tokio-rs/tokio](https://github.com/tokio-rs/tokio/issues/3162)
+> the reason we can't do crossbeam type scoping from an async context is that crossbeam blocks the thread that calls `scope` for the duration of the scoped threads execution. Any async equivalent has to return state so that we can go back to the executor instead of blocking, and that state could be forgotten in error.
+
+> As for the `tokio-scoped` crate, that does *not* do what you think it does. It blocks the thread, which means that it's only suitable for use from *outside* from a runtime. And the `async-scoped` crate requires unsafe, which you are extremely likely to get wrong in the face of cancellation.
+
+- [async-scoped: A scope for async\_std and tokio to spawn non-static futures](https://github.com/rmanoka/async-scoped)
+  - [Warn against usage of this library - Issue #33 - rmanoka/async-scoped](https://github.com/rmanoka/async-scoped/issues/33)
+- [tokio-scoped: Scoped Runtime for tokio](https://github.com/jaboatman/tokio-scoped) (discontinued)
 
 ## Async runtimes
 Unlike other Rust programs, asynchronous applications require runtime support. In particular, the following runtime services are necessary[^tokio]:
@@ -288,6 +335,7 @@ Libraries:
 
 - [async-std: Async version of the Rust standard library](https://github.com/async-rs/async-std) ([Docs.rs](https://docs.rs/async-std/latest/async_std/))
 - [smol: A small and fast async runtime for Rust](https://github.com/smol-rs/smol)
+- [cassette: A simple, single-future, non-blocking executor intended for building state machines. Designed to be no-std and embedded friendly.](https://github.com/jamesmunns/cassette)
 
 ## Stackful coroutines
 - [May: rust stackful coroutine library](https://github.com/Xudong-Huang/may)
