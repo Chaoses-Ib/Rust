@@ -11,6 +11,13 @@
 - [Figment: A hierarchical configuration library so con-free, it's unreal.](https://github.com/sergiobenitez/figment)
   - `cargo add figment --features toml`, `cargo add serde --features derive`
   - [Conflict Resolution](https://docs.rs/figment/latest/figment/struct.Figment.html#conflict-resolution)
+    - `join`: merge dict, keep existing
+    - `merge`: merge dict, overwrite existing
+    - `adjoin`: merge dict and array, keep existing
+    - `admerge`: merge dict and array, overwrite existing
+  - [Metadata](https://docs.rs/figment/latest/figment/#metadata)
+    - [`RelativePathBuf`](https://docs.rs/figment/latest/figment/value/magic/struct.RelativePathBuf.html)
+  - [Profiles](https://docs.rs/figment/latest/figment/#extracting-and-profiles)
 
 - [Confique: Type-safe, layered, light-weight, `serde`-based configuration library](https://github.com/LukasKalbertodt/confique) (inactive)
   - Easily generate configuration "templates"
