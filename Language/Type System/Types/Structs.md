@@ -201,9 +201,32 @@ fn main() {
 Libraries:
 - [bon: Next-gen compile-time-checked builder generator, named function's arguments, and more!](https://github.com/elastio/bon)
   - Structs and functions
-  - [Positional Members | Bon](https://elastio.github.io/bon/guide/positional-members)
-    - Doesn't support functions?
+  - [`#[builder(into)]`](https://bon-rs.com/guide/basics/into-conversions) / [`#[builder(with = |..| ..)]`](https://bon-rs.com/guide/basics/custom-conversions)
+
+    [Into Conversions In-Depth | Bon](https://bon-rs.com/guide/patterns/into-conversions-in-depth)
+  - [Positional Members](https://bon-rs.com/guide/basics/positional-members)
+    - `#[builder(start_fn = with_coordinates)] #[builder(start_fn)]`
+
+      > the starting function name must be different from the name of the positional function under the `#[builder]` attribute
+
+      Just remove `#[builder(start_fn = with_coordinates)]`.
+    - `#[builder(finish_fn = located_at)] #[builder(finish_fn)]`
+    - ~~Doesn't support functions?~~
     - [ ] All non-optional as positional
+
+    [Support grouping several members as positional arguments to a single setter - Issue #141](https://github.com/elastio/bon/issues/141)
+  - [Documenting](https://bon-rs.com/guide/basics/documenting)
+
+    > Documentation written on the arguments will be placed on the generated setter methods.
+  - [Typestate API](https://bon-rs.com/guide/typestate-api)
+  - [Optional Generic Members](https://bon-rs.com/guide/patterns/optional-generic-members)
+
+    > Instead, make the member's type non-generic and move generics to the setter methods' signature.
+
+    [Support concrete default for generic/`impl Trait` argument. - Issue #168](https://github.com/elastio/bon/issues/168)
+  - [Support member groups: mutually exclusive, mutually required members - Issue #110](https://github.com/elastio/bon/issues/110)
+  - [Introduce bool shorthand (`#[builder(flag)]`) - Issue #142](https://github.com/elastio/bon/issues/142)
+  - [Introduce the syntax where builder is passed via a closure - Issue #127](https://github.com/elastio/bon/issues/127)
 
   Discussions:
   - 2024-08 [Why would you use Bon : r/rust](https://www.reddit.com/r/rust/comments/1exko4h/why_would_you_use_bon/)
