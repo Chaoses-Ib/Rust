@@ -22,6 +22,42 @@
 - [Rust serialization benchmark](https://github.com/djkoloski/rust_serialization_benchmark)
 - [Rust serialization: What's ready for production today? - LogRocket Blog](https://blog.logrocket.com/rust-serialization-whats-ready-for-production-today/)
 
+## Formatting
+- Seriously limited by the orhpan rule
+
+Implmentations:
+- [`std::fmt::Formatter`](https://doc.rust-lang.org/std/fmt/struct.Formatter.html)
+  - Creating
+
+    [\[ACP\] Provide an interface for creating instances of fmt::Formatter - Issue #286 - rust-lang/libs-team](https://github.com/rust-lang/libs-team/issues/286)
+    > Creating a custom [`Formatter`](https://doc.rust-lang.org/std/fmt/struct.Formatter.html) at runtime as well as modifying an existing `Formatter` is currently not supported, one can only use the `Formatter`s passed in by the formatting macros. Being able to create and modify them could be useful for multiple use cases:
+    > 1. Calling the formatting code of contained fields with a modified formatting parameter
+    > 2. Exposing different formatting methods for different representations/data points on one struct
+    > 3. Exposing formatting methods that require additional data
+    > 4. Writing libraries that provide enhanced formatting capabilities
+
+    [Tracking Issue for `FormattingOptions` - Issue #118117 - rust-lang/rust](https://github.com/rust-lang/rust/issues/118117)
+
+  - `Display`
+
+  - `Debug`
+    - Pretty print
+      - Every element in `Vec` will take a line
+
+      Workarounds:
+      - `\b(\d+,)\r?\n\s+` -> `$1 `
+      - `^\s+(\d+,)\r?\n` -> `$1 `
+        - Break folding
+      - Let LLM format again
+
+      [Thoughts on `dbg!` pretty printing? : r/rust](https://www.reddit.com/r/rust/comments/1cp9rv8/thoughts_on_dbg_pretty_printing/)
+
+- [tabled: An easy to use library for pretty print tables of Rust structs and enums.](https://github.com/zhiburt/tabled)
+
+  [Tabled - An easy to use library for pretty print tables of Rust structs and enums. : r/rust](https://www.reddit.com/r/rust/comments/nqrkyh/tabled_an_easy_to_use_library_for_pretty_print/)
+
+- [pretty.rs: Wadler-style pretty-printing combinators in Rust](https://github.com/Marwes/pretty.rs)
+
 ## [Serde](https://serde.rs/)
 [GitHub](https://github.com/serde-rs/serde)
 - [Internal buffering disrupts format-specific deserialization features - Issue #1183](https://github.com/serde-rs/serde/issues/1183)
