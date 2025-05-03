@@ -44,3 +44,9 @@ extern crate baz; // registry `custom`
   > if the git CLI succeeds then [`net.git-fetch-with-cli`](https://doc.rust-lang.org/cargo/reference/config.html#netgit-fetch-with-cli) may help
 
 - > Windows users will need to make sure that the `sh` shell is available in your `PATH`. This typically is available with the Git for Windows installation.
+
+## Binary dependencies
+[3028-cargo-binary-dependencies - The Rust RFC Book](https://rust-lang.github.io/rfcs/3028-cargo-binary-dependencies.html)
+- [Tracking Issue for RFC 3028: Allow "artifact dependencies" on bin, cdylib, and staticlib crates - Issue #9096 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/9096)
+
+See also [build scripts](Scripts.md).
