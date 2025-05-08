@@ -25,6 +25,15 @@ rustup install nightly-2024-02-28
 rustup default nightly-2024-02-28
 ```
 
+## Unstable features
+[The Unstable Book - The Rust Unstable Book](https://doc.rust-lang.org/unstable-book/index.html)
+
+[rustc\_feature - Rust](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_feature/index.html)
+
+[→Conditional compilation](../Conditional%20Compilation.md#rustc)
+
+[Which unstable Rust features do you recommend to try? : r/rust](https://www.reddit.com/r/rust/comments/1aqc2nu/which_unstable_rust_features_do_you_recommend_to/)
+
 ## CLI
 [Command-line Arguments - The rustc book](https://doc.rust-lang.org/rustc/command-line-arguments.html)
 
