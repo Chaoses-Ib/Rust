@@ -13,6 +13,7 @@
   - [Validation](Language/Type%20System/Types/Validation.md)
   - [Type Layout](Language/Type%20System/Type%20Layout.md)
   - [Dynamically Sized Types](Language/Type%20System/Dynamically%20Sized.md)
+  - [Type Conversions](Language/Type%20System/Conversions.md)
   - [Reflection](Language/Type%20System/Reflection.md)
 - [Variables](Language/Variables.md)
 - [Ownership](Language/Ownership/README.md)
