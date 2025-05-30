@@ -239,3 +239,17 @@ impl fmt::Display for Point {
 虽然 supertrait 的语法看起来很像继承，但它实际上是组合而非继承。
 
 类型不会自动实现自定义 trait，即使它是空的。这意味着 closures 可以满足 `Fn()`，但如果定义 `trait MyFn: Fn() {}`，closures 并不能满足 `MyFn`。
+
+## Specialization
+[1210-impl-specialization - The Rust RFC Book](https://rust-lang.github.io/rfcs/1210-impl-specialization.html)
+
+Avoid conflicting:
+- References
+  - `Borrow`
+  - `'static`
+
+  [rust - Can one do generics over references and non-references? - Stack Overflow](https://stackoverflow.com/questions/62205437/can-one-do-generics-over-references-and-non-references)
+
+  [Require that type NOT be a reference - The Rust Programming Language Forum](https://users.rust-lang.org/t/require-that-type-not-be-a-reference/61730)
+
+  [How to indicate a generic T doesn't contain a reference? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/how-to-indicate-a-generic-t-doesnt-contain-a-reference/18444)
