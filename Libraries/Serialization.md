@@ -64,6 +64,12 @@ Implmentations:
 
 [Enum representations](https://serde.rs/enum-representations.html):
 - Unit variants → string enums
+- [Serialize enum as number - Serde](https://serde.rs/enum-number.html)
+  - [serde-repr: Serialize and deserialize C-like enum as underlying repr](https://github.com/dtolnay/serde-repr)
+    - `#[serde(other)]`
+      - [accept `#[serde(other)]` on non-unit enum variants - Issue #1973 - serde-rs/serde](https://github.com/serde-rs/serde/issues/1973)
+    - [Support `#[serde(untagged)]` - Issue #31 - dtolnay/serde-repr](https://github.com/dtolnay/serde-repr/issues/31)
+    - [Allow arbitrary enums - Issue #6 - dtolnay/serde-repr](https://github.com/dtolnay/serde-repr/issues/6)
 - Externally tagged
 - Internally tagged
   - [Optional tag for internally tagged enum - Issue #2231](https://github.com/serde-rs/serde/issues/2231)
@@ -77,7 +83,6 @@ Implmentations:
   - [serde\_sated: serde-sated (sane adjacently tagged enum deserialization \[with untagged variant\])](https://github.com/muttleyxd/serde_sated)
   - [Better message when failing to match any variant of an untagged enum - Issue #2157](https://github.com/serde-rs/serde/issues/2157)
   - [Untagged enums with empty variants (de)serialize in unintuitive ways - Issue #1560](https://github.com/serde-rs/serde/issues/1560)
-- [Serialize enum as number - Serde](https://serde.rs/enum-number.html)
 - [serde\_literals: Add support for serialising and deserialising literals directly into enum unit variants.](https://github.com/andrewlowndes/serde_literals)
 - [serde-versioning: A drop-in replacement for serde Deserialize with built-in versioning](https://github.com/vic1707/serde-versioning)
 - `Result` is externally tagged
