@@ -15,7 +15,7 @@ Registries:
 
 [Publishing workspace crates - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/publishing-workspace-crates/64281)
 > `path` applies only inside your workspace. When you upload, it becomes a regular dependency that will be resolved by looking at [crates.io](http://crates.io/). This means that
-> - ou need a `version` in the dependency declaration, not just a `path`.
+> - You need a `version` in the dependency declaration, not just a `path`.
 > - You must publish the packages in dependency order --- `foo` before anything that depends on `foo`.
 
 [How do you publish your cargo workspace packages without `cargo publish --all`? : r/rust](https://www.reddit.com/r/rust/comments/a39er8/how_do_you_publish_your_cargo_workspace_packages/)
