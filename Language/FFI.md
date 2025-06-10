@@ -13,6 +13,7 @@
 - [cbindgen: A project for generating C bindings from Rust code](https://github.com/eqrion/cbindgen)
 
   Supported languages: C, C++, Cython.
+  - [cbindgen User Guide](https://github.com/mozilla/cbindgen/blob/master/docs.md)
   - Support `bitflags`.
 
 - [UniFFI: a multi-language bindings generator for rust](https://github.com/mozilla/uniffi-rs)
@@ -57,9 +58,11 @@ Libraries:
 
 C to Rust:
 - [bindgen: Automatically generates Rust FFI bindings to C (and some C++) libraries.](https://github.com/rust-lang/rust-bindgen)
+  - `--raw-line`
   - `--use-core`
   - Enums
-    - `--rustified-enum`
+    - `--rustified-enum .*`
+  - [Make it possible so that function pointers aren't always wrapped in an Option. - Issue #1278](https://github.com/rust-lang/rust-bindgen/issues/1278)
   - Dynamic
     - `#[link]`: `--allowlist-item .* --merge-extern-blocks`
       - PowerShell
@@ -69,7 +72,21 @@ C to Rust:
       - [Support for raw-dylib for Windows - Issue #2833 - rust-lang/rust-bindgen](https://github.com/rust-lang/rust-bindgen/issues/2833)
       - [Dynamic Linking Support (windows-msvc) - Issue #2548 - rust-lang/rust-bindgen](https://github.com/rust-lang/rust-bindgen/issues/2548)
     - libloading: `--allowlist-item .* --dynamic-loading example --dynamic-link-require-all`
+  - Filter
+    - Regex is case sensitive and doesn't work with `(?i)`
+      - [Expanded RegEx Support? - Issue #2432](https://github.com/rust-lang/rust-bindgen/issues/2432)
+    - [Exclude windows.h - Issue #2604](https://github.com/rust-lang/rust-bindgen/issues/2604)
+      - `--allowlist-file <PATH>`, must be the path instead of just the file name
+  - Pre-processor
+    - Un-foldable `#define` will be silently ignored (even with `--verbose`)
+  - Comments
+    - Whitespace after `///` / `/**` will be preserved
+    - Normal comment (`//` and `/* */`) will not be preserved
+      - Trailing doc comments will misorder
+    - [comments for macros is lost - Issue #2535](https://github.com/rust-lang/rust-bindgen/issues/2535)
+    - Cannot preserve empty lines between items
   - [CLI](https://rust-lang.github.io/rust-bindgen/command-line-usage.html)
+    - `cargo install bindgen-cli` / `cargo binstall bindgen-cli`
 - [C2Rust: Migrate C code to Rust](https://github.com/immunant/c2rust)
 
 Rust to C:
@@ -116,12 +133,21 @@ Problems:
   - [cxx-async: Simple interoperability between C++ coroutines and asynchronous Rust](https://github.com/pcwalton/cxx-async)
 
 - [Zngur: A C++/Rust interop tool](https://github.com/HKalbasi/zngur)
+  - Layout
+
+    > Zngur needs to know the size and align of the types inside the bridge. You can figure it out using the rust-analyzer (by hovering over the struct or type alias) or fill it with some random number and then fix it from the compiler error.
+  - [Auto-generate main.zng - Issue #5 - HKalbasi/zngur](https://github.com/HKalbasi/zngur/issues/5)
+  - [Linking many `zngur`'d crates - Issue #28 - HKalbasi/zngur](https://github.com/HKalbasi/zngur/issues/28)
 
   [How it compares to other tools - Zngur](https://hkalbasi.github.io/zngur/how_it_compares.html)
 
   [r/rust](https://www.reddit.com/r/rust/comments/174y6dw/announcing_zngur_a_crust_interop_tool/)
   
   [Hacker News](https://news.ycombinator.com/item?id=41271273)
+
+- [Google/Crubit: C++/Rust Bidirectional Interop Tool](https://github.com/google/crubit)
+
+  > Crubit currently expects deep integration with the build system, and is difficult to deploy to environments dissimilar to Google's monorepo. We do not have our tooling set up to accept external contributions at this time.
 
 - [rust-cpp: Embed C++ directly inside your rust code!](https://github.com/mystor/rust-cpp)
 
@@ -139,6 +165,12 @@ Rust to C++:
 - Zngur
 - Diplomat
 - cbindgen
+
+[True C++ interop built into the language - language design - Rust Internals](https://internals.rust-lang.org/t/true-c-interop-built-into-the-language/19175)
+
+[Are we approaching C/C++ interop the wrong way? - The Rust Programming Language Forum](https://users.rust-lang.org/t/are-we-approaching-c-c-interop-the-wrong-way/103609)
+
+[A small trick for simple Rust/C++ interop](https://gaultier.github.io/blog/rust_c++_interop_trick.html) ([r/rust](https://www.reddit.com/r/rust/comments/1fkpbfk/a_small_trick_for_simple_rustc_interop/))
 
 ### [CXX](https://github.com/dtolnay/cxx)
 > Safe interop between Rust and C++.
@@ -263,8 +295,25 @@ Windows:
 ```
 See also [CRT](../Build/rustc/Linkage.md#crt).
 
+[kraktus/cargo-extern-fn: A cargo subcommand used to generate appropriate cxx bridge from a rust crate](https://github.com/kraktus/cargo-extern-fn)
+> but it was based on cxx which turned out to be too limited in terms of fondamental type support (not even Option), and seemingly no active development from the maintainers to add them or accept PRs.
+
 ### [Autocxx](https://github.com/google/autocxx)
 > Tool for safe ergonomic Rust/C++ interop driven from existing C++ headers
+
+[Rust ❤️ pre-existing C++ - Rust ♡ Existing C++](https://google.github.io/autocxx/)
+> When is `autocxx` the right tool?
+> 
+> Not always:
+> * If you are making bindings to C code, as opposed to C++, use [`bindgen`](https://rust-lang.github.io/rust-bindgen/) instead.
+> * If you can make unrestricted changes to the C++ code, use [`cxx`](https://cxx.rs) instead.
+> * If your C++ to Rust interface is just a few functions or types, use [`cxx`](https://cxx.rs) instead.
+> 
+> But sometimes:
+> * If you need to call arbitrary functions and use arbitrary types within an existing C++ codebase, use `autocxx`. You're in the right place!
+> * Like `cxx`, but unlike `bindgen`, `autocxx` helps with calls from C++ to Rust, too.
+
+[Callbacks into Rust - Rust ♡ Existing C++](https://google.github.io/autocxx/rust_calls.html)
 
 [Make templated C++ types useful - Issue #349](https://github.com/google/autocxx/issues/349)
 
