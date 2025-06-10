@@ -3,7 +3,50 @@
 
 [Cargo Targets - The Cargo Book](https://doc.rust-lang.org/cargo/reference/cargo-targets.html)
 
-## `link` attribute
+## [`crate-type`](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#the-crate-type-field)
+> This can only be specified for libraries and examples. Binaries, tests, and benchmarks are always the "bin" crate type.
+
+- Examples
+
+  ```toml
+  [[example]]
+  name = "foo"
+  crate-type = ["staticlib"]
+  ```
+  Cargo will only find `foo` example at `examples\foo.rs` or `examples\foo\main.rs`. Please specify `example.path` if you want to use a non-default path.
+
+  [How to correctly use crate-type in `[[example]]`? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/how-to-correctly-use-crate-type-in-example/68541)
+
+  [What's the right way to declare & run "crate-type" examples? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/whats-the-right-way-to-declare-run-crate-type-examples/108385)
+  - Workspace member
+
+- CLI
+  
+  [3180-cargo-cli-crate-type - The Rust RFC Book](https://rust-lang.github.io/rfcs/3180-cargo-cli-crate-type.html)
+  - `cargo rustc --crate-type cdylib`
+
+  [bltavares/cargo-crate-type: Utility to modify Cargo.toml and define the crate type](https://github.com/bltavares/cargo-crate-type)
+
+  [Is it possible to override the crate-type specified in Cargo.toml from the command line when calling cargo build? - Stack Overflow](https://stackoverflow.com/questions/65012484/is-it-possible-to-override-the-crate-type-specified-in-cargo-toml-from-the-comma)
+
+- [Ability to set crate-type depending on target - Issue #4881 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/4881)
+  - [Support `[target.'cfg(...)'.lib]` sections - Issue #12260 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/12260)
+
+## External blocks
+[The Rust Reference](https://doc.rust-lang.org/reference/items/external-blocks.html)
+
+ABI:
+- `Rust`
+- `C` (default)
+- `system` (`C` / `stdcall`)
+- x86
+  - `cdecl`, `stdcall`
+  - `win64`, `sysv64`
+- ARM: `aapcs`
+- `fastcall`, `thiscall`
+- UEFI: `efiapi`
+
+### `link` attribute
 [The Rust Reference](https://doc.rust-lang.org/reference/items/external-blocks.html#the-link-attribute)
 
 - `name`
@@ -25,6 +68,15 @@
   [2951-native-link-modifiers - The Rust RFC Book](https://rust-lang.github.io/rfcs/2951-native-link-modifiers.html)
 
 [`link_name` attribute](https://doc.rust-lang.org/reference/items/external-blocks.html#the-link_name-attribute)
+
+## Symbol mangling
+[The rustc book](https://doc.rust-lang.org/rustc/symbol-mangling/index.html)
+
+- [`no_mangle` attribute](https://doc.rust-lang.org/reference/abi.html#the-no_mangle-attribute)
+
+  `#[unsafe(no_mangle)]` since Rust 2024
+
+- `#[unsafe(export_name = "exported_symbol_name")]`
 
 ## `staticlib`
 [micahsnyder/cmake-rust-demo: A project that demonstrates building a C application with CMake that has Rust static library components](https://github.com/micahsnyder/cmake-rust-demo)

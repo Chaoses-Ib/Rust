@@ -1,4 +1,6 @@
 # Foreign Function Interface
+[→Linkage](../Build/rustc/Linkage.md)
+
 - [Diplomat: Experimental Rust tool for generating FFI definitions allowing many other languages to call Rust code](https://github.com/rust-diplomat/diplomat/)
 
   [Supported languages](https://github.com/rust-diplomat/diplomat/tree/main/tool/src): C, C++, JS, C#, Kotlin, Dart.
