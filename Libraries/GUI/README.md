@@ -1,5 +1,16 @@
 # GUI
+- [rust-windowing/winit: Window handling library in pure Rust](https://github.com/rust-windowing/winit)
+  - [rust-windowing/raw-window-handle: A common windowing interoperability library for Rust](https://github.com/rust-windowing/raw-window-handle)
+  - IME: [Tracking issue for IME / composition support - Issue #1497 - rust-windowing/winit](https://github.com/rust-windowing/winit/issues/1497)
+    - ~~[IME on Windows does not work with multi-threading - Issue #3123 - rust-windowing/winit](https://github.com/rust-windowing/winit/issues/3123)~~
+
 - [iced: A cross-platform GUI library for Rust, inspired by Elm](https://github.com/iced-rs/iced)
+  - Elm
+  - Backends: wgpu, tiny-skia
+  - [text\_input can't accept chinese input - Issue #1801 - iced-rs/iced](https://github.com/iced-rs/iced/issues/1801)
+
+  > iced感觉还行，虽然体积大、不支持输入法、布局支持比egui稍微好一点但不多、不认识wayland桌面的暗色模式、通信机制对用户不透明、changelog就跟没写一样没事就break几个重要的api，但是控件不少  
+  > iced什么时候能支持文本框里面右键能显示复制粘贴等功能菜单了，说不定就好起来了
 
 - [Dioxus: Fullstack app framework for web, desktop, mobile, and more.](https://github.com/DioxusLabs/dioxus)
   - React
@@ -17,6 +28,7 @@
 - [Slint](Slint/README.md)
 
 - [Xilem: An experimental Rust native UI framework](https://github.com/linebender/xilem)
+  - winit, Vello and wgpu, Parley, AccessKit
 
   [Xilem: an architecture for UI in Rust | Raph Levien's blog](https://raphlinus.github.io/rust/gui/2022/05/07/ui-architecture.html)
 
@@ -78,7 +90,34 @@ Flutter:
 >
 > Flutter 也就画画 GUI，写业务就是一坨屎
 
+2023-03 [桌面客户端web化已经是大势所趋啦吗？rust有什么原生的GUI库比较好用？ - Rust语言中文社区](https://rustcc.cn/article?id=e6c755d5-e813-4f47-81e4-fe82a2ef59db)
+> egui和iced都不能直接使用系统的字体文件，必须把字体文件编译进去，这点很麻烦，而且对中文输入法的支持也不完美。可以试试Dioxus，但缺点和tauri一样，需要webview的支持。
+
 ## Windows
 - [rusty-twinkle-tray: Twinkle Tray but 🦀](https://github.com/sidit77/rusty-twinkle-tray) ([r/rust](https://www.reddit.com/r/rust/comments/18mtdaz/native_semimodern_windows_guis_in_pure_rust/))
 - [sotanakamura/winui-rust](https://github.com/sotanakamura/winui-rust)
 - [microsoft/windows-app-rs: Rust for the Windows App SDK](https://github.com/microsoft/windows-app-rs)
+
+ComCtl:
+- Cross-platform
+  - [Winio: Single-threaded asynchronous GUI runtime](https://github.com/compio-rs/winio)
+    - Elm
+    - Dark mode
+    - [Win32 embedding usage - Issue #24 - compio-rs/winio](https://github.com/compio-rs/winio/issues/24)
+  - [libui-rs/libui: Rust bindings to the minimalist, native, cross-platform UI toolkit `libui-ng`](https://github.com/libui-rs/libui)
+  - [KISS-UI/kiss-ui: A simple UI framework for Rust built on top of IUP](https://github.com/KISS-UI/kiss-ui) (discontinued)
+- [native-windows-gui: A light windows GUI toolkit for rust](https://github.com/gabdube/native-windows-gui) (discontinued)
+  - [`Window`](https://docs.rs/native-windows-gui/latest/native_windows_gui/struct.Window.html)
+  - Dialogs
+  - Tray notification
+  - Localization
+  - Rich text box
+  - WGPU canvas, plotters canvas, extern canvas OpenGL, GDI
+  - Interactive tests
+  - Problematic high DPI support
+  - [Add dark mode support by Aurumaker72 - Pull Request #305 - gabdube/native-windows-gui](https://github.com/gabdube/native-windows-gui/pull/305)
+  - [app crashes if build with --release - Issue #310 - gabdube/native-windows-gui](https://github.com/gabdube/native-windows-gui/issues/310)
+- [rodrigocfd/winsafe: Windows API and GUI in safe, idiomatic Rust.](https://github.com/rodrigocfd/winsafe)
+  - button, check box, combo box, date and time picker, edit, header, label, list box, list view, month calendar, progress bar, radio button, status bar, tab, track bar, tree view, up down
+- [Lonami/rust-windows-gui: Build GUI applications with minimal dependencies in Rust](https://github.com/Lonami/rust-windows-gui) (discontinued)
+- [aleo101/Rust-Win32-control-program: Win32 program written in Rust to get practice with Rust and Windows programming.](https://github.com/aleo101/Rust-Win32-control-program)
