@@ -73,7 +73,7 @@ let a = [1, 2, 3, 4, 5];
 let slice : &[i32] = &a[1..3];
 ```
 
-Slice 包含 pointer 和 length，如果对同一序列存在多个引用（例如 string pool），就会导致 length 被重复储存，造成内存浪费。解决方法是将储存的 slice 换为对结构的引用，例如将 `&str` 换为 `&String`。See [Dynamically Sized Types](Type%20System/Dynamically%20Sized.md) for details.
+Slice 包含 pointer 和 length，如果对同一序列存在多个引用（例如 string pool），就会导致 length 被重复储存，造成内存浪费。解决方法是将储存的 slice 换为对结构的引用，例如将 `&str` 换为 `&String`。See [Dynamically Sized Types](<../Type System/Dynamically Sized.md>) for details.
 
 #### String slices
 ```rust
@@ -87,9 +87,11 @@ String literals are string slices.
 ### Interior mutability
 - [UnsafeCell](https://doc.rust-lang.org/stable/std/cell/struct.UnsafeCell.html)
 
-  All other types that allow internal mutability, such as `Cell<T>` and `RefCell<T>`, internally use UnsafeCell to wrap their data.
+  All other types that allow internal mutability, such as `Cell<T>` and `RefCell<T>`, internally use `UnsafeCell` to wrap their data.
 
-- Cell
+- [`Cell`](https://doc.rust-lang.org/stable/std/cell/struct.Cell.html)
+
+  > `Cell<T>` implements interior mutability by moving values in and out of the cell. That is, an `&mut T` to the inner value can never be obtained, and the value itself cannot be directly obtained without replacing it with something else. Both of these rules ensure that there is never more than one reference pointing to the inner value.
 
   Use `Cell` instead of `RefCell` when you can.
 
@@ -191,7 +193,7 @@ String literals are string slices.
 
   Note that `RefCell<T>` does not work for multithreaded code. `Mutex<T>` is the thread-safe version of `RefCell<T>`.
 
-See [Data Structures](../Libraries/Data%20Structures.md) for other data structures with interior mutability.
+See [Data Structures](<../../Libraries/Data Structures.md>) for other data structures with interior mutability.
 
 ### Self-referential structs
 在 Rust 中，结构体的引用字段的生命期必须大于结构体本身，即必须在 drop 完成之前都可用，而对结构体字段的引用的生命期是与结构体本身相同的，因此一个结构无法包含对自己的字段的引用。

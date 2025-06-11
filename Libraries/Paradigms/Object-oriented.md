@@ -42,7 +42,7 @@
       inner: UnsafeCell<Option<T>>,
   }
   ```
-  `OnceCell` has no addtional runtime cost compared to `Option`, but at the cost of being `!Sync`.
+  `OnceCell` provides interior mutability, has no addtional runtime cost compared to `Option`, but at the cost of being `!Sync`.
 
   `OnceLock`:
   ```rust
@@ -58,6 +58,15 @@
   [Tracking Issue for `once_cell_try` - Issue #109737 - rust-lang/rust](https://github.com/rust-lang/rust/issues/109737)
 
 - [once_cell: Rust library for single assignment cells and lazy statics without macros](https://github.com/matklad/once_cell)
+
+`OnceCell`/`OnceLock` has an access cost. What if I know the cell must be inited when access?
+- `OnceCell.get().unwrap_unchecked()`
+- `UnsafeCell`
+- [`MaybeUninit`](https://doc.rust-lang.org/std/mem/union.MaybeUninit.html)
+
+  > You can think of `MaybeUninit<T>` as being a bit like `Option<T>` but without any of the run-time tracking and without any of the safety checks.
+
+  > Note that dropping a `MaybeUninit<T>` will never call `T`'s drop code. It is your responsibility to make sure `T` gets dropped if it got initialized.
 
 ## Lazy evaluation 
 - `OnceCell`
