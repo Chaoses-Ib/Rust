@@ -55,12 +55,14 @@ What if the library links other C libraries?
 ## `cdylib`
 Libraries:
 - [libloading: Bindings around the platform's dynamic library loading primitives with greatly improved memory safety.](https://github.com/nagisa/rust_libloading/)
+  - `Symbol` cannot be externally constructed
+  - [Windows](https://github.com/nagisa/rust_libloading/blob/master/src/os/windows/mod.rs)
   - Used by bindgen
   - [sharedlib: A cross-platform shared library loader.](https://github.com/Tyleo/sharedlib)
 
 - [szymonwieloch/dlopen: Rust library for opening and working with dynamic link libraries.](https://github.com/szymonwieloch/rust-dlopen)
   - [ahmed-masud/dlopen](https://github.com/ahmed-masud/rust-dlopen)
-    - [dlopen2](https://github.com/OpenByteDev/dlopen2)
+    - **[dlopen2](https://github.com/OpenByteDev/dlopen2)**
       - [Comparison with other libraries](https://github.com/OpenByteDev/dlopen2#comparison-with-other-libraries)
       - Warning: structure field / method `MyFunc` should have a snake case name
         ```rust

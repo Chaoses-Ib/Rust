@@ -19,6 +19,15 @@ For most implementations, the default stack size is 2MiB, but it's 4MiB for WebA
 ## Function pointers
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch19-05-advanced-functions-and-closures.html#function-pointers)
 
+- How to write a generic function pointer?
+  - `T: Copy + ...`
+  - `assert_eq!(mem::size_of::<T>(), mem::size_of::<fn()>())`
+  - `transmute_copy(&f)` / `*(&f as *const _ as *const T)`
+
+    See [transmutes with generics](Type%20System/Conversions.md#with-generics).
+
+  Applications: [dynamic linking](../Build/rustc/Linkage.md#cdylib)
+
 ## Closures
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch13-01-closures.html)
 

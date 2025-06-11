@@ -34,3 +34,12 @@ Transmuting, bit casting
 [Moving from zerocopy to bytemuck - Issue #82 - meilisearch/heed](https://github.com/meilisearch/heed/issues/82)
 
 [Transmute is like, the most unsafe thing possible. It basically checks if the tw... | Hacker News](https://news.ycombinator.com/item?id=16226444)
+
+### With generics
+- `transmute_copy(&f)`
+
+  [Transmute doesn't work on generic types? - The Rust Programming Language Forum](https://users.rust-lang.org/t/transmute-doesnt-work-on-generic-types/87272)
+
+- `*(&f as *const _ as *const T)`
+
+  [rust\_libloading/src/os/windows/mod.rs at master - nagisa/rust\_libloading](https://github.com/nagisa/rust_libloading/blob/83f08b8779f4ba41777c41218398df4a2977d340/src/os/windows/mod.rs#L373-L378)
