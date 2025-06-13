@@ -99,6 +99,11 @@ where
 }
 ```
 
+[Tracking issue for negative impls - Issue #68318 - rust-lang/rust](https://github.com/rust-lang/rust/issues/68318)
+
+[Add an `assert_not_impl` macro by 197g - Pull Request #17 - nvzqz/static-assertions](https://github.com/nvzqz/static-assertions/pull/17)
+- [A macro to assert that a type *does not* implement trait bounds - announcements - The Rust Programming Language Forum](https://users.rust-lang.org/t/a-macro-to-assert-that-a-type-does-not-implement-trait-bounds/31179)
+
 ## Trait objects
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch17-02-trait-objects.html)
 
@@ -154,7 +159,9 @@ Static dispatch:
 - [enum\_dispatch](https://docs.rs/enum_dispatch/latest/enum_dispatch/)
 - [typetag: Serde serializable and deserializable trait objects](https://github.com/dtolnay/typetag)
 
-### [Object safety](https://doc.rust-lang.org/reference/items/traits.html#object-safety)
+### [Dyn compatibility](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility)
+dyn compatibility, object safety
+
 A trait is *object safe* if it has the following qualities (defined in [RFC 255](https://github.com/rust-lang/rfcs/blob/master/text/0255-object-safety.md)):
 - It must not have any associated constants.
 - All associated functions must either be dispatchable from a trait object or be explicitly non-dispatchable.
@@ -164,6 +171,18 @@ A trait is *object safe* if it has the following qualities (defined in [RFC 2
 
 [How to clone a struct storing a boxed trait object? - Stack Overflow](https://stackoverflow.com/questions/30353462/how-to-clone-a-struct-storing-a-boxed-trait-object)
 - `fn clone_box(&self) -> Box<dyn MyTrait>;`
+
+Async:
+- [dtolnay/async-trait: Type erasure for async trait methods](https://github.com/dtolnay/async-trait)
+  - `Box<T>` cost
+
+  [why async fn in traits are hard - baby steps](https://smallcultfollowing.com/babysteps/blog/2019/10/26/async-fn-in-traits-are-hard/)
+
+Workarounds:
+- Enum dispatch
+  - Not open
+- Abstracting to another dyn-compatible trait
+  - Need implement for concrete types / composited types as all supertraits must also be dyn compatible
 
 ## Associated types
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch19-03-advanced-traits.html#specifying-placeholder-types-in-trait-definitions-with-associated-types)
@@ -203,6 +222,14 @@ impl Iterator for Counter {
 The difference is that when using generics, we must annotate the types in each implementation; because we can also implement `Iterator<String> for Counter` or any other type, we could have multiple implementations of `Iterator` for `Counter`. In other words, when a trait has a generic parameter, it can be implemented for a type multiple times, changing the concrete types of the generic type parameters each time. When we use the `next` method on `Counter`, we would have to provide type annotations to indicate which implementation of `Iterator` we want to use.
 
 With associated types, we don’t need to annotate types because we can’t implement a trait on a type multiple times. With the definition that uses associated types, we can only choose what the type of `Item` will be once, because there can only be one `impl Iterator for Counter`. We don’t have to specify that we want an iterator of `u32` values everywhere that we call `next` on `Counter`.
+
+- Type equality constraints
+  - `T: Iterator<Item = i32>`
+  - `T: Iterator where T::Item == i32` not supported
+
+    [Tracking issue for type equality constraints in where clauses - Issue #20041 - rust-lang/rust](https://github.com/rust-lang/rust/issues/20041)
+  - `T: Iterator where (T::Item, i32): TypeEqual` / `where T::Item: TypeEqual<i32>`
+  - `T: Iterator where T::Item: i32Like`
 
 ## Supertraits
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch19-03-advanced-traits.html#using-supertraits-to-require-one-traits-functionality-within-another-trait)
