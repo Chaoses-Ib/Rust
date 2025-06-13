@@ -111,6 +111,22 @@ impl<T: Debug, const N: usize> Debug for ArrayPair<T, N> {
 [Tracking Issue for more complex const parameter types: `feature(adt_const_params)` · Issue #95174 · rust-lang/rust](https://github.com/rust-lang/rust/issues/95174)
 - [std::marker::ConstParamTy](https://doc.rust-lang.org/nightly/std/marker/trait.ConstParamTy.html)
 
+## Variadic generics
+- Implement for `<A>`, `<A, B>`, `<A, B, C>` ...
+
+- `(Item, Rest)`
+
+  > In practice, I’ve heard of a lot of people wishing they could use variadics, but I’ve never heard of anyone using the “simple” design above, probably because of its verbosity (you need to write one trait and two trait implementations for every trait you want to use inside a variadic). And it only covers the basic “implement trait for tuple” use-case.
+
+  - [variadics - Rust](https://docs.rs/variadics/latest/variadics/)
+
+- [Trait objects](Traits.md#trait-objects)
+  - Dyn compatibility
+
+[Variadic generics, again - PoignardAzur](https://poignardazur.github.io/2023/11/08/time-for-variadic-generics/) ([r/rust](https://www.reddit.com/r/rust/comments/17qp7v4/variadic_generics_again/))
+
+[variadics\_analysis.md](https://gist.github.com/PoignardAzur/aea33f28e2c58ffe1a93b8f8d3c58667)
+
 ## Lifetimes
 Rather than ensuring that a type has the behavior we want, **lifetimes** ensure that references are valid as long as we need them to be. The main aim of lifetimes is to prevent _dangling references_, which cause a program to reference data other than the data it’s intended to reference.
 
