@@ -14,3 +14,24 @@
 `unsafe { &*&raw const STATIC }` / `unsafe { &mut *&raw mut STATIC }`
 
 > Mutable statics have the same restrictions as normal statics, except that the type does not have to implement the `Sync` trait.
+
+[→Lazy initialization](../../Libraries/Paradigms/Object-oriented.md#lazy-evaluation)
+
+## Generic statics
+- [Different static variables for different instances of a generic function - Issue #2130 - rust-lang/rfcs](https://github.com/rust-lang/rfcs/issues/2130)
+
+- Macros / duplicates
+  
+  Only static declarations only to be duplicated for each type.
+
+  [Is there a more elegant way to write generic static variables in Rust? - Stack Overflow](https://stackoverflow.com/questions/75582901/is-there-a-more-elegant-way-to-write-generic-static-variables-in-rust)
+
+- Type maps
+
+  Type maps have a cost.
+
+  - [generic\_singleton: A rust library crate for creating generic singletons](https://github.com/WalterSmuts/generic_singleton)
+    - [Add crates.io and docs.rs badges to README by Chaoses-Ib - Pull Request #4](https://github.com/WalterSmuts/generic_singleton/pull/4)
+  - [generic\_static](https://github.com/hukumka/generic_static)
+
+- [Any way to create a generic static? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/any-way-to-create-a-generic-static/73556)
