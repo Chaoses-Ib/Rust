@@ -2,6 +2,8 @@
 [The Rust Reference](https://doc.rust-lang.org/reference/items/static-items.html)
 
 ## Mutable statics
+[Disallow references to static mut - The Rust Edition Guide](https://doc.rust-lang.org/nightly/edition-guide/rust-2024/static-mut-references.html)
+
 > If a static item is declared with the `mut` keyword, then it is allowed to be modified by the program. One of Rust's goals is to make concurrency bugs hard to run into, and this is obviously a very large source of race conditions or other bugs
 > 
 > For this reason, an `unsafe` block is required when either reading or writing a mutable static variable. Care should be taken to ensure that modifications to a mutable static are safe with respect to other threads running in the same process.
@@ -11,7 +13,32 @@
 > 
 > `static GLOBAL: UnsafeCell<T>` is functionally the same. You just can't accidentally create a `&mut` to its contents via a method call. Surprisingly, `GLOBAL += 1` or `GLOBAL.add_assign(1)` don't trigger the `static_mut_refs` warning.
 
-`unsafe { &*&raw const STATIC }` / `unsafe { &mut *&raw mut STATIC }`
+- `&s`: `unsafe { &*&raw const STATIC }`
+
+  `get_static_or_init()` pattern for single-thread access:
+  ```rust
+  static mut STATIC: OnceCell<Static> = OnceCell::new();
+
+  pub fn get_static_or_init(init: impl FnOnce() -> Static) -> &'static Static {
+      unsafe { (&*&raw const STATIC).get_or_init(init) }
+  }
+
+  pub unsafe fn get_static() -> &'static Static {
+      unsafe { (&*&raw const STATIC).get().unwrap_unchecked() }
+  }
+
+  pub unsafe fn get_static_mut_or_init(init: impl FnOnce() -> Static) -> &'static mut Static {
+      unsafe {
+          let s = &mut *&raw mut STATIC;
+          if s.get().is_none() {
+              s.set(init()).unwrap_unchecked();
+          }
+          s.get_mut().unwrap_unchecked()
+      }
+  }
+  ```
+
+- `&mut s`: `unsafe { &mut *&raw mut STATIC }`
 
 > Mutable statics have the same restrictions as normal statics, except that the type does not have to implement the `Sync` trait.
 
@@ -35,3 +62,6 @@
   - [generic\_static](https://github.com/hukumka/generic_static)
 
 - [Any way to create a generic static? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/any-way-to-create-a-generic-static/73556)
+
+What if I just want one static, but with user provided generics?
+- Just let the user define one (optionally with a macro)
