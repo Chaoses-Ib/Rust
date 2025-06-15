@@ -60,6 +60,8 @@ Implmentations:
 
 ## [Serde](https://serde.rs/)
 [GitHub](https://github.com/serde-rs/serde)
+- [Deserializer lifetimes - Serde](https://serde.rs/lifetimes.html)
+  - A type satisfying `DeserializeOwned` also satisfies `Deserialize`
 - [Internal buffering disrupts format-specific deserialization features - Issue #1183](https://github.com/serde-rs/serde/issues/1183)
 
 [Enum representations](https://serde.rs/enum-representations.html):
