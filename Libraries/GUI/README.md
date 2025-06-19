@@ -4,13 +4,7 @@
   - IME: [Tracking issue for IME / composition support - Issue #1497 - rust-windowing/winit](https://github.com/rust-windowing/winit/issues/1497)
     - ~~[IME on Windows does not work with multi-threading - Issue #3123 - rust-windowing/winit](https://github.com/rust-windowing/winit/issues/3123)~~
 
-- [iced: A cross-platform GUI library for Rust, inspired by Elm](https://github.com/iced-rs/iced)
-  - Elm
-  - Backends: wgpu, tiny-skia
-  - [text\_input can't accept chinese input - Issue #1801 - iced-rs/iced](https://github.com/iced-rs/iced/issues/1801)
-
-  > iced感觉还行，虽然体积大、不支持输入法、布局支持比egui稍微好一点但不多、不认识wayland桌面的暗色模式、通信机制对用户不透明、changelog就跟没写一样没事就break几个重要的api，但是控件不少  
-  > iced什么时候能支持文本框里面右键能显示复制粘贴等功能菜单了，说不定就好起来了
+- [→iced](iced.md)
 
 - [Dioxus: Fullstack app framework for web, desktop, mobile, and more.](https://github.com/DioxusLabs/dioxus)
   - React
@@ -25,7 +19,7 @@
 
   > egui aims to be the easiest-to-use Rust GUI library, and the simplest way to make a web app in Rust.
 
-- [Slint](Slint/README.md)
+- [→Slint](Slint/README.md)
 
 - [Xilem: An experimental Rust native UI framework](https://github.com/linebender/xilem)
   - winit, Vello and wgpu, Parley, AccessKit
@@ -57,7 +51,7 @@
 [Tauri vs Iced vs egui: Rust GUI framework performance comparison (including startup time, input lag, resize tests) - Lukasʼ Blog](https://lukaskalbertodt.github.io/2023/02/03/tauri-iced-egui-performance-comparison.html) ([Lobsters](https://lobste.rs/s/zgxvxw/rust_gui_framework_performance))
 
 Web:
-- [Tauri](Tauri/README.md)
+- [→Tauri](Tauri/README.md)
 - [Leptos: Build fast web applications with Rust.](https://github.com/leptos-rs/leptos)
 - [Sycamore: A library for creating reactive web apps in Rust and WebAssembly](https://github.com/sycamore-rs/sycamore)
 - [MoonZoon: Rust Fullstack Framework](https://github.com/MoonZoon/MoonZoon)
@@ -101,7 +95,7 @@ Flutter:
 ComCtl:
 - Cross-platform
   - [Winio: Single-threaded asynchronous GUI runtime](https://github.com/compio-rs/winio)
-    - Elm
+    - MVU
     - Dark mode
     - [Win32 embedding usage - Issue #24 - compio-rs/winio](https://github.com/compio-rs/winio/issues/24)
   - [libui-rs/libui: Rust bindings to the minimalist, native, cross-platform UI toolkit `libui-ng`](https://github.com/libui-rs/libui)
