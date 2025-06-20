@@ -227,6 +227,7 @@ Libraries:
   - [Support member groups: mutually exclusive, mutually required members - Issue #110](https://github.com/elastio/bon/issues/110)
   - [Introduce bool shorthand (`#[builder(flag)]`) - Issue #142](https://github.com/elastio/bon/issues/142)
   - [Introduce the syntax where builder is passed via a closure - Issue #127](https://github.com/elastio/bon/issues/127)
+  - [`#[builder]` with higher-rank trait bounds can cause confusing errors - Issue #307](https://github.com/elastio/bon/issues/307)
 
   Discussions:
   - 2024-08 [Why would you use Bon : r/rust](https://www.reddit.com/r/rust/comments/1exko4h/why_would_you_use_bon/)

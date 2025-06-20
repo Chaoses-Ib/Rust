@@ -104,6 +104,36 @@ where
 [Add an `assert_not_impl` macro by 197g - Pull Request #17 - nvzqz/static-assertions](https://github.com/nvzqz/static-assertions/pull/17)
 - [A macro to assert that a type *does not* implement trait bounds - announcements - The Rust Programming Language Forum](https://users.rust-lang.org/t/a-macro-to-assert-that-a-type-does-not-implement-trait-bounds/31179)
 
+### Higher-rank trait bounds (HRTBs)
+[The Rustonomicon](https://doc.rust-lang.org/nomicon/hrtb.html)
+
+- `where for<'a> F: Fn(&'a (u8, u16)) -> &'a u8,`
+- `where F: for<'a> Fn(&'a (u8, u16)) -> &'a u8,`
+
+> `for<'a>` can be read as "for all choices of `'a`", and basically produces an *infinite list* of trait bounds that F must satisfy. Intense. There aren't many places outside of the `Fn` traits where we encounter HRTBs, and even for those we have a nice magic sugar for the common cases.
+
+- `Fn`
+- `IntoIterator`
+
+  ```rust
+  pub fn f<RefIntoIter, Paths, P>(paths: Paths)
+  where
+      Paths: AsRef<RefIntoIter> + Send + 'static,
+      for<'a> &'a RefIntoIter: IntoIterator<Item = &'a P>,
+      P: AsRef<Path>,
+  {
+      ()
+  }
+
+  fn test() {
+      let paths = vec![PathBuf::from("test.txt")];
+      f::<Vec<_>, _, _>(paths);
+  }
+  ```
+  [iterator - Is there a trait supplying `iter()`? - Stack Overflow](https://stackoverflow.com/questions/39675949/is-there-a-trait-supplying-iter)
+
+  [`#[builder]` with higher-rank trait bounds can cause confusing errors - Issue #307 - elastio/bon](https://github.com/elastio/bon/issues/307)
+
 ## Trait objects
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch17-02-trait-objects.html)
 

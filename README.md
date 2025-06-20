@@ -9,7 +9,7 @@
     - [Pointer Types](Language/Type%20System/Types/Pointers.md)
     - [Textual Types](Language/Type%20System/Types/Textual.md)
   - [Generics](Language/Type%20System/Generics.md)
-  - [Traits](Language/Type%20System/Traits.md)
+  - [Traits](<Language/Type System/Traits/README.md>)
   - [Validation](Language/Type%20System/Types/Validation.md)
   - [Type Layout](Language/Type%20System/Type%20Layout.md)
   - [Dynamically Sized Types](Language/Type%20System/Dynamically%20Sized.md)

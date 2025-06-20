@@ -120,7 +120,7 @@ impl<T: Debug, const N: usize> Debug for ArrayPair<T, N> {
 
   - [variadics - Rust](https://docs.rs/variadics/latest/variadics/)
 
-- [Trait objects](Traits.md#trait-objects)
+- [Trait objects](Traits/README.md#trait-objects)
   - Dyn compatibility
 
 [Variadic generics, again - PoignardAzur](https://poignardazur.github.io/2023/11/08/time-for-variadic-generics/) ([r/rust](https://www.reddit.com/r/rust/comments/17qp7v4/variadic_generics_again/))
