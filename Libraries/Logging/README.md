@@ -19,6 +19,7 @@
   - [`win_dbg_logger`](https://docs.rs/win_dbg_logger/*/win_dbg_logger/)
   - [`log-once`: Helper macros for logging events only once.](https://github.com/Luthaf/log-once)
   - [rust-log-panics: A panic hook which logs panics rather than printing them.](https://github.com/sfackler/rust-log-panics)
+  - [privacy-log: rust-lang/log without file names and line](https://github.com/wcampbell0x2a/privacy-log)
 
 - [→tracing](tracing/README.md)
 
@@ -26,9 +27,27 @@
 
   [Slog vs tracing: Which one do you prefer : rust](https://www.reddit.com/r/rust/comments/kdo29n/slog_vs_tracing_which_one_do_you_prefer/)
 
+- [defmt: Efficient, deferred formatting for logging on embedded systems](https://github.com/knurling-rs/defmt)
+  - Compile-time filtering
+  - Output object format must be ELF
+  - Custom linking (linker script) is required
+  - Single, global logger instance (but using multiple channels is possible)
+
+- [flashlog: A Rust logging library. It's lazy, thus fast.](https://github.com/JunbeomL22/flashlog)
+
 [What's your approach to logging and tracing in production Rust code? : rust](https://www.reddit.com/r/rust/comments/182vkod/whats_your_approach_to_logging_and_tracing_in/)
 
 [Blocking prints in async code : rust](https://www.reddit.com/r/rust/comments/qhoevk/blocking_prints_in_async_code/)
+
+## Compile-time filtering
+- log
+  - [crate/module specific log levels at compile time - Issue #387](https://github.com/rust-lang/log/issues/387)
+    - [hnj2/log](https://github.com/hnj2/log/tree/compile-time-filters)
+
+      [hnj2/compile-time-filter-tests: A collection of tests for the compile\_time\_filters feature for the rust-lang/log crate.](https://github.com/hnj2/compile-time-filter-tests)
+- [→tracing](tracing/README.md#compile-time-filtering)
+- defmt: [Filtering - defmt book](https://defmt.ferrous-systems.com/filtering)
+- [esp-println: compile time module level log filtering - Issue #1578 - esp-rs/esp-hal](https://github.com/esp-rs/esp-hal/issues/1578)
 
 ## Testing
 [^log-test]

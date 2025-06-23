@@ -156,6 +156,8 @@ Each struct is allowed to have multiple `impl` blocks.
 [Rust Is Beyond Object-Oriented, Part 1: Intro and Encapsulation :: The Coded Message](https://www.thecodedmessage.com/posts/oop-1-encapsulation/)
 - [Rust Is Beyond Object-Oriented, Part 2: Polymorphism :: The Coded Message](https://www.thecodedmessage.com/posts/oop-2-polymorphism/)
 
+[myrrlyn/tap: Generic extensions for tapping values in Rust.](https://github.com/myrrlyn/tap)
+
 ## Instances
 To use a struct after we’ve defined it, we create an **instance** of that struct by specifying concrete values for each of the fields:
 ```rust

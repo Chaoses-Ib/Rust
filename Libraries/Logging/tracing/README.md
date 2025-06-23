@@ -8,6 +8,31 @@ From `log`:
 
 [Custom Logging in Rust Using tracing and tracing-subscriber | Bryan Burgers](https://burgers.io/custom-logging-in-rust-using-tracing)
 
+## [Compile-time filtering](https://docs.rs/tracing/latest/tracing/level_filters/index.html#compile-time-filters)
+> Trace verbosity levels can be statically disabled at compile time via Cargo features, similar to the [`log` crate](https://docs.rs/log/latest/log/#compile-time-filters). Trace instrumentation at disabled levels will be skipped and will not even be present in the resulting binary unless the verbosity level is specified dynamically. This level is configured separately for release and debug builds. The features are:
+- `max_level_off`
+- `max_level_{error,warn,info,debug,trace}`
+- `release_max_level_off`
+- `release_max_level_{error,warn,info,debug,trace}`
+
+But tracing features are global and cannot be adjusted for specific crates. Workarounds:
+- [tracing: Consider Switching compile-time filters from Cargo features to `RUSTFLAGS` - Issue #2081](https://github.com/tokio-rs/tracing/issues/2081)
+
+  > I think this can also enable more fine-grained compile-time control, like enabling/disabling events per crate. When the env variable is present, tracing can replace all event macros with procedural macros, then use [`caller_modpath`](https://github.com/Shizcow/caller_modpath) to retrieve the caller's module path, and then filter the events according to the env variable. Though `caller_modpath` requires nightly feature and I'm not sure how big the compile time impact would be.
+  > 
+  > Currently control like this can only be done by duplicating dummy macros per crate, not only cumbersome but also hard to extend (like adding per-crate compile-time level filters). Providing a built-in control mechanism from tracing would be great.
+
+- [core: introduce statically discoverable metadata - Issue #969](https://github.com/tokio-rs/tracing/issues/969)
+- Dummy macros
+
+  Must be duplicated for every crate wanting to control the log.
+
+  e.g. [compio-log](https://crates.io/crates/compio-log)
+
+[Turn off tracing at compile time for specific crate - The Rust Programming Language Forum](https://users.rust-lang.org/t/turn-off-tracing-at-compile-time-for-specific-crate/104337)
+
+[Is there a performance cost in adding many tracing, #\[instrument calls as opposed to log...!() ? or neither matters if we set the log lines high enough ? : r/rust](https://www.reddit.com/r/rust/comments/x9nypb/is_there_a_performance_cost_in_adding_many/)
+
 ## [Metadata](https://docs.rs/tracing/latest/tracing/struct.Metadata.html)
 - All data has to be `'static` except `fields`.
 
