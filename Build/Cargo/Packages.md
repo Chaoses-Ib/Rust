@@ -15,6 +15,22 @@ A **package** is a bundle of one or more crates that provides a set of functio
 > 
 > Larger projects may involve multiple packages, in which case Cargo [*workspaces*](https://doc.rust-lang.org/cargo/appendix/glossary.html#workspace) can be used to manage common dependencies and other related metadata between the packages.
 
+## Environment variables
+[The Cargo Book](https://doc.rust-lang.org/cargo/reference/environment-variables.html#environment-variables-cargo-sets-for-crates)
+
+- `CARGO_PKG_NAME`, `CARGO_CRATE_NAME`, `CARGO_BIN_NAME`
+- `CARGO_PKG_VERSION`
+- `CARGO_PKG_DESCRIPTION`
+- `CARGO_PKG_AUTHORS` (colon separated list)
+- `CARGO_PKG_HOMEPAGE`
+- `CARGO_PKG_REPOSITORY`
+- `CARGO_PKG_LICENSE`
+- `CARGO_PKG_README` (path)
+- `CARGO_PRIMARY_PACKAGE`
+
+[How to get Cargo pkg version of top level crate? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/how-to-get-cargo-pkg-version-of-top-level-crate/110141)
+- Macros
+
 ## Targets
 Cargo follows the following conventions on finding crate roots:
 - `src/main.rs` is the crate root of a binary crate with the same name as the package.
