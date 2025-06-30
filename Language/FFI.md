@@ -175,6 +175,8 @@ Rust to C++:
 ### [CXX](https://github.com/dtolnay/cxx)
 > Safe interop between Rust and C++.
 
+Usable, but complex and far from mature. Just using [C](#c) is probably better for small FFI case.
+
 ```rust
 #[cxx::bridge]
 mod ffi {
@@ -212,8 +214,6 @@ mod ffi {
     }
 }
 ```
-- Usable, but far from mature.
-
 - `#include` relative to `.` or `..` is not supported in Cargo builds. Use a path starting with the crate name.
   
   This means the used header files must be in a subdirectory of the crate root.
@@ -221,6 +221,11 @@ mod ffi {
   A workaround is to make stub headers in the crate that include the actual headers by relative paths.
 
 - Since everything is generated to a single header file, it is very easy to cause circular dependencies if the C++ and Rust sides use types from each other.
+
+- [Attributes --- Rust ♡ C++](https://cxx.rs/attributes.html)
+  - Cannot add [`link` attribute](../Build/rustc/Linkage.md#link-attribute) to the extern block.
+
+- [Compiling cdylib - Issue #1331](https://github.com/dtolnay/cxx/issues/1331)
 
 - Only documents in the `ffi` module will be included in the generated header file.
 
@@ -239,6 +244,8 @@ mod ffi {
   [cxx::bridge behind a feature - Issue #1325 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/1325)
 
   [Rust and C++ Unit testing with cxx : r/rust](https://www.reddit.com/r/rust/comments/nt4qkm/rust_and_c_unit_testing_with_cxx/)
+
+- [C++ module compilation and linking support. - Issue #1518 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/1518)
 
 Types:
 - [Shared types](https://cxx.rs/shared.html)

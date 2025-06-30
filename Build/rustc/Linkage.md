@@ -56,6 +56,8 @@ ABI:
     - Windows: [`raw-dylib`](https://doc.rust-lang.org/reference/items/external-blocks.html#dylib-versus-raw-dylib)
 
       `#[cfg_attr(windows, link(name = "libwsutil.dll", kind = "raw-dylib"))]`
+
+      [Tracking Issue for using `raw-dylib` in the standard library - Issue #110489 - rust-lang/rust](https://github.com/rust-lang/rust/issues/110489)
   - macOS: `framework`
 - `modifiers`
   - `static`
