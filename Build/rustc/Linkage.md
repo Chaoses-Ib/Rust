@@ -69,6 +69,18 @@ ABI:
 
 [`link_name` attribute](https://doc.rust-lang.org/reference/items/external-blocks.html#the-link_name-attribute)
 
+### [`rustc -l`](https://doc.rust-lang.org/rustc/command-line-arguments.html#option-l-link-lib)
+`-l [KIND[:MODIFIERS]=]NAME[:RENAME]`
+- `NAME` shouldn't include the extension, like in `link` attribute
+
+[`cargo::rustc-link-lib=LIB`](https://doc.rust-lang.org/cargo/reference/build-scripts.html#rustc-link-lib)
+
+Unused lib that missing dependencies will not cause link error.
+
+[Where should I place a static library so I can link it with a Rust program? - Stack Overflow](https://stackoverflow.com/questions/43826572/where-should-i-place-a-static-library-so-i-can-link-it-with-a-rust-program)
+
+[Link a C static library to rust cargo project : r/rust](https://www.reddit.com/r/rust/comments/14hyynm/link_a_c_static_library_to_rust_cargo_project/)
+
 ## Symbol mangling
 [The rustc book](https://doc.rust-lang.org/rustc/symbol-mangling/index.html)
 
