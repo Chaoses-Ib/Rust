@@ -138,7 +138,7 @@ Windows-only:
 - [valarauca/dynlib: Use DLL's in Rust](https://github.com/valarauca/dynlib) (discontinued)
 - [DLL loader in Rust. Going down the rabbit hole with Rust... | by Dan Groner | Medium](https://medium.com/@dangroner/dlls-in-rust-e1322da511da)
 
-## CRT
+## [→CRT](https://github.com/Chaoses-Ib/Cpp/blob/main/Build/CRT.md)
 [How to link CRT statically when building with MSVC? : r/rust](https://www.reddit.com/r/rust/comments/ekts0d/how_to_link_crt_statically_when_building_with_msvc/)
 
 `.cargo/config.toml`:
@@ -154,6 +154,25 @@ rustflags = ["-C", "target-feature=+crt-static"]
 
 [rustc always links against non-debug Windows runtime - Issue #39016 - rust-lang/rust](https://github.com/rust-lang/rust/issues/39016)
 - `$env:CFLAGS=$env:CXXFLAGS='/MTd'`
+- Or build others with `/MT`
+
+  [feat: use static release CRT - Chaoses-Ib/IbEverythingExt@8a0cdaf](https://github.com/Chaoses-Ib/IbEverythingExt/commit/8a0cdafb3a2faac354bb47f79da99b01d4c066d3)
 - [The MSVC CRT library is not overrideable by other build systems - Issue #107570 - rust-lang/rust](https://github.com/rust-lang/rust/issues/107570)
 - [Windows MSVC CRT linking - Issue #211 - rust-lang/libs-team](https://github.com/rust-lang/libs-team/issues/211)
 - [CXX how to get a MSVCRTD-based debug-build LIB on Windows : r/rust](https://www.reddit.com/r/rust/comments/14wjxih/cxx_how_to_get_a_msvcrtdbased_debugbuild_lib_on/)
+
+[Document how to get a MSVCRTD-based debug-build LIB on Windows - Issue #880 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/880)
+```rust
+if env::var("TARGET").is_ok_and(|s| s.contains("windows-msvc")) {
+    // MSVC compiler suite
+    // if Ok("debug".to_owned()) == env::var("PROFILE") {
+    if env::var("CFLAGS").is_ok_and(|s| s.contains("/MDd")) {
+        // debug runtime flag is set
+
+        // Don't link the default CRT
+        println!("cargo::rustc-link-arg=/nodefaultlib:msvcrt");
+        // Link the debug CRT instead
+        println!("cargo::rustc-link-arg=/defaultlib:msvcrtd");
+    }
+}
+```
