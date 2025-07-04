@@ -8,6 +8,8 @@
 - [duplicate: Easy code duplicate with substitution for Rust](https://github.com/Emoun/duplicate)
 - [trait\_gen: Trait implementation generator macro](https://github.com/blueglyph/trait_gen)
 
+[What is your favorite derive macro crates? : r/rust](https://www.reddit.com/r/rust/comments/1juaxoj/what_is_your_favorite_derive_macro_crates/)
+
 ## Declarative macros
 ```rust
 #[macro_export]

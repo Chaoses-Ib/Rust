@@ -186,7 +186,7 @@ pub struct Screen {
 [No need for pointer to member functions in Rust : r/rust](https://www.reddit.com/r/rust/comments/l99lft/no_need_for_pointer_to_member_functions_in_rust/)
 
 Static dispatch:
-- [enum\_dispatch](https://docs.rs/enum_dispatch/latest/enum_dispatch/)
+- [enum\_dispatch](https://docs.rs/enum_dispatch/latest/enum_dispatch/) ([GitLab](https://gitlab.com/antonok/enum_dispatch))
 - [typetag: Serde serializable and deserializable trait objects](https://github.com/dtolnay/typetag)
 
 ### [Dyn compatibility](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility)
