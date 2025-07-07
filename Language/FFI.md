@@ -1,16 +1,20 @@
 # Foreign Function Interface
 [→Linkage](../Build/rustc/Linkage.md)
 
+The more languages a framework supports, the less idiomatic it is on every language. Use language-specfic ones if you don't really need multiple languages or you care about user's DX.
+
 - [Diplomat: Experimental Rust tool for generating FFI definitions allowing many other languages to call Rust code](https://github.com/rust-diplomat/diplomat/)
 
-  [Supported languages](https://github.com/rust-diplomat/diplomat/tree/main/tool/src): C, C++, JS, C#, Kotlin, Dart.
+  [Supported languages](https://github.com/rust-diplomat/diplomat/tree/main/tool/src): [C](#c), C++, Python ([nanobind](https://nanobind.readthedocs.io/en/latest/index.html)), JS, [~~C#~~](https://github.com/rust-diplomat/diplomat/pull/562), Kotlin, Dart.
   - [Support for free functions - Issue #392 - rust-diplomat/diplomat](https://github.com/rust-diplomat/diplomat/issues/392)
-  - No support for bit flags.
+  - [Types](https://rust-diplomat.github.io/diplomat/types.html)
+    - No support for bit flags.
   
   [diplomat - Rust](https://docs.rs/diplomat/latest/diplomat/)
   - [`diplomat/feature_tests/src/attrs.rs`](https://github.com/rust-diplomat/diplomat/blob/main/feature_tests/src/attrs.rs)
 
 - [cbindgen: A project for generating C bindings from Rust code](https://github.com/eqrion/cbindgen)
+  - [Annotations](https://github.com/mozilla/cbindgen/blob/master/docs.md#annotations)
 
   Supported languages: C, C++, Cython.
   - [cbindgen User Guide](https://github.com/mozilla/cbindgen/blob/master/docs.md)
@@ -23,12 +27,14 @@
   - Go: [uniffi-bindgen-go](https://github.com/NordSecurity/uniffi-bindgen-go)
 
 - [Interoptopus: The polyglot bindings generator for your library (C#, C, Python, …) 🐙](https://github.com/ralfbiedert/interoptopus) (inactive)
+  - Only one core contributor
 
   Supported languages: C#, C, Python.
 
 - [flapigen: Tool for connecting programs or libraries written in Rust with other languages](https://github.com/Dushistov/flapigen-rs)
 
   Supported languages: C++, Java.
+  - [Support for C# - Issue #124](https://github.com/Dushistov/flapigen-rs/issues/124)
 
 [Comparing UniFFI with Diplomat - mozilla/uniffi-rs](https://github.com/mozilla/uniffi-rs/blob/main/docs/diplomat-and-macros.md)
 
@@ -94,6 +100,8 @@ Rust to C:
 - Diplomat
   - `CStr` or `*const c_char` is not supported.
 
+    [`CStr` / char pointers support - Issue #909 - rust-diplomat/diplomat](https://github.com/rust-diplomat/diplomat/issues/909)
+
     Workaround:
     ```rust
     pub fn is_match_u8(pattern: &str, haystack: &str) -> bool {
@@ -110,6 +118,7 @@ Rust to C:
         .unwrap_or(false)
     }
     ```
+    However, `&u8` is later disallowed. One can only use `usize` instead, which makes the generated header further confusing. Maybe just use cbindgen instead.
 - [safer_ffi: Write safer FFI code in Rust without polluting it with unsafe code](https://github.com/getditto/safer_ffi)
   - Strings still need FFI types.
 
