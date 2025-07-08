@@ -8,6 +8,7 @@
 
 - [compact_str: A memory efficient string type that can store up to 24* bytes on the stack](https://github.com/ParkMyCar/compact_str)
   - Size: 24 (64-bit)
+  - `from_lossy` methods
 
 - [smol_str](https://github.com/rust-analyzer/smol_str)
   - Size: 24 (64-bit)
@@ -17,6 +18,8 @@
 
 - [smallstr: String-like container based on SmallVec](https://github.com/murarth/smallstr/tree/master)
   - Size: 24 (64-bit)
+  - Based on smallvec
+  - No `from_lossy` methods
 
 - [ecow: Compact, clone-on-write vector and string.](https://github.com/typst/ecow)
   - Size: 16 (64-bit)
@@ -28,6 +31,7 @@
 
 - [ArrayString: Fixed capacity stack based generic string that works on stable](https://github.com/paulocsanz/arraystring)
   - Size: N + 1
+  - Has `from_utf16_lossy` but not `from_utf8_lossy`
 
 - [fixedstr](https://docs.rs/fixedstr/latest/fixedstr/index.html)
   - Size: N + 1
@@ -36,10 +40,13 @@
 - [arrayvec::ArrayString](https://docs.rs/arrayvec/latest/arrayvec/struct.ArrayString.html)
   - Size: N + 4
   - [Can I change `LenUint` to `u8`? - Issue #247](https://github.com/bluss/arrayvec/issues/247)
+    - [Make length type generic by JakkuSakura - Pull Request #256](https://github.com/bluss/arrayvec/pull/256)
+  - No `from_lossy` methods
 
 - [staticvec::StaticString](https://docs.rs/staticvec/latest/staticvec/struct.StaticString.html)
   - Size: N + 8
   - [There's not actually any practical reason for the `length` field of a StaticVec to be of type `usize` - Issue #28](https://github.com/slightlyoutofphase/staticvec/issues/28)
+  - Has `from_utf16_lossy` but not `from_utf8_lossy`
 
 ## String pools
 - [String Interner: A data structure to efficiently intern, cache and restore strings.](https://github.com/robbepop/string-interner)
