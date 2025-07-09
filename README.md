@@ -10,6 +10,7 @@
     - [Textual Types](Language/Type%20System/Types/Textual.md)
   - [Generics](Language/Type%20System/Generics.md)
   - [Traits](<Language/Type System/Traits/README.md>)
+    - [Sealed Traits](Language/Type%20System/Traits/Sealed.md)
     - [Extension Traits](Language/Type%20System/Traits/Extension.md)
   - [Validation](Language/Type%20System/Types/Validation.md)
   - [Type Layout](Language/Type%20System/Type%20Layout.md)
