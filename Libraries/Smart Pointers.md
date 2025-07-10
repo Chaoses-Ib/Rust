@@ -4,6 +4,15 @@
 A **pointer** is a general concept for a variable that contains an address in memory. **Smart pointers**, on the other hand, are data structures that act like a pointer but also have additional metadata and capabilities.
 
 - [std::boxed::Box](https://doc.rust-lang.org/std/boxed/)
+  - `into_raw()`
+
+    [Box: What is the difference between leak and into\_raw for raw pointers? : r/rust](https://www.reddit.com/r/rust/comments/12o02se/box_what_is_the_difference_between_leak_and_into/)
+
+    [Can Box::leak be complemented with Box::into\_raw? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/can-box-leak-be-complemented-with-box-into-raw/82669)
+  - `into_inner()` ([unstable](https://github.com/rust-lang/rust/issues/80437))
+    - `*`
+
+    [rust - How do I get an owned value out of a `Box`? - Stack Overflow](https://stackoverflow.com/questions/42264041/how-do-i-get-an-owned-value-out-of-a-box)
 
   [The Rust Programming Language](https://doc.rust-lang.org/book/ch15-01-box.html)
 
