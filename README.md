@@ -60,6 +60,7 @@
 - [Testing](Build/Testing.md)
 - [Benchmarking](Build/Benchmarking.md)
 - [Binary Size](Build/Size.md)
+- [rustdoc](Build/rustdoc.md)
 
 ## Libraries
 - Paradigms
