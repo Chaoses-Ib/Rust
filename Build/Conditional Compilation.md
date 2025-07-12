@@ -45,3 +45,20 @@ pub mod webp;
 ```sh
 cargo --features foo,bar
 ```
+
+- How to enable some features only in development?
+  
+  - `dev-dependencies`
+    ```toml
+    [dev-dependencies]
+    ib-matcher = { features = ["pinyin", "romaji"], path = "." }
+    ```
+    All tests will enable these features, even with `--no-default-features`.
+
+  - [`required-features`](https://doc.rust-lang.org/cargo/reference/cargo-targets.html#the-required-features-field)
+  
+    ```toml
+    [[test]]
+    name = "foo"
+    required-features = ["cfg-if"]
+    ```
