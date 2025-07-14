@@ -20,6 +20,8 @@ A **package** is a bundle of one or more crates that provides a set of functio
 
 - `CARGO_PKG_NAME`, `CARGO_CRATE_NAME`, `CARGO_BIN_NAME`
 - `CARGO_PKG_VERSION`
+  - `CARGO_PKG_VERSION_PRE` ("0.8.0" -> "", "0.8.0-beta.2" -> "beta.2")
+    - `is_pre_release = !env!("CARGO_PKG_VERSION_PRE").is_empty()`
 - `CARGO_PKG_DESCRIPTION`
 - `CARGO_PKG_AUTHORS` (colon separated list)
 - `CARGO_PKG_HOMEPAGE`
