@@ -33,6 +33,27 @@ A **pointer** is a general concept for a variable that contains an address in 
 
 [ToOwned in std::borrow - Rust](https://doc.rust-lang.org/std/borrow/trait.ToOwned.html)
 
+- Shallow clone
+
+  [collections: Add `shallow_copy` method to Cow which always reborrows data by ipetkov - Pull Request #33777 - rust-lang/rust](https://github.com/rust-lang/rust/pull/33777)
+
+  [Cow::clone should do shallow copies? - Issue #34284 - rust-lang/rust](https://github.com/rust-lang/rust/issues/34284)
+  - [Cow is not Copy-On-Write - Issue #50160 - rust-lang/rust](https://github.com/rust-lang/rust/issues/50160)
+
+  [Add `shallow_clone()` method to Cow which always reborrows data - Issue #283 - rust-lang/libs-team](https://github.com/rust-lang/libs-team/issues/283)
+  - [Jens Getreu's blog - How to shallow clone a Cow](https://blog.getreu.net/20241005-how_to_shallow_clone_a_cow-blog/)
+
+  ```rust
+  pub fn shallow_clone(&'a self) -> Self {
+      Self {
+          data: Cow::Borrowed(self.data.as_ref()),
+      }
+  }
+  ```
+  - [PonasKovas/shallowclone](https://github.com/PonasKovas/shallowclone)
+
 [beef: Faster, more compact implementation of std::borrow::Cow](https://github.com/maciejhirsz/beef)
 - `beef::Cow` is 3 words wide: pointer, length, and capacity. It stores the ownership tag in capacity.
 - `beef::lean::Cow` is 2 words wide, storing length, capacity, and the ownership tag all in one word.
+
+[supercow - Rust](https://docs.rs/supercow/latest/supercow/)
