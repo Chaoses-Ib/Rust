@@ -129,6 +129,97 @@ Libraries:
 
 [poll_next](https://without.boats/blog/poll-next/)
 
+### Yield
+i.e. pending once.
+
+- [`futures_util::pending`](https://docs.rs/futures-util/latest/futures_util/macro.pending.html)
+  ```rust
+  pub struct PendingOnce {
+      is_ready: bool,
+  }
+
+  impl Future for PendingOnce {
+      type Output = ();
+      fn poll(mut self: Pin<&mut Self>, _: &mut Context<'_>) -> Poll<Self::Output> {
+          if self.is_ready {
+              Poll::Ready(())
+          } else {
+              self.is_ready = true;
+              Poll::Pending
+          }
+      }
+  }
+  ```
+  > It must be ensured that `wake` is called somewhere when further progress can be made.
+
+- [`embassy_futures::yield_now`](https://docs.rs/embassy-futures/latest/embassy_futures/fn.yield_now.html)
+  - Lightweight
+
+- [`async_std::task::yield_now`](https://docs.rs/async-std/latest/async_std/task/fn.yield_now.html)
+  ```rust
+  pub async fn yield_now() {
+      YieldNow(false).await
+  }
+
+  struct YieldNow(bool);
+
+  impl Future for YieldNow {
+      type Output = ();
+
+      // The futures executor is implemented as a FIFO queue, so all this future
+      // does is re-schedule the future back to the end of the queue, giving room
+      // for other futures to progress.
+      fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
+          if !self.0 {
+              self.0 = true;
+              cx.waker().wake_by_ref();
+              Poll::Pending
+          } else {
+              Poll::Ready(())
+          }
+      }
+  }
+  ```
+
+- [`tokio::task::yield_now`](https://docs.rs/tokio/latest/tokio/task/fn.yield_now.html)
+  
+  > tokio has a [`yield_now()`](https://docs.rs/tokio/latest/tokio/task/fn.yield_now.html) function that can be used to yield the current task. Because the task will be added to the back of the [defer queue](https://github.com/tokio-rs/tokio/blob/9e94fa7e15cfe6ebbd06e9ebad4642896620d924/tokio/src/runtime/scheduler/defer.rs), it will be scheduled after other pending tasks (though not guaranteed to drive the driver).
+  
+  ```rust
+  pub async fn yield_now() {
+      /// Yield implementation
+      struct YieldNow {
+          yielded: bool,
+      }
+
+      impl Future for YieldNow {
+          type Output = ();
+
+          fn poll(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<()> {
+              ready!(crate::trace::trace_leaf(cx));
+
+              if self.yielded {
+                  return Poll::Ready(());
+              }
+
+              self.yielded = true;
+
+              context::defer(cx.waker());
+
+              Poll::Pending
+          }
+      }
+
+      YieldNow { yielded: false }.await;
+  }
+  ```
+  Has defer queue, but:
+  > It is generally not guaranteed that the runtime behaves like you expect it to when deciding which task to schedule next after a call to `yield_now()`. In particular, the runtime may choose to poll the task that just ran `yield_now()` again immediately without polling any other tasks first. For example, the runtime will not drive the IO driver between every poll of a task, and this could result in the runtime polling the current task again immediately even if there is another task that could make progress if that other task is waiting for a notification from the IO driver.
+
+- Compio: [Yield with defer queue - Issue #459 - compio-rs/compio](https://github.com/compio-rs/compio/issues/459)
+
+[Async: How to Explicitly "yield"? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/async-how-to-explicitly-yield/108970)
+
 ### Recursion
 [Recursion - Asynchronous Programming in Rust](https://rust-lang.github.io/async-book/07_workarounds/04_recursion.html)
 ```rust
