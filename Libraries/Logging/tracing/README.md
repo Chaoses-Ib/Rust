@@ -141,6 +141,14 @@ What will happen if writer's `write` returns `Err`?
   initializing rolling file appender failed: InitError { context: "failed to create initial log file", source: Os { code: 5, kind: PermissionDenied, message: "拒绝访问。" } }
   ```
 
+## Serialization
+- Store as text and then parse
+- Store as JSON
+
+Libraries:
+- [tracing-bunyan-formatter: A Layer implementation for tokio-rs/tracing providing Bunyan formatting for events and spans.](https://github.com/LukeMathWalker/tracing-bunyan-formatter)
+- [tracing-serde-structured: An alternative, structured, adapter for serializing tracing types using serde](https://github.com/jamesmunns/tracing-serde-structured)
+
 ## [tracing-panic: A custom panic hook to capture panic info in your telemetry pipeline](https://github.com/LukeMathWalker/tracing-panic)
 - No `backtrace` support.
 
