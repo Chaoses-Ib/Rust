@@ -73,6 +73,8 @@ impl<T> Option<T> {
 }
 ```
 
+[Why Rust Closures are (Somewhat) Hard - Rustifications](https://stevedonovan.github.io/rustifications/2018/08/18/rust-closures-are-hard.html)
+
 ### Recursion
 [recursion - Is it possible to make a recursive closure in Rust? - Stack Overflow](https://stackoverflow.com/questions/16946888/is-it-possible-to-make-a-recursive-closure-in-rust)
 
@@ -81,6 +83,19 @@ impl<T> Option<T> {
 
 [explicit_tail_calls](https://github.com/phi-go/rfcs/blob/guaranteed-tco/text/0000-explicit-tail-calls.md)
 - [Tracking Issue for Explicit Tail Calls - Issue #112788 - rust-lang/rust](https://github.com/rust-lang/rust/issues/112788)
+
+### Unboxed closures
+[Tracking issue for Fn traits (`unboxed_closures` & `fn_traits` feature) - Issue #29625 - rust-lang/rust](https://github.com/rust-lang/rust/issues/29625)
+
+[How do I store a closure in a struct in Rust? - Stack Overflow](https://stackoverflow.com/questions/27831944/how-do-i-store-a-closure-in-a-struct-in-rust)
+- Unboxed closure
+- Boxed trait object
+- Trait object reference
+- Function pointer
+
+[Store closure in struct without using dynamic dispatch - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/store-closure-in-struct-without-using-dynamic-dispatch/92751)
+
+[Store unboxed closure in struct - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/store-unboxed-closure-in-struct/82603)
 
 
 [^stack-tiger]: [What is the size limit of thread's stack in rust? - The Rust Programming Language Forum](https://users.rust-lang.org/t/what-is-the-size-limit-of-threads-stack-in-rust/11867)
