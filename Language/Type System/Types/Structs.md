@@ -228,6 +228,9 @@ Libraries:
     [Support concrete default for generic/`impl Trait` argument. - Issue #168](https://github.com/elastio/bon/issues/168)
   - [Support member groups: mutually exclusive, mutually required members - Issue #110](https://github.com/elastio/bon/issues/110)
   - [Introduce bool shorthand (`#[builder(flag)]`) - Issue #142](https://github.com/elastio/bon/issues/142)
+  - [Special Setter Methods for Collections](https://bon-rs.com/guide/alternatives#special-setter-methods-for-collections)
+    - Custom Fields
+    - [Support special setters for collections - Issue #190](https://github.com/elastio/bon/issues/190)
   - [Introduce the syntax where builder is passed via a closure - Issue #127](https://github.com/elastio/bon/issues/127)
   - [`#[builder]` with higher-rank trait bounds can cause confusing errors - Issue #307](https://github.com/elastio/bon/issues/307)
 
