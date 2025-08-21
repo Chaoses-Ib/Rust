@@ -299,8 +299,41 @@ impl fmt::Display for Point {
 
 ## Specialization
 [1210-impl-specialization - The Rust RFC Book](https://rust-lang.github.io/rfcs/1210-impl-specialization.html)
+- [Tracking issue for specialization (RFC 1210) - Issue #31844 - rust-lang/rust](https://github.com/rust-lang/rust/issues/31844)
+
+[The state of specialization - community - The Rust Programming Language Forum](https://users.rust-lang.org/t/the-state-of-specialization/113560)
+> Lifetime specialization is a problem because when the compiler actually generates code it no longer knows about lifetimes, thus if the specialized implementation requires some specific lifetimes (e.g. a lifetime to be `'static`, or two lifetimes `'a` and `'b` to be somehow related) then it no longer knows which implementation to use (is it the specialized one or the normal one?)
+> 
+> Lifetime specialization is not something you would want to write yourself, but unfortunately it comes up implicitly all the time. Do you want to write a specialized implementation for `(T, T)` for some generic type `T`? Unfortunately if `T` contains a lifetime you just forced two lifetimes to be equal, which is lifetime specialization! Do you want to specialize on whether `T` implements a trait `Foo`? Unfortunately any user can write a `impl Foo for &'static Bar` or `impl<T> Foo for (T, T)`, and now your specialization depends on lifetimes again.
+
+- `min_specialization`: [Implement a feature for a sound specialization subset by matthewjasper - Pull Request #68970 - rust-lang/rust](https://github.com/rust-lang/rust/pull/68970)
+
+- Autoderef-based specialization
+
+  [Generalized Autoref-Based Specialization - Lukasʼ Blog](https://lukaskalbertodt.github.io/2019/12/05/generalized-autoref-based-specialization.html)
+
+  - [castaway: Safe, zero-cost downcasting for limited compile-time specialization.](https://github.com/sagebind/castaway)
+
+    > However, if no specialization is applicable because of the same Autoref-Based Specialization, the compiler generates completely unclear errors, which makes it difficult to use it in complex cases.
+
+  [Rust already has specialization : r/rust](https://www.reddit.com/r/rust/comments/rnn32g/rust_already_has_specialization/)
+
+- [try-specialize: Zero-cost specialization in generic context on stable Rust](https://github.com/zheland/try-specialize#alternative-crates)
+
+  [try-specialize: a crate for limited, zero-cost specialization in generic context on stable Rust : r/rust](https://www.reddit.com/r/rust/comments/1g3dipy/tryspecialize_a_crate_for_limited_zerocost/)
+
+- [downcast-rs](https://github.com/marcianx/downcast-rs)
+  - > Specialized on trait objects (dyn) downcasting. Can't be used to specialize unconstrained types.
+  - Not zero cost.
+
+- [coe-rs](https://github.com/sarah-quinones/coe-rs)
+
+  > Supports only static types and don't safely combine type equality check and specialization.
+- [syllogism](https://crates.io/crates/syllogism) (discontinued)
+- [yasuo-ozu/min\_specialization](https://github.com/yasuo-ozu/min_specialization)
 
 Avoid conflicting:
+- Changing design
 - References
   - `Borrow`
   - `'static`
@@ -310,3 +343,5 @@ Avoid conflicting:
   [Require that type NOT be a reference - The Rust Programming Language Forum](https://users.rust-lang.org/t/require-that-type-not-be-a-reference/61730)
 
   [How to indicate a generic T doesn't contain a reference? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/how-to-indicate-a-generic-t-doesnt-contain-a-reference/18444)
+
+[Specialization on stable - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/specialization-on-stable/108497)
