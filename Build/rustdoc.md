@@ -115,7 +115,39 @@ rustdoc-args = ["--cfg", "docsrs"]
 
 [Show crate features in rustdoc - Issue #96318 - rust-lang/rust](https://github.com/rust-lang/rust/issues/96318)
 
-## Docs.rs
+## [Docs.rs](https://docs.rs/)
+[GitHub](https://github.com/rust-lang/docs.rs)
+
 [Builds](https://docs.rs/about/builds)
 
 `cargo publish` doesn't wait Docs.rs to build.
+- [Queue - Docs.rs](https://docs.rs/releases/queue)
+
+- Local build
+  - [dtolnay/cargo-docs-rs: Imitate the documentation build that docs.rs would do](https://github.com/dtolnay/cargo-docs-rs)
+  - Docker
+
+    > Make sure you have docker-compose and are able to download ~10GB data on the first run.
+
+  [Feature Request: A one command solution to locally building packaged crates with the same environment as docs.rs - Issue #2721 - rust-lang/docs.rs](https://github.com/rust-lang/docs.rs/issues/2721)
+
+### Targets
+[Cross-compiling](https://docs.rs/about/builds#cross-compiling)
+> All targets other than `x86_64-unknown-linux-gnu` are cross-compiled. For implementation reasons, this is unlikely to change for the foreseeable future.
+
+[docs.rs now allows you to choose your build targets | Rust Blog](https://blog.rust-lang.org/2020/03/15/docs-rs-opt-into-fewer-targets/)
+```toml
+[package.metadata.docs.rs]
+targets = ["x86_64-pc-windows-msvc"]
+```
+```toml
+[package.metadata.docs.rs]
+# This also sets the default target to `x86_64-pc-windows-msvc`
+targets = ["x86_64-pc-windows-msvc", "i686-pc-windows-msvc"]
+```
+
+[Docs not built on target platform, causing failures - Issue #1957 - rust-lang/docs.rs](https://github.com/rust-lang/docs.rs/issues/1957)
+
+[Cannot cross-compile to windows if using C compiler in build script - Issue #796 - rust-lang/docs.rs](https://github.com/rust-lang/docs.rs/issues/796)
+
+[docs(plugin/ui/winio): fix Docs.rs - Chaoses-Ib/IbEverythingLib@6c6722d](https://github.com/Chaoses-Ib/IbEverythingLib/commit/6c6722dfeaec879edae219fd8b0317ea046f4cb1)
