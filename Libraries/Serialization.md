@@ -8,6 +8,8 @@
   - [zerocopy](https://github.com/google/zerocopy)
   - [Alkahest](https://github.com/zakarumych/alkahest)
 
+- [→Borrow deserialization](#borrow-deserialization)
+
 - [Serde](#serde)
 
 - [Bincode](https://github.com/bincode-org/bincode)
@@ -21,6 +23,16 @@
 ## Benchmarks
 - [Rust serialization benchmark](https://github.com/djkoloski/rust_serialization_benchmark)
 - [Rust serialization: What's ready for production today? - LogRocket Blog](https://blog.logrocket.com/rust-serialization-whats-ready-for-production-today/)
+
+## Borrow deserialization
+- [`#[serde(borrow)]`](https://serde.rs/field-attrs.html#borrow)
+- [epserde-rs: An ε-copy serialization/deserialization framework for Rust](https://github.com/vigna/epserde-rs)
+  - [`TypeHash`](https://docs.rs/epserde/latest/epserde/traits/type_info/trait.TypeHash.html)
+
+  [ε-serde is an ε-copy (i.e., almost zero-copy) serialization/deserialization framework : r/rust](https://www.reddit.com/r/rust/comments/16vzjcr/%CE%B5serde_is_an_%CE%B5copy_ie_almost_zerocopy/)
+- [serde\_json\_borrow: Fast JSON deserialization on borrowed data](https://github.com/PSeitz/serde_json_borrow)
+
+  [serde\_json\_borrow 0.7.0 released: impl Deserializer for Value, Support Escaped Data : r/rust](https://www.reddit.com/r/rust/comments/1gdteo0/serde_json_borrow_070_released_impl_deserializer/)
 
 ## Formatting
 - Seriously limited by the orhpan rule
