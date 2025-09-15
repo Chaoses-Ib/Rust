@@ -42,7 +42,7 @@
 
   [\[Media\] Actuate UI: Now with Material design components, better ergonomics with Bevy, and a faster runtime with support for pause/resume : r/rust](https://www.reddit.com/r/rust/comments/1h87jod/media_actuate_ui_now_with_material_design/)
 
-- [Winio: Single-threaded asynchronous GUI runtime](https://github.com/compio-rs/winio)
+- [→Winio: Single-threaded asynchronous GUI runtime](Winio.md)
 
 - [ejaa3/declarative: Code reactive views with ease!](https://github.com/ejaa3/declarative)
 
@@ -94,10 +94,7 @@ Flutter:
 
 ComCtl:
 - Cross-platform
-  - [Winio: Single-threaded asynchronous GUI runtime](https://github.com/compio-rs/winio)
-    - MVU
-    - Dark mode
-    - [Win32 embedding usage - Issue #24 - compio-rs/winio](https://github.com/compio-rs/winio/issues/24)
+  - [→Winio](Winio.md)
   - [libui-rs/libui: Rust bindings to the minimalist, native, cross-platform UI toolkit `libui-ng`](https://github.com/libui-rs/libui)
   - [KISS-UI/kiss-ui: A simple UI framework for Rust built on top of IUP](https://github.com/KISS-UI/kiss-ui) (discontinued)
 - [native-windows-gui: A light windows GUI toolkit for rust](https://github.com/gabdube/native-windows-gui) (discontinued)
