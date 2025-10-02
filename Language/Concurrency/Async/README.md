@@ -417,15 +417,7 @@ Unlike other Rust programs, asynchronous applications require runtime support. I
   [tokio@0.2.14 + futures::executor::block\_on causes hang - Issue #2376 - tokio-rs/tokio](https://github.com/tokio-rs/tokio/issues/2376)
 
 Libraries:
-- [Tokio: A runtime for writing reliable asynchronous applications with Rust. Provides I/O, networking, scheduling, timers, ...](https://github.com/tokio-rs/tokio) ([Docs.rs](https://docs.rs/tokio/latest/tokio/))
-
-  - `spawn_blocking()` is for sync functions, what about functions mixed with sync and async?
-    - `spawn_blocking()` + `block_on()`
-    - [rust - When should you use Tokio's `spawn_blocking`? - Stack Overflow](https://stackoverflow.com/questions/74547541/when-should-you-use-tokios-spawn-blocking)
-  - [Is it okay to start multiple tokio runtimes for different parts of the app? - The Rust Programming Language Forum](https://users.rust-lang.org/t/is-it-okay-to-start-multiple-tokio-runtimes-for-different-parts-of-the-app/39974)
-    - Pro: Avoid starvation
-    - Con: More overhead
-
+- [→Tokio](Runtimes.md#tokio)
 - [async-std: Async version of the Rust standard library](https://github.com/async-rs/async-std) ([Docs.rs](https://docs.rs/async-std/latest/async_std/))
 - [smol: A small and fast async runtime for Rust](https://github.com/smol-rs/smol)
 - [cassette: A simple, single-future, non-blocking executor intended for building state machines. Designed to be no-std and embedded friendly.](https://github.com/jamesmunns/cassette)
