@@ -3,6 +3,12 @@
 
 - `#[cfg]` attribute
   - [cfg-if: A if/elif-like macro for Rust `#[cfg]` statements](https://github.com/rust-lang/cfg-if)
+  - `cfg_select!` (`cfg_match!`) macro
+
+    [Add the `cfg_match!` macro by c410-f3r - Pull Request #115416 - rust-lang/rust](https://github.com/rust-lang/rust/pull/115416)
+    - [Tracking issue for `cfg_select` (formerly `cfg_match`) - Issue #115585 - rust-lang/rust](https://github.com/rust-lang/rust/issues/115585)
+
+    [A match-like version of the `cfg_if` crate has been added to the standard library : r/rust](https://www.reddit.com/r/rust/comments/16qu8ub/a_matchlike_version_of_the_cfg_if_crate_has_been/)
 - `cfg!` macro
 
 ## [rustc](rustc/README.md)
