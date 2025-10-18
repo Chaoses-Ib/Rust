@@ -5,6 +5,8 @@ From `log`:
 - `log!()` → `event!()`
 - `log_enabled!()` → `event_enabled!()`
 - [→Non-const event level](#levels)
+- [`tracing_log`](https://docs.rs/tracing-log/)
+- Larger binary size?
 
 [Custom Logging in Rust Using tracing and tracing-subscriber | Bryan Burgers](https://burgers.io/custom-logging-in-rust-using-tracing)
 
