@@ -62,7 +62,15 @@
   #[cfg(test)]
   use std::{eprintln as error, eprintln as warn, eprintln as info, eprintln as debug, eprintln as trace};
   ```
-  Not compatible with `tracing`.
+  - Not compatible with `tracing` syntax.
+  - Doesn't work well with autocomplete.
+  - Cannot be used with `#[macro_use]` (as it doesn't support alising).
+    ```rust
+    #[allow(unused_imports)]
+    #[cfg(not(test))]
+    #[macro_use(trace, info, debug, warn, error)]
+    extern crate log;
+    ```
 
 - [test-log: A replacement of the `#[test]` attribute that initializes logging and/or tracing infrastructure before running tests.](https://github.com/d-e-s-o/test-log)
 
@@ -71,7 +79,7 @@
   #[macro_use(test)]
   extern crate test_log;
   ```
-  - By default, only `ERROR` logs are printed.
+  - By default, only ~~`ERROR`~~ `INFO` logs are printed.
     - `$env:RUST_LOG='debug'`
     - [Allow to set default log level - Issue #25 - d-e-s-o/test-log](https://github.com/d-e-s-o/test-log/issues/25)
   - When used with `tracing`, requries `tracing-subscriber` with `env-filter` feature enabled.
