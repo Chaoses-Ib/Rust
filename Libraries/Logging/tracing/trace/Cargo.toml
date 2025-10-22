@@ -1,0 +1,10 @@
+[package]
+name = "trace"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tracing = "0.1"
+
+[dev-dependencies]
+test-log = { version = "0.2", features = ["trace"] }

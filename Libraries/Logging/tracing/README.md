@@ -85,6 +85,21 @@ enum LevelInner {
 
 - [Non-const event level - Issue #2730 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/2730)
 
+## [Spans](https://docs.rs/tracing/latest/tracing/span/index.html)
+- > **Warning**: in asynchronous code that uses async/await syntax, `Span::enter` should be used very carefully or avoided entirely. Holding the drop guard returned by `Span::enter` across `.await` points will result in incorrect traces.
+  - [`Span::in_scope`](https://docs.rs/tracing/latest/tracing/struct.Span.html#method.in_scope) (sync)
+  - [`Future::instrument` combinator](https://docs.rs/tracing/latest/tracing/trait.Instrument.html)
+    - `#[instrument]`
+
+- [Span relationships](https://docs.rs/tracing/latest/tracing/span/index.html#span-relationships)
+  - Only leaf span is formatted by default
+
+- [`#[instrument]`](https://docs.rs/tracing-attributes/latest/tracing_attributes/attr.instrument.html)
+  - Default level: `INFO`
+  - `#[instrument(name = "", skip_all, fields(v = arg))]`
+
+[Tracing: No span info output to appender - The Rust Programming Language Forum](https://users.rust-lang.org/t/tracing-no-span-info-output-to-appender/122017/3)
+
 ## [`tracing_subscriber`](https://docs.rs/tracing-subscriber/latest/tracing_subscriber/)
 - `DEFAULT_MAX_LEVEL` is `INFO`.
 
