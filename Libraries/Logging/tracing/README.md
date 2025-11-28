@@ -84,6 +84,20 @@ enum LevelInner {
   ```
 
 - [Non-const event level - Issue #2730 - tokio-rs/tracing](https://github.com/tokio-rs/tracing/issues/2730)
+  ```rust
+  #[macro_export]
+  macro_rules! dyn_event {
+      ($lvl:expr, $($arg:tt)+) => {
+          match $lvl {
+              ::tracing::Level::TRACE => ::tracing::trace!($($arg)+),
+              ::tracing::Level::DEBUG => ::tracing::debug!($($arg)+),
+              ::tracing::Level::INFO => ::tracing::info!($($arg)+),
+              ::tracing::Level::WARN => ::tracing::warn!($($arg)+),
+              ::tracing::Level::ERROR => ::tracing::error!($($arg)+),
+          }
+      };
+  }
+  ```
 
 ## [Spans](https://docs.rs/tracing/latest/tracing/span/index.html)
 - > **Warning**: in asynchronous code that uses async/await syntax, `Span::enter` should be used very carefully or avoided entirely. Holding the drop guard returned by `Span::enter` across `.await` points will result in incorrect traces.
