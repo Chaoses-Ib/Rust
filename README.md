@@ -33,7 +33,7 @@
   - [Parallelism](Language/Concurrency/Parallelism.md)
   - [Message Passing](Language/Concurrency/Message%20Passing.md)
 - [Error Handling](Language/Error%20Handling.md)
-- [Attributes](Language/Attributes.md)
+- [Attributes](Language/Attributes/README.typ)
 - [Macros](Language/Macros/README.md)
   - [Procedural Macros](Language/Macros/Procedural.md)
 - [Module System](Language/Module%20System.md)
