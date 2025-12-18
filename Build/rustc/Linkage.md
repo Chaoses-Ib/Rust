@@ -32,6 +32,9 @@
 - [Ability to set crate-type depending on target - Issue #4881 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/4881)
   - [Support `[target.'cfg(...)'.lib]` sections - Issue #12260 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/12260)
 
+- [Conditional compilation based on `crate_type` - Issue #20267 - rust-lang/rust](https://github.com/rust-lang/rust/issues/20267)
+  - Test-only: `#[cfg(test)]`
+
 ## External blocks
 [The Rust Reference](https://doc.rust-lang.org/reference/items/external-blocks.html)
 
