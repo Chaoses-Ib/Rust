@@ -36,6 +36,7 @@
 - [Attributes](Language/Attributes/README.typ)
 - [Macros](Language/Macros/README.md)
   - [Procedural Macros](Language/Macros/Procedural.md)
+  - [Comptime](Language/Macros/Comptime.typ)
 - [Module System](Language/Module%20System.md)
 - [Unsafety](Language/Unsafety.md)
 - [Foreign Function Interface](Language/FFI.md)
