@@ -32,7 +32,8 @@
   - [Shared-state Concurrency](Language/Concurrency/Shared-state.md)
   - [Parallelism](Language/Concurrency/Parallelism.md)
   - [Message Passing](Language/Concurrency/Message%20Passing.md)
-- [Error Handling](Language/Error%20Handling.md)
+- [Error Handling](Language/Error/README.md)
+  - [Panics](Language/Error/Panics.typ)
 - [Attributes](Language/Attributes/README.typ)
 - [Macros](Language/Macros/README.md)
   - [Procedural Macros](Language/Macros/Procedural.md)
@@ -65,6 +66,7 @@
 - [rustdoc](Build/rustdoc.md)
 
 ## Libraries
+- [`std`: The Rust Standard Library](Libraries/std/README.typ)
 - Paradigms
   - [Object-oriented](Libraries/Paradigms/Object-oriented.md)
 - [Smart Pointers](Libraries/Smart%20Pointers.md)

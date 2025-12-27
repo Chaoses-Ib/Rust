@@ -1,3 +1,6 @@
+#import "@local/ib:0.1.0": *
+#show: ib
+#md(````
 # Linkage
 [The Rust Reference](https://doc.rust-lang.org/reference/linkage.html)
 
@@ -156,7 +159,39 @@ Windows-only:
 - [DLL loader in Rust. Going down the rabbit hole with Rust... | by Dan Groner | Medium](https://medium.com/@dangroner/dlls-in-rust-e1322da511da)
 
 ## [→CRT](https://github.com/Chaoses-Ib/Cpp/blob/main/Build/CRT.md)
+````)
+#a[Windows: Does Rust need the x86/x64 C runtime to be initalized? - Rust Internals][https://internals.rust-lang.org/t/windows-does-rust-need-the-x86-x64-c-runtime-to-be-initalized/11581]
+
+== No CRT
+- `staticlib`
+  - `build-std` + `panic=immediate-abort`
+  
+    Using `build-std` is not enough, `panic=immediate-abort` must also be set to avoid panic handling.
+    - `std::panicking::panic_with_hook` calls `std::io::Write::write_all`, requring `__chkstk`, `__imp_NtWriteFile`.
+    ```toml
+    [unstable]
+    build-std = []
+    build-std-features = []
+    ```
+  - ```rs #![no_std]```
+  - [ ] #a[Add a "slim" staticlib variant that does not include a copy of std - Issue \#111594 - rust-lang/rust][https://github.com/rust-lang/rust/issues/111594]
+
+  #a[Rust 1.79+ stdlib is unusable with MSVC when creating static libraries - Issue \#129020 - rust-lang/rust][https://github.com/rust-lang/rust/issues/129020]
+
+  #a[Don't leak non-exported symbols from staticlibs - Issue \#104707 - rust-lang/rust][https://github.com/rust-lang/rust/issues/104707]
+
+- [ ] Implementation of a pure Rust target for Windows (no libc, no msvc, no mingw).
+  
+  #a[Tracking issue for RFC 2627: `#[link(kind="raw-dylib")]` - Issue \#58713 - rust-lang/rust][https://github.com/rust-lang/rust/issues/58713]
+
+  #a[Pre-RFC: Remove Rust's dependency on Visual Studio in 4 (...complex?) steps - compiler - Rust Internals][https://internals.rust-lang.org/t/pre-rfc-remove-rusts-dependency-on-visual-studio-in-4-complex-steps/16708]
+
+#a[Static linking for rust without glibc - scratch image - help - The Rust Programming Language Forum][https://users.rust-lang.org/t/static-linking-for-rust-without-glibc-scratch-image/112279]
+
+== Static CRT
+#md(`
 [How to link CRT statically when building with MSVC? : r/rust](https://www.reddit.com/r/rust/comments/ekts0d/how_to_link_crt_statically_when_building_with_msvc/)
+`)
 
 `.cargo/config.toml`:
 ```toml
@@ -169,6 +204,8 @@ rustflags = ["-C", "target-feature=+crt-static"]
 rustflags = ["-C", "target-feature=+crt-static"]
 ```
 
+== Debug CRT
+#md(```
 [rustc always links against non-debug Windows runtime - Issue #39016 - rust-lang/rust](https://github.com/rust-lang/rust/issues/39016)
 - `$env:CFLAGS=$env:CXXFLAGS='/MTd'`
 - Or build others with `/MT`
@@ -179,6 +216,7 @@ rustflags = ["-C", "target-feature=+crt-static"]
 - [CXX how to get a MSVCRTD-based debug-build LIB on Windows : r/rust](https://www.reddit.com/r/rust/comments/14wjxih/cxx_how_to_get_a_msvcrtdbased_debugbuild_lib_on/)
 
 [Document how to get a MSVCRTD-based debug-build LIB on Windows - Issue #880 - dtolnay/cxx](https://github.com/dtolnay/cxx/issues/880)
+```)
 ```rust
 if env::var("TARGET").is_ok_and(|s| s.contains("windows-msvc")) {
     // MSVC compiler suite
