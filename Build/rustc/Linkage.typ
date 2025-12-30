@@ -22,15 +22,26 @@
 
   [What's the right way to declare & run "crate-type" examples? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/whats-the-right-way-to-declare-run-crate-type-examples/108385)
   - Workspace member
+````)
 
 - CLI
-  
-  [3180-cargo-cli-crate-type - The Rust RFC Book](https://rust-lang.github.io/rfcs/3180-cargo-cli-crate-type.html)
-  - `cargo rustc --crate-type cdylib`
+  - #a[RFC 3180: Cargo `--crate-type` CLI Argument][https://rust-lang.github.io/rfcs/3180-cargo-cli-crate-type.html]
+    - ```sh cargo rustc --crate-type staticlib```
+    - ```sh cargo rustc --crate-type cdylib --features ffi```
 
-  [bltavares/cargo-crate-type: Utility to modify Cargo.toml and define the crate type](https://github.com/bltavares/cargo-crate-type)
+  - #a[bltavares/cargo-crate-type: Utility to modify Cargo.toml and define the crate type][https://github.com/bltavares/cargo-crate-type]
 
-  [Is it possible to override the crate-type specified in Cargo.toml from the command line when calling cargo build? - Stack Overflow](https://stackoverflow.com/questions/65012484/is-it-possible-to-override-the-crate-type-specified-in-cargo-toml-from-the-comma)
+  #a[Is it possible to override the crate-type specified in Cargo.toml from the command line when calling cargo build? - Stack Overflow][https://stackoverflow.com/questions/65012484/is-it-possible-to-override-the-crate-type-specified-in-cargo-toml-from-the-comma]
+
+- [ ] #a[Allow limiting required crate-types of dependencies - Issue \#11232 - rust-lang/cargo][https://github.com/rust-lang/cargo/issues/11232]
+
+  #q[This leads to wasted effort building unnecessary artifacts for dependencies, and can also lead to issues when the configuration used to build the lib would cause building the cdylib or staticlib to fail to link for whatever reason (e.g. due to linker flags).]
+
+  #q-i[Another issue is LTO will be ignored for the crate if there is a `lib` in `crate-type`: #a[rust\#51009][https://github.com/rust-lang/rust/issues/51009]. It feels `--crate-type` should always be used instead of `crate-type = [...]` config at the moment.]
+
+- [ ] #a[LTO ignored for all crate types when building multiple crate types and one doesn't support it - Issue \#51009 - rust-lang/rust][https://github.com/rust-lang/rust/issues/51009]
+  - Adding `"lib"` to `crate-type = ["staticlib"]` will blow up the `staticlib`.
+#md(```
 
 - [Ability to set crate-type depending on target - Issue #4881 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/4881)
   - [Support `[target.'cfg(...)'.lib]` sections - Issue #12260 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/12260)
@@ -98,6 +109,14 @@ Unused lib that missing dependencies will not cause link error.
 
 - `#[unsafe(export_name = "exported_symbol_name")]`
 
+```)
+- #q[Rust will only export symbols that are publicly accessible from the root crate.
+  This makes it very easy to inspect the public interface of a crate without crawling through all files:
+  just follow the ```rs pub``` from the root.
+  ]
+  #footnote[#a[rust - function is marked `#[no_mangle]`, but not exported - Stack Overflow][https://stackoverflow.com/questions/40131838/function-is-marked-no-mangle-but-not-exported]]
+
+#md(````
 ## `staticlib`
 [micahsnyder/cmake-rust-demo: A project that demonstrates building a C application with CMake that has Rust static library components](https://github.com/micahsnyder/cmake-rust-demo)
 
