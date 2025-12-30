@@ -67,6 +67,7 @@
 
 ## Libraries
 - [`std`: The Rust Standard Library](Libraries/std/README.typ)
+  - [C/Compiler Runtime Library (CRT)](Libraries/std/CRT.typ)
 - Paradigms
   - [Object-oriented](Libraries/Paradigms/Object-oriented.md)
 - [Smart Pointers](Libraries/Smart%20Pointers.md)
