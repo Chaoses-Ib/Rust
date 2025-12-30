@@ -1,4 +1,6 @@
-# I/O
+#import "@local/ib:0.1.0": *
+#title[I/O Implementations]
+#md(```
 [std::io](https://doc.rust-lang.org/nightly/std/io/index.html)
 
 - `StringWriter`
@@ -28,3 +30,4 @@ Capturing:
 - [capture-stdio: Rust crate to capture stdin/stdout/stderr of the current process.](https://github.com/jiegec/capture-stdio)
 
 [rust-subprocess: Execution of and interaction with external processes and pipelines](https://github.com/hniksic/rust-subprocess)
+```)

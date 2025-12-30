@@ -1,3 +1,5 @@
+#import "@local/ib:0.1.0": *
+#md(````
 # Text
 ## Strings
 - [std::string](https://doc.rust-lang.org/std/string/index.html)
@@ -124,3 +126,4 @@ impl Into<String> for AsciiCaseInsensitiveString {
 
 ## Algorithms
 - [case-insensitive-hashmap: A Rust HashMap that uses Case-Insensitive strings.](https://github.com/PhilipDaniels/case-insensitive-hashmap)
+````)
