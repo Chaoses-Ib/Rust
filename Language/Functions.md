@@ -26,7 +26,7 @@ For most implementations, the default stack size is 2MiB, but it's 4MiB for WebA
 
     See [transmutes with generics](Type%20System/Conversions.md#with-generics).
 
-  Applications: [dynamic linking](../Build/rustc/Linkage.md#cdylib)
+  Applications: [dynamic linking](../Build/rustc/Linkage.typ#cdylib)
 
 ## Closures
 [The Rust Programming Language](https://doc.rust-lang.org/book/ch13-01-closures.html)

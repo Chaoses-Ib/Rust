@@ -40,7 +40,8 @@
   - [Comptime](Language/Macros/Comptime.typ)
 - [Module System](Language/Module%20System.md)
 - [Unsafety](Language/Unsafety.md)
-- [Foreign Function Interface](Language/FFI.md)
+- [Foreign Function Interface (FFI)](Language/FFI/README.md)
+  - [C++](Language/FFI/C++.typ)
 - [Coding Conventions](Language/Coding%20Conventions.md)
 - [Comments](Language/Comments.md)
 - [Scripts](Language/Scripts.md)
@@ -48,7 +49,7 @@
 ## Build
 - [rustup](Build/rustup.md)
 - [rustc](Build/rustc/README.md)
-  - [Linkage](Build/rustc/Linkage.md)
+  - [Linkage](Build/rustc/Linkage.typ)
 - [Conditional Compilation](Build/Conditional%20Compilation.md)
 - [Cargo](Build/Cargo/README.md)
   - [Packages](Build/Cargo/Packages.md)

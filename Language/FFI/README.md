@@ -1,5 +1,5 @@
 # Foreign Function Interface
-[→Linkage](../Build/rustc/Linkage.md)
+[→Linkage](../../Build/rustc/Linkage.typ)
 
 The more languages a framework supports, the less idiomatic it is on every language. Use language-specfic ones if you don't really need multiple languages or you care about user's DX.
 
@@ -154,9 +154,7 @@ Problems:
   
   [Hacker News](https://news.ycombinator.com/item?id=41271273)
 
-- [Google/Crubit: C++/Rust Bidirectional Interop Tool](https://github.com/google/crubit)
-
-  > Crubit currently expects deep integration with the build system, and is difficult to deploy to environments dissimilar to Google's monorepo. We do not have our tooling set up to accept external contributions at this time.
+- [→Google Crubit: C++/Rust Bidirectional Interop Tool](C++.typ#crubit)
 
 - [rust-cpp: Embed C++ directly inside your rust code!](https://github.com/mystor/rust-cpp)
 
@@ -232,7 +230,7 @@ mod ffi {
 - Since everything is generated to a single header file, it is very easy to cause circular dependencies if the C++ and Rust sides use types from each other.
 
 - [Attributes --- Rust ♡ C++](https://cxx.rs/attributes.html)
-  - Cannot add [`link` attribute](../Build/rustc/Linkage.md#link-attribute) to the extern block.
+  - Cannot add [`link` attribute](../../Build/rustc/Linkage.typ#link-attribute) to the extern block.
 
 - [Compiling cdylib - Issue #1331](https://github.com/dtolnay/cxx/issues/1331)
 
@@ -309,7 +307,7 @@ Windows:
 
 // #include "../target/cxxbridge/rs/src/lib.rs.cc"
 ```
-See also [CRT](../Build/rustc/Linkage.md#crt).
+See also [CRT](../../Build/rustc/Linkage.typ#crt).
 
 [kraktus/cargo-extern-fn: A cargo subcommand used to generate appropriate cxx bridge from a rust crate](https://github.com/kraktus/cargo-extern-fn)
 > but it was based on cxx which turned out to be too limited in terms of fondamental type support (not even Option), and seemingly no active development from the maintainers to add them or accept PRs.
