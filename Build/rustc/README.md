@@ -30,7 +30,7 @@ rustup default nightly-2024-02-28
 
 [rustc\_feature - Rust](https://doc.rust-lang.org/nightly/nightly-rustc/rustc_feature/index.html)
 
-[→Conditional compilation](../Conditional%20Compilation.md#rustc)
+[→Conditional compilation](../Conditional/README.typ#rustc)
 
 [Which unstable Rust features do you recommend to try? : r/rust](https://www.reddit.com/r/rust/comments/1aqc2nu/which_unstable_rust_features_do_you_recommend_to/)
 

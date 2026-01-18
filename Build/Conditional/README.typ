@@ -1,3 +1,5 @@
+#import "@local/ib:0.1.0": *
+#md(```
 # Conditional Compilation
 [The Rust Reference](https://doc.rust-lang.org/reference/conditional-compilation.html)
 
@@ -30,7 +32,8 @@ Conditional compilation:
 [rust - Conditional unstable rustc feature? - Stack Overflow](https://stackoverflow.com/questions/70632072/conditional-unstable-rustc-feature/70640030#70640030)
 
 [Add unstable feature only if compiled on nightly - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/add-unstable-feature-only-if-compiled-on-nightly/27886)
-
+```)
+#md(````
 ## Cargo features
 [The Cargo Book](https://doc.rust-lang.org/cargo/reference/features.html)
 
@@ -68,3 +71,4 @@ cargo --features foo,bar
     name = "foo"
     required-features = ["cfg-if"]
     ```
+````)
