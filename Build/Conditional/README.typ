@@ -1,4 +1,5 @@
 #import "@local/ib:0.1.0": *
+#show: ib
 #md(```
 # Conditional Compilation
 [The Rust Reference](https://doc.rust-lang.org/reference/conditional-compilation.html)
@@ -33,6 +34,51 @@ Conditional compilation:
 
 [Add unstable feature only if compiled on nightly - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/add-unstable-feature-only-if-compiled-on-nightly/27886)
 ```)
+= Set configuration options
+- For `rustc`, arbitrary-set configuration options are set using the
+  #a[`--cfg`][https://doc.rust-lang.org/rustc/command-line-arguments.html#--cfg-configure-the-compilation-environment]
+  flag.
+- Configuration values for a specified target can be displayed with
+  ```sh rustc --print cfg --target $TARGET```
+  .
+
+Cargo:
+- [ ] #a[Tracking Issue: Exposing `RUSTFLAGS` in cargo][https://github.com/rust-lang/cargo/issues/12739]
+
+  #a[Pre-RFC: Mutually-excusive, global features - tools and infrastructure / cargo - Rust Internals][https://internals.rust-lang.org/t/pre-rfc-mutually-excusive-global-features/19618]
+- Global
+  - Envrionment variables: #a[`RUSTFLAGS`][https://doc.rust-lang.org/nightly/cargo/reference/config.html#buildrustflags]
+- Per profile
+
+  #a[Allow specifying rustflags per profile - Issue \#7878][https://github.com/rust-lang/cargo/issues/7878]
+- [ ] Per package
+- Root package
+  - `config.toml`: `rustflags = ["--cfg", "k=v"]`
+  - ```sh rustc -- --cfg k=v```
+- Dumping: `cargo rustc --print cfg`
+
+  #a[Obtain the Cargo compiler configuration for use in subcommands without building the package - Issue \#8923 - rust-lang/cargo][https://github.com/rust-lang/cargo/issues/8923]
+
+#a[aes: feature flags are not additive - Issue \#245 - RustCrypto/block-ciphers][https://github.com/RustCrypto/block-ciphers/issues/245]
+- #a[How to compose with configuration flags ? - Issue \#316 - RustCrypto/block-ciphers][https://github.com/RustCrypto/block-ciphers/issues/316]
+- #a[Improving/simplifying `cfg` attributes for target features - Issue \#18 - RustCrypto/meta][https://github.com/RustCrypto/meta/issues/18]
+
+#q[
+A problem of the `cfg` attributes approach is that it can only be set via the `RUSTFLAGS` environment variable.
+While RustCrypto's docs says "or by modifying `.cargo/config`", it only affects the root package, not dependencies (either via `rustflags` or `[env]`).
+Per-package `cfg`/`RUSTFLAGS` is not yet supported (https://github.com/rust-lang/cargo/issues/12739), and even per-profile is not stable (https://github.com/rust-lang/cargo/issues/10271).
+Having to set the environment variable makes the build on different platforms (shells) more complex.
+(And compared to setting Cargo features, setting `RUSTFLAGS` will cause all packages to be recompiled.)
+
+#q[First off, these all are selecting one of many options and are mutually exclusive at a crate level. `cfg` attributes make that possible in ways crate features don.t
+This would both be consistent across crates and simplify the logic in regard to conflicting attributes.]
+
+I'm a bit confused what this means. Cargo features are just `cfg`s with the key as `feature`.
+The only difference I can see is `cfg` can be set without adding the descendant dependency to the root package's `Cargo.toml`.
+But this is at the cost of making build harder (e.g. https://github.com/rust-lang/cargo/issues/5376), sometimes even not possible (https://github.com/tokio-rs/tokio/issues/7254), as `cfg` is badly supported by Cargo.
+And mutually exclusive Cargo features are actually more widely used (like `rustls`, `reqwest`, `tracing`, `flate2`, `inkwell`) and work fine. Maybe the use of `cfg` attributes should be reconsidered?
+]
+
 #md(````
 ## Cargo features
 [The Cargo Book](https://doc.rust-lang.org/cargo/reference/features.html)
