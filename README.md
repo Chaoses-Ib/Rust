@@ -59,6 +59,7 @@
   - [Profiles](Build/Cargo/Profiles.md)
   - [Configuration](Build/Cargo/Configuration.md)
   - [Build Scripts](Build/Cargo/Scripts.md)
+  - [Cache](Build/Cargo/Cache.typ)
   - [Distribution](Build/Cargo/Distribution.md)
   - [Registries](Build/Cargo/Registries.md)
 - [Testing](Build/Testing.md)
