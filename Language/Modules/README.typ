@@ -13,6 +13,8 @@ Crates can come in one of two forms:
 The *crate root* is a source file that the Rust compiler starts from and makes up the root module of your crate.
 
 = Modules
+#a-badge[https://doc.rust-lang.org/reference/items/modules.html]
+
 *Modules* let us organize code within a crate for readability and easy reuse.
 
 Here is a quick reference on how modules, paths, the `use` keyword, and the `pub` keyword work in the compiler, and how most developers organize their code:
@@ -98,3 +100,16 @@ pub fn eat_at_restaurant() {
 ```
 
 See also #a[Prelude][https://doc.rust-lang.org/std/prelude/index.html].
+
+== ```rs module_path!()```
+#a-badge[https://doc.rust-lang.org/std/macro.module_path.html]
+
+- If ```toml lib.name``` is set, ```rs module_path!()``` will start with ```toml lib.name``` instead of ```toml package.name```.
+  - You cannot change the binary lib name without changing the log target using only Cargo config.
+    - ```sh cargo rustc -- -o a.lib```
+
+      Doesn't work as expected.
+      - #a[Warning when specifying the output name with `cargo rustc` - Issue \#9558 - rust-lang/cargo][https://github.com/rust-lang/cargo/issues/9558]
+      - #a[Add option to prevent including metadata in target name - Issue \#6899 - rust-lang/cargo][https://github.com/rust-lang/cargo/issues/6899]
+
+    #a[How to specify custom output library file name with hyphens in cargo? - help - The Rust Programming Language Forum][https://users.rust-lang.org/t/how-to-specify-custom-output-library-file-name-with-hyphens-in-cargo/106179]
