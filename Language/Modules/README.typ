@@ -1,6 +1,8 @@
-# Module System
-## Crate
-A **crate** is the smallest amount of code that the Rust compiler considers at a time. Crates can contain modules, and the modules may be defined in other files that get compiled with the crate.
+#import "/lib.typ": *
+#title[Module System]
+= Crates
+A *crate* is the smallest amount of code that the Rust compiler considers at a time.
+Crates can contain modules, and the modules may be defined in other files that get compiled with the crate.
 
 Crates can come in one of two forms:
 - Binary crates: programs you can compile to an executable that you can run
@@ -8,10 +10,10 @@ Crates can come in one of two forms:
   A binary crate must have a `main()`.
 - Library crates: define functionality intended to be shared with multiple projects
 
-The **crate root** is a source file that the Rust compiler starts from and makes up the root module of your crate.
+The *crate root* is a source file that the Rust compiler starts from and makes up the root module of your crate.
 
-## Modules
-**Modules** let us organize code within a crate for readability and easy reuse.
+= Modules
+*Modules* let us organize code within a crate for readability and easy reuse.
 
 Here is a quick reference on how modules, paths, the `use` keyword, and the `pub` keyword work in the compiler, and how most developers organize their code:
 1. Start from the crate root
@@ -25,7 +27,7 @@ Here is a quick reference on how modules, paths, the `use` keyword, and the `
     - In the file `src/garden.rs`
     - In the file `src/garden/mod.rs`
 
-   [Anonymous modules - compiler - Rust Internals](https://internals.rust-lang.org/t/anonymous-modules/15441/8)
+   #a[Anonymous modules - compiler - Rust Internals][https://internals.rust-lang.org/t/anonymous-modules/15441/8]
 
 3. Declaring submodules
  
@@ -51,14 +53,14 @@ Here is a quick reference on how modules, paths, the `use` keyword, and the `
  
    Within a scope, the `use` keyword creates shortcuts to items to reduce repetition of long paths. In any scope that can refer to `crate::garden::vegetables::Asparagus`, you can create a shortcut with `use crate::garden::vegetables::Asparagus;` and from then on you only need to write `Asparagus` to make use of that type in the scope.
 
-## Paths
-[The Rust Reference](https://doc.rust-lang.org/reference/paths.html)
+= Paths
+#a-badge[https://doc.rust-lang.org/reference/paths.html]
 
 A path can take two forms:
 - An _absolute path_ is the full path starting from a crate root; for code from an external crate, the absolute path begins with the crate name, and for code from the current crate, it starts with the literal `crate`.
 - A _relative path_ starts from the current module and uses `self`, `super`, or an identifier in the current module.
 
-### The `use` keyword
+== The ```rs use``` keyword
 For example:
 ```rust
 use std::fmt::Result;
@@ -95,4 +97,4 @@ pub fn eat_at_restaurant() {
 }
 ```
 
-See also [Prelude](https://doc.rust-lang.org/std/prelude/index.html).
+See also #a[Prelude][https://doc.rust-lang.org/std/prelude/index.html].

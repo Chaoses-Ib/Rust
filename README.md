@@ -38,7 +38,7 @@
 - [Macros](Language/Macros/README.md)
   - [Procedural Macros](Language/Macros/Procedural.md)
   - [Comptime](Language/Macros/Comptime.typ)
-- [Module System](Language/Module%20System.md)
+- [Module System](Language/Modules/README.typ)
 - [Unsafety](Language/Unsafety.md)
 - [Foreign Function Interface (FFI)](Language/FFI/README.md)
   - [C++](Language/FFI/C++.typ)
