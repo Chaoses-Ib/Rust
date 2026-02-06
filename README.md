@@ -62,6 +62,7 @@
   - [Cache](Build/Cargo/Cache.typ)
   - [Distribution](Build/Cargo/Distribution.md)
   - [Registries](Build/Cargo/Registries.md)
+- [Cross-compilation](Build/Cross/README.typ)
 - [Testing](Build/Testing.md)
 - [Benchmarking](Build/Benchmarking.md)
 - [Binary Size](Build/Size.md)
