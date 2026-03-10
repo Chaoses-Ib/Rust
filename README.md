@@ -64,7 +64,8 @@
   - [Registries](Build/Cargo/Registries.md)
 - [Cross-compilation](Build/Cross/README.typ)
 - [Testing](Build/Testing.md)
-- [Benchmarking](Build/Benchmarking.md)
+- [Performance](Build/Performance/README.typ)
+  - [Benchmarking](Build/Performance/Benchmarking.md)
 - [Binary Size](Build/Size.md)
 - [rustdoc](Build/rustdoc.md)
 
