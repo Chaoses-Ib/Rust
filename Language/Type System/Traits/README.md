@@ -185,6 +185,8 @@ pub struct Screen {
 
 [No need for pointer to member functions in Rust : r/rust](https://www.reddit.com/r/rust/comments/l99lft/no_need_for_pointer_to_member_functions_in_rust/)
 
+#a[daniel5151/inlinable-dyn-extension-traits: An exploration into the various ways optional trait methods can be implemented in Rust.][https://github.com/daniel5151/inlinable-dyn-extension-traits]
+
 Static dispatch:
 - [enum\_dispatch](https://docs.rs/enum_dispatch/latest/enum_dispatch/) ([GitLab](https://gitlab.com/antonok/enum_dispatch))
 - [typetag: Serde serializable and deserializable trait objects](https://github.com/dtolnay/typetag)
