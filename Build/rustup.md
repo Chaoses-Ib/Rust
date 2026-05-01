@@ -1,5 +1,7 @@
 # rustup
 [Install Rust - Rust Programming Language](https://www.rust-lang.org/tools/install)
+- Debian: ```sh sudo apt install rustup gcc```
+  - ```sh rustup default stable```
 
 ~1 GiB
 

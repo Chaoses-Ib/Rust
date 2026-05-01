@@ -53,3 +53,5 @@ Path of where to place final build artifacts.
 - #a[Do not lock the `artifact-dir` for check builds by ranger-ross - Pull Request \#16230][https://github.com/rust-lang/cargo/pull/16230]
 
 == `artifact-dir`
+- Can be used with `cargo build`, but not `cargo rustc`.
+  #footnote[#a[`--artifact-dir` (nee `--out-dir`) Tracking Issue - Issue \#6790 - rust-lang/cargo][https://github.com/rust-lang/cargo/issues/6790#issuecomment-733292687]]
