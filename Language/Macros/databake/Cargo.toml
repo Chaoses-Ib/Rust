@@ -1,0 +1,12 @@
+[workspace]
+members = [
+    "ib",
+    "ib-types",
+]
+resolver = "2"
+
+[workspace.package]
+description = "An example that deserializes config from env at compile time and then generates constants."
+
+[workspace.dependencies]
+ib-types = { version = "0.1", path = "ib-types" }

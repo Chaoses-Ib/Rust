@@ -1,0 +1,12 @@
+[package]
+name = "ib"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ib-types.workspace = true
+
+[build-dependencies]
+databake = "0.2"
+ib-types = { workspace = true, features = ["build"] }
+serde_json = "1"

@@ -115,3 +115,5 @@ my-library = { path = "../my-library/path" }
   [Publishing a crate with patched dependencies - Issue #13222 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/13222)
 
 - [Support patching one with another package from the same source - Issue #9227 - rust-lang/cargo](https://github.com/rust-lang/cargo/issues/9227#issuecomment-1697916963)
+
+  #a[Patching dependencies does not work if it's for the same location but a different branch - Issue \#5478 - rust-lang/cargo][https://github.com/rust-lang/cargo/issues/5478]
