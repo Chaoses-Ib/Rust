@@ -2,7 +2,8 @@
 ## [Language](Language/README.md)
 - Type System
   - [Types](Language/Type%20System/Types/README.md)
-    - [Structs](Language/Type%20System/Types/Structs.md)
+    - [Structs](<Language/Type System/Types/Struct/README.md>)
+      - [Bit Fields](<Language/Type System/Types/Struct/Bit.typ>)
     - [Enumerations](Language/Type%20System/Types/Enumerations.md)
     - [Unions](Language/Type%20System/Types/Unions.md)
     - [Ranges](Language/Type%20System/Types/Ranges.md)
