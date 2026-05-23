@@ -30,6 +30,7 @@
   - [Coroutines](Language/Concurrency/Coroutines.md)
   - [Async/await](Language/Concurrency/Async/README.md)
     - [Async Runtimes](Language/Concurrency/Async/Runtimes.md)
+  - [Thread Locals](Language/Concurrency/Locals/README.typ)
   - [Shared-state Concurrency](Language/Concurrency/Shared-state.md)
   - [Parallelism](Language/Concurrency/Parallelism.md)
   - [Message Passing](Language/Concurrency/Message%20Passing.md)
