@@ -1,4 +1,7 @@
-# Procedural Macros
+#import "/lib.typ": *
+#title[Procedural Macros]
+#a[dtolnay/proc-macro-workshop: Learn to write Rust procedural macros  [Rust Latam conference, Montevideo Uruguay, March 2019]][https://github.com/dtolnay/proc-macro-workshop]
+
 - `module_path!()`
   - [`caller_modpath`: Get the module path of the caller in a proc\_macro](https://github.com/Shizcow/caller_modpath)
     - Nightly
