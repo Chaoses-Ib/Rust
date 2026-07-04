@@ -22,7 +22,7 @@ all-features = true
 # Since this crate's feature setup is pretty complicated, it is worth opting
 # into a nightly unstable option to show the features that need to be enabled
 # for public API items. To do that, we set 'docsrs', and when that's enabled,
-# we enable the 'doc_auto_cfg' feature.
+# we enable the 'doc_cfg' feature.
 #
 # To test this locally, run:
 # ```
@@ -32,8 +32,8 @@ all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
 ```
 ```rust
-//! ## Features
-#![cfg_attr(docsrs, feature(doc_auto_cfg))]
+//! ## Crate features
+#![cfg_attr(docsrs, feature(doc_cfg))]
 #![cfg_attr(feature = "doc", doc = document_features::document_features!())]
 ```
 
@@ -54,7 +54,11 @@ rustdoc-args = ["--cfg", "docsrs"]
 
     Feels stupid.
 
-  - Tells rustdoc to automatically generate `#[doc(cfg(...))]`: `#[doc_auto_cfg]`
+  - Tells rustdoc to automatically generate `#[doc(cfg(...))]`:
+    - #strike[```rs #[doc_auto_cfg]```]
+      #footnote[#a[docs: fix `doc_auto_cfg` - Chaoses-Ib/ib-everything\@26b14df][https://github.com/Chaoses-Ib/ib-everything/commit/26b14dfe58feee6d32536496b9691dc7734f97f9]]
+    - Just ```rs #[doc_cfg]``` since v1.92
+      #footnote[#a[Implement RFC 3631: add rustdoc doc_cfg features by GuillaumeGomez - Pull Request \#138907 - rust-lang/rust][https://github.com/rust-lang/rust/pull/138907]]
   
     `#![cfg_attr(docsrs, feature(doc_auto_cfg))]`
 
